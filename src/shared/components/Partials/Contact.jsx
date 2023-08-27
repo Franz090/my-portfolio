@@ -4,8 +4,29 @@ const Contact = () => {
   return (
     <div>
 
-    <div id="contact">
-    hi ivan
+    <div id="contact" className='bg-black '>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+   <h6>ang ganda mo angela</h6>
+
   </div>
 
   </div>
