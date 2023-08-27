@@ -17,7 +17,7 @@ import Contact from './pages/contact'
       <Route path="/resume" element= {<ResumePage/>} />
       <Route path="/skills" element= {<Skills/>} />
       <Route path="/project" element= {<MyProject/>} />
-      <Route path="/contact" element= {<Contact/>} />
+      <Route path="/contact" element={<Contact/>} />
       </Routes>
      </RootLayout>
   )
