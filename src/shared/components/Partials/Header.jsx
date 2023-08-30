@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 
 const scrollTo = (targetY, duration = 300) => {
@@ -31,10 +31,16 @@ const HeaderLink = ({ to, text, isActive, onClick }) => (
 
 
 const Header = () => {
+  const location = useLocation();
   const [activeLink, setActiveLink] = useState('');
   const scrollToTop = () => {
     scrollTo(0);
   };
+  // Use useEffect to update the activeLink state when the location changes
+  useEffect(() => {
+    setActiveLink(location.pathname);
+  }, [location.pathname]);
+
 
   const handleLinkClick = (to) => {
     scrollTo(0);
