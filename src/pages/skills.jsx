@@ -1,6 +1,6 @@
 const Skills = () => {
   return (
-    <div>this is about page</div>
+    <div>this is skills page</div>
   )
 }
 

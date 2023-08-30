@@ -2,3 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* font-family: 'Montserrat', sans-serif; */
+.logo-name{
+    font-family: 'Montserrat Subrayada', sans-serif;
+    font-size: 1.8rem;
+    color: #181818;
+}
+.nav-color{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-style: normal;
+    font-weight: 600;
+    color: #181818;
+    
+}
+/* In a CSS file or styled-components */
+.link {
+    color: #181818; /* Set your default link color */
+    text-decoration: none; /* Remove the underline style if needed */
+  }
+  
+  .link:hover {
+    color: #4787ac;  /* Change the color on hover if desired */
+  }
+  
+  /* Define styles for the active link */
+  .active-link {
+    color: #397fa7; 
+  }
+  
