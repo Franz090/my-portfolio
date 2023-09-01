@@ -10,6 +10,8 @@
     color: #181818;
     position: relative;
     bottom: -10px;
+    position: relative;
+    right: 26px;
 }
 .nav-color{
     font-family: 'Montserrat', sans-serif;
@@ -44,7 +46,7 @@
   display: none; /* Hide the hamburger icon by default */
   cursor: pointer;
   position: absolute; /* Position it absolutely */
-  top: 30px; /* Adjust the top position as needed */
+  top: 20px; /* Adjust the top position as needed */
   right: 21px; /* Adjust the right position as needed */
   margin-bottom: 10px; /* Add padding to the bottom */
 }
@@ -124,18 +126,28 @@
   /* Add more styles as needed for the mobile menu */
   .logo-name{
     position: relative;
-    left: -36px;
+    right: 60px;
   }
+ 
 }
-@media (min-width: 640px) {
-  li> a {
+
+@media (min-width: 990px) and (max-width: 1179px) {
+  .nav-mobile {
+    text-align: center; /* Center-align the content horizontally */
     position: relative;
-    right: -35px;
+    bottom: 7px;
   }
-  .logo-name{
-    position:relative;
-    right: 4px;
+  .logo-name {
+    display: inline-block; /* Make the logo-name an inline-block element */
+    margin-right: 230px;
+    position: relative;
+    bottom: 10px;
   }
 }
-
-
+@media (min-width: 644px) and (max-width: 990px) {
+  .logo-name {
+    right: 80px;
+    position: relative;
+   
+  }
+}

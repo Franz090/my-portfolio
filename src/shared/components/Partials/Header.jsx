@@ -62,16 +62,15 @@ const Header = () => {
         <div className={`bar ${isMobileMenuOpen ? 'active' : ''}`}></div>
         <div className={`bar ${isMobileMenuOpen ? 'active' : ''}`}></div>
       </div>
-        <ul className={`flex  items-center justify-between ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
-          <div className="flex items-center">
-            <li>
-              {/* Apply scrollToTop function to the logo link */}
-              <Link to="/" className='logo-name container mx-auto px-26' onClick={scrollToTop}>
+      <div className="flex  items-center justify-between">
+      <li>
+        {/* Apply scrollToTop function to the logo link */}
+        <Link to="/" className='logo-name container mx-auto' onClick={scrollToTop}>
                 FRANCIS
               </Link>
             </li>
-          </div>
-          <div className="flex pt-39 pr-44  nav-color">
+            <ul className={`flex  nav-mobile items-center justify-between ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
+              <div className=" flex pt-39 pr-44  nav-color">
               <HeaderLink to="/" text="HOME" isActive={activeLink === '/'} onClick={() => handleLinkClick('/')} />
               <HeaderLink to="/about" text="ABOUT" isActive={activeLink === '/about'} onClick={() => handleLinkClick('/about')} />
               <HeaderLink to="/resume" text="RESUME" isActive={activeLink === '/resume'} onClick={() => handleLinkClick('/resume')} />
@@ -83,6 +82,7 @@ const Header = () => {
         
           </div>
         </ul>
+        </div>
       </nav>
     </div>
   );
