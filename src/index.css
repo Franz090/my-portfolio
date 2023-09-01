@@ -8,15 +8,23 @@
     font-family: 'Montserrat Subrayada', sans-serif;
     font-size: 1.8rem;
     color: #181818;
+    position: relative;
+    bottom: -10px;
 }
 .nav-color{
     font-family: 'Montserrat', sans-serif;
     font-size: 1.1rem;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     color: #181818;
     
 }
+.nav-color>li{
+  padding-top: 24px;
+}
+.flex a {
+    margin-right: 23px;
+  }
 /* In a CSS file or styled-components */
 .link {
     color: #181818; /* Set your default link color */
@@ -31,4 +39,103 @@
   .active-link {
     color: #397fa7; 
   }
+  /* Add this CSS to your stylesheet */
+.mobile-menu-icon {
+  display: none; /* Hide the hamburger icon by default */
+  cursor: pointer;
+  position: absolute; /* Position it absolutely */
+  top: 30px; /* Adjust the top position as needed */
+  right: 21px; /* Adjust the right position as needed */
+  margin-bottom: 10px; /* Add padding to the bottom */
+}
+
+.mobile-menu-icon .bar {
+  width: 26px;
+  height: 0.1rem;
+  background-color: #181818;
+  margin: 7px 0;
+  transition: transform 0.3s, opacity 0.3s;
   
+}
+.bar:nth-child(1){
+    position: relative;
+    bottom: 2px;
+    border: 1px solid #181818;
+    border-top-right-radius: 12px;
+    width: 18px;
+    left: 7px;
+}
+.bar:nth-child(3){
+  position: relative;
+  top: 2px;
+  border: 1px solid #181818;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.mobile-menu-open .mobile-menu-icon .bar:nth-child(1),
+.mobile-menu-open .mobile-menu-icon .bar:nth-child(3) {
+  opacity: 0;
+}
+.mobile-menu-open .mobile-menu-icon .bar:nth-child(2) {
+  transform: rotate(45deg) translateY(2px);
+}
+.mobile-menu-open .mobile-menu-icon .bar:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #181818;
+  transform: rotate(90deg);
+}
+
+
+/* Media query for small screens to show/hide elements */
+@media (max-width: 990px) {
+  .nav-color {
+    display: none; /* Hide the navigation links */
+   
+   
+  }
+  .mobile-menu-icon {
+    display: block; /* Show the hamburger icon */
+  }
+  li> a {
+    position: relative;
+    right: -16px;
+    font-size: 1.1rem;
+  }
+
+  /* Show the mobile menu when the hamburger icon is clicked */
+  .mobile-menu-open .nav-color {
+    display: flex;
+    flex-direction: column;
+    background-color: #fffafa; 
+    position: absolute;
+    top: 78px; 
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding-bottom: 12px;
+    justify-content: flex-start;    
+  }
+  /* Add more styles as needed for the mobile menu */
+  .logo-name{
+    position: relative;
+    left: -36px;
+  }
+}
+@media (min-width: 640px) {
+  li> a {
+    position: relative;
+    right: -35px;
+  }
+  .logo-name{
+    position:relative;
+    right: 4px;
+  }
+}
+
+
