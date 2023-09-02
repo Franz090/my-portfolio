@@ -110,13 +110,25 @@
     font-size: 1.1rem;
   }
 
+.nav-mobile {
+  transition: max-height 10s ease-in-out, opacity 0.3s ease-in-out;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  
+}
+.mobile-menu-open .nav-mobile {
+  max-height: 1000px;
+  opacity: 1;
+}
+
   /* Show the mobile menu when the hamburger icon is clicked */
   .mobile-menu-open .nav-color {
     display: flex;
     flex-direction: column;
     background-color: #fffafa; 
     position: absolute;
-    top: 78px; 
+    top: 66px; 
     left: 0;
     right: 0;
     width: 100%;
