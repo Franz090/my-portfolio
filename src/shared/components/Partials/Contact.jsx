@@ -4,7 +4,7 @@ const Contact = () => {
   return (
     <div>
 
-    <div id="contact" className='bg-black '>
+    <div id="contact" className='bg-secondary-450 container-custom '>
    
    <h6>This is Contact.</h6>
    <h6>This is Contact.</h6>

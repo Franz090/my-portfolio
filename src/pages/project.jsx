@@ -1,6 +1,6 @@
 const MyProject = () => {
   return (
-    <div>This is project page.</div>
+    <div className="container-custom">This is project page.</div>
   )
 }
 

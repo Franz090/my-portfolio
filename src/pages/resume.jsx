@@ -1,6 +1,6 @@
 const ResumePage = () => {
   return (
-    <div>This is resume page.</div>
+    <div className="container-custom">This is resume page.</div>
   )
 }
 

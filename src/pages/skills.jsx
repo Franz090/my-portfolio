@@ -1,6 +1,6 @@
 const Skills = () => {
   return (
-    <div>this is skills page</div>
+    <div className="container-custom">this is skills page</div>
   )
 }
 
