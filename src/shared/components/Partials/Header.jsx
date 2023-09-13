@@ -80,7 +80,7 @@ const Header = () => {
             <div className={`bar bar2 ${menuOpen ? 'open' : ''}`}></div>
             <div className={`bar bar3 ${menuOpen ? 'open' : ''}`}></div>
           </div>
-          {menuOpen || window.innerWidth === 1023 ? (
+          {menuOpen || window.innerWidth === 1024 ? (
             <ul className="lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 lg:opacity-100  transition-all ease-in mobile-menu open nav-color ">
               <HeaderLink
                 to="/"
@@ -165,7 +165,7 @@ const Header = () => {
                 isActive={activeLink === '/project'}
                 onClick={() => handleLinkClick('/project')}
               />
-              <li className="mx-3 my-4 md:my-0 ">
+              <li className="mx-3 my-4 md:my-0  ">
                 <a
                   href="#contact"
                   onClick={() => {

@@ -1,57 +1,62 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function DarkModeToggle() {
-  // State for dark mode
-  const [darkMode, setDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('darkMode') === 'true');
 
-  // Function to toggle dark mode
-  const toggleDarkMode = () => {
-    const newDarkMode = !darkMode;
-    setDarkMode(newDarkMode);
-    // Store the selected theme in local storage
-    localStorage.setItem('theme', newDarkMode ? 'dark' : 'light');
+  useEffect(() => {
+    // Function to set the background color based on the mode
+    const setThemeColors = () => {
+      const root = document.documentElement;
+      if (isDarkMode) {
+        root.style.setProperty('--bg-color', '#181818'); // Dark mode background color
+        root.style.setProperty('--font-color', '#fffafa'); // Dark mode font color
+      } else {
+        root.style.setProperty('--bg-color', '#fffafa'); // Light mode background color
+        root.style.setProperty('--font-color', '#181818'); // Light mode font color
+      }
+    };
+
+    // Call setThemeColors when the component mounts
+    setThemeColors();
+
+    const navElement = document.querySelector('nav');
+    const hamburgerBars = document.querySelectorAll('.bar');
+
+    if (isDarkMode) {
+      document.body.classList.add('dark-theme');
+      navElement.classList.add('dark');
+
+      // Update hamburger icon bars for dark mode
+      hamburgerBars.forEach((bar) => {
+        bar.style.backgroundColor = 'var(--font-color)';
+      });
+    } else {
+      document.body.classList.remove('dark-theme');
+      navElement.classList.remove('dark');
+
+      // Update hamburger icon bars for light mode
+      hamburgerBars.forEach((bar) => {
+        bar.style.backgroundColor = 'var(--font-color)';
+      });
+    }
+  }, [isDarkMode]);
+
+  const handleToggleChange = () => {
+    const newMode = !isDarkMode;
+    setIsDarkMode(newMode);
+
+    // Save the mode to localStorage
+    localStorage.setItem('darkMode', newMode);
   };
 
-  useEffect(() => {
-    // Check if there is a stored theme preference in local storage
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      // Apply the stored theme preference
-      setDarkMode(savedTheme === 'dark');
-    } else {
-      // If no theme preference is found, default to light mode
-      setDarkMode(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    // Update the document and body elements to apply the theme
-    const rootElement = document.documentElement;
-    const bodyElement = document.body;
-    const navElement = document.querySelector('nav');
-
-    if (darkMode) {
-      rootElement.setAttribute('data-theme', 'dark');
-      bodyElement.classList.add('dark');
-      navElement.classList.add('dark');
-    } else {
-      rootElement.setAttribute('data-theme', 'light');
-      bodyElement.classList.remove('dark');
-      navElement.classList.remove('dark');
-    }
-  }, [darkMode]);
-
   return (
-    <div className="theme-switch">
-      <label htmlFor="checkbox">
-        <input
-          type="checkbox"
-          id="checkbox"
-          checked={darkMode}
-          onChange={toggleDarkMode}
-        />
-        <div className="slider round"></div>
-      </label>
+    <div className="container">
+      <input
+        type="checkbox"
+        id="toggle"
+        onChange={handleToggleChange}
+        checked={isDarkMode}
+      />
     </div>
   );
 }

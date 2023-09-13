@@ -15,6 +15,7 @@
 li>a{
     font-size: 1rem;
     font-weight: 500!important;
+    transition-duration: 0.5s;
     
   
 }
@@ -98,7 +99,7 @@ li>a{
     transform: rotate(90deg);
     
 }
-
+/* DARKMODE */
 /* Dark Mode and Light Mode CSS */
 [data-theme='dark'] {
     --font-color: #fffafa;
@@ -109,24 +110,11 @@ li>a{
     --font-color: #121212;
     --bg-color: #fffafa;
 }
-
-body.dark {
-    background-color: var(--bg-color);
-    color: var(--font-color);
-    
-}
-
-body.light {
-    background-color: var(--bg-color);
-    color: var(--font-color);
-   
-}
-
-
-
 nav.dark {
     background-color: var(--bg-color);
     color: var(--font-color);
+    z-index: 1000;
+   
 }
 
 nav.light {
@@ -134,63 +122,82 @@ nav.light {
     color: var(--font-color);
 }
 
-/* Toggle Switch Styles */
-.switch {
-    height: 100px;
-    position: fixed;
-    right: 50px;
-    top: 50px;
-}
-
-.theme-switch {
-    display: inline-block;
-    height: 34px;
+#toggle{
+    -webkit-appearance: none;
+    appearance: none;
+    height: 40px;
+    width: 75px;
+    background-color: #15181f;
     position: relative;
-    width: 60px;
-}
-
-.theme-switch input {
-    display: none;
-}
-
-.slider {
-    background-color: #ccc;
-    bottom: 0;
-    cursor: pointer;
-    left: 0;
-    position: absolute;
     right: 0;
-    top: 0;
-    transition: .4s;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
 }
-
-.slider:before {
-    background-color: #fff;
-    bottom: 4px;
+#toggle:after{
     content: "";
-    height: 26px;
-    left: 4px;
     position: absolute;
-    transition: .4s;
-    width: 26px;
-}
-
-input:checked + .slider {
-    background-color: #2b2b2b;
-}
-
-input:checked + .slider:before {
-    transform: translateX(26px);
-}
-
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round:before {
+    height: 30px;
+    width: 30px;
+    background-color: #fffafa;
+    top: 5px;
+    left: 7px;
     border-radius: 50%;
 }
 
+.dark-theme{
+    background-color: #181818;
+    color: #fffafa;
+}
+.dark-theme #toggle{
+    background-color: #fffafa;
+}
+.dark-theme #toggle:after{
+    background-color: transparent;
+    box-shadow: 10px 10px #181818;
+    top: -4px;
+    left: 30px;
+}
+/* DarkModeToggle.css */
+/* Style the checkbox in light mode */
+input[type="checkbox"] {
+    --bg-color-light: #fffafa; /* Light mode background color */
+    --bg-color-dark: #181818; /* Dark mode background color */
+    width: 30px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    -webkit-appearance: none; /* Remove default styles for Webkit browsers */
+    appearance: none; /* Remove default styles for other browsers */
+    background-color: var(--bg-color-light);
+    border-radius: 15px; /* Make it round */
+    outline: none; /* Remove outline when focused */
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  /* Style the checkbox when checked in light mode */
+  input[type="checkbox"]:checked {
+    background-color: var(--bg-color-dark);
+  }
+  
+  /* Style the custom checkbox indicator in light mode */
+  input[type="checkbox"]::before {
+    content: "";
+    width: 50%;
+    height: 50%;
+    background: #181818; /* Color of the checkmark in light mode */
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.3s;
+  }
+  
+  /* Style the custom checkbox indicator when checked in light mode */
+  input[type="checkbox"]:checked::before {
+    background: #fffafa; /* Color of the checkmark in dark mode */
+  }
+/* END DARK MODE */
 /* Hamburger menu container */
 .hamburger-menu {
     display: none;
@@ -233,9 +240,7 @@ input:checked + .slider:before {
     transform: rotate(-90deg);
     transition: 0.4s;
   }
-  .mobile-menu.open> nav {
-    z-index: 11; 
-  }
+  
 @media screen and (max-width: 768px) {
     .text-2xl {
         font-size: 1.8rem; /* Adjust this as needed */
@@ -249,31 +254,80 @@ input:checked + .slider:before {
     
   
 }
+@media (max-width: 999px){
+  .hamburger-menu{
+    display: block;
+  }
+   /* Mobile menu container */
+   .mobile-menu {
+    position: absolute;
+    top: 80%; /* Place it below the hamburger icon */
+    right: 0;
+    width: 100%; /* Take the full width of the screen */
+    background-color: var(--bg-color);
+    padding: 0px;
+    transform: translateX(0); /* Adjust the transform property */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 1000;
+    height: 100vh;
+  }
+ 
+  /* Additional styles for the mobile menu */
+  /* Add any specific styles for the mobile menu here */
 
+  /* Example: Style the links within the mobile menu */
+  .mobile-menu a {
+    text-decoration: none;
+    margin: 10px 0;
+    display: block;
+    height: 100%;
+    text-align: center;
+    transition-duration: 0.5s;
+    
+   
+    /* Add your additional styles here */
+  }
+ 
 
-@media (max-width: 1023px) {
-    /* Hamburger menu icon */
-    .hamburger-menu {
-      display: block;
-    }
+  /* Example: Style for an open mobile menu */
+  .mobile-menu.open {
+    opacity: 1;
+    transform: translateX(0%);
+    pointer-events: auto;
+    /* Make the ul take full width when the menu is open */
+    width: 100%;
+   
+  }
   
+.mobile-menu.open .active-link  {
+   color: #4787ac;
+ }
+}
+
+@media (max-width: 1024px) and (max-height: 580px) {
+    
+    .hamburger-menu{
+      display: block;
+      
+    }
     /* Mobile menu container */
     .mobile-menu {
       position: absolute;
       top: 80%; /* Place it below the hamburger icon */
       right: 0;
       width: 100%; /* Take the full width of the screen */
-     
-      background-color: #fffafa;
+      background-color: var(--bg-color);
       padding: 0px;
       transform: translateX(0); /* Adjust the transform property */
-      transition: all 0.3s ease-in-out;
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
       pointer-events: none;
       opacity: 0;
       z-index: 1000;
       height: 100vh;
     }
-  
+   
     /* Additional styles for the mobile menu */
     /* Add any specific styles for the mobile menu here */
   
@@ -284,6 +338,7 @@ input:checked + .slider:before {
       display: block;
       height: 100%;
       text-align: center;
+      transition-duration: 0.5s;
       
      
       /* Add your additional styles here */
@@ -305,17 +360,7 @@ input:checked + .slider:before {
    }
  
   
-   body.dark .mobile-menu {
-     background-color: var(--bg-color); 
-     color: var(--font-color); 
-     
-   }
-    body.dark .mobile-menu {
-        background-color: var(--bg-color); 
-        color: var(--font-color); 
-        
-      }
-      
+ 
       
    
   }
