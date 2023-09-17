@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import DarkModeToggle from './DarkModeToggle';
 
@@ -20,13 +20,13 @@ const scrollTo = (targetY, duration = 300) => {
 };
 
 const HeaderLink = ({ to, text, isActive, onClick }) => (
-  <li className="mx-3 my-12 lg:my-0">
+  <li className="mx-4 my-12 lg:my-0">
     <Link
       to={to}
       onClick={() => onClick(to)}
       className={`${
         isActive
-          ? 'active-link link text-md hover:text-secondary-text duration-500'
+          ? 'active-link link text-md hover:text-secondary-text'
           : 'link'
       }`}
     >
@@ -39,6 +39,20 @@ const Header = () => {
   const location = useLocation();
   const [activeLink, setActiveLink] = useState(location.pathname);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  // Update the screen width state when the window size changes
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -61,17 +75,25 @@ const Header = () => {
 
   return (
     <div className={`Header pb-28 ${headerClass}`}>
-      <nav className="bg-primary-450 pt-6 pb-6 p-9 fixed top-0 left-0 right-0 z-10 lg:flex lg:items-center md:justify-between">
-        <div className="flex container mx-auto justify-between items-center">
-          <span className="text-2xl font-[Poppins] cursor-pointer">
+      <nav className="bg-primary-450 pt-7 pb-6 p-5 fixed top-0 left-0 right-0 z-10 lg:flex lg:items-center md:justify-between">
+      <div className="md:container mx-auto xl:px-24 md:px-1 sm:px-4">
+        <div className="flex justify-between items-center">
+        <div className="flex items-center justify-between space-x-2">
+          <span className="text-2xl  cursor-pointer">
             <Link
               to="/"
-              className="logo-name h-10 inline duration-500"
+              className="logo-name h-10 inline "
               onClick={() => handleLinkClick('/')}
             >
               FRANCIS
             </Link>
           </span>
+          {screenWidth <= 1024 &&  (
+         <div className='fix-dark'>
+          <DarkModeToggle id={1} />
+          </div>
+          )}
+          </div>
           <div
             className={`hamburger-menu ${menuOpen ? 'open' : ''}`}
             onClick={toggleMenu}
@@ -80,7 +102,7 @@ const Header = () => {
             <div className={`bar bar2 ${menuOpen ? 'open' : ''}`}></div>
             <div className={`bar bar3 ${menuOpen ? 'open' : ''}`}></div>
           </div>
-          {menuOpen || window.innerWidth === 1024 ? (
+          {menuOpen || window.innerWidth > 1024 ? (
             <ul className="lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 lg:opacity-100  transition-all ease-in mobile-menu open nav-color ">
               <HeaderLink
                 to="/"
@@ -112,7 +134,7 @@ const Header = () => {
                 isActive={activeLink === '/project'}
                 onClick={() => handleLinkClick('/project')}
               />
-              <li className="mx-3 my-4 md:my-0 ">
+              <li>
                 <a
                   href="#contact"
                   onClick={() => {
@@ -129,12 +151,14 @@ const Header = () => {
                   CONTACT
                 </a>
               </li>
-              <div className="text-white font-[Poppins] duration-500 rounded">
-                <DarkModeToggle />
-              </div>
+              {screenWidth >= 1024 &&  (
+         <div className='ml-5'>
+          <DarkModeToggle id={2} />
+          </div>
+          )}
             </ul>
           ) : (
-            <ul className="hidden lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 lg:opacity-100  transition-all ease-in mobile-menu open nav-color ">
+            <ul className="hidden lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 lg:opacity-100  mobile-menu open nav-color ">
               <HeaderLink
                 to="/"
                 text="HOME"
@@ -165,7 +189,7 @@ const Header = () => {
                 isActive={activeLink === '/project'}
                 onClick={() => handleLinkClick('/project')}
               />
-              <li className="mx-3 my-4 md:my-0  ">
+              <li >
                 <a
                   href="#contact"
                   onClick={() => {
@@ -182,11 +206,13 @@ const Header = () => {
                   CONTACT
                 </a>
               </li>
-              <div className="text-white font-[Poppins] duration-500 rounded">
-                <DarkModeToggle />
+              <div className='ml-2'>
+              <DarkModeToggle id={3} />
               </div>
             </ul>
+            
           )}
+        </div>
         </div>
       </nav>
     </div>

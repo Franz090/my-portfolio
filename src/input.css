@@ -1,302 +1,304 @@
+/* Tailwind CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
-/* Typography */
-.logo-name {
-    font-family: 'Montserrat Subrayada', sans-serif;
-    
+/* Global Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+/* Typography and Links */
 .text-2xl {
-    font-size: 1.9rem; /* Adjust this as needed */
+  font-size: 1.9rem;
 }
-li>a{
-    font-size: 1rem;
-    font-weight: 500!important;
-    transition-duration: 0.5s;
-    
-  
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-
-.nav-color {
-    font-family: 'Montserrat', sans-serif;
-  
-    font-style: normal;
-   
-   
+.dark-mode-toggle-container {
+  margin-left: 20px; /* Adjust the margin as needed */
 }
-
-
-/* Links */
-
-
 .link:hover {
-    color: #4787ac;  /* Change the color on hover if desired */
+  color: #4787ac;
 }
 
 .active-link {
-    color: #397fa7; /* Define styles for the active link */
-    
-   
+  color: #397fa7;
 }
 
 /* Mobile Menu Icon */
 .mobile-menu-icon {
-    display: none; /* Hide the hamburger icon by default */
-    cursor: pointer;
-    position: fixed; /* Position it absolutely */
-    top: 20px; /* Adjust the top position as needed */
-    right: 21px; /* Adjust the right position as needed */
-    margin-bottom: 10px; /* Add padding to the bottom */
-    z-index: 999;
+  display: none;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  right: 21px;
+  margin-bottom: 10px;
+  z-index: 999;
 }
 
 .mobile-menu-icon .bar {
-    width: 26px;
-    height: 0.1rem;
-    background-color: #181818;
-    margin: 7px 0;
-    transition: transform 0.3s, opacity 0.3s;
+  width: 26px;
+  height: 0.1rem;
+  background-color: #181818;
+  margin: 7px 0;
 }
 
 .bar:nth-child(1) {
-    position: relative;
-    bottom: 2px;
-    border: 1px solid #181818;
-    border-top-right-radius: 12px;
-    width: 18px;
-    left: 7px;
+  position: relative;
+  bottom: 2px;
+  border: 1px solid #181818;
+  border-top-right-radius: 12px;
+  width: 18px;
+  left: 7px;
 }
 
 .bar:nth-child(3) {
-    position: relative;
-    top: 2px;
-    border: 1px solid #181818;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+  position: relative;
+  top: 2px;
+  border: 1px solid #181818;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .mobile-menu-open .mobile-menu-icon .bar:nth-child(1),
 .mobile-menu-open .mobile-menu-icon .bar:nth-child(3) {
-    opacity: 0;
+  opacity: 0;
 }
 
 .mobile-menu-open .mobile-menu-icon .bar:nth-child(2) {
-    transform: rotate(45deg) translateY(2px);
+  transform: rotate(45deg) translateY(2px);
 }
 
 .mobile-menu-open .mobile-menu-icon .bar:nth-child(2)::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #181818;
-    transform: rotate(90deg);
-    
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #181818;
+  transform: rotate(90deg);
 }
-/* DARKMODE */
-/* Dark Mode and Light Mode CSS */
+
+/* Dark and Light Themes */
 [data-theme='dark'] {
-    --font-color: #fffafa;
-    --bg-color: #121212;
+  --font-color: #fffafa;
+  --bg-color: #121212;
 }
 
 [data-theme='light'] {
-    --font-color: #121212;
-    --bg-color: #fffafa;
+  --font-color: #121212;
+  --bg-color: #fffafa;
 }
+
+/* Navigation Styles */
 nav.dark {
-    background-color: var(--bg-color);
-    color: var(--font-color);
-    z-index: 1000;
-   
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  z-index: 1000;
 }
 
 nav.light {
-    background-color: var(--bg-color);
-    color: var(--font-color);
+  background-color: var(--bg-color);
+  color: var(--font-color);
 }
 
-#toggle{
-    -webkit-appearance: none;
-    appearance: none;
-    height: 40px;
-    width: 75px;
-    background-color: #15181f;
-    position: relative;
-    right: 0;
-    border-radius: 20px;
-    outline: none;
-    cursor: pointer;
-}
-#toggle:after{
-    content: "";
-    position: absolute;
-    height: 30px;
-    width: 30px;
-    background-color: #fffafa;
-    top: 5px;
-    left: 7px;
-    border-radius: 50%;
+/* Toggle Switch Styles */
+#toggle1, #toggle2, #toggle3 {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 30px;
+  width: 60px;
+  background-color: #15181f;
+  position: relative;
+  right: 0;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
 }
 
-.dark-theme{
-    background-color: #181818;
-    color: #fffafa;
+#toggle1:after, #toggle2:after, #toggle3:after {
+  content: "";
+  position: absolute;
+  height: 19px;
+  width: 19px;
+  background-color: var(--bg-color);
+  top: 5px;
+  left: 7px;
+  border-radius: 50%;
 }
-.dark-theme #toggle{
-    background-color: #fffafa;
+
+/* Dark Theme Styles */
+.dark-theme {
+  background-color: #181818;
+  color: #fffafa;
 }
-.dark-theme #toggle:after{
-    background-color: transparent;
-    box-shadow: 10px 10px #181818;
-    top: -4px;
-    left: 30px;
+
+.dark-theme #toggle1 {
+  background-color: #fffafa;
 }
-/* DarkModeToggle.css */
-/* Style the checkbox in light mode */
+
+.dark-theme #toggle2 {
+  background-color: #fffafa;
+}
+
+.dark-theme #toggle3 {
+  background-color: #fffafa;
+}
+
+.dark-theme #toggle1:after {
+  background-color: transparent;
+  box-shadow: 8px 8px var(--bg-color);
+  top: -3px;
+  left: 27px;
+}
+
+.dark-theme #toggle2:after {
+  background-color: transparent;
+  box-shadow: 8px 8px var(--bg-color);
+  top: -3px;
+  left: 27px;
+}
+
+.dark-theme #toggle3:after {
+  background-color: transparent;
+  box-shadow: 8px 8px var(--bg-color);
+  top: -3px;
+  left: 27px;
+}
+
+/* Checkbox Styles */
 input[type="checkbox"] {
-    --bg-color-light: #fffafa; /* Light mode background color */
-    --bg-color-dark: #181818; /* Dark mode background color */
-    width: 30px; /* Adjust the width as needed */
-    height: 30px; /* Adjust the height as needed */
-    -webkit-appearance: none; /* Remove default styles for Webkit browsers */
-    appearance: none; /* Remove default styles for other browsers */
-    background-color: var(--bg-color-light);
-    border-radius: 15px; /* Make it round */
-    outline: none; /* Remove outline when focused */
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
+  --bg-color-light: #fffafa;
+  --bg-color-dark: #181818;
+  width: 30px;
+  height: 30px;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--bg-color-light);
+  border-radius: 15px;
+  outline: none;
+  cursor: pointer;
   
-  /* Style the checkbox when checked in light mode */
-  input[type="checkbox"]:checked {
-    background-color: var(--bg-color-dark);
-  }
-  
-  /* Style the custom checkbox indicator in light mode */
-  input[type="checkbox"]::before {
-    content: "";
-    width: 50%;
-    height: 50%;
-    background: #181818; /* Color of the checkmark in light mode */
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: background-color 0.3s;
-  }
-  
-  /* Style the custom checkbox indicator when checked in light mode */
-  input[type="checkbox"]:checked::before {
-    background: #fffafa; /* Color of the checkmark in dark mode */
-  }
-/* END DARK MODE */
-/* Hamburger menu container */
-.hamburger-menu {
-    display: none;
-    cursor: pointer;
-    padding: 10px;
-    position: relative;
-    bottom: 3px;
-  }
-  
-  /* Hamburger menu bars */
-  .bar {
-    width: 25px;
-    height: 3px;
-    background-color: var(--font-color);
-    margin: 5px 0;
-    transition: 0.4s;
-  }
- 
-  
-  /* Open state for the hamburger menu */
-  .hamburger-menu.open .bar1,
-  .hamburger-menu.open .bar3 {
-    opacity: 0;
-  }
-  
-  /* X icon styling for the 2nd child */
-  .hamburger-menu.open .bar2 {
-    transform: rotate(45deg);
-    transition: 0.4s;
-  }
-  
-  .hamburger-menu.open .bar2::before {
-    content: "";
-    width: 25px;
-    height: 3px;
-    background-color: var(--font-color); /* Use the font color variable */
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: rotate(-90deg);
-    transition: 0.4s;
-  }
-  
-@media screen and (max-width: 768px) {
-    .text-2xl {
-        font-size: 1.8rem; /* Adjust this as needed */
-    }
-    .container-custom{
-        padding-left: 2.4rem;
-        padding-right: 2.4rem;
-        width: 100%;
-       
-    }
-    
-  
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-style: none;
 }
-@media (max-width: 999px){
+
+input[type="checkbox"]:focus {
+  outline: none;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+[type='checkbox']:checked {
+  background-image: none;
+}
+
+.dark-theme input[type="checkbox"]:checked {
+  background-color: var(--bg-color-light);
+  color: transparent!important;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--bg-color-dark);
+ 
+  box-shadow: rgba(100,110, 111, 20.35) 2px 5px 25px;
+  color: transparent;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 50%;
+  height: 50%;
+  visibility: hidden;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  box-shadow: rgba(100,100, 111, 0.35) 2px 5px 15px;
+}
+
+input[type="checkbox"]:checked::before {
+  content: "";
+  visibility: hidden;
+}
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  padding: 10px;
+  position: relative;
+  right: 20px;
+  top: 1px;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--font-color);
+  margin: 5px 0;
+}
+
+/* Media Queries */
+
+/* Small screens (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  .text-2xl {
+    font-size: 1.8rem;
+  }
+}
+
+/* Very small screens (max-width: 390px) and (max-height: 844px) */
+@media (max-width: 390px) and (max-height: 844px) {
+  .mobile-menu {
+    top: 95%;
+    border-top: none;
+  }
+}
+@media (max-width: 999px) {
   .hamburger-menu{
     display: block;
   }
-   /* Mobile menu container */
-   .mobile-menu {
+ 
+  .mobile-menu {
+    border-top: none;
     position: absolute;
-    top: 80%; /* Place it below the hamburger icon */
+    top: 100%; 
     right: 0;
-    width: 100%; /* Take the full width of the screen */
+    width: 100%; 
     background-color: var(--bg-color);
     padding: 0px;
-    transform: translateX(0); /* Adjust the transform property */
+    transform: translateX(0); 
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     pointer-events: none;
     opacity: 0;
     z-index: 1000;
     height: 100vh;
   }
- 
-  /* Additional styles for the mobile menu */
-  /* Add any specific styles for the mobile menu here */
 
-  /* Example: Style the links within the mobile menu */
   .mobile-menu a {
     text-decoration: none;
     margin: 10px 0;
     display: block;
     height: 100%;
     text-align: center;
-    transition-duration: 0.5s;
-    
-   
-    /* Add your additional styles here */
   }
  
 
-  /* Example: Style for an open mobile menu */
+  
   .mobile-menu.open {
     opacity: 1;
     transform: translateX(0%);
     pointer-events: auto;
-    /* Make the ul take full width when the menu is open */
+    
     width: 100%;
    
   }
@@ -306,51 +308,58 @@ input[type="checkbox"] {
  }
 }
 
-@media (max-width: 1024px) and (max-height: 580px) {
-    
+@media (min-width: 1024px) {
+  .fix-dark {
+    display: none; 
+  }
+ 
+}
+
+@media (max-width: 1023px){ 
     .hamburger-menu{
       display: block;
+      position: relative;
+      left: 0.7rem;
+    
+     
       
     }
-    /* Mobile menu container */
+   
     .mobile-menu {
       position: absolute;
-      top: 80%; /* Place it below the hamburger icon */
+      top: 100%;
       right: 0;
-      width: 100%; /* Take the full width of the screen */
+      width: 100%;
       background-color: var(--bg-color);
       padding: 0px;
-      transform: translateX(0); /* Adjust the transform property */
+      transform: translateX(0); 
       transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
       pointer-events: none;
       opacity: 0;
       z-index: 1000;
       height: 100vh;
+      border-top: none!important; 
+
     }
-   
-    /* Additional styles for the mobile menu */
-    /* Add any specific styles for the mobile menu here */
-  
-    /* Example: Style the links within the mobile menu */
     .mobile-menu a {
       text-decoration: none;
       margin: 10px 0;
       display: block;
       height: 100%;
       text-align: center;
-      transition-duration: 0.5s;
+    
       
      
-      /* Add your additional styles here */
+    
     }
    
   
-    /* Example: Style for an open mobile menu */
+   
     .mobile-menu.open {
       opacity: 1;
       transform: translateX(0%);
       pointer-events: auto;
-      /* Make the ul take full width when the menu is open */
+     
       width: 100%;
      
     }
@@ -358,17 +367,65 @@ input[type="checkbox"] {
  .mobile-menu.open .active-link  {
      color: #4787ac;
    }
- 
-  
- 
-      
-   
   }
-@media screen and (min-width: 568px) {
-    .container-custom{
-        padding-left: 1.9rem;
-        padding-right: 1.9rem;
-        width: 100%;
-        
+  @media (max-width: 820px) and (max-height:1180px){
+    body {
+      padding-left: 4rem;
+      padding-right: 4rem;
     }
-}
+
+  }
+  @media (max-width: 768px) {
+    body {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+
+  }
+  @media (max-width: 280px)  and (min-height:633px){
+    .hamburger-menu {
+     margin-left: 37px;
+    }
+    .logo-name{
+      font-size: 24px;
+      
+    }
+    #toggle1, #toggle2, #toggle3 {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 30px;
+      width: 50px;
+      background-color: #15181f;
+      position: relative;
+      right: 0;
+      border-radius: 20px;
+      outline: none;
+      cursor: pointer;
+    }
+    
+    #toggle1:after, #toggle2:after, #toggle3:after {
+      content: "";
+      position: absolute;
+      height: 19px;
+      width: 19px;
+      background-color: var(--bg-color);
+      top: 5px;
+      left: 7px;
+      border-radius: 50%;
+    }
+    .dark-theme #toggle1:after {
+      background-color: transparent;
+      box-shadow: 8px 8px var(--bg-color);
+      top: -3px;
+      left: 18px;
+    }
+  }
+  
+  /* Add padding for small screens */
+  @media (max-width: 1076px) {
+    body {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+ 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function DarkModeToggle() {
+function DarkModeToggle({ id }) {
   const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('darkMode') === 'true');
 
   useEffect(() => {
@@ -53,7 +53,7 @@ function DarkModeToggle() {
     <div className="container">
       <input
         type="checkbox"
-        id="toggle"
+        id={`toggle${id}`}
         onChange={handleToggleChange}
         checked={isDarkMode}
       />

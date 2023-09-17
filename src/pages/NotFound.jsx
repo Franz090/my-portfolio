@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const NotFoundPage = () => {
   return (
-    <p>This url Not Found. <Link to="/" className='underline '>Go Back Home</Link></p>
+    <p>This url Not Found. <Link to="/" className='underline md:px-10 sm:px-10 xl:px-24'>Go Back Home</Link></p>
   )
 }
 
