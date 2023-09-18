@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --base-transition-duration: 0.3s;
+  --extra-duration: 0.2s;
+}
 /* Global Reset and Base Styles */
 * {
   margin: 0;
@@ -110,6 +114,10 @@ nav.light {
 }
 
 /* Toggle Switch Styles */
+.no-transition {
+  transition: none !important;
+ 
+}
 #toggle1, #toggle2, #toggle3 {
   -webkit-appearance: none;
   appearance: none;
@@ -121,6 +129,9 @@ nav.light {
   border-radius: 20px;
   outline: none;
   cursor: pointer;
+  transition: left calc(var(--base-transition-duration) + var(--extra-duration)) ease;
+  
+  
 }
 
 #toggle1:after, #toggle2:after, #toggle3:after {
@@ -132,16 +143,26 @@ nav.light {
   top: 5px;
   left: 7px;
   border-radius: 50%;
+  transition-property: left;
+  transition-duration: calc(var(--base-transition-duration) + var(--extra-duration)); /* Specify the duration here */
+  transition-timing-function: ease;
+  transform: translateX(0); /* Initial position */
 }
-
-/* Dark Theme Styles */
+#toggle1:checked:after, #toggle2:checked:after, #toggle3:checked:after {
+  left: 30px; 
+  transform: translateX(5%); 
+ 
+  
+}
 .dark-theme {
   background-color: #181818;
   color: #fffafa;
+  
 }
 
 .dark-theme #toggle1 {
   background-color: #fffafa;
+  
 }
 
 .dark-theme #toggle2 {

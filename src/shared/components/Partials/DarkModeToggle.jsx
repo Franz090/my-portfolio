@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from 'react';
 
 function DarkModeToggle({ id }) {
-  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('darkMode') === 'true');
-
+  const [isDarkMode, setIsDarkMode] = useState(
+    localStorage.getItem('darkMode') === 'true' || false
+  );
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   useEffect(() => {
-    // Function to set the background color based on the mode
     const setThemeColors = () => {
       const root = document.documentElement;
       if (isDarkMode) {
-        root.style.setProperty('--bg-color', '#181818'); // Dark mode background color
-        root.style.setProperty('--font-color', '#fffafa'); // Dark mode font color
+        root.style.setProperty('--bg-color', '#181818');
+        root.style.setProperty('--font-color', '#fffafa');
       } else {
-        root.style.setProperty('--bg-color', '#fffafa'); // Light mode background color
-        root.style.setProperty('--font-color', '#181818'); // Light mode font color
+        root.style.setProperty('--bg-color', '#fffafa');
+        root.style.setProperty('--font-color', '#181818');
       }
     };
 
-    // Call setThemeColors when the component mounts
     setThemeColors();
+
+    const toggleAfterElement = document.querySelector(`#toggle${id}:after`);
+    const toggleElement = document.querySelector(`#toggle${id}`);
+    
+    if (toggleAfterElement && toggleElement) {
+      toggleAfterElement.style.left = isDarkMode ? '27px' : '7px';
+      toggleElement.checked = isDarkMode;
+    }
 
     const navElement = document.querySelector('nav');
     const hamburgerBars = document.querySelectorAll('.bar');
@@ -26,7 +34,6 @@ function DarkModeToggle({ id }) {
       document.body.classList.add('dark-theme');
       navElement.classList.add('dark');
 
-      // Update hamburger icon bars for dark mode
       hamburgerBars.forEach((bar) => {
         bar.style.backgroundColor = 'var(--font-color)';
       });
@@ -34,19 +41,33 @@ function DarkModeToggle({ id }) {
       document.body.classList.remove('dark-theme');
       navElement.classList.remove('dark');
 
-      // Update hamburger icon bars for light mode
       hamburgerBars.forEach((bar) => {
         bar.style.backgroundColor = 'var(--font-color)';
       });
     }
-  }, [isDarkMode]);
+
+    const isFirstLoad = localStorage.getItem('isFirstLoad') !== 'false';
+    if (isFirstLoad) {
+      const toggleElements = document.querySelectorAll(`#toggle${id}`);
+      toggleElements.forEach((toggleElement) => {
+        toggleElement.style.transitionDuration = '0s';
+        toggleElement.checked = isDarkMode;
+      });
+      localStorage.setItem('isFirstLoad', 'false');
+    }
+
+  }, [isDarkMode, id]);
 
   const handleToggleChange = () => {
-    const newMode = !isDarkMode;
-    setIsDarkMode(newMode);
-
-    // Save the mode to localStorage
-    localStorage.setItem('darkMode', newMode);
+    setIsDarkMode((prevState) => {
+      const newMode = !prevState;
+      const toggleElements = document.querySelectorAll(`#toggle${id}`);
+      toggleElements.forEach((toggleElement) => {
+        toggleElement.style.transitionDuration = newMode ? '0.3s' : '0s';
+      });
+      localStorage.setItem('darkMode', newMode);
+      return newMode;
+    });
   };
 
   return (
@@ -57,6 +78,16 @@ function DarkModeToggle({ id }) {
         onChange={handleToggleChange}
         checked={isDarkMode}
       />
+      {isDarkMode ? (
+        <style>
+          {`
+            #toggle${id}:checked:after {
+              left: 25px;
+              transform: translateX(5%);
+            }
+          `}
+        </style>
+      ) : null}
     </div>
   );
 }

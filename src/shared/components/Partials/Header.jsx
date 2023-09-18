@@ -75,7 +75,7 @@ const Header = () => {
 
   return (
     <div className={`Header pb-28 ${headerClass}`}>
-      <nav className="bg-primary-450 pt-7 pb-6 p-5 fixed top-0 left-0 right-0 z-10 lg:flex lg:items-center md:justify-between">
+      <nav className="bg-primary-450 pt-8 pb-8 p-5 fixed top-0 left-0 right-0 z-10 lg:flex lg:items-center md:justify-between">
       <div className="md:container mx-auto xl:px-24 md:px-1 sm:px-4">
         <div className="flex justify-between items-center">
         <div className="flex items-center justify-between space-x-2">
@@ -103,7 +103,7 @@ const Header = () => {
             <div className={`bar bar3 ${menuOpen ? 'open' : ''}`}></div>
           </div>
           {menuOpen || window.innerWidth > 1024 ? (
-            <ul className="lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 lg:opacity-100  transition-all ease-in mobile-menu open nav-color ">
+            <ul className="lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 lg:opacity-100   mobile-menu open nav-color ">
               <HeaderLink
                 to="/"
                 text="HOME"
