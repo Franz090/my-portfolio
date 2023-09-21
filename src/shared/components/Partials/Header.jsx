@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import DarkModeToggle from './DarkModeToggle';
-
+import Hamburger from './Hamburger'
 const scrollTo = (targetY, duration = 300) => {
   const start = window.scrollY;
   const startTime = performance.now();
@@ -89,21 +89,17 @@ const Header = () => {
             </Link>
           </span>
           {screenWidth <= 1024 &&  (
-         <div className='fix-dark'>
+         <div className='fix-dark '>
           <DarkModeToggle id={1} />
           </div>
           )}
           </div>
-          <div
-            className={`hamburger-menu ${menuOpen ? 'open' : ''}`}
-            onClick={toggleMenu}
-          >
-            <div className={`bar bar1 ${menuOpen ? 'open' : ''}`}></div>
-            <div className={`bar bar2 ${menuOpen ? 'open' : ''}`}></div>
-            <div className={`bar bar3 ${menuOpen ? 'open' : ''}`}></div>
-          </div>
+          {/* Hamburger Menu */}
+          <Hamburger toggleMenu={toggleMenu} isOpen={menuOpen} />
+         
           {menuOpen || window.innerWidth > 1024 ? (
-            <ul className="lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 lg:opacity-100   mobile-menu open nav-color ">
+           <ul className={`lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 lg:opacity-100 ${menuOpen ? 'nav-links open' : 'nav-links'}`}>
+
               <HeaderLink
                 to="/"
                 text="HOME"
@@ -152,13 +148,13 @@ const Header = () => {
                 </a>
               </li>
               {screenWidth >= 1024 &&  (
-         <div className='ml-5'>
+         <div className='ml-5 dark-mode-toggle'>
           <DarkModeToggle id={2} />
           </div>
           )}
             </ul>
           ) : (
-            <ul className="hidden lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 lg:opacity-100  mobile-menu open nav-color ">
+            <ul className={`lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 lg:opacity-100 nav-links ${menuOpen ? 'open' : ''}`}>
               <HeaderLink
                 to="/"
                 text="HOME"

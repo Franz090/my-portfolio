@@ -4,7 +4,7 @@ function DarkModeToggle({ id }) {
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem('darkMode') === 'true' || false
   );
-  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  
   useEffect(() => {
     const setThemeColors = () => {
       const root = document.documentElement;
