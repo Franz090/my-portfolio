@@ -102,6 +102,9 @@ nav.dark {
   background-color: var(--bg-color);
   color: var(--font-color);
   z-index: 1000;
+  position: fixed; /* Set the position to fixed */
+  top: 0; /* Stick it to the top of the viewport */
+  width: 100%; /* Make it full-width */
 }
 
 nav.light {
@@ -331,7 +334,7 @@ input[type="checkbox"]:checked::before {
     }
   }
 
-  @media (max-width: 1024px)   {
+  @media (max-width: 1024px)  {
     .hamburger-menu .bar {
       display: block;
     }
@@ -368,64 +371,57 @@ input[type="checkbox"]:checked::before {
       border-bottom-left-radius: 3px; /* Reduce border radius for a thinner appearance */
       border-bottom-right-radius: 3px;
     }
+  
+   
     .nav-links {
-      display: none; /* Hide the navigation links by default */
-      text-align: center; /* Center-align the text within the ul */
-      background-color: var(--bg-color); /* Background color for the mobile menu */
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-in-out, transform 0.3s ease-in-out;
+      background-color: var(--bg-color);
+      z-index: -1;
       position: absolute;
-      top: 100%; /* Adjust the top position as needed to align with your header */
-      left: 0;
-      right: 0;
-      z-index: 999; /* Ensure the menu appears above other content */
-      padding: 20px; /* Add padding to the mobile menu for spacing */
+      top: 90%;
+      transition-delay: 0.1s;
+      width: 100%;
+    }
+    #toggle3{
+      display: none;
+    }
+    .nav-links li{
+      text-align: center;
+     
+    }
     
+    .nav-links-open {
+     
+      max-height: 500px; /* Adjust the height as needed */
+      background-color: var(--bg-color); /* Change to the desired background color */
+      transition: max-height 0.3s ease-in-out;
+      transition-delay: 0s; /* Reset the transition-delay for background-color */
     }
   
-    .nav-links.open {
-      display: block; /* Show the navigation links when the menu is open */
-    }
-  
+   
   
   }
-  @media screen and (max-width: 1023px) {
-    .nav-links {
-      display: none; /* Hide the navigation links by default */
-      text-align: center; /* Center-align the text within the ul */
-      background-color: var(--bg-color); /* Background color for the mobile menu */
-      position: absolute;
-      top: 100%; /* Adjust the top position as needed to align with your header */
-      left: 0;
-      right: 0;
-      height: 100vh;
-      z-index: 999; /* Ensure the menu appears above other content */
-      padding: 20px; /* Add padding to the mobile menu for spacing */
-    
-    }
   
-  }
 
-  @media screen and (min-width: 1024px)  {
+  @media screen and (min-width: 1024px) {
     .hamburger-menu .bar {
       display: none;
     }
+    
+    /* Override the styles from the previous media query */
     .nav-links {
-      display: flex; 
-      text-align: center; 
-      background-color: var(--bg-color); 
-      position: absolute;
-      top: 64px;
-      left: 0;
-      right: 0;
-      z-index: 999; 
-      padding: 20px; 
-    
-    }
-    #toggle2{
-      display: block;
+      max-height: none; /* Remove the max-height restriction */
+      overflow: visible; /* Show the content that overflows the container */
+      visibility: visible; /* Make the element visible */
+      background-color: var(--bg-color); /* Set your desired background color */
+      z-index: initial; /* Reset z-index if needed */
+      position: static; /* Reset position if needed */
     }
     
-    .nav-links.open {
-      display: flex;
+    /* You can remove this if not needed */
+    #toggle3 {
+      display: block; /* Show #toggle3 if it was hidden in the previous query */
     }
-    
   }

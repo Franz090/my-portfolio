@@ -56,6 +56,10 @@ const Header = () => {
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+
+    // Toggle the class to control the animation
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('nav-links-open');
   };
 
   const closeMenu = () => {
@@ -98,7 +102,7 @@ const Header = () => {
           <Hamburger toggleMenu={toggleMenu} isOpen={menuOpen} />
          
           {menuOpen || window.innerWidth > 1024 ? (
-           <ul className={`lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 lg:opacity-100 ${menuOpen ? 'nav-links open' : 'nav-links'}`}>
+            <ul className="lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 nav-links">
 
               <HeaderLink
                 to="/"
@@ -154,7 +158,7 @@ const Header = () => {
           )}
             </ul>
           ) : (
-            <ul className={`lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 lg:opacity-100 nav-links ${menuOpen ? 'open' : ''}`}>
+            <ul className="lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 nav-links">
               <HeaderLink
                 to="/"
                 text="HOME"
