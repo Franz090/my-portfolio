@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 function DarkModeToggle({ id }) {
+  // Read the dark mode state from local storage
+  const storedDarkMode = localStorage.getItem('darkMode');
   const [isDarkMode, setIsDarkMode] = useState(
-    localStorage.getItem('darkMode') === 'true' || false
+    storedDarkMode === 'true' || false
   );
-  
+
+  // Update theme colors based on the dark mode state
   useEffect(() => {
     const setThemeColors = () => {
       const root = document.documentElement;
@@ -55,20 +58,14 @@ function DarkModeToggle({ id }) {
       });
       localStorage.setItem('isFirstLoad', 'false');
     }
+    localStorage.setItem('darkMode', isDarkMode);
 
-  }, [isDarkMode, id]);
+  }, [isDarkMode]);
 
   const handleToggleChange = () => {
-    setIsDarkMode((prevState) => {
-      const newMode = !prevState;
-      const toggleElements = document.querySelectorAll(`#toggle${id}`);
-      toggleElements.forEach((toggleElement) => {
-        toggleElement.style.transitionDuration = newMode ? '0.3s' : '0s';
-      });
-      localStorage.setItem('darkMode', newMode);
-      return newMode;
-    });
+    setIsDarkMode((prevState) => !prevState);
   };
+
 
   return (
     <div className="container">
