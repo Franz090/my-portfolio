@@ -7,19 +7,32 @@ function DarkModeToggle({ id }) {
     storedDarkMode === 'true' || false
   );
 
-  // Update theme colors based on the dark mode state
-  useEffect(() => {
-    const setThemeColors = () => {
-      const root = document.documentElement;
-      if (isDarkMode) {
-        root.style.setProperty('--bg-color', '#181818');
-        root.style.setProperty('--font-color', '#fffafa');
-      } else {
-        root.style.setProperty('--bg-color', '#fffafa');
-        root.style.setProperty('--font-color', '#181818');
-      }
-    };
+ // Update theme colors based on the dark mode state
+useEffect(() => {
+  const setThemeColors = () => {
+    const root = document.documentElement;
+    if (isDarkMode) {
+      root.style.setProperty('--bg-color', '#181818');
+      root.style.setProperty('--font-color', '#fffafa');
+    } else {
+      root.style.setProperty('--bg-color', '#fffafa');
+      root.style.setProperty('--font-color', '#181818');
+    }
+  };
 
+  document.body.style.transition = 'background 0.5s ease';
+
+  const navLinkElement = document.querySelector('nav'); // Declare navElement here
+
+  if (navLinkElement) {
+    navLinkElement.style.transition = 'background 0.5s ease';
+  }
+
+  // Add transition to .nav-links element
+  const navLinksElement = document.querySelector('.nav-links');
+  if (navLinksElement) {
+    navLinksElement.style.transition = 'background 0.5s ease';
+  }
     setThemeColors();
 
     const toggleAfterElement = document.querySelector(`#toggle${id}:after`);

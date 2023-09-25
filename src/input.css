@@ -35,7 +35,6 @@
   color: #397fa7;
 }
 
-
 .hamburger-menu .bar {
   width: 30px;
   height: 3px;
@@ -89,11 +88,11 @@
 }
 [data-theme='dark'] {
   --font-color: #fffafa;
-  --bg-color: #121212;
+  --bg-color: #181818;
 }
 
 [data-theme='light'] {
-  --font-color: #121212;
+  --font-color: #181818;
   --bg-color: #fffafa;
 }
 
@@ -116,6 +115,9 @@ nav.light {
 .no-transition {
   transition: none !important;
  
+}
+#toggle2{
+  display: none;
 }
 #toggle1:active, #toggle2:active, #toggle3:active {
   background-color: #a5a0a0!important;
@@ -298,7 +300,7 @@ input[type="checkbox"]:checked::before {
       appearance: none;
       height: 30px;
       width: 55px;
-      background-color: #15181f;
+      background-color: #181818;
       position: relative;
       right: 4px;
       border-radius: 20px;
@@ -338,10 +340,7 @@ input[type="checkbox"]:checked::before {
     .hamburger-menu .bar {
       display: block;
     }
-    #toggle2{
-      display: none;
-    }
-   
+    
     .hamburger-menu .bar {
       width: 30px;
       height: 3px;
@@ -376,13 +375,22 @@ input[type="checkbox"]:checked::before {
     .nav-links {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease-in-out, transform 0.3s ease-in-out;
+      transition: max-height 0.5s ease-in-out, transform 0.5s ease-in-out, background-color 0.5s!important;
       background-color: var(--bg-color);
-      z-index: -1;
       position: absolute;
       top: 90%;
       transition-delay: 0.1s;
       width: 100%;
+      padding-bottom: 0;
+      padding-top: 0;
+    }
+    
+    .nav-links::before {
+      content: '';
+      display: block;
+      height: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
     }
     #toggle3{
       display: none;
@@ -391,13 +399,18 @@ input[type="checkbox"]:checked::before {
       text-align: center;
      
     }
+   
     
     .nav-links-open {
      
       max-height: 500px; /* Adjust the height as needed */
       background-color: var(--bg-color); /* Change to the desired background color */
-      transition: max-height 0.3s ease-in-out;
+      transition: max-height 0.5s ease-in-out;
       transition-delay: 0s; /* Reset the transition-delay for background-color */
+    }
+    #toggle1{
+      position:relative;
+      left: 0.8rem;
     }
   
    
@@ -415,7 +428,7 @@ input[type="checkbox"]:checked::before {
       max-height: none; /* Remove the max-height restriction */
       overflow: visible; /* Show the content that overflows the container */
       visibility: visible; /* Make the element visible */
-      background-color: var(--bg-color); /* Set your desired background color */
+      
       z-index: initial; /* Reset z-index if needed */
       position: static; /* Reset position if needed */
     }
@@ -423,5 +436,8 @@ input[type="checkbox"]:checked::before {
     /* You can remove this if not needed */
     #toggle3 {
       display: block; /* Show #toggle3 if it was hidden in the previous query */
+    }
+    #toggle2{
+      display: block;
     }
   }

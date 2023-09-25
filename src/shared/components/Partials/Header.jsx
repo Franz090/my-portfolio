@@ -152,7 +152,7 @@ const Header = () => {
                 </a>
               </li>
               {screenWidth >= 1024 &&  (
-         <div className='ml-5 dark-mode-toggle'>
+         <div className='ml-5 dark-mode-toggle visible '>
           <DarkModeToggle id={2} />
           </div>
           )}
