@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from 'react';
-
+import React, {  useEffect } from 'react';
+import useDarkModeStore from '../../../store/useDarkModeStore';
 function DarkModeToggle({ id }) {
-  // Read the dark mode state from local storage
-  const storedDarkMode = localStorage.getItem('darkMode');
-  const [isDarkMode, setIsDarkMode] = useState(
-    storedDarkMode === 'true' || false
-  );
-
+  const { isDarkMode, toggleDarkMode } = useDarkModeStore();
+  
  // Update theme colors based on the dark mode state
 useEffect(() => {
   const setThemeColors = () => {
@@ -85,7 +81,7 @@ useEffect(() => {
       <input
         type="checkbox"
         id={`toggle${id}`}
-        onChange={handleToggleChange}
+        onChange={toggleDarkMode}
         checked={isDarkMode}
       />
       {isDarkMode ? (

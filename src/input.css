@@ -381,11 +381,21 @@ input[type="checkbox"]:checked::before {
       top: 90%;
       transition-delay: 0.1s;
       width: 100%;
-      padding-bottom: 0;
+      padding-bottom: 0px;
       padding-top: 0;
+     
     }
     
+    .nav-links::after {
+      opacity: 1;
+      content: '';
+      display: block;
+      height: 5vh;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
     .nav-links::before {
+      opacity: 1;
       content: '';
       display: block;
       height: 0;
@@ -410,7 +420,7 @@ input[type="checkbox"]:checked::before {
     }
     #toggle1{
       position:relative;
-      left: 0.8rem;
+      left: 0.3rem;
     }
   
    
@@ -428,7 +438,7 @@ input[type="checkbox"]:checked::before {
       max-height: none; /* Remove the max-height restriction */
       overflow: visible; /* Show the content that overflows the container */
       visibility: visible; /* Make the element visible */
-      
+      height: 0;
       z-index: initial; /* Reset z-index if needed */
       position: static; /* Reset position if needed */
     }
