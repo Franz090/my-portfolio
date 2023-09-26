@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import DarkModeToggle from './DarkModeToggle';
-import Hamburger from './Hamburger'
+import Hamburger from './Hamburger';
+import useHeader from '../../../store/useHeader';
 const scrollTo = (targetY, duration = 300) => {
   const start = window.scrollY;
   const startTime = performance.now();
@@ -20,7 +21,7 @@ const scrollTo = (targetY, duration = 300) => {
 };
 
 const HeaderLink = ({ to, text, isActive, onClick }) => (
-  <li className="mx-4 my-12 lg:my-0">
+  <li className="mx-3 my-12 lg:my-0 font-medium font-montserrat text-custom-black ">
     <Link
       to={to}
       onClick={() => onClick(to)}
@@ -37,10 +38,17 @@ const HeaderLink = ({ to, text, isActive, onClick }) => (
 
 const Header = () => {
   const location = useLocation();
-  const [activeLink, setActiveLink] = useState(location.pathname);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const { activeLink, 
+          setActiveLink, 
+          menuOpen, 
+          setMenuOpen, 
+          screenWidth, 
+          setScreenWidth 
+        } = useHeader();
 
+        useEffect(() => {
+          setActiveLink(location.pathname);
+        }, [location.pathname, setActiveLink]);
   // Update the screen width state when the window size changes
   useEffect(() => {
     const handleResize = () => {
@@ -64,17 +72,20 @@ const Header = () => {
 
   const closeMenu = () => {
     setMenuOpen(false);
+  
+    // Remove the 'nav-links-open' class to close the menu
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.remove('nav-links-open');
   };
 
   const handleLinkClick = (to) => {
     scrollTo(0);
-    setActiveLink(to);
-    closeMenu(0);
+    useHeader.setState({ activeLink: to }); // Update activeLink in the Zustand store
+    closeMenu(); // Remove the argument, no need to pass 0 here
     if (menuOpen) {
-      toggleMenu();
+      setMenuOpen();
     }
   };
-
   const headerClass = menuOpen ? 'header-open' : '';
 
   return (
@@ -86,7 +97,7 @@ const Header = () => {
           <span className="text-2xl  cursor-pointer">
             <Link
               to="/"
-              className="logo-name h-10 inline "
+              className="logo-name h-10 inline font-montserrat font-extrabold text-custom-black"
               onClick={() => handleLinkClick('/')}
             >
               FRANCIS
@@ -134,7 +145,7 @@ const Header = () => {
                 isActive={activeLink === '/project'}
                 onClick={() => handleLinkClick('/project')}
               />
-              <li>
+              <li className='font-medium font-montserrat'>
                 <a
                   href="#contact"
                   onClick={() => {
@@ -189,7 +200,7 @@ const Header = () => {
                 isActive={activeLink === '/project'}
                 onClick={() => handleLinkClick('/project')}
               />
-              <li >
+              <li className='font-medium font-montserrat'>
                 <a
                   href="#contact"
                   onClick={() => {
