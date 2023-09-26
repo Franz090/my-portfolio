@@ -21,7 +21,7 @@ const scrollTo = (targetY, duration = 300) => {
 };
 
 const HeaderLink = ({ to, text, isActive, onClick }) => (
-  <li className="mx-3 my-12 lg:my-0 font-medium font-montserrat text-custom-black ">
+  <li className="mx-4 my-12 lg:my-0">
     <Link
       to={to}
       onClick={() => onClick(to)}
@@ -97,7 +97,7 @@ const Header = () => {
           <span className="text-2xl  cursor-pointer">
             <Link
               to="/"
-              className="logo-name h-10 inline font-montserrat font-extrabold text-custom-black"
+              className="logo-name h-10 inline "
               onClick={() => handleLinkClick('/')}
             >
               FRANCIS
@@ -145,7 +145,7 @@ const Header = () => {
                 isActive={activeLink === '/project'}
                 onClick={() => handleLinkClick('/project')}
               />
-              <li className='font-medium font-montserrat'>
+              <li>
                 <a
                   href="#contact"
                   onClick={() => {
@@ -200,7 +200,7 @@ const Header = () => {
                 isActive={activeLink === '/project'}
                 onClick={() => handleLinkClick('/project')}
               />
-              <li className='font-medium font-montserrat'>
+              <li >
                 <a
                   href="#contact"
                   onClick={() => {
