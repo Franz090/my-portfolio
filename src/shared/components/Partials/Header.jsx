@@ -20,8 +20,8 @@ const scrollTo = (targetY, duration = 300) => {
   requestAnimationFrame(scroll);
 };
 
-const HeaderLink = ({ to, text, isActive, onClick }) => (
-  <li className="mx-4 my-12 lg:my-0">
+const HeaderLink = ({ to, text, isActive, onClick, screenWidth }) => (
+  <li className={`lg:mx-4 my-6 lg:my-0 ${screenWidth <= 1024 ? 'mobile-link' : 'desktop-link'}`}>
     <Link
       to={to}
       onClick={() => onClick(to)}
@@ -35,7 +35,6 @@ const HeaderLink = ({ to, text, isActive, onClick }) => (
     </Link>
   </li>
 );
-
 const Header = () => {
   const location = useLocation();
   const { activeLink, 
@@ -120,33 +119,39 @@ const Header = () => {
                 text="HOME"
                 isActive={activeLink === '/'}
                 onClick={() => handleLinkClick('/')}
+                screenwidth={screenWidth} 
               />
               <HeaderLink
                 to="/about"
                 text="ABOUT"
                 isActive={activeLink === '/about'}
                 onClick={() => handleLinkClick('/about')}
+                screenwidth={screenWidth}  
               />
               <HeaderLink
                 to="/resume"
                 text="RESUME"
                 isActive={activeLink === '/resume'}
                 onClick={() => handleLinkClick('/resume')}
+                screenwidth={screenWidth} 
               />
               <HeaderLink
                 to="/skills"
                 text="SKILLS"
                 isActive={activeLink === '/skills'}
                 onClick={() => handleLinkClick('/skills')}
+                screenwidth={screenWidth} 
               />
               <HeaderLink
                 to="/project"
                 text="PROJECT"
                 isActive={activeLink === '/project'}
                 onClick={() => handleLinkClick('/project')}
+                screenwidth={screenWidth} 
               />
               <li>
-                <a
+                <a  
+                  screenwidth={screenWidth} 
                   href="#contact"
                   onClick={() => {
                     handleLinkClick('#contact');
@@ -175,33 +180,39 @@ const Header = () => {
                 text="HOME"
                 isActive={activeLink === '/'}
                 onClick={() => handleLinkClick('/')}
+                screenwidth={screenWidth} 
               />
               <HeaderLink
                 to="/about"
                 text="ABOUT"
                 isActive={activeLink === '/about'}
                 onClick={() => handleLinkClick('/about')}
+                screenwidth={screenWidth} 
               />
               <HeaderLink
                 to="/resume"
                 text="RESUME"
                 isActive={activeLink === '/resume'}
                 onClick={() => handleLinkClick('/resume')}
+                screenwidth={screenWidth} 
               />
               <HeaderLink
                 to="/skills"
                 text="SKILLS"
                 isActive={activeLink === '/skills'}
                 onClick={() => handleLinkClick('/skills')}
+                screenwidth={screenWidth} 
               />
               <HeaderLink
                 to="/project"
                 text="PROJECT"
                 isActive={activeLink === '/project'}
                 onClick={() => handleLinkClick('/project')}
+                screenwidth={screenWidth} 
               />
               <li >
-                <a
+                <a  
+                  screenwidth={screenWidth} 
                   href="#contact"
                   onClick={() => {
                     handleLinkClick('#contact');

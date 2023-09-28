@@ -52,7 +52,12 @@
 .hamburger-menu.open .bar:nth-child(2) {
   transform: rotate(45deg); /* Rotate 45 degrees to form the first diagonal line */
 }
+.nav-links{
+  opacity: 1;
 
+  transition: background-color 0s ease!important;
+  background-color: var(--bg-color);
+}
 .hamburger-menu.open .bar:nth-child(2)::before,
 .hamburger-menu.open .bar:nth-child(2)::after {
   content: "";
@@ -390,8 +395,8 @@ input[type="checkbox"]:checked::before {
       opacity: 1;
       content: '';
       display: block;
-      height: 5vh;
-      opacity: 0;
+      height: 3vh;
+     
       transition: opacity 0.5s ease-in-out;
     }
     .nav-links::before {
@@ -399,7 +404,7 @@ input[type="checkbox"]:checked::before {
       content: '';
       display: block;
       height: 0;
-      opacity: 0;
+     
       transition: opacity 0.5s ease-in-out;
     }
     #toggle3{

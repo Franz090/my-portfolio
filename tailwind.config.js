@@ -14,7 +14,9 @@ module.exports = {
       'gray': '#8492a6',
       'gray-light': '#d3dce6',
       'primary-450': '#fffafa',
-      'secondary-450': '#121212'
+      'secondary-450': '#181818'
+
+
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
@@ -27,6 +29,10 @@ module.exports = {
       },
       borderRadius: {
         '4xl': '2rem',
+      },
+      textColor: {
+        'primary': '#fffafa',      // Define primary text color
+        'secondary': '#181818',    // Define secondary text color
       },
       
     },
