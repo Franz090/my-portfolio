@@ -1,4 +1,5 @@
-/* Tailwind CSS */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@100;300;400;500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,9 +15,13 @@
   box-sizing: border-box;
 }
 
-/* Typography and Links */
-.text-2xl {
-  font-size: 1.9rem;
+
+
+.logo-name{
+  color: var(--font-color);
+}
+.text-tertiary{
+  color: #397fa7!important;
 }
 .header-content {
   display: flex;
@@ -292,9 +297,13 @@ input[type="checkbox"]:checked::before {
     }
 
   }
-  @media (max-width: 280px)  and (min-height:633px){
+  @media (max-width: 280px)  and (min-height:653px){
     .logo-name{
-      font-size: 24px;
+      font-size: 30px!important;
+      color: var(--font-color)!important;
+    }
+    .text-5xl {
+      font-size: 39px!important;
       
     }
     #toggle1:active, #toggle2:active, #toggle3:active {
@@ -311,7 +320,7 @@ input[type="checkbox"]:checked::before {
       border-radius: 20px;
       outline: none;
       cursor: pointer;
-      transition: background-color 0.4s;
+      transition: background-color 0.5s;
     }
     
     #toggle1:after {
@@ -331,6 +340,8 @@ input[type="checkbox"]:checked::before {
       top: -3px;
       left: 18px;
     }
+    
+    
   }
   
   /* Add padding for small screens */
@@ -411,7 +422,9 @@ input[type="checkbox"]:checked::before {
       display: none;
     }
     .nav-links li{
-      text-align: center;
+      text-align: center!important;
+      color: var(--font-color);
+      font-size: 1rem;
      
     }
    
@@ -426,6 +439,7 @@ input[type="checkbox"]:checked::before {
     #toggle1{
       position:relative;
       left: 0.3rem;
+      bottom: 0.1rem;
     }
   
    
@@ -454,5 +468,12 @@ input[type="checkbox"]:checked::before {
     }
     #toggle2{
       display: block;
+      margin-left: -11px;
+    }
+    .nav-links li{
+      text-align: center;
+      color: var(--font-color);
+      font-size: 1.1rem;
+      
     }
   }

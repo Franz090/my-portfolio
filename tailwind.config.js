@@ -19,8 +19,8 @@ module.exports = {
 
     },
     fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
+      'roboto': [ 'Roboto', 'sans-serif'],
+      'montserrat': ['Montserrat', 'sans'],
     },
     extend: {
       spacing: {
@@ -33,6 +33,7 @@ module.exports = {
       textColor: {
         'primary': '#fffafa',      // Define primary text color
         'secondary': '#181818',    // Define secondary text color
+        'tertiary': '#397fa7',
       },
       
     },

@@ -20,21 +20,41 @@ const scrollTo = (targetY, duration = 300) => {
   requestAnimationFrame(scroll);
 };
 
-const HeaderLink = ({ to, text, isActive, onClick, screenWidth }) => (
-  <li className={`lg:mx-4 my-6 lg:my-0 ${screenWidth <= 1024 ? 'mobile-link' : 'desktop-link'}`}>
-    <Link
-      to={to}
-      onClick={() => onClick(to)}
-      className={`${
-        isActive
-          ? 'active-link link text-md hover:text-secondary-text'
-          : 'link'
-      }`}
-    >
-      {text}
-    </Link>
+const HeaderLink = ({ to, text, isActive, onClick, screenWidth, isContact }) => (
+  <li className={`lg:mx-3  my-6 lg:my-0 font-montserrat font-semibold ${screenWidth <= 1024 ? 'mobile-link' : 'desktop-link'} `}>
+    {isContact ? (
+      <a
+        href="#contact"
+        onClick={() => {
+          onClick('#contact');
+          scrollTo(
+            document.getElementById('contact').getBoundingClientRect().top + window.scrollY
+          );
+        }}
+        className={`${
+          isActive
+            ? 'active-link link text-md hover:text-secondary-text'
+            : 'link'
+        }`}
+      >
+        {text}
+      </a>
+    ) : (
+      <Link
+        to={to}
+        onClick={() => onClick(to)}
+        className={`${
+          isActive
+            ? 'active-link link text-md hover:text-secondary-text'
+            : 'link'
+        }`}
+      >
+        {text}
+      </Link>
+    )}
   </li>
 );
+
 const Header = () => {
   const location = useLocation();
   const { activeLink, 
@@ -89,17 +109,17 @@ const Header = () => {
 
   return (
     <div className={`Header pb-28 ${headerClass}`}>
-      <nav className="bg-primary-450 pt-8 pb-8 p-5 fixed top-0 left-0 right-0 z-10 lg:flex lg:items-center md:justify-between">
+      <nav className="bg-primary-450 pt-7 pb-7 p-5 fixed top-0 left-0 right-0 z-10 lg:flex lg:items-center md:justify-between">
       <div className="md:container mx-auto xl:px-24 md:px-1 sm:px-4">
         <div className="flex justify-between items-center">
         <div className="flex items-center justify-between space-x-2">
-          <span className="text-2xl  cursor-pointer">
+          <span className="text-4xl lg:text-4xl  cursor-pointer font-roboto ">
             <Link
               to="/"
-              className="logo-name h-10 inline "
               onClick={() => handleLinkClick('/')}
             >
-              FRANCIS
+              <span className='text-tertiary leading-[0rem] font-semibold logo-name'>FR</span>
+              <span className='lowercase text-5xl  leading-[0rem] font-medium logo-name'>ANCIS</span>
             </Link>
           </span>
           {screenWidth <= 1024 &&  (
@@ -149,24 +169,14 @@ const Header = () => {
                 onClick={() => handleLinkClick('/project')}
                 screenwidth={screenWidth} 
               />
-              <li>
-                <a  
-                  screenwidth={screenWidth} 
-                  href="#contact"
-                  onClick={() => {
-                    handleLinkClick('#contact');
-                    scrollTo(
-                      document.getElementById('contact').getBoundingClientRect()
-                        .top + window.scrollY
-                    );
-                  }}
-                  className={`link ${
-                    activeLink === '#contact' ? 'active-link' : ''
-                  }`}
-                >
-                  CONTACT
-                </a>
-              </li>
+              <HeaderLink
+                to="#contact"
+                text="CONTACT"
+                isActive={activeLink === '#contact'}
+                onClick={() => handleLinkClick('#contact')}
+                screenWidth={screenWidth}
+                isContact={true} 
+              />
               {screenWidth >= 1024 &&  (
          <div className='ml-5 dark-mode-toggle visible '>
           <DarkModeToggle id={2} />
@@ -210,24 +220,14 @@ const Header = () => {
                 onClick={() => handleLinkClick('/project')}
                 screenwidth={screenWidth} 
               />
-              <li >
-                <a  
-                  screenwidth={screenWidth} 
-                  href="#contact"
-                  onClick={() => {
-                    handleLinkClick('#contact');
-                    scrollTo(
-                      document.getElementById('contact').getBoundingClientRect()
-                        .top + window.scrollY
-                    );
-                  }}
-                  className={`link ${
-                    activeLink === '#contact' ? 'active-link' : ''
-                  }`}
-                >
-                  CONTACT
-                </a>
-              </li>
+             <HeaderLink
+                to="#contact"
+                text="CONTACT"
+                isActive={activeLink === '#contact'}
+                onClick={() => handleLinkClick('#contact')}
+                screenWidth={screenWidth}
+                isContact={true} 
+              />
               <div className='ml-2'>
               <DarkModeToggle id={3} />
               </div>
