@@ -16,10 +16,31 @@
 }
 
 
-
-.logo-name{
+.third{
   color: var(--font-color);
+  font-family: Bauhaus\ 93;
+  font-size: 40px;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
+.multi-color {
+  font-size: 40px;
+  letter-spacing: -1px;
+  font-family: "Bauhaus 93", sans-serif;
+  display: inline-block;
+  padding: 0 3px;
+}
+.first-letter{
+  font-size: 38px;
+  margin-right: -4px;
+  
+  
+
+}
+
 .text-tertiary{
   color: #397fa7!important;
 }
@@ -266,22 +287,10 @@ input[type="checkbox"]:checked::before {
   visibility: hidden;
 }
 
-@media screen and (max-width: 768px) {
-  .text-2xl {
-    font-size: 1.8rem;
-  }
-}
 
 
 
 
-@media (min-width: 1024px) {
-  .fix-dark {
-    display: none; 
-  }
-  
- 
-}
 
   @media (max-width: 820px) and (max-height:1180px){
     body {
@@ -297,15 +306,15 @@ input[type="checkbox"]:checked::before {
     }
 
   }
-  @media (max-width: 280px)  and (min-height:653px){
-    .logo-name{
-      font-size: 30px!important;
-      color: var(--font-color)!important;
-    }
-    .text-5xl {
-      font-size: 39px!important;
+  @media (max-width: 280px)  and (min-height:653px) {
+    .logo-name span{
+      font-size: 31px!important;
       
     }
+    .logo-name{
+      margin-left: -14px;
+    }
+    
     #toggle1:active, #toggle2:active, #toggle3:active {
       background-color: #5c5a5a;  
     }
@@ -340,6 +349,35 @@ input[type="checkbox"]:checked::before {
       top: -3px;
       left: 18px;
     }
+    .hamburger-menu .bar{
+      margin-bottom: 2px!important;
+      margin-right: -11px!important;
+
+    }
+    .bar:nth-child(1) {
+      position: relative;
+      bottom: 2px!important;
+      border: 1px solid #181818; /* Change border color to a lighter color */
+      border-top-left-radius: 3px; /* Reduce border radius for a thinner appearance */
+      border-top-right-radius: 3px;
+      width: 30px;
+    }
+    
+    .bar:nth-child(2) {
+      position: relative;
+      height: 2px; /* Make the middle bar thinner */
+      /* Change border color to a lighter color */
+    }
+    
+    .bar:nth-child(3) {
+      position: relative;
+      top: 2px!important;
+      border: 1px solid #181818; /* Change border color to a lighter color */
+      border-bottom-left-radius: 3px; /* Reduce border radius for a thinner appearance */
+      border-bottom-right-radius: 3px;
+    }
+  
+    
     
     
   }
@@ -425,12 +463,8 @@ input[type="checkbox"]:checked::before {
       text-align: center!important;
       color: var(--font-color);
       font-size: 1rem;
-     
     }
-   
-    
     .nav-links-open {
-     
       max-height: 500px; /* Adjust the height as needed */
       background-color: var(--bg-color); /* Change to the desired background color */
       transition: max-height 0.5s ease-in-out;
@@ -439,10 +473,27 @@ input[type="checkbox"]:checked::before {
     #toggle1{
       position:relative;
       left: 0.3rem;
-      bottom: 0.1rem;
+      bottom: -0.1rem;
+    }
+    .text-5xl {
+      font-size: 37px!important; /* Adjust the font size as needed */
+      white-space: nowrap; /* Prevent line breaks */
     }
   
-   
+    .third {
+      font-size: 15px; /* Adjust the font size as needed */
+      white-space: nowrap; /* Prevent line breaks */
+    }
+    .multi-color {
+      font-size: 37px;
+      white-space: nowrap; 
+    }
+    .first-letter{
+      font-size: 36px!important;
+      margin-right: -2px!important;
+      
+      
+    }
   
   }
   
@@ -451,6 +502,10 @@ input[type="checkbox"]:checked::before {
     .hamburger-menu .bar {
       display: none;
     }
+    .fix-dark {
+      display: none; 
+    }
+    
     
     /* Override the styles from the previous media query */
     .nav-links {
@@ -473,7 +528,6 @@ input[type="checkbox"]:checked::before {
     .nav-links li{
       text-align: center;
       color: var(--font-color);
-      font-size: 1.1rem;
-      
+      font-size: 17px; 
     }
   }

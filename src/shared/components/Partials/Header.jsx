@@ -21,7 +21,7 @@ const scrollTo = (targetY, duration = 300) => {
 };
 
 const HeaderLink = ({ to, text, isActive, onClick, screenWidth, isContact }) => (
-  <li className={`lg:mx-3  my-6 lg:my-0 font-montserrat font-semibold ${screenWidth <= 1024 ? 'mobile-link' : 'desktop-link'} `}>
+  <li className={`lg:mx-3  my-4 lg:my-0 font-montserrat font-semibold ${screenWidth <= 1024 ? 'mobile-link' : 'desktop-link'} `}>
     {isContact ? (
       <a
         href="#contact"
@@ -113,13 +113,16 @@ const Header = () => {
       <div className="md:container mx-auto xl:px-24 md:px-1 sm:px-4">
         <div className="flex justify-between items-center">
         <div className="flex items-center justify-between space-x-2">
-          <span className="text-4xl lg:text-4xl  cursor-pointer font-roboto ">
+          <span className="text-4xl lg:text-4xl  cursor-pointer ">
             <Link
               to="/"
               onClick={() => handleLinkClick('/')}
             >
-              <span className='text-tertiary leading-[0rem] font-semibold logo-name'>FR</span>
-              <span className='lowercase text-5xl  leading-[0rem] font-medium logo-name'>ANCIS</span>
+              <div className='logo-name'>
+              <span className=' leading-[0rem] text-5xl font-extrabold  first-letter'>F</span>
+              <span className='uppercase multi-color'>r</span>
+              <span className='uppercase text-5xl  leading-[0rem] third'>ancis</span>
+              </div>
             </Link>
           </span>
           {screenWidth <= 1024 &&  (
