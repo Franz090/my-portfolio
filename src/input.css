@@ -436,7 +436,7 @@ input[type="checkbox"]:checked::before {
       transition-delay: 0.1s;
       width: 100%;
       padding-bottom: 0px;
-      padding-top: 0;
+      padding-top: 0px;
      
     }
     
@@ -444,7 +444,7 @@ input[type="checkbox"]:checked::before {
       opacity: 1;
       content: '';
       display: block;
-      height: 3vh;
+      height: 1vh;
      
       transition: opacity 0.5s ease-in-out;
     }

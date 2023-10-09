@@ -1,80 +1,8 @@
-import React, {  useEffect } from 'react';
-import useDarkModeStore from '../../../store/useDarkModeStore';
-function DarkModeToggle({ id }) {
-  const { isDarkMode, toggleDarkMode } = useDarkModeStore();
-  
- // Update theme colors based on the dark mode state
-useEffect(() => {
-  const setThemeColors = () => {
-    const root = document.documentElement;
-    if (isDarkMode) {
-      root.style.setProperty('--bg-color', '#181818');
-      root.style.setProperty('--font-color', '#fffafa');
-    } else {
-      root.style.setProperty('--bg-color', '#fffafa');
-      root.style.setProperty('--font-color', '#181818');
-    }
-  };
+import React from 'react';
+import useDarkModeHook from '../../../hooks/useDarkmodehook'; 
 
-  document.body.style.transition = 'background 0.5s ease';
-
-  const navLinkElement = document.querySelector('nav'); // Declare navElement here
-
-  if (navLinkElement) {
-    navLinkElement.style.transition = 'background 0.5s ease';
-  }
-
-  // Add transition to .nav-links element
-  const navLinksElement = document.querySelector('.nav-links');
-  if (navLinksElement) {
-    navLinksElement.style.transition = 'background 0.5s ease';
-  }
-    setThemeColors();
-
-    const toggleAfterElement = document.querySelector(`#toggle${id}:after`);
-    const toggleElement = document.querySelector(`#toggle${id}`);
-    
-    if (toggleAfterElement && toggleElement) {
-      toggleAfterElement.style.left = isDarkMode ? '27px' : '7px';
-      toggleElement.checked = isDarkMode;
-    }
-
-    const navElement = document.querySelector('nav');
-    const hamburgerBars = document.querySelectorAll('.bar');
-
-    if (isDarkMode) {
-      document.body.classList.add('dark-theme');
-      navElement.classList.add('dark');
-
-      hamburgerBars.forEach((bar) => {
-        bar.style.backgroundColor = 'var(--font-color)';
-      });
-    } else {
-      document.body.classList.remove('dark-theme');
-      navElement.classList.remove('dark');
-
-      hamburgerBars.forEach((bar) => {
-        bar.style.backgroundColor = 'var(--font-color)';
-      });
-    }
-
-    const isFirstLoad = localStorage.getItem('isFirstLoad') !== 'false';
-    if (isFirstLoad) {
-      const toggleElements = document.querySelectorAll(`#toggle${id}`);
-      toggleElements.forEach((toggleElement) => {
-        toggleElement.style.transitionDuration = '0s';
-        toggleElement.checked = isDarkMode;
-      });
-      localStorage.setItem('isFirstLoad', 'false');
-    }
-    localStorage.setItem('darkMode', isDarkMode);
-
-  }, [isDarkMode]);
-
-  const handleToggleChange = () => {
-    setIsDarkMode((prevState) => !prevState);
-  };
-
+const DarkModeToggle = ({ id }) => {
+  const { isDarkMode, toggleDarkMode } = useDarkModeHook(id);
 
   return (
     <div className="container">
@@ -83,6 +11,9 @@ useEffect(() => {
         id={`toggle${id}`}
         onChange={toggleDarkMode}
         checked={isDarkMode}
+        style={{
+          backgroundColor: isDarkMode ? '#fffafa' : '#181818',
+        }}
       />
       {isDarkMode ? (
         <style>
@@ -96,6 +27,6 @@ useEffect(() => {
       ) : null}
     </div>
   );
-}
+};
 
 export default DarkModeToggle;
