@@ -191,6 +191,10 @@ nav.light {
  
   
 }
+.light-theme {
+  background-color: #fffafa;
+  color: #181818;
+}
 .dark-theme {
   background-color: #181818;
   color: #fffafa;
@@ -394,6 +398,7 @@ input[type="checkbox"]:checked::before {
     .hamburger-menu .bar {
       display: block;
     }
+   
     
     .hamburger-menu .bar {
       width: 30px;
@@ -505,8 +510,13 @@ input[type="checkbox"]:checked::before {
     .fix-dark {
       display: none; 
     }
-    
-    
+    .my-profile{
+      max-width: 624px;
+      max-height: 600px;
+      margin-top: 20px;
+     
+    }
+   
     /* Override the styles from the previous media query */
     .nav-links {
       max-height: none; /* Remove the max-height restriction */

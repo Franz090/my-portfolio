@@ -15,8 +15,16 @@ module.exports = {
       'gray-light': '#d3dce6',
       'primary-450': '#fffafa',
       'secondary-450': '#181818'
-
-
+    },
+    letterSpacing: {
+      tightest: '-.075em',
+      tighter: '-.05em',
+      tight: '-.025em',
+      normal: '0',
+      wide: '.025em',
+      wider: '.2em',
+      widest: '.1em',
+      widest: '.45em',
     },
     fontFamily: {
       'roboto': [ 'Roboto', 'sans-serif'],
@@ -34,6 +42,12 @@ module.exports = {
         'primary': '#fffafa',      // Define primary text color
         'secondary': '#181818',    // Define secondary text color
         'tertiary': '#397fa7',
+        'quaternary': '#6c757d',
+      },
+      fontSize: {
+        '6xl': '3.8rem', // Define a custom text size with the class name 'md:text-6xl'
+        
+        
       },
       
     },

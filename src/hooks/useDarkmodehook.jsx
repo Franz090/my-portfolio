@@ -13,6 +13,13 @@ const useDarkModeHook = (id) => {
     const setThemeColors = () => {
       root.style.setProperty('--bg-color', isDarkMode ? '#181818' : '#fffafa');
       root.style.setProperty('--font-color', isDarkMode ? '#fffafa' : '#181818');
+      if (isDarkMode) {
+        document.body.classList.add('dark-theme');
+        document.body.classList.remove('light-theme');
+      } else {
+        document.body.classList.remove('dark-theme');
+        document.body.classList.add('light-theme');
+      }
     };
 
     const addTransitionToElement = (selector) => {
