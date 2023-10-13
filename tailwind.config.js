@@ -28,7 +28,7 @@ module.exports = {
     },
     fontFamily: {
       'roboto': [ 'Roboto', 'sans-serif'],
-      'montserrat': ['Montserrat', 'sans'],
+      'montserrat': ['Montserrat', 'sans-serif'],
     },
     extend: {
       spacing: {
