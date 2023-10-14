@@ -544,4 +544,21 @@ input[type="checkbox"]:checked::before {
       color: var(--font-color);
       font-size: 17px; 
     }
+    
+    .third{
+      color: var(--font-color);
+      font-family: Bauhaus\ 93;
+      font-size: 40px!important;
+      text-decoration: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    .first-letter{
+      font-size: 40px!important;
+    }
+    .multi-color{
+      font-size: 40px!important;
+    }
   }
