@@ -45,7 +45,7 @@ module.exports = {
       },
       fontSize: {
         '6xl': '3.8rem', // Define a custom text size with the class name 'md:text-6xl'
-        
+        'sm': '13px',
         
       },
       
