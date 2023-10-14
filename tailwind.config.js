@@ -12,7 +12,7 @@ module.exports = {
       'yellow': '#ffc82c',
       'gray-dark': '#273444',
       'gray': '#8492a6',
-      'gray-light': '#d3dce6',
+      'gray-light': '#6c757d',
       'primary-450': '#fffafa',
       'secondary-450': '#181818'
     },
@@ -42,7 +42,6 @@ module.exports = {
         'primary': '#fffafa',      // Define primary text color
         'secondary': '#181818',    // Define secondary text color
         'tertiary': '#397fa7',
-        'quaternary': '#6c757d',
       },
       fontSize: {
         '6xl': '3.8rem', // Define a custom text size with the class name 'md:text-6xl'
