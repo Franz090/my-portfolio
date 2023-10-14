@@ -1,11 +1,14 @@
 import React from 'react';
+import LazyLoad from 'react-lazyload';
 import myProfile from '../assets/images/my-profile.png';
 
 function HomePage() {
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:mt-1  md:mt-12">
       <div className="col-span-1 flex flex-col justify-center items-center ">
-        <img src={myProfile} alt="myProfile" className='my-profile h-100 w-auto relative  xl:right-[-90px] lg:right-[-39px]' />
+      <LazyLoad height={200} offset={100} once>
+        <img src={myProfile} alt="myProfile" className='my-profile h-100 w-auto relative  xl:right-[-90px] lg:right-[-39px]'  />
+        </LazyLoad>
       </div>
       <div className="col-span-1 flex flex-col justify-center items-center relative xl:right-[54px] lg:top-[85px] ">
         <div className="text-center sm:text-center lg:pb-44 md:pb-3 lg:mt-12 md:mb-9 sm:mb-6"> 
