@@ -1,17 +1,17 @@
 import React from 'react';
-
+import ContactInfo from '../../../components/Contact/ContactInfo'
 const Contact = () => {
   return (
     <>
       <div id="contact" className="md:px-10 sm:px-10 xl:px-28 "> 
        
-        <h6 className="text-2xl md:text-4xl lg:text-4xl font-extralight font-montserrat text-center text-gray-light tracking-tighter">Contact Me</h6>
+        <h6 className="text-2xl md:text-4xl lg:text-4xl font-semibold font-montserrat text-center text-gray-light tracking-tight">Contact Me</h6>
 
 
         <div className="grid lg:grid-cols-3 grid-cols-1  gap-4 pt-11 ">
          
           <div className='col-span-1 '>
-          <h2 className='capitalize  text-gray-light tracking-tight leading-10 font-semibold text-justify pb-5 lg:w-3/4 lg:text-[30px]'>Contact Information</h2>
+          <h2 className='capitalize font-montserrat  text-gray-light tracking-tight leading-10 font-medium text-justify pb-5 lg:w-3/4 lg:text-[24px]'>Contact Information</h2>
             <div className='flex pb-4'>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-6 text-gray-light ">
               <path fillRule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clipRule="evenodd" /></svg>
@@ -32,9 +32,8 @@ const Contact = () => {
             </div>
           </div>
           <div className="lg:col-span-2 col-span-1">
-        
-
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur harum magnam vitae facere soluta sapiente eius voluptatem? Suscipit tempora amet ipsam earum neque! Quos repellendus laudantium incidunt temporibus eaque nobis non atque ipsam dicta, corrupti odio quasi odit rerum vitae illum qui nihil tenetur iure aliquam? Fugit delectus dicta blanditiis!
+          <h2 className='capitalize font-montserrat  text-gray-light tracking-tight leading-10 font-medium text-justify pb-5 lg:w-3/4 lg:text-[24px]'>Send Me a Messsage</h2>        
+          <ContactInfo/>
           </div>
         </div>
       </div>
