@@ -1,11 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 
-body {
-  font-family: 'Roboto', sans-serif;
-}
 :root {
   --base-transition-duration: 0.3s;
   --extra-duration: 0.2s;
@@ -16,8 +13,10 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+.bg-primary-450{
+  background-color: #fffafa;
 
-
+}
 .third{
   color: var(--font-color);
   font-family: Bauhaus\ 93;
@@ -293,7 +292,23 @@ input[type="checkbox"]:checked::before {
   visibility: hidden;
 }
 
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+ }
+  100% {
+    transform: rotate(360deg);
+ }
+}
 
+.loading-spinner {
+ width: 32px;
+ height: 32px;
+ border: 4px solid rgba(0, 0, 0, 0.2);
+ border-top-color: #000;
+ border-radius: 50%;
+ animation: spinner 1s linear infinite;
+}
 
 
 

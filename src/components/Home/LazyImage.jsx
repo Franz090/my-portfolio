@@ -19,7 +19,7 @@ const LazyImage = () => {
   }, [setIsLoading, setImageLoaded]);
 
   return (
-    <div className={`my-profile  xl:right-[-90px] lg:right-[-39px] xl:w-4/7 lg:w-9xl  relative`}>
+    <div className={`my-profile  xl:right-[-90px] lg:right-[-39px] xl:w-4/7 lg:w-[128rem]  relative`}>
       {isLoading && <div className='pb-2 text-center text-gray-light font-extralight font-roboto'>Loading...</div>}
       {imageLoaded && (
         <img
