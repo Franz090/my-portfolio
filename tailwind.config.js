@@ -13,6 +13,9 @@ module.exports = {
         'custom-gray': '#6c757d',
         'custom-gray-light': '#f1f1f1',
       },
+      corePlugins: {
+        preflight: false,
+      }
      
       
     },
