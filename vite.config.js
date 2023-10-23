@@ -9,7 +9,6 @@ export default defineConfig({
     port: Number(process.env.PORT)
   },
   define:{
-    'process.env.PORT': `${process.env.PORT}`,
-    'process.env.TEST': `"${process.env.TEST}"`,
+    __APP_ENV__: process.env.VITE_VERCEL_ENV,
   }
 })
