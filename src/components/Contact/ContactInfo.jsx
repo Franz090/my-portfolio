@@ -30,30 +30,37 @@ export default function ContactInfo() {
           <label className="  text-custom-gray  lg:text-[17px] block capitalize mb-2  leading-tight tracking-widest font-roboto" htmlFor="grid-first-name" >
             First Name
           </label>
-          <input className=" w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-first-name" type="text" name="first_name" autoComplete="given-name"   />
+          <input className="leading-tight pt-3 pb-3  w-full bg-gray-200 text-gray-700 border border-gray-200 rounded  focus:outline-none focus:bg-white focus:border-gray-500" id="grid-first-name" type="text" name="first_name" autoComplete="given-name"   />
         </div>
         <div className="w-full md:w-1/2 px-3">
           <label className="  text-custom-gray  lg:text-[17px] block capitalize mb-2  leading-tight tracking-widest font-roboto" htmlFor="grid-last-name">
             Last Name
           </label>
-          <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" name="last_name" autoComplete="family-name"  />
+          <input className="leading-tight pt-3 pb-3  w-full bg-gray-200 text-gray-700 border border-gray-200 rounded  focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" name="last_name" autoComplete="family-name"  />
         </div>
         <div className="w-full px-3 pt-5">
           <label className="  text-custom-gray  lg:text-[17px] block capitalize mb-2  leading-tight tracking-widest font-roboto" htmlFor="grid-email" >
             Email Address
           </label>
-          <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-email" type="email" name="user_email" autoComplete="email"  placeholder="yourname@example.com"/>
+          <input className="leading-tight pt-3 pb-3  w-full bg-gray-200 text-gray-700 border border-gray-200 rounded  focus:outline-none focus:bg-white focus:border-gray-500" id="grid-email" type="email" name="user_email" autoComplete="email"  placeholder="yourname@example.com"/>
         </div>
-        <div className="w-full px-3 pt-2">
+        <div className="w-full px-3 pt-5">
           <label className="  text-custom-gray  lg:text-[17px] block capitalize mb-2  leading-tight tracking-widest font-roboto" htmlFor="grid-message">
             Message
           </label>
-          <textarea className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-message" rows="5" name="message" autoComplete="message"  />
+          <textarea 
+          className="resize-none appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          id="grid-message"
+          placeholder="Write your message here..."
+          rows="5"
+          name="message"
+          autoComplete="message"
+          />
         </div>
       </div>
       <div className="flex justify-center w-full ">
       <input
-          className=" font-montserrat font-extralight pt-3 pb-3 hover:bg-gray text-white rounded w-full bg-slate-600"
+          className="  font-montserrat leading-tight pt-3 pb-3 font-semibold  tracking-wider hover:bg-zinc-500 text-white rounded w-full bg-zinc-600"
           type="submit"
           value={loading ? "Loading..." : "Submit"}
           disabled={loading} 
