@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build:css": "npx tailwindcss -i ./src/input.css -o ./dist/output.css",
-    "build": "vite build",
+    "build": "vite build && npm run build:css",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
