@@ -30,26 +30,26 @@ export default function ContactInfo() {
           <label className="  text-custom-gray  lg:text-[17px] block capitalize mb-2  leading-tight tracking-widest font-roboto" htmlFor="grid-first-name" >
             First Name
           </label>
-          <input className="leading-tight pt-3 pb-3  w-full bg-primary-450 text-custom-gray border border-gray-400 rounded  focus:outline-none focus:bg-primary-450 focus:border-gray-500 " id="grid-first-name" type="text" name="first_name" autoComplete="given-name"   />
+          <input className="leading-tight pt-3 pb-3  w-full bg-primary-450 text-custom-gray border border-gray-400 rounded  focus:bg-primary-450 focus:border-gray-500 focus:ring-0" id="grid-first-name" type="text" name="first_name" autoComplete="given-name"   />
         </div>
         <div className="w-full md:w-1/2 px-3">
           <label className="  text-custom-gray  lg:text-[17px] block capitalize mb-2  leading-tight tracking-widest font-roboto" htmlFor="grid-last-name">
             Last Name
           </label>
-          <input className="leading-tight pt-3 pb-3  w-full bg-primary-450 text-custom-gray border border-gray-400 rounded  focus:outline-none focus:bg-primary-450 focus:border-gray-500" id="grid-last-name" type="text" name="last_name" autoComplete="family-name"  />
+          <input className="leading-tight pt-3 pb-3  w-full bg-primary-450 text-custom-gray border border-gray-400 rounded   focus:bg-primary-450 focus:border-gray-500 focus:ring-0" id="grid-last-name" type="text" name="last_name" autoComplete="family-name"  />
         </div>
         <div className="w-full px-3 pt-5">
           <label className="  text-custom-gray  lg:text-[17px] block capitalize mb-2  leading-tight tracking-widest font-roboto" htmlFor="grid-email" >
             Email Address
           </label>
-          <input className="leading-tight pt-3 pb-3  w-full bg-primary-450 text-custom-gray border border-gray-400 rounded  focus:outline-none focus:bg-primary-450 focus:border-gray-500" id="grid-email" type="email" name="user_email" autoComplete="email"  placeholder="yourname@example.com"/>
+          <input className="leading-tight pt-3 pb-3  w-full bg-primary-450 text-custom-gray border border-gray-400 rounded   focus:bg-primary-450 focus:border-gray-500 focus:ring-0" id="grid-email" type="email" name="user_email" autoComplete="email"  placeholder="yourname@example.com"/>
         </div>
         <div className="w-full px-3 pt-5">
           <label className="  text-custom-gray  lg:text-[17px] block capitalize mb-2  leading-tight tracking-widest font-roboto" htmlFor="grid-message">
             Message
           </label>
           <textarea 
-          className="leading-tight pt-3 pb-3  w-full bg-primary-450 text-custom-gray border border-gray-400 rounded  focus:outline-none focus:bg-primary-450 focus:border-gray-500"
+          className="leading-tight pt-3 pb-3  w-full bg-primary-450 text-custom-gray border border-gray-400 rounded   focus:bg-primary-450 focus:border-gray-500 focus:ring-0"
           id="grid-message"
           placeholder="Write your message here..."
           rows="5"
