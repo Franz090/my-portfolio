@@ -17,6 +17,10 @@
   background-color: #fffafa;
 
 }
+.alert-fade-out {
+  opacity: 0;
+  transition: opacity 1s ease; /* Adjust the duration as needed */
+}
 .third{
   color: var(--font-color);
   font-family: Bauhaus\ 93;
