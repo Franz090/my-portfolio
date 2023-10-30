@@ -164,11 +164,11 @@ export default function ContactInfo() {
       )}
 
       
-      <div className="flex flex-wrap -mx-3 mb-6">
-        <div className="w-full md:w-1/2 px-3">
+      <div className="flex flex-wrap -mx-3 mb-6 mt-[-30px] lg:mt-[-2px] ">
+        <div className="w-full md:w-1/2 px-3 lg:pt-1 pt-5">
           <label className="text-custom-gray lg:text-[17px] block capitalize mb-2 leading-tight tracking-widest font-roboto" htmlFor="grid-first-name">
             First Name
-          </label>
+          </label>  
           <input
           className={`leading-tight pt-3 pb-3 w-full bg-primary-450 text-custom-gray border ${
           (formSubmitted && !errors.first_name) ? 'border-green-400 focus:border-green-400' :
@@ -187,7 +187,7 @@ export default function ContactInfo() {
       </p>}
         </div>
 
-        <div className="w-full md:w-1/2 px-3">
+        <div className="w-full md:w-1/2 px-3 lg:pt-1 pt-5">
           <label className="text-custom-gray lg:text-[17px] block capitalize mb-2 leading-tight tracking-widest font-roboto" htmlFor="grid-last-name">
             Last Name
           </label>
