@@ -164,7 +164,7 @@ export default function ContactInfo() {
       )}
 
       
-      <div className="flex flex-wrap -mx-3 mb-6 mt-[-30px] lg:mt-[-2px] ">
+      <div className="flex flex-wrap -mx-3 mb-6 mt-[-30px] lg:mt-[-0px] ">
         <div className="w-full md:w-1/2 px-3 lg:pt-1 pt-5">
           <label className="text-custom-gray lg:text-[17px] block capitalize mb-2 leading-tight tracking-widest font-roboto" htmlFor="grid-first-name">
             First Name
