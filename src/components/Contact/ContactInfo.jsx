@@ -257,12 +257,22 @@ export default function ContactInfo() {
         </div>
       </div>
       <div className="flex justify-center w-full ">
-        <input
-          className="font-montserrat leading-tight pt-3 pb-3 font-semibold tracking-wider hover:bg-zinc-500 text-white rounded w-full bg-zinc-600 shadow-lg hover:shadow-gray-700/50"
-          type="submit"
-          value={loading ? "Loading..." : "Submit"}
-          disabled={loading}
-        />
+      <button
+    type="submit"
+    className={`font-montserrat leading-tight pt-3 pb-3 font-semibold tracking-wider hover:bg-zinc-500 text-white rounded w-full bg-zinc-600 shadow-lg hover:shadow-gray-700/50 ${
+      loading ? 'loading-button' : ''
+    }`}
+    disabled={loading}
+  >
+    {loading ? (
+      <div className="loading-container ">
+        <span className="loading-text ">Loading</span>
+        <div className="loading-spinner "></div>
+      </div>
+    ) : (
+      'Submit'
+    )}
+  </button>
       </div>
     </form>
   );
