@@ -163,7 +163,13 @@
   --font-color: #181818;
   --bg-color: #fffafa;
 }
-
+.border-color{
+  border-color: var(--font-color);
+}
+.border-color:hover{
+  border-color: #4787ac;
+  color: #4787ac;
+}
 /* Navigation Styles */
 nav.dark {
   background-color: var(--bg-color);
