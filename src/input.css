@@ -23,7 +23,8 @@
 }
 .third{
   color: var(--font-color);
-  font-family: Bauhaus\ 93;
+  font-family: 'Bauhaus 93', Arial, sans-serif;
+
   font-size: 40px;
   text-decoration: none;
   -webkit-user-select: none;
@@ -34,14 +35,16 @@
 .multi-color {
   font-size: 40px;
   letter-spacing: -1px;
-  font-family: "Bauhaus 93", sans-serif;
+  font-family: 'Bauhaus 93', Arial, sans-serif;
+
   display: inline-block;
   padding: 0 3px;
 }
 .first-letter{
  
   margin-right: -4px;
-  font-family: "Bauhaus 13", sans-serif;
+  font-family: 'Bauhaus 93', Arial, sans-serif;
+
   
 
 }
@@ -600,7 +603,8 @@ input[type="checkbox"]:checked::before {
     
     .third{
       color: var(--font-color);
-      font-family: Bauhaus\ 93;
+      font-family: 'Bauhaus 93', Arial, sans-serif;
+
       font-size: 40px!important;
       text-decoration: none;
       -webkit-user-select: none;
