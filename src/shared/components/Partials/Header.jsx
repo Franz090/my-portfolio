@@ -108,7 +108,7 @@ const Header = () => {
               <span className="text-4xl lg:text-4xl  cursor-pointer ">
                 <Link to="/" onClick={() => handleLinkClick('/')}>
                   <div className='logo-name'>
-                    <span className=' tracking-wider leading-[0rem] lg:text-[41px] md:text-[38px] text-[38px]  font-extrabold  first-letter'>F</span>
+                    <span className=' tracking-wider leading-[0rem] lg:text-[39px] md:text-[38px] text-[38px]  font-extrabold  first-letter'>F</span>
 
                     <span className='uppercase text-5xl  leading-[0rem] third'>rancis</span>
                   </div>
