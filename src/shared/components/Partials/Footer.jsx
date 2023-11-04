@@ -33,7 +33,7 @@ const Footer = () => {
         </a>
       </div>
       <p className='text-custom-gray font-semibold 
-      text-[16px]  tracking-tighter'>&copy; {currentYear} Francis. All Rights Reserved.</p>
+      text-[16px]  tracking-tight'>&copy; {currentYear} Francis. All Rights Reserved.</p>
     </div>
   );
 }

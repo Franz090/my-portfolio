@@ -226,7 +226,7 @@ export default function ContactInfo() {
          value={inputValues.user_email}
         autoComplete="email"
         />
-          {(formSubmitted && errors.user_email) && <p className="text-red-500 mt-1 italic  text-sm">Please enter a valid email address.</p>}
+          {(formSubmitted && errors.user_email) && <p className="text-red-500 mt-1 italic  text-sm">Please enter your valid email address.</p>}
           {formSubmitted && !errors.user_email && <p className="text-green-500 mt-1 italic text-sm">
             Your email is valid.
       </p>}
