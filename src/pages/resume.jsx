@@ -6,6 +6,7 @@ import pic4 from "../assets/images/carousel/4.png";
 import pic5 from "../assets/images/carousel/5.png"; 
 import pic6 from "../assets/images/carousel/6.png"; 
 import pic7 from "../assets/images/carousel/7.png"; 
+import pic8 from "../assets/images/carousel/8.png"; 
 const ResumePage = () => {
   const data = {
     "slides": [
@@ -37,6 +38,10 @@ const ResumePage = () => {
       {
         "src": pic7,
         "alt": "Image 7 for carousel"
+      },
+      {
+        "src": pic8,
+        "alt": "Image 8 for carousel"
       },
       
       

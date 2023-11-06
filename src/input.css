@@ -356,7 +356,6 @@ input[type="checkbox"]:checked::before {
  animation: spinner 1s linear infinite;
 }
 /* Carousel Start */
-/* Add this CSS to your styles */
 .slide {
   border-radius: 0.5rem;
   box-shadow: 0px 0px 7px #666;
@@ -378,6 +377,9 @@ input[type="checkbox"]:checked::before {
   width: 2rem;
   height: 2rem;
   color: #fffafa;
+}
+.arrow:hover {
+  color: #f1f1f1;
 }
 
 .arrow:hover {
