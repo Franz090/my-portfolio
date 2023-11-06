@@ -355,7 +355,76 @@ input[type="checkbox"]:checked::before {
  border-radius: 50%;
  animation: spinner 1s linear infinite;
 }
+/* Carousel Start */
+/* Add this CSS to your styles */
+.slide {
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 7px #666;
+  background-color: #181818;
+  width: 100%;
+  height: 500px; /* Allow the height to adjust to maintain the aspect ratio */
+  max-width: 100%; /* Ensure the image doesn't exceed the container width */
+  max-height: 100%; /* Ensure the image doesn't exceed the container height */
+  object-fit: contain; /* Ensure the entire image is visible without cropping */
+  aspect-ratio: 16/9; /* Specify the desired aspect ratio (16:9 for landscape) */
+}
+.slide-hidden {
+  display: none;
+}
 
+.arrow {
+  position: absolute;
+  filter: drop-shadow(0px 0px 5px #555);
+  width: 2rem;
+  height: 2rem;
+  color: #fffafa;
+}
+
+.arrow:hover {
+  cursor: pointer;
+}
+
+.arrow-left {
+  left: 1rem;
+}
+
+.arrow-right {
+  right: 1rem;
+  
+}
+
+.indicators {
+  display: flex;
+  position: absolute;
+  bottom: 1rem;
+
+  
+}
+.carousel {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.indicator {
+  background-color: #fffafa;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 100%;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 5px #555;
+  margin: 0 0.2rem;
+  cursor: pointer;
+}
+
+.indicator-inactive {
+  background-color: grey;
+}
+
+
+/* Carousel End */
 
 
 
