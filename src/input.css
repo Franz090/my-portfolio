@@ -81,7 +81,9 @@
   display: flex;
   align-items: center;
 }
-
+#contact{
+  padding-top:2px;
+}
 .loading-text {
   font-size: 1rem;
   margin-right: 0.5rem;

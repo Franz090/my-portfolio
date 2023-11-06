@@ -259,7 +259,7 @@ export default function ContactInfo() {
       <div className="flex justify-center w-full ">
       <button
     type="submit"
-    className={`font-montserrat leading-tight pt-3 pb-3 font-semibold tracking-wider hover:bg-zinc-500 text-white rounded w-full bg-zinc-600 shadow-lg hover:shadow-gray-700/50 ${
+    className={`font-montserrat leading-tight pt-3 pb-3 font-light  hover:bg-zinc-500 text-white rounded w-full bg-zinc-600 shadow-lg hover:shadow-gray-700/50 ${
       loading ? 'loading-button' : ''
     }`}
     disabled={loading}
@@ -270,7 +270,9 @@ export default function ContactInfo() {
         <div className="loading-spinner "></div>
       </div>
     ) : (
-      'Submit'
+      <div className=" text-white font-light  text-center subpixel-antialiased">
+      Submit
+      </div>
     )}
   </button>
       </div>

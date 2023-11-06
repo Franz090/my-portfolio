@@ -32,8 +32,8 @@ const Footer = () => {
           </div>
         </a>
       </div>
-      <p className='text-custom-gray font-semibold 
-      text-[16px]  tracking-tight'>&copy; {currentYear} Francis. All Rights Reserved.</p>
+      <p className='text-custom-gray font-medium font-montserrat
+      text-[16px]  tracking-tight subpixel-antialiased'>&copy; {currentYear} Francis. All Rights Reserved.</p>
     </div>
   );
 }
