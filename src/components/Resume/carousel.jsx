@@ -45,7 +45,7 @@ export const Carousel = ({ data }) => {
         )}
         {slide < data.length - 1 && ( 
           <div className="absolute right-11 top-1/2 transform -translate-y-1/2">
-            <BsArrowRightCircleFill onClick={nextSlide} className="arrow opacity-70 " />
+            <BsArrowRightCircleFill onClick={nextSlide} className="arrow opacity-70" />
           </div>
         )}
       </div>
@@ -58,6 +58,9 @@ export const Carousel = ({ data }) => {
           ></button>
         ))}
       </div>
+      <div className="image-number top-3 right-5 text-[0.9rem] font-light antialiased absolute  px-2  text-gray-700 image-count  opacity-70 rounded-md">
+        {`${slide + 1}/${data.length}`}
+        </div>
     </div>
   );
 };

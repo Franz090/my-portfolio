@@ -385,6 +385,10 @@ input[type="checkbox"]:checked::before {
   height: 2rem;
   color: #fffafa;
 }
+.image-count{
+  background-color: #fffafa;
+  filter: drop-shadow(0px 0px 5px #555);
+}
 .arrow:hover {
   color: #f1f1f1;
 }
