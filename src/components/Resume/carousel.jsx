@@ -40,12 +40,12 @@ export const Carousel = ({ data }) => {
         </div>
         {slide > 0 && ( 
           <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
-            <BsArrowLeftCircleFill onClick={prevSlide} className="arrow" />
+            <BsArrowLeftCircleFill onClick={prevSlide} className="arrow opacity-70" />
           </div>
         )}
         {slide < data.length - 1 && ( 
           <div className="absolute right-11 top-1/2 transform -translate-y-1/2">
-            <BsArrowRightCircleFill onClick={nextSlide} className="arrow" />
+            <BsArrowRightCircleFill onClick={nextSlide} className="arrow opacity-70 " />
           </div>
         )}
       </div>

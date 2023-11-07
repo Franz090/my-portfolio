@@ -8,7 +8,7 @@ const Contact = () => {
         <h6 className="text-4xl md:text-4xl lg:text-4xl font-semibold font-montserrat text-center text-custom-gray tracking-tight pb-1 ">Contact Me</h6>
 
  
-        <div className="grid lg:grid-cols-3 grid-cols-1  gap-4 pt-11 ">
+        <div className="grid lg:grid-cols-3 grid-cols-1  gap-4 lg:pt-11 pt-7 ">
          
           <div className='col-span-1 '>
           <h2 className='capitalize font-montserrat  text-custom-gray tracking-tight leading-10 font-semibold text-justify  pb-5 lg:w-3/4 lg:text-[24px] md:text-2xl sm:text-2xl text-2xl'>Contact Information</h2>

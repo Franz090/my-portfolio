@@ -51,7 +51,7 @@ const ResumePage = () => {
   };
 
   return (
-    <div className="md:px-10 sm:px-10 xl:px-28 pb-8">
+    <div className="md:px-10 sm:px-10 xl:px-28 pb-8 pt-7">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="col-span-1 md:col-span-1">
           <div className="pt-2 relative flex justify-center items-center w-100 h-100 md:w-600 md:h-400 lg:w-4/7">
