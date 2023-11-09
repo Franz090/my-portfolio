@@ -47,14 +47,14 @@ const ResumePage = () => {
   };
   const responsibilities = [
     "Creating the user interface (UI) design for adding, viewing, and printing data through Excel on the official website. I also handle hosting and deployment using local network hosting.",
-    "We utilized the system to encode and view data for both accounts payable and non-accounts payable",
+    "We utilized the system to encode and view data for both accounts payable and non-accounts payable.",
   ];
 
   return (
-    <div className="md:px-10 sm:px-10 xl:px-36 pb-8 pt-7">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+    <div className="md:px-10 sm:px-10 xl:px-36 pb-8 pt-7"> 
+     <h1 className="text-[27px] mb-5 tracking-wide capitalize font-semibold ">Working Experience</h1>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-5"> 
         <div className="col-span-1 md:col-span-1">
-          <h1 className="text-[27px] mb-5 tracking-wide capitalize font-semibold ">Working Experience</h1>
          <div className="resume resume-border px-5">
           <h2 className="text-lg mt-5 mb-2 text-blue-custom font-bold tracking-wide antialiased">Front-End Developer</h2>
           <div className="m-0 justify-between">
@@ -77,13 +77,51 @@ const ResumePage = () => {
           </div>
           </div>
         </div>
-        <div className="col-span-1 md:col-span-1 lg:pt-11">
-          <div className="pt-4 relative flex justify-center items-center w-100 h-100 md:w-600 md:h-400 lg:w-4/7">
+        <div className="col-span-1 md:col-span-1 ">
+          <div className=" relative flex justify-center items-center w-100 h-100 md:w-600 md:h-400 lg:w-4/7">
             <Carousel data={data.slides} />
           </div>
         </div>
       </div>
-    </div>
+       {/*Educational Background  */}
+    <h1 className="text-[27px] mb-5 tracking-wide capitalize font-semibold ">Educational Background</h1>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4"> 
+        <div className="col-span-1 md:col-span-1">
+         <div className="resume-1 resume-border-1 px-5">
+          <h2 className="text-lg mt-5 mb-2  font-bold tracking-wide antialiased">Bachelor's/College Degree in Information Technology</h2>
+          <div className="m-0 justify-between">
+          <div className="m-1 text-custom-gray mt-4">
+              <p>Laguna State Polytechnic University</p>
+              <p>Santa Cruz, Laguna</p>
+              <p>2019 - 2023</p>
+            </div>
+
+          </div>
+          </div>
+        </div>
+        <div className="col-span-1 md:col-span-1 ">
+      
+         <div className="resume-1 resume-border-1 px-5">
+          <h2 className="text-lg mt-5 mb-2  font-bold tracking-wide antialiased">TVL - Information and Communication Technology</h2>
+          <div className="m-0 justify-between">
+            <div className="m-1 text-custom-gray mt-4">
+              <p>AMA Santa Cruz Campus</p>
+              <p>Santa Cruz, Laguna</p>
+              <p>2017 - 2019</p>
+            </div>
+           
+          </div>
+          </div>
+          </div>
+          
+          
+       
+          
+          
+          
+        </div>
+      </div>
+   
   );
 };
 
