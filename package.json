@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css && cp ./index.html ./dist/ && cp -r ./assets ./dist/",
+    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css && vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
