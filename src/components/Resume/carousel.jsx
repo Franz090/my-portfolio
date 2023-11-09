@@ -3,6 +3,7 @@ import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 
 export const Carousel = ({ data }) => {
   const [slide, setSlide] = useState(0);
+  const [disableTransition, setDisableTransition] = useState(false); // State to control transition
 
   const nextSlide = () => {
     if (slide < data.length - 1) {
@@ -17,13 +18,31 @@ export const Carousel = ({ data }) => {
   };
 
   const goToSlide = (index) => {
-    setSlide(index);
+    // Disable transition temporarily
+    setDisableTransition(true);
+    setTimeout(() => {
+      setSlide(index);
+      // Re-enable transition after a short delay
+      setTimeout(() => {
+        setDisableTransition(false);
+      }, 300); // Adjust the delay to match your CSS transition duration
+    }, 10); // A very short delay to prevent immediate transition
   };
 
   useEffect(() => {
     const slideWidth = 800 / data.length;
-    document.getElementById("slide-container").style.transform = `translateX(-${slide * slideWidth}%)`;
-  }, [slide, data]);
+    const slideContainer = document.getElementById("slide-container");
+    if (slideContainer) {
+      // Apply transition if it's not disabled
+      if (!disableTransition) {
+        slideContainer.style.transition = "transform 0.3s ease-in-out";
+      } else {
+        // Remove transition temporarily
+        slideContainer.style.transition = "none";
+      }
+      slideContainer.style.transform = `translateX(-${slide * slideWidth}%)`;
+    }
+  }, [slide, data, disableTransition]);
 
   return (
     <div className="carousel relative">
