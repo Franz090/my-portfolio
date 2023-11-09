@@ -104,7 +104,7 @@ const Header = () => {
       <nav className="bg-primary-450 pt-7 pb-7 p-5 fixed top-0 left-0 right-0 z-10 lg:flex lg:items-center md:justify-between">
         <div className="md:container mx-auto xl:px-24 md:px-1 sm:px-4">
           <div className="flex justify-between items-center">
-            <div className="flex items-center justify-between space-x-2">
+            <div className="flex items-center justify-between space-x-2 ">
               <span className="text-4xl lg:text-4xl  cursor-pointer ">
                 <Link to="/" onClick={() => handleLinkClick('/')}>
                   <div className='logo-name'>
