@@ -408,17 +408,6 @@ input[type="checkbox"]:checked::before {
   right: 1rem;
   
 }
-
-
-.carousel {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  border-radius: 0%;
-  box-shadow: rgba(0, 0, 0, 0.3) 3px 12px 22px 0px;
-  
-}
 .indicators {
   display: flex;
   justify-content: center;
@@ -445,10 +434,6 @@ input[type="checkbox"]:checked::before {
 
 /* Carousel End */
 .resume {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  max-width: 100%;
   border-top-left-radius: 0%;
   box-shadow: rgba(0, 0, 0, 0.3) 3px 12px 22px 0px;
   border-left: 2px solid #4787ac;
@@ -457,24 +442,7 @@ input[type="checkbox"]:checked::before {
 .resume-border {
   width: 100%;
   flex: 0 0 100%;
-  max-width: 100%;
-  height: 500px; 
-}
-.resume-1 {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  border-top-left-radius: 0%;
-  box-shadow: rgba(0, 0, 0, 0.3) 3px 12px 22px 0px;
-  border-left: 2px solid #4787ac;
-
-}
-.resume-border-1 {
-  width: 100%;
-  flex: 0 0 100%;
-  max-width: 100%;
-  height: 180px; 
+ 
 }
 
 
@@ -679,25 +647,8 @@ input[type="checkbox"]:checked::before {
    
       margin-right: -2px!important;
     }
-    .carousel {
-      overflow: hidden;
-      position: relative;
-      width: 100%;
-      max-width: 100%;
-      border-radius: 0%;
-      box-shadow: rgba(0, 0, 0, 0.3) 3px 12px 22px 0px;
-      
-    }
-    .resume {
-      overflow: hidden;
-      position: relative;
-      width: 100%;
-      max-width: 100%;
-      border-top-left-radius: 0%;
-      box-shadow: rgba(0, 0, 0, 0.3) 3px 12px 22px 0px;
-      border-left: 2px solid #4787ac;
+   
     
-    }
 
   }
   
