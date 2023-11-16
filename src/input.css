@@ -359,78 +359,55 @@ input[type="checkbox"]:checked::before {
  animation: spinner 1s linear infinite;
 }
 /* Carousel Start */
-.slide {
+/* CSS Classes */
 
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+  pointer-events: none; /* Disable pointer events while invisible */
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+  pointer-events: auto; /* Enable pointer events when visible */
+}
+
+/* Hide initially */
+.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.carousel {
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.slide-container {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.slide {
   width: 100%;
   flex: 0 0 100%;
   max-width: 100%;
-  transition: transform 0.3s ease-in-out;
-  height: 500px; /* Allow the height to adjust to maintain the aspect ratio */
-  max-width: 100%; /* Ensure the image doesn't exceed the container width */
-  max-height: 100%; /* Ensure the image doesn't exceed the container height */
-  object-fit: contain; /* Ensure the entire image is visible without cropping */
-  aspect-ratio: 16/9; /* Specify the desired aspect ratio (16:9 for landscape) */
-}
-.slide-container {
-  display: flex;
-  transition: transform 0.3s ease-in-out;
+  transition: opacity 1s ease-in-out; /* Use opacity for slow-motion effect */
+  height: 480px;
+  max-width: 100vw;
+  max-height: 100vh;
+  object-fit: contain;
+  aspect-ratio: 16/9;
+
+  opacity: 1; /* Start with full opacity */
 }
 
 
 .slide-hidden {
-  display: none;
+  opacity: 0;
 }
 
-.arrow {
-  position: absolute;
-  filter: drop-shadow(0px 0px 5px #555);
-  width: 2rem;
-  height: 2rem;
-  color: #fffafa;
-}
-.image-count{
-  background-color: #fffafa;
-  filter: drop-shadow(0px 0px 5px #555);
-}
-.arrow:hover {
-  color: #f1f1f1;
-}
 
-.arrow:hover {
-  cursor: pointer;
-}
-
-.arrow-left {
-  left: 1rem;
-}
-
-.arrow-right {
-  right: 1rem;
-  
-}
-.indicators {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  bottom: 1rem;
-  width: 100%;
-}
-
-.indicator {
-  background-color: #fffafa;
-  height: 0.5rem;
-  width: 0.5rem;
-  border-radius: 100%;
-  border: none;
-  outline: none;
-  box-shadow: 0px 0px 5px #555;
-  margin: 0 0.2rem;
-  cursor: pointer;
-}
-
-.indicator-inactive {
-  background-color: grey;
-}
 
 /* Carousel End */
 .resume {

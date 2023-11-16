@@ -3,7 +3,7 @@ import ContactInfo from '../../../components/Contact/ContactInfo'
 const Contact = () => {
   return (
     <>
-      <div id="contact" className="md:px-10 sm:px-10 xl:px-28 "> 
+      <div id="contact" className="md:px-10 sm:px-10 xl:px-32 "> 
        
         <h6 className="text-4xl md:text-4xl lg:text-4xl font-semibold font-montserrat text-center text-custom-gray tracking-tight pb-1 ">Contact Me</h6>
 
