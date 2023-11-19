@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ContactInfo from '../../../components/Contact/ContactInfo'
+
 const Contact = () => {
+  const [showContact, setShowContact] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const contactSection = document.getElementById('contact');
+      const contactPosition = contactSection.getBoundingClientRect().top;
+
+      const triggerPoint = window.innerHeight * 0.7;
+
+      if (contactPosition < triggerPoint) {
+        setShowContact(true);
+      }
+     
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
-      <div id="contact" className="md:px-10 sm:px-10 xl:px-32 "> 
+      <div id="contact" className={`md:px-10 sm:px-10 xl:px-32 fade-in ${showContact ? 'show' : 'hide'}`}> 
        
         <h6 className="text-4xl md:text-4xl lg:text-4xl font-semibold font-montserrat text-center text-custom-gray tracking-tight pb-1 ">Contact Me</h6>
 

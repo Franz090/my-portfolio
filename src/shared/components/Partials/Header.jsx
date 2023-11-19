@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import DarkModeToggle from './DarkModeToggle';
 import Hamburger from './Hamburger';
 import useHeaderStore from '../../../store/useHeaderStore';
 import useHeaderhook from '../../../hooks/useHeaderhook';
 
-const scrollTo = (targetY, duration = 300) => {
+const scrollTo = (targetY, duration = 500) => {
   const start = window.scrollY;
   const startTime = performance.now();
 
@@ -66,6 +66,22 @@ const Header = () => {
         } = useHeaderStore();
         // Use the custom hook to handle location changes
         useHeaderhook(setActiveLink, setScreenWidth);
+        const scrollToContact = () => {
+          const contactElement = document.getElementById('contact');
+          if (contactElement) {
+            scrollTo(contactElement.getBoundingClientRect().top + window.scrollY);
+          }
+        };
+      
+        useEffect(() => {
+          // Check if the URL contains '#contact' on page load
+          if (window.location.hash === '#contact') {
+            // Set 'Contact' as active
+            setActiveLink('#contact');
+            scrollToContact();
+          }
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []); // Run this effect only once on initial mount
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);

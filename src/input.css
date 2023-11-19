@@ -87,6 +87,20 @@
 #contact{
   padding-top:2px;
 }
+/* CSS classes for transitions */
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.show {
+  opacity: 1;
+}
+
+.hide {
+  opacity: 0;
+}
+
 .loading-text {
   font-size: 1rem;
   margin-right: 0.5rem;
@@ -359,25 +373,7 @@ input[type="checkbox"]:checked::before {
  animation: spinner 1s linear infinite;
 }
 /* Carousel Start */
-/* CSS Classes */
 
-.fade-out {
-  opacity: 0;
-  transition: opacity 0.5s ease-out;
-  pointer-events: none; /* Disable pointer events while invisible */
-}
-
-.fade-in {
-  opacity: 1;
-  transition: opacity 0.5s ease-in;
-  pointer-events: auto; /* Enable pointer events when visible */
-}
-
-/* Hide initially */
-.hide {
-  opacity: 0;
-  pointer-events: none;
-}
 
 .carousel {
   perspective: 1000px;
