@@ -67,6 +67,11 @@ const useDarkModeHook = (id) => {
     };
 
     setThemeColors();
+    const navColor = isDarkMode ? '#181818' : '#fffafa';
+  if (navElement) {
+    navElement.style.backgroundColor = navColor;
+   
+  }
     document.body.style.transition = 'background 0.5s ease';
     addTransitionToElement('nav');
     addTransitionToElement('.nav-links');
