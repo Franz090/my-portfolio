@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import DarkModeToggle from './DarkModeToggle';
 import Hamburger from './Hamburger';
 import useHeaderStore from '../../../store/useHeaderStore';
@@ -57,6 +57,7 @@ const HeaderLink = ({ to, text, isActive, onClick, screenWidth, isContact }) => 
 
 
 const Header = () => {
+  const location = useLocation();
     const { activeLink, 
           setActiveLink, 
           menuOpen, 
@@ -79,9 +80,21 @@ const Header = () => {
             // Set 'Contact' as active
             setActiveLink('#contact');
             scrollToContact();
+          } else {
+            // If the URL doesn't contain '#contact', scroll to the top
+            scrollTo(0);
+            setActiveLink('/'); // Set the active link to home or another default link
           }
+          
           // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []); // Run this effect only once on initial mount
+
+        useEffect(() => {
+          // Update active link based on the location pathname
+          const path = location.pathname;
+          setActiveLink(path); // Set the active link based on the path
+        }, [location.pathname]);
+        
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
