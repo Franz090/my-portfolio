@@ -1,6 +1,20 @@
 import aboutme from '../assets/images/about.png';
-
+import useLinkStore from '../store/useLinkStore'
 const AboutPage = () => {
+  const { redirecting, setRedirecting } = useLinkStore();
+
+  const handleCVClick = (e) => {
+    e.preventDefault();
+    setRedirecting(true);
+    setTimeout(() => {
+      window.open(
+        "https://drive.google.com/file/d/1KIPHhD4NUwrarBw2Vdm20zKHV149VczI/view?usp=sharing",
+        "_blank"
+      );
+      setRedirecting(false);
+    }, 2000); // 2 seconds delay
+  };
+
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:flex lg:mt-1  lg:pb-10 pb-2 lg:pt-6 md:pt-3 pt-4 md:px-9  xl:px-36 lg:px-20 space-x-3">
       <div className="col-span-1 lg:flex lg:items-start lg:justify-start lg:w-8/12 flex-col">
@@ -16,9 +30,8 @@ const AboutPage = () => {
           Here is my CV. It contains detailed information about my education,skills, work experience, and projects.
         </p>
         {/* Add the "View CV" button with oblong border radius */}
-        <button className="bg-zinc-600 hover:bg-zinc-500 hover:gray-blue-600 text-white font-light py-2 px-5  rounded-full oblong-button subpixel-antialiased pt-2 pb-2 ">
-          <a href="https://drive.google.com/file/d/1KIPHhD4NUwrarBw2Vdm20zKHV149VczI/view?usp=sharing" target="_blank" rel="noopener noreferrer">View CV
-          </a>
+        <button className="bg-zinc-600 hover:bg-zinc-500 hover:gray-blue-600 text-white font-light py-2 px-5  rounded-full oblong-button subpixel-antialiased pt-2 pb-2 " onClick={handleCVClick}>
+        {redirecting ? 'Redirecting...' : 'View CV'}
           </button>
       </div>
       <div className="col-span-1 lg:flex relative top-7 pb-7 lg:items-center lg:justify-center lg:w-4/7">

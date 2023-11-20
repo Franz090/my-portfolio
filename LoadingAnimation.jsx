@@ -69,7 +69,7 @@ const LoadingAnimation = () => {
         <div className="progress-wrapper">
           <progress
             className={`loading-progress ${isDarkMode ? 'dark-mode-progress' : 'light-mode-progress'} ${
-              loadingProgress > 10 && loadingProgress <= 70 ? 'medium-progress' : loadingProgress > 70 ? 'high-progress' : ''
+              loadingProgress > 10 && loadingProgress <= 50 ? 'medium-progress' : loadingProgress > 50 ? 'high-progress' : ''
             }`}
             value={loadingProgress}
             max={100}
