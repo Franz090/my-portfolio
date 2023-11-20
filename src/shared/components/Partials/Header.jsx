@@ -1,5 +1,5 @@
-import React, { useEffect , useState} from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import DarkModeToggle from './DarkModeToggle';
 import Hamburger from './Hamburger';
 import useHeaderStore from '../../../store/useHeaderStore';
@@ -41,16 +41,16 @@ const HeaderLink = ({ to, text, isActive, onClick, screenWidth, isContact }) => 
       </a>
     ) : (
       <Link
-  to={to}
-  onClick={(event) => onClick(event)}
-  className={`${
-    isActive
-      ? 'active-link link text-md hover:text-secondary-text'
-      : 'link'
-  }`}
->
-  {text}
-</Link>
+        to={to}
+        onClick={() => onClick(to)}
+        className={`${
+          isActive
+            ? 'active-link link text-md hover:text-secondary-text'
+            : 'link'
+        }`}
+      >
+        {text}
+      </Link>
     )}
   </li>
 );
@@ -58,8 +58,6 @@ const HeaderLink = ({ to, text, isActive, onClick, screenWidth, isContact }) => 
 
 const Header = () => {
   const location = useLocation();
-  const navigate = useNavigate();
-  const [delayedNavigation, setDelayedNavigation] = useState(null);
     const { activeLink, 
           setActiveLink, 
           menuOpen, 
@@ -114,19 +112,12 @@ const Header = () => {
     navLinks.classList.remove('nav-links-open');
   };
 
-  const handleLinkClick = (to, event) => {
-    event.preventDefault(); // Prevent default link behavior temporarily
+   // Handle link clicks
+   const handleLinkClick = (to) => {
     scrollTo(0);
     setActiveLink(to); // Update activeLink directly
     closeMenu();
-
-    const timeout = setTimeout(() => {
-      navigate(to); // Navigates to the specified 'to' route after a 2-second delay
-    }, 2000); // 2-second delay using setTimeout
-
-    setDelayedNavigation(timeout); // Store the timeout in state
   };
-
   const linksData = [
     { to: '/', text: 'HOME' },
     { to: '/about', text: 'ABOUT' },
@@ -165,14 +156,14 @@ const Header = () => {
               <ul className="lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 nav-links">
                 {linksData.map((link, index) => (
                   <HeaderLink
-                  key={index}
-                  to={link.to}
-                  text={link.text}
-                  isActive={activeLink === link.to}
-                  onClick={(event) => handleLinkClick(link.to, event)} // Pass the event argument here
-                  screenWidth={screenWidth}
-                  isContact={link.isContact}
-                />
+                    key={index}
+                    to={link.to}
+                    text={link.text}
+                    isActive={activeLink === link.to}
+                    onClick={() => handleLinkClick(link.to)}
+                    screenWidth={screenWidth}
+                    isContact={link.isContact}
+                  />
                 ))}
                 {screenWidth >= 1024 && (
                   <div className='ml-5 dark-mode-toggle visible '>
@@ -184,14 +175,14 @@ const Header = () => {
               <ul className="lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 nav-links">
                 {linksData.map((link, index) => (
                   <HeaderLink
-                  key={index}
-                  to={link.to}
-                  text={link.text}
-                  isActive={activeLink === link.to}
-                  onClick={(event) => handleLinkClick(link.to, event)} // Pass the event argument here
-                  screenWidth={screenWidth}
-                  isContact={link.isContact}
-                />
+                    key={index}
+                    to={link.to}
+                    text={link.text}
+                    isActive={activeLink === link.to}
+                    onClick={() => handleLinkClick(link.to)}
+                    screenWidth={screenWidth}
+                    isContact={link.isContact}
+                  />
                 ))}
                 <div className='ml-2'>
                   <DarkModeToggle id={3} />
