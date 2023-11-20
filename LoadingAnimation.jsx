@@ -68,7 +68,7 @@ const LoadingAnimation = () => {
       <div className="loading-container">
         <div className="progress-wrapper">
           <progress className={`loading-progress ${isDarkMode ? 'dark-mode-progress' : 'light-mode-progress'}`} value={loadingProgress} max={100}></progress>
-          <p className={`loading-text text-center font-montserrat ${isDarkMode ? 'dark-text' : 'light-text'}`}>
+          <p className={`loading-text text-center font-montserrat subpixel-antialiased ${isDarkMode ? 'dark-text' : 'light-text'}`}>
             Loading {loadingProgress}%
           </p>
         </div>
