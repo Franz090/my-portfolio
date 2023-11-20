@@ -67,7 +67,13 @@ const LoadingAnimation = () => {
     <div className={`flex justify-center items-center h-screen ${isDarkMode ? 'dark-theme' : 'light-theme'}`} ref={containerRef}>
       <div className="loading-container">
         <div className="progress-wrapper">
-          <progress className={`loading-progress ${isDarkMode ? 'dark-mode-progress' : 'light-mode-progress'}`} value={loadingProgress} max={100}></progress>
+          <progress
+            className={`loading-progress ${isDarkMode ? 'dark-mode-progress' : 'light-mode-progress'} ${
+              loadingProgress > 10 && loadingProgress <= 70 ? 'medium-progress' : loadingProgress > 70 ? 'high-progress' : ''
+            }`}
+            value={loadingProgress}
+            max={100}
+          ></progress>
           <p className={`loading-text text-center font-montserrat subpixel-antialiased ${isDarkMode ? 'dark-text' : 'light-text'}`}>
             Loading {loadingProgress}%
           </p>
