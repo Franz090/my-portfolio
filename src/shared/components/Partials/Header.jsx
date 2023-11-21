@@ -1,4 +1,5 @@
 import React, { useEffect , useState} from 'react';
+import ProgressBar from './ProgressBar';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import DarkModeToggle from './DarkModeToggle';
 import Hamburger from './Hamburger';
@@ -61,6 +62,9 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [delayedNavigation, setDelayedNavigation] = useState(null);
+  const [showProgressBar, setShowProgressBar] = useState(false);
+  const [progress, setProgress] = useState(0);
+
     const { activeLink, 
           setActiveLink, 
           menuOpen, 
@@ -126,16 +130,43 @@ const Header = () => {
     setActiveLink(to);
     closeMenu();
     clearDelayedNavigation();
-  
-    if (to === '#contact') {
-      scrollToContact(); // Scroll to the contact section
-    } else {
-      const timeout = setTimeout(() => {
-        navigate(to);
-      }, 2000);
-      setDelayedNavigation(timeout);
-    }
+    
+    setShowProgressBar(true); // Show the progress bar
+
+  if (to === '#contact') {
+    scrollToContact(); // Scroll to the contact section
+  } else {
+    const timeout = setTimeout(() => {
+      navigate(to);
+      setShowProgressBar(false); // Hide the progress bar after navigation
+    }, 2000); // Set a timeout for 2 seconds (2000 milliseconds)
+    setDelayedNavigation(timeout);
+  }
   };
+  const performTask = async () => {
+    // Simulate performing a task (replace this with your actual task logic)
+    await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate some asynchronous task
+  };
+  useEffect(() => {
+    setShowProgressBar(true); // Show progress bar when starting loading
+
+    const calculateProgress = async () => {
+      const totalTasks = 5; // Set the total number of tasks
+      let completedTasks = 0;
+
+      for (let i = 0; i < totalTasks; i++) {
+        await performTask(); // Simulate performing tasks (use your actual tasks here)
+        completedTasks++;
+
+        const calculatedProgress = completedTasks / totalTasks;
+        setProgress(calculatedProgress); // Update progress state
+      }
+
+      setShowProgressBar(false); // Hide progress bar when tasks are completed
+    };
+
+    calculateProgress();
+  }, []);
 
   
 
@@ -151,6 +182,9 @@ const Header = () => {
 
   return (
     <div className={`Header pb-28 ${headerClass}`}>
+      {showProgressBar && (
+        <div className="progress-bar" style={{ width: `${progress * 100}%` }} />
+      )}
       <nav className=" pt-7 pb-7 p-5 fixed top-0 left-0 right-0 z-10 lg:flex lg:items-center md:justify-between">
         <div className="md:container mx-auto xl:px-24 md:px-1 sm:px-4">
           <div className="flex justify-between items-center">
