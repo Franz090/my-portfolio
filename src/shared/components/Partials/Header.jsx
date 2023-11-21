@@ -125,22 +125,28 @@ const Header = () => {
   };
 
   const handleLinkClick = (to, event) => {
+    // Check if the loading animation is active
+    const loadingAnimationActive = document.querySelector('.loading-container');
+  
     scrollTo(0);
     setActiveLink(to);
     closeMenu();
     clearDelayedNavigation();
-    
-    setShowProgressBar(true); // Show the progress bar
-
-  if (to === '#contact') {
-    scrollToContact(); // Scroll to the contact section
-  } else {
-    const timeout = setTimeout(() => {
-      navigate(to);
-      setShowProgressBar(false); // Hide the progress bar after navigation
-    }, 2000); // Set a timeout for 2 seconds (2000 milliseconds)
-    setDelayedNavigation(timeout);
-  }
+  
+    // Show the progress bar only if the loading animation is not active
+    if (!loadingAnimationActive) {
+      setShowProgressBar(true);
+    }
+  
+    if (to === '#contact') {
+      scrollToContact();
+    } else {
+      const timeout = setTimeout(() => {
+        navigate(to);
+        setShowProgressBar(false);
+      }, 2000);
+      setDelayedNavigation(timeout);
+    }
   };
   const performTask = async () => {
     // Simulate performing a task (replace this with your actual task logic)
@@ -166,6 +172,18 @@ const Header = () => {
 
     calculateProgress();
   }, []);
+  useEffect(() => {
+  const isPageReloaded = sessionStorage.getItem('isPageReloaded');
+
+  if (!isPageReloaded) {
+    // Set sessionStorage to indicate the page has been loaded
+    sessionStorage.setItem('isPageReloaded', 'true');
+  } else {
+    setShowProgressBar(false); // Hide the progress bar on reload
+  }
+
+  // Other logic as needed
+}, []);
 
   
 
