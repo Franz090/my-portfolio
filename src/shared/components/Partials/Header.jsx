@@ -1,5 +1,4 @@
 import React, { useEffect , useState} from 'react';
-import ProgressBar from './ProgressBar';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import DarkModeToggle from './DarkModeToggle';
 import Hamburger from './Hamburger';
