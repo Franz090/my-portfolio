@@ -1,4 +1,4 @@
-import React, { useEffect , useState} from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import DarkModeToggle from './DarkModeToggle';
 import Hamburger from './Hamburger';
@@ -60,17 +60,22 @@ const HeaderLink = ({ to, text, isActive, onClick, screenWidth, isContact }) => 
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [delayedNavigation, setDelayedNavigation] = useState(null);
-  const [showProgressBar, setShowProgressBar] = useState(false);
-  const [progress, setProgress] = useState(0);
+ 
 
-    const { activeLink, 
-          setActiveLink, 
-          menuOpen, 
-          setMenuOpen, 
-          screenWidth, 
-          setScreenWidth 
-        } = useHeaderStore();
+  const {
+    activeLink,
+    setActiveLink,
+    menuOpen,
+    setMenuOpen,
+    screenWidth,
+    setScreenWidth,
+    delayedNavigation, // Add Zustand state for delayedNavigation
+    showProgressBar, // Add Zustand state for showProgressBar
+    progress, // Add Zustand state for progress
+    setDelayedNavigation, // Add Zustand setter for delayedNavigation
+    setShowProgressBar, // Add Zustand setter for showProgressBar
+    setProgress, // Add Zustand setter for progress
+  } = useHeaderStore();
         // Use the custom hook to handle location changes
         useHeaderhook(setActiveLink, setScreenWidth);
         const scrollToContact = () => {
