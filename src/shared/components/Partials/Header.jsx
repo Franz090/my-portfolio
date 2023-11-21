@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect , useState} from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import DarkModeToggle from './DarkModeToggle';
 import Hamburger from './Hamburger';
 import useHeaderStore from '../../../store/useHeaderStore';
@@ -22,42 +22,45 @@ const scrollTo = (targetY, duration = 500) => {
   requestAnimationFrame(scroll);
 };
 
-const HeaderLink = ({ to, text, isActive, onClick, screenWidth, isContact }) => (
-  <li className={`lg:mx-3 my-4 lg:my-0 font-montserrat font-semibold ${screenWidth <= 1024 ? 'mobile-link' : 'desktop-link'}`}>
-    {isContact ? (
-      <a
-        href="#contact"
-        onClick={() => {
-          onClick('#contact');
-          scrollTo(document.getElementById('contact').getBoundingClientRect().top + window.scrollY);
-        }}
-        className={`${
-          isActive
-            ? 'active-link link text-md hover:text-secondary-text'
-            : 'link'
-        }`}
-      >
-        {text}
-      </a>
-    ) : (
-      <Link
-        to={to}
-        onClick={() => onClick(to)}
-        className={`${
-          isActive
-            ? 'active-link link text-md hover:text-secondary-text'
-            : 'link'
-        }`}
-      >
-        {text}
-      </Link>
-    )}
-  </li>
-);
+const HeaderLink = ({ to, text, isActive, onClick, screenWidth, isContact }) => {
+  const linkClasses = isActive ? 'active-link link text-md hover:text-secondary-text' : 'link';
 
+  const handleLinkClick = (event) => {
+    if (event && event.preventDefault) {
+      event.preventDefault();
+
+      if (isContact) {
+        const contactElement = document.getElementById('contact');
+        if (contactElement) {
+          scrollTo(contactElement.getBoundingClientRect().top + window.scrollY);
+        }
+      }
+
+      onClick(to);
+    }
+  };
+
+  const linkText = isContact ? (
+    <a href="#contact" onClick={handleLinkClick} className={linkClasses}>
+      {text}
+    </a>
+  ) : (
+    <Link to={to} onClick={handleLinkClick} className={linkClasses}>
+      {text}
+    </Link>
+  );
+
+  const linkClassName = `lg:mx-3 my-4 lg:my-0 font-montserrat font-semibold ${
+    screenWidth <= 1024 ? 'mobile-link' : 'desktop-link'
+  }`;
+
+  return <li className={linkClassName}>{linkText}</li>;
+};
 
 const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const [delayedNavigation, setDelayedNavigation] = useState(null);
     const { activeLink, 
           setActiveLink, 
           menuOpen, 
@@ -111,13 +114,31 @@ const Header = () => {
     const navLinks = document.querySelector('.nav-links');
     navLinks.classList.remove('nav-links-open');
   };
-
-   // Handle link clicks
-   const handleLinkClick = (to) => {
-    scrollTo(0);
-    setActiveLink(to); // Update activeLink directly
-    closeMenu();
+   const clearDelayedNavigation = () => {
+    if (delayedNavigation) {
+      clearTimeout(delayedNavigation);
+      setDelayedNavigation(null);
+    }
   };
+
+  const handleLinkClick = (to, event) => {
+    scrollTo(0);
+    setActiveLink(to);
+    closeMenu();
+    clearDelayedNavigation();
+  
+    if (to === '#contact') {
+      scrollToContact(); // Scroll to the contact section
+    } else {
+      const timeout = setTimeout(() => {
+        navigate(to);
+      }, 2000);
+      setDelayedNavigation(timeout);
+    }
+  };
+
+  
+
   const linksData = [
     { to: '/', text: 'HOME' },
     { to: '/about', text: 'ABOUT' },
@@ -156,14 +177,14 @@ const Header = () => {
               <ul className="lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 nav-links">
                 {linksData.map((link, index) => (
                   <HeaderLink
-                    key={index}
-                    to={link.to}
-                    text={link.text}
-                    isActive={activeLink === link.to}
-                    onClick={() => handleLinkClick(link.to)}
-                    screenWidth={screenWidth}
-                    isContact={link.isContact}
-                  />
+                  key={index}
+                  to={link.to}
+                  text={link.text}
+                  isActive={activeLink === link.to}
+                  onClick={(event) => handleLinkClick(link.to, event)} // Pass the event argument here
+                  screenWidth={screenWidth}
+                  isContact={link.isContact}
+                />
                 ))}
                 {screenWidth >= 1024 && (
                   <div className='ml-5 dark-mode-toggle visible '>
@@ -175,14 +196,14 @@ const Header = () => {
               <ul className="lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 nav-links">
                 {linksData.map((link, index) => (
                   <HeaderLink
-                    key={index}
-                    to={link.to}
-                    text={link.text}
-                    isActive={activeLink === link.to}
-                    onClick={() => handleLinkClick(link.to)}
-                    screenWidth={screenWidth}
-                    isContact={link.isContact}
-                  />
+                  key={index}
+                  to={link.to}
+                  text={link.text}
+                  isActive={activeLink === link.to}
+                  onClick={(event) => handleLinkClick(link.to, event)} // Pass the event argument here
+                  screenWidth={screenWidth}
+                  isContact={link.isContact}
+                />
                 ))}
                 <div className='ml-2'>
                   <DarkModeToggle id={3} />
