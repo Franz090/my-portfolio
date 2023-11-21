@@ -130,22 +130,24 @@ const Header = () => {
   };
 
   const handleLinkClick = (to, event) => {
-    // Check if the loading animation is active
     const loadingAnimationActive = document.querySelector('.loading-container');
-  
-    scrollTo(0);
-    setActiveLink(to);
-    closeMenu();
-    clearDelayedNavigation();
-  
-    // Show the progress bar only if the loading animation is not active
-    if (!loadingAnimationActive) {
-      setShowProgressBar(true);
-    }
   
     if (to === '#contact') {
       scrollToContact();
+      window.history.pushState({}, '', '#contact');
+      closeMenu();
+      clearDelayedNavigation();
     } else {
+      scrollTo(0);
+      setActiveLink(to);
+      closeMenu();
+      clearDelayedNavigation();
+  
+      // Show the progress bar when navigating away from the current link
+      if (!loadingAnimationActive && activeLink !== to) {
+        setShowProgressBar(true);
+      }
+  
       const timeout = setTimeout(() => {
         navigate(to);
         setShowProgressBar(false);
@@ -153,6 +155,7 @@ const Header = () => {
       setDelayedNavigation(timeout);
     }
   };
+  
   const performTask = async () => {
     // Simulate performing a task (replace this with your actual task logic)
     await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate some asynchronous task
