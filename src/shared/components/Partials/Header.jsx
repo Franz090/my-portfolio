@@ -84,6 +84,36 @@ const Header = () => {
             scrollTo(contactElement.getBoundingClientRect().top + window.scrollY);
           }
         };
+        const scrollTo = (targetY, duration = 500, shouldScrollTop = true) => {
+  const start = window.scrollY;
+  const startTime = performance.now();
+
+  const easeInOutQuad = (t, b, c, d) => {
+    t /= d / 2;
+    if (t < 1) return (c / 2) * t * t + b;
+    t--;
+    return (-c / 2) * (t * (t - 2) - 1) + b;
+  };
+
+  const scroll = (timestamp) => {
+    const elapsed = timestamp - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = easeInOutQuad(elapsed, start, targetY - start, duration);
+    window.scrollTo(0, ease);
+
+    if (progress < 1) {
+      requestAnimationFrame(scroll);
+    }
+  };
+
+  requestAnimationFrame(scroll);
+
+  if (shouldScrollTop) {
+    // Scroll to the top only if shouldScrollTop is true
+    window.scrollTo(0, 0);
+  }
+};
+
       
         useEffect(() => {
           // Check if the URL contains '#contact' on page load
@@ -138,23 +168,36 @@ const Header = () => {
       closeMenu();
       clearDelayedNavigation();
     } else {
-      scrollTo(0);
-      setActiveLink(to);
-      closeMenu();
-      clearDelayedNavigation();
+      if (activeLink === to) {
+        // If the clicked link is already active, scroll to the top
+        scrollTo(0, 500, true); // true means scroll to top
+      } else {
+        setActiveLink(to);
+        closeMenu();
+        clearDelayedNavigation();
   
-      // Show the progress bar when navigating away from the current link
-      if (!loadingAnimationActive && activeLink !== to) {
-        setShowProgressBar(true);
+        // Remove the hash from the URL if navigating away from the contact section
+        if (window.location.hash === '#contact') {
+          window.history.pushState({}, '', window.location.pathname); // Remove the hash
+        }
+  
+        // Show the progress bar when navigating away from the current link
+        if (!loadingAnimationActive && activeLink !== to) {
+          setShowProgressBar(true);
+        }
+  
+        const timeout = setTimeout(() => {
+          // Update shouldScrollTop based on the condition
+          scrollTo(0, 500, window.location.pathname !== to);
+          navigate(to);
+          setShowProgressBar(false);
+        }, 2000);
+        setDelayedNavigation(timeout);
       }
-  
-      const timeout = setTimeout(() => {
-        navigate(to);
-        setShowProgressBar(false);
-      }, 2000);
-      setDelayedNavigation(timeout);
     }
   };
+  
+  
   
   const performTask = async () => {
     // Simulate performing a task (replace this with your actual task logic)
