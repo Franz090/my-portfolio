@@ -30,9 +30,11 @@ const AboutPage = () => {
           Here is my CV. It contains detailed information about my education,skills, work experience, and projects.
         </p>
         {/* Add the "View CV" button with oblong border radius */}
-        <button className="bg-zinc-600 hover:bg-zinc-500 hover:gray-blue-600 text-white font-light py-2 px-5  rounded-full oblong-button subpixel-antialiased pt-2 pb-2 " onClick={handleCVClick}>
-        {redirecting ? 'Redirecting...' : 'View CV'}
-          </button>
+        <button
+        className="bg-zinc-600 hover:bg-zinc-500 hover:gray-blue-600 text-white font-light py-2 px-5 rounded-full oblong-button subpixel-antialiased pt-2 pb-2 transition duration-300 ease-in-out transform hover:scale-95  " 
+        onClick={handleCVClick}>
+          {redirecting ? 'Redirecting...' : 'View CV'}
+        </button>
       </div>
       <div className="col-span-1 lg:flex relative top-7 pb-7 lg:items-center lg:justify-center lg:w-4/7">
         <div className="hidden lg:block"> {/* Display only on large screens (lg) */}
