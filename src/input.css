@@ -83,6 +83,23 @@
     transform: scaleX(1);
   }
 }
+.image-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.image {
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.image:not(.visible) {
+  transform: translateY(100%);
+  opacity: 0;
+}
 
 
 * {
