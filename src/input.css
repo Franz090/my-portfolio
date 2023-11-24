@@ -103,13 +103,15 @@
 
 .frontend-text {
   opacity: 0;
-  transform: translateY(-100%);
+  transform: translateX(-100%);
   transition: opacity 1s, transform 1s;
+ 
+
 }
 
 .slide-in-animation {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
 
