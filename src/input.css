@@ -115,6 +115,22 @@
   transform: translateX(0);
 }
 
+/* Add this CSS in your stylesheets */
+@keyframes shine {
+  0% {
+    text-shadow: none;
+  }
+  50% {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+
+.shine-animation {
+  animation: shine 2s infinite; /* Adjust the animation duration as needed */
+}
 
 * {
   margin: 0;
