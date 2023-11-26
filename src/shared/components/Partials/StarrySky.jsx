@@ -98,7 +98,7 @@ const StarrySky = () => {
 
     const interval = setInterval(() => {
       changeStarPosition();
-    }, 3000);
+    }, 500);
 
     blinkingStar = stars[Math.floor(Math.random() * stars.length)];
 
@@ -108,17 +108,22 @@ const StarrySky = () => {
     }, 500)
     const handleMouseMove = (event) => {
       const { clientX, clientY } = event;
-
-      // Calculate normalized device coordinates (-1 to 1) from cursor position
-      const mouseX = (clientX / window.innerWidth) * 2 - 1;
-      const mouseY = -(clientY / window.innerHeight) * 2 + 1;
-
-      // Update camera position based on cursor movement
-      camera.position.x = mouseX * 50;
-      camera.position.y = mouseY * 50;
-
-      camera.lookAt(scene.position); // Keep camera focused on the scene center
+      const isInputField = ['INPUT', 'TEXTAREA'].includes(event.target.tagName);
+      const submitButton = document.getElementById('submit-button'); // Add an ID to your submit button
+    
+      if (!isInputField && !submitButton.contains(event.target)) {
+        // Calculate normalized device coordinates (-1 to 1) from cursor position
+        const mouseX = (clientX / window.innerWidth) * 2 - 1;
+        const mouseY = -(clientY / window.innerHeight) * 2 + 1;
+    
+        // Update camera position based on cursor movement
+        camera.position.x = mouseX * 50;
+        camera.position.y = mouseY * 50;
+    
+        camera.lookAt(scene.position);
+      }
     };
+    
 
     // Event listener for cursor movement
     const handleMouseMoveThrottled = throttle(handleMouseMove, 100); // Throttle the mousemove event

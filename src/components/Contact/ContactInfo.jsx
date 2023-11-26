@@ -71,13 +71,13 @@ export default function ContactInfo() {
       alert.classList.add('alert-fade-out');
       setTimeout(() => {
         setSuccess(false);
-      }, 1000); // Adjust the timeout duration to match your CSS transition duration
+      }, 1000); // Closing animation duration remains the same
     }
   };
 
   useEffect(() => {
     if (success) {
-      const timeoutId = setTimeout(closeSuccessAlert, 10000);
+      const timeoutId = setTimeout(closeSuccessAlert, 4000); // Show for 5 seconds
       return () => clearTimeout(timeoutId);
     }
   }, [success]);
@@ -119,49 +119,8 @@ export default function ContactInfo() {
   };
   return (
     <form className="lg:w-full " ref={form} onSubmit={sendEmail}>
-      {formSubmitted && (
-      <div className="flex items-center p-2 mb-4 text-sm text-red-800 border border-red-400 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">
-       <svg className="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/></svg>
-      <span className="sr-only">Info</span>
-      <div>
-      <span className="font-medium">Required Fields Error</span> Please fill in all required fields and try submitting again.
-        </div>
-        </div>
-        )}
 
-      {success && (
-        <div className="flex items-center p-2 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800" role="alert" id="alert-1">
-          <svg className="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-          </svg>
-          <span className="sr-only">Info</span>
-          <div>
-            <span className="font-medium text-green-500">Your submission was successful!</span>
-          </div>
-          <button
-            type="button"
-            className="ml-auto -mx-1.5 -my-1.5 bg-blue-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-blue-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700"
-            data-dismiss-target="#alert-1"
-            aria-label="Close"
-            onClick={closeSuccessAlert}>
-            <span className="sr-only">Close</span>
-            <svg
-              className="w-3 h-3"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 14">
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-            </svg>
-          </button>
-        </div>
-      )}
+      
 
       
       <div className="flex flex-wrap -mx-3 mb-6 mt-[-30px] lg:mt-[-0px] ">
@@ -258,16 +217,19 @@ export default function ContactInfo() {
       </div>
       <div className="flex justify-center w-full ">
       <button
+      id="submit-button"
     type="submit"
-    className={`font-montserrat leading-tight pt-3 pb-3 font-light  hover:bg-zinc-500 text-white rounded w-full bg-zinc-600 shadow-lg hover:shadow-gray-700/50 ${
+    className={`font-montserrat leading-tight mb-3 pt-3 pb-3 font-light  hover:bg-zinc-500 text-white rounded w-full bg-zinc-600 shadow-lg hover:shadow-gray-700/50 ${
       loading ? 'loading-button' : ''
     }`}
     disabled={loading}
   >
     {loading ? (
       <div className="loading-container ">
-        <span className="loading-text ">Loading</span>
         <div className="loading-spinner "></div>
+        <div className="mr-5">Sending...</div>
+        
+
       </div>
     ) : (
       <div className=" text-white font-light  text-center subpixel-antialiased">
@@ -275,7 +237,15 @@ export default function ContactInfo() {
       </div>
     )}
   </button>
+  
       </div>
+      {success && (
+        <div className="flex items-center justify-center p-2 mb-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-800" role="alert" id="alert-1">
+        <div className="text-center">
+          <span className="font-semibold text-custom-gray">Your submission was successful!</span>
+        </div>
+      </div>
+      )}
     </form>
   );
 }
