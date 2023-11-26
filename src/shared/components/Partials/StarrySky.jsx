@@ -10,7 +10,7 @@ const throttle = (func, limit) => {
     }
   };
 };
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef,useState } from 'react';
 import * as THREE from 'three';
 
 const StarrySky = () => {
@@ -19,6 +19,7 @@ const StarrySky = () => {
   let stars = [];
   let blinkingStar = null; // Reference to the star to blink
   let isStarVisible = true; // Flag to track star visibility
+  const [isSkyVisible, setIsSkyVisible] = useState(false);
 
   const changeSkyPosition = () => {
     // Change the camera position after 3 seconds
@@ -61,6 +62,9 @@ const StarrySky = () => {
     }
     changeSkyPosition();
     animate();
+    setTimeout(() => {
+      setIsSkyVisible(true);
+    }, 2000);
   };
 
   const animate = () => {
@@ -144,7 +148,10 @@ const StarrySky = () => {
   }, []);
 
 
-  return <div ref={containerRef} />;
+  return <div ref={containerRef}  style={{
+    opacity: isSkyVisible ? 1 : 0, // Apply opacity based on visibility
+    transition: 'opacity 1s', // Transition effect
+  }} />;
 };
 
 export default StarrySky;
