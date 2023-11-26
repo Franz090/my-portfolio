@@ -132,11 +132,11 @@ export default function ContactInfo() {
       
       <div className="flex flex-wrap -mx-3 mb-6 mt-[-30px] lg:mt-[-0px] ">
         <div className="w-full md:w-1/2 px-3 lg:pt-1 pt-5">
-          <label className="text-custom-gray lg:text-[17px] block capitalize mb-2 leading-tight tracking-widest font-roboto" htmlFor="grid-first-name">
+          <label className="text-custom-gray lg:text-[17px] block capitalize mb-2 leading-tight tracking-widest font-roboto " htmlFor="grid-first-name">
             First Name
           </label>  
           <input
-          className={`leading-tight pt-3 pb-3 w-full bg-primary-450 text-custom-gray border ${
+          className={`leading-tight pt-3 pb-3 w-full bg-${loading ? 'zinc-300' : 'primary-450'} text-custom-gray border ${
           (formSubmitted && !errors.first_name) ? 'border-green-400 focus:border-green-400' :
            (formSubmitted && errors.first_name) ? 'border-red-400 focus:border-red-500' :
            'border-gray-400'} rounded focus:bg-primary-450 focus:shadow-sm focus:border-gray-300 focus:shadow-gray-200/50 focus:ring-0`}
@@ -146,6 +146,7 @@ export default function ContactInfo() {
             onChange={handleInputChange}
             value={inputValues.first_name}
             autoComplete="given-name"
+            disabled={loading} 
             />
            {(formSubmitted && errors.first_name) && <p className="text-red-500 mt-1 italic text-sm">Please enter your first name.</p>}
            {formSubmitted && !errors.first_name && <p className="text-green-500 mt-1 italic text-sm">
@@ -158,7 +159,7 @@ export default function ContactInfo() {
             Last Name
           </label>
           <input
-            className={`leading-tight pt-3 pb-3 w-full bg-primary-450 text-custom-gray border ${
+            className={`leading-tight pt-3 pb-3 w-full bg-${loading ? 'zinc-300' : 'primary-450'} text-custom-gray border ${
               (formSubmitted && !errors.last_name) ? 'border-green-400 focus:border-green-400' :
               (formSubmitted && errors.last_name) ? 'border-red-400 focus:border-red-500' :
               'border-gray-400'} rounded focus:bg-primary-450 focus:shadow-sm focus:border-gray-300 focus:shadow-gray-200/50 focus:ring-0`}
@@ -168,6 +169,7 @@ export default function ContactInfo() {
             onChange={handleInputChange} // Add this line
             value={inputValues.last_name} // Add this line
             autoComplete="family-name"
+            disabled={loading} 
             
           />
           {(formSubmitted && errors.last_name) && <p className="text-red-500 mt-1 italic  text-sm">Please enter your last name.</p>}
@@ -181,7 +183,7 @@ export default function ContactInfo() {
             Email Address
           </label>
           <input
-          className={`leading-tight pt-3 pb-3 w-full bg-primary-450 text-custom-gray border ${
+          className={`leading-tight pt-3 pb-3 w-full bg-${loading ? 'zinc-300' : 'primary-450'} text-custom-gray border ${
          (formSubmitted && !errors.user_email) ? 'border-green-400 focus:border-green-400' :
          (formSubmitted && errors.user_email) ? 'border-red-400 focus:border-red-500' :
     'border-gray-400'} rounded focus:bg-primary-450 focus:shadow-sm focus:border-gray-300 focus:shadow-gray-200/50 focus:ring-0`}
@@ -191,6 +193,7 @@ export default function ContactInfo() {
          onChange={handleInputChange}
          value={inputValues.user_email}
         autoComplete="email"
+        disabled={loading} 
         />
           {(formSubmitted && errors.user_email) && <p className="text-red-500 mt-1 italic  text-sm">Please enter your valid email address.</p>}
           {formSubmitted && !errors.user_email && <p className="text-green-500 mt-1 italic text-sm">
@@ -203,7 +206,7 @@ export default function ContactInfo() {
             Message
           </label>
           <textarea
-          className={`resize-y leading-tight pt-3 pb-3 w-full bg-primary-450 text-custom-gray border ${
+          className={`resize-y leading-tight pt-3 pb-3 w-full bg-${loading ? 'zinc-300' : 'primary-450'} text-custom-gray border ${
           (formSubmitted && inputValues.message.trim() !== '' && !errors.message) ? 'border-green-400 focus:border-green-400' :
           (formSubmitted && inputValues.message.trim() === '') ? 'border-red-400 focus:border-red-500' :'border-gray-400'} rounded focus:bg-primary-450 focus:shadow-sm focus:border-gray-300 focus:ring-0`}
           id="grid-message"
@@ -213,6 +216,7 @@ export default function ContactInfo() {
           onChange={handleInputChange}
           value={inputValues.message}
           autoComplete="off"
+          disabled={loading} 
           />
           {formSubmitted && inputValues.message.trim() === '' && <p className="text-red-500 mt-1 italic text-sm">Message is required.</p>}
           {formSubmitted && !errors.message && inputValues.message.trim() !== '' && (
