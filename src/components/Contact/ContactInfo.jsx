@@ -24,7 +24,7 @@ export default function ContactInfo() {
   
     const formData = new FormData(form.current);
     const hasErrors = Object.keys(errors).reduce((hasError, field) => {
-      if (formData.get(field) === '') {
+      if (formData.get(field) === '' || errors[field]) {
         setErrors((prevErrors) => ({ ...prevErrors, [field]: true }));
         return true;
       }
@@ -35,8 +35,9 @@ export default function ContactInfo() {
       setFormSubmitted(true);
       return;
     }
+  
     setLoading(true);
-
+  
     emailjs
       .sendForm('service_t9yudsu', 'template_br5ubl1', form.current, 'a1HWmBwln_h1j5REX')
       .then((result) => {
@@ -44,7 +45,7 @@ export default function ContactInfo() {
         console.log("message sent");
         setLoading(false);
         setSuccess(true);
-
+  
         // Reset the form, clear errors, and input values
         form.current.reset();
         setInputValues({
@@ -59,12 +60,11 @@ export default function ContactInfo() {
           user_email: false,
           message: false,
         });
-
+  
         // Reset the formSubmitted state to false
         setFormSubmitted(false);
       });
   };
-
   const closeSuccessAlert = () => {
     const alert = document.getElementById('alert-1');
     if (alert) {
