@@ -1,3 +1,15 @@
+const throttle = (func, limit) => {
+  let inThrottle = false;
+  return function () {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  };
+};
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
@@ -8,10 +20,19 @@ const StarrySky = () => {
   let blinkingStar = null; // Reference to the star to blink
   let isStarVisible = true; // Flag to track star visibility
 
+  const changeSkyPosition = () => {
+    // Change the camera position after 3 seconds
+    setTimeout(() => {
+      camera.position.x = Math.random() * 100 - 50;
+      camera.position.y = Math.random() * 100 - 50;
+      camera.position.z = Math.random() * 100 - 50;
+    }, 3000);
+  };
+
   const init = () => {
     // Create scene
     scene = new THREE.Scene();
-
+    
     // Create camera
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
     camera.position.z = 50;
@@ -38,7 +59,7 @@ const StarrySky = () => {
       stars.push(star);
       scene.add(star);
     }
-
+    changeSkyPosition();
     animate();
   };
 
@@ -73,7 +94,7 @@ const StarrySky = () => {
 
     const interval = setInterval(() => {
       changeStarPosition();
-    }, 3500);
+    }, 3000);
 
     blinkingStar = stars[Math.floor(Math.random() * stars.length)];
 
@@ -81,6 +102,24 @@ const StarrySky = () => {
       clearInterval(interval);
       blinkingStar.visible = true;
     }, 500)
+    const handleMouseMove = (event) => {
+      const { clientX, clientY } = event;
+
+      // Calculate normalized device coordinates (-1 to 1) from cursor position
+      const mouseX = (clientX / window.innerWidth) * 2 - 1;
+      const mouseY = -(clientY / window.innerHeight) * 2 + 1;
+
+      // Update camera position based on cursor movement
+      camera.position.x = mouseX * 50;
+      camera.position.y = mouseY * 50;
+
+      camera.lookAt(scene.position); // Keep camera focused on the scene center
+    };
+
+    // Event listener for cursor movement
+    const handleMouseMoveThrottled = throttle(handleMouseMove, 100); // Throttle the mousemove event
+
+    window.addEventListener('mousemove', handleMouseMoveThrottled);
 
     const handleWindowResize = () => {
       const { innerWidth, innerHeight } = window;
@@ -93,6 +132,7 @@ const StarrySky = () => {
 
     return () => {
       window.removeEventListener('resize', handleWindowResize);
+      window.removeEventListener('mousemove', handleMouseMoveThrottled);
       clearInterval(interval);
       stars.forEach((star) => {
         scene.remove(star);
