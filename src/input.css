@@ -230,20 +230,25 @@
   font-size: 1rem;
   margin-right: 0.5rem;
 }
-
-.loading-spinner {
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid transparent;
-  border-top: 2px solid #fffafa;
+.loader {
+  width: 38px;
+  height: 38px;
+  border: 5px dotted #FFF;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 2s linear infinite;
 }
 
-@keyframes spin {
- 
-  100% { transform: rotate(360deg); }
-}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
 .hamburger-menu .bar {
   width: 30px;
   height: 3px;

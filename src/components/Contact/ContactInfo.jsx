@@ -118,7 +118,7 @@ export default function ContactInfo() {
     }
   };
   return (
-    <form className="lg:w-full " ref={form} onSubmit={sendEmail}>
+    <form className="lg:w-full pb-6" ref={form} onSubmit={sendEmail}>
 
       
 
@@ -226,9 +226,9 @@ export default function ContactInfo() {
   >
     {loading ? (
       <div className="loading-container ">
-        <div className="loading-spinner "></div>
-        <div className="mr-5">Sending...</div>
         
+        <div className="mr-2">Sending Message</div>
+        <div className="loader"></div>
 
       </div>
     ) : (
