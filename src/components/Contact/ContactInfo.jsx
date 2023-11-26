@@ -118,7 +118,7 @@ export default function ContactInfo() {
     }
   };
   return (
-    <form className="lg:w-full pb-6" ref={form} onSubmit={sendEmail}>
+    <form className="lg:w-full pb-6 relative" ref={form} onSubmit={sendEmail}>
 
       
 
@@ -239,13 +239,15 @@ export default function ContactInfo() {
   </button>
   
       </div>
+      <div className="absolute bottom-[-28px] left-1/2 transform -translate-x-1/2 w-full text-center">
       {success && (
         <div className="flex items-center justify-center p-2 mb-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-800" role="alert" id="alert-1">
-        <div className="text-center">
-          <span className="font-semibold text-custom-gray">Your submission was successful!</span>
+          <div className="text-center">
+            <span className="font-semibold text-custom-gray">Your submission was successful!</span>
+          </div>
         </div>
-      </div>
       )}
+    </div>
     </form>
   );
 }
