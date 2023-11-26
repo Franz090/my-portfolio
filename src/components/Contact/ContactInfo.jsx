@@ -4,6 +4,7 @@ import emailjs from '@emailjs/browser';
 export default function ContactInfo() {
   const form = useRef();
   const [loading, setLoading] = useState(false);
+  const [disableInput, setDisableInput] = useState(false);
   const [errors, setErrors] = useState({
     first_name: false,
     last_name: false,
@@ -37,6 +38,8 @@ export default function ContactInfo() {
     }
   
     setLoading(true);
+    setDisableInput(true); 
+    
   
     emailjs
       .sendForm('service_t9yudsu', 'template_br5ubl1', form.current, 'a1HWmBwln_h1j5REX')
@@ -45,6 +48,7 @@ export default function ContactInfo() {
         console.log("message sent");
         setLoading(false);
         setSuccess(true);
+        setDisableInput(false);
   
         // Reset the form, clear errors, and input values
         form.current.reset();
@@ -83,6 +87,9 @@ export default function ContactInfo() {
   }, [success]);
 
   const handleInputChange = (e) => {
+    if (disableInput) {
+      return; // Prevent handling input if form is submitting
+    }
     const { name, value } = e.target;
   
     if (name === 'user_email') {
