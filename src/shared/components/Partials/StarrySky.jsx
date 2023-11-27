@@ -108,11 +108,24 @@ const StarrySky = () => {
     }, 500)
     const handleMouseMove = (event) => {
       const { clientX, clientY } = event;
-      const isInputField = ['INPUT', 'TEXTAREA'].includes(event.target.tagName);
-      const submitButton = document.getElementById('submit-button'); // Add an ID to your submit button
+      const excludedElements = ['INPUT', 'TEXTAREA', 'BUTTON']; // Add other elements as needed
+      const isExcluded = excludedElements.some(tag => event.target.tagName === tag);
+      const isOutsideStarrySky = !containerRef.current.contains(event.target);
+      
+      // Check if cursor is outside the submit button
+      const submitButton = document.getElementById('submit-button');
+      const submitButtonRect = submitButton.getBoundingClientRect();
+      const isInsideSubmitButton =
+        clientX >= submitButtonRect.left &&
+        clientX <= submitButtonRect.right &&
+        clientY >= submitButtonRect.top &&
+        clientY <= submitButtonRect.bottom;
+      
+      // Check if cursor is inside any FontAwesome icon
+      const footerIcons = document.querySelectorAll('.border-color'); // Adjust this selector based on your FontAwesome icon class
+      const isInsideIcon = Array.from(footerIcons).some(icon => icon.contains(event.target));
     
-      if (!isInputField && !submitButton.contains(event.target)) {
-        // Calculate normalized device coordinates (-1 to 1) from cursor position
+      if (!isExcluded && isOutsideStarrySky && !isInsideSubmitButton && !isInsideIcon) {
         const mouseX = (clientX / window.innerWidth) * 2 - 1;
         const mouseY = -(clientY / window.innerHeight) * 2 + 1;
     
@@ -123,6 +136,8 @@ const StarrySky = () => {
         camera.lookAt(scene.position);
       }
     };
+    
+   
     
 
     // Event listener for cursor movement

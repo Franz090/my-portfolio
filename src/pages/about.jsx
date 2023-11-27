@@ -1,7 +1,9 @@
 import aboutme from '../assets/images/about.png';
 import useLinkStore from '../store/useLinkStore'
+import React, { useEffect, useRef,useState } from 'react';
 const AboutPage = () => {
   const { redirecting, setRedirecting } = useLinkStore();
+  const buttonRef = useRef(null);
 
   const handleCVClick = (e) => {
     e.preventDefault();
@@ -31,10 +33,13 @@ const AboutPage = () => {
         </p>
         {/* Add the "View CV" button with oblong border radius */}
         <button
-        className="bg-zinc-600 hover:bg-zinc-500 hover:gray-blue-600 text-white font-light py-2 px-5 rounded-full oblong-button subpixel-antialiased pt-2 pb-2 transition duration-300 ease-in-out transform hover:scale-95  " 
-        onClick={handleCVClick}>
-          {redirecting ? 'Redirecting...' : 'View CV'}
-        </button>
+  ref={buttonRef}
+  className="bg-zinc-600 hover:bg-zinc-500 hover:gray-blue-600 text-white font-light py-2 px-5 rounded-full oblong-button subpixel-antialiased pt-2 pb-2 transition duration-300 ease-in-out transform hover:scale-95  " 
+  onClick={handleCVClick}
+>
+  {redirecting ? 'Redirecting...' : 'View CV'}
+</button>
+
       </div>
       <div className="col-span-1 lg:flex relative top-7 pb-7 lg:items-center lg:justify-center lg:w-4/7">
         <div className="hidden lg:block"> {/* Display only on large screens (lg) */}
