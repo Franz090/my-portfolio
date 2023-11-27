@@ -12,7 +12,4 @@ export default defineConfig({
     'process.env.PORT': `${process.env.PORT}`,
     'process.env.TEST': `"${process.env.TEST}"`,
   },
-  optimizeDeps: {
-    exclude: ['three'],
- },
 })
