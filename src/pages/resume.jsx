@@ -96,12 +96,12 @@ const ResumePage = () => {
   ];
 
   return (
-    <div className="md:px-10 sm:px-10 xl:px-36 pb-8 pt-7">
+    <div className="md:px-10 sm:px-10 xl:px-36 pb-8 pt-7 ">
       <h1 className="text-[27px] mb-5 tracking-wide capitalize font-semibold ">
         Working Experience
       </h1>
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-5 resume-element-1">
         <div className="col-span-1 md:col-span-1  p-4 resume resume-border ">
        
 
@@ -221,7 +221,7 @@ const ResumePage = () => {
       <h1 className='text-[27px] mb-5 tracking-wide capitalize font-semibold'>
         Educational Background
       </h1>
-      <div  className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
+      <div  className='grid grid-cols-1 lg:grid-cols-2 gap-4 resume-element-2'>
 
         <div className="col-span-1 md:col-span-1 p-4 resume resume-border">
        

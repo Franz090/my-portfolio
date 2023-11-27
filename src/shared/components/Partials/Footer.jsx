@@ -17,17 +17,17 @@ const Footer = () => {
       </h1>
       <div className='inline-flex space-x-3 pb-2'>
         <a href={facebookUrl} target="_blank" rel="noopener noreferrer">
-          <div className="border border-color p-2 rounded-full w-10 h-10">
+          <div className="bg-footer border border-color p-2 rounded-full w-10 h-10">
             <FontAwesomeIcon icon={faFacebookF} className='text-[22px]' />
           </div>
         </a>
         <a href={linkedinUrl} target="_blank" rel="noopener noreferrer">
-          <div className="border border-color p-2 rounded-full w-10 h-10">
+          <div className="bg-footer border border-color p-2 rounded-full w-10 h-10">
             <FontAwesomeIcon icon={faLinkedinIn} className='text-[22px]' />
           </div>
         </a>
         <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-          <div className="border border-color p-2 rounded-full w-10 h-10">
+          <div className="bg-footer border border-color p-2 rounded-full w-10 h-10">
             <FontAwesomeIcon icon={faGithub} className='text-[22px]' />
           </div>
         </a>

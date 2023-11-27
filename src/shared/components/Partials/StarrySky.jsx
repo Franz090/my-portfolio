@@ -111,6 +111,11 @@ const StarrySky = () => {
       const excludedElements = ['INPUT', 'TEXTAREA', 'BUTTON']; // Add other elements as needed
       const isExcluded = excludedElements.some(tag => event.target.tagName === tag);
       const isOutsideStarrySky = !containerRef.current.contains(event.target);
+      const resumeElement1 = document.querySelector('.resume-element-1'); 
+      const resumeElement2 = document.querySelector('.resume-element-2'); 
+
+      const isInsideResume1 = resumeElement1 && resumeElement1.contains(event.target); 
+      const isInsideResume2 = resumeElement2 && resumeElement2.contains(event.target); 
       
       // Check if cursor is outside the submit button
       const submitButton = document.getElementById('submit-button');
@@ -125,7 +130,7 @@ const StarrySky = () => {
       const footerIcons = document.querySelectorAll('.border-color'); // Adjust this selector based on your FontAwesome icon class
       const isInsideIcon = Array.from(footerIcons).some(icon => icon.contains(event.target));
     
-      if (!isExcluded && isOutsideStarrySky && !isInsideSubmitButton && !isInsideIcon) {
+      if (!isExcluded && isOutsideStarrySky && !isInsideSubmitButton && !isInsideIcon && !isInsideResume1 && !isInsideResume2)  {
         const mouseX = (clientX / window.innerWidth) * 2 - 1;
         const mouseY = -(clientY / window.innerHeight) * 2 + 1;
     
