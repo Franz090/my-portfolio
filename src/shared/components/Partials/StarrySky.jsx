@@ -10,16 +10,16 @@ const throttle = (func, limit) => {
     }
   };
 };
-import React, { useEffect, useRef,useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-
+import useSkyVisible from '../../../store/useSkyVisibleStore'
 const StarrySky = () => {
   const containerRef = useRef(null);
   let scene, camera, renderer;
   let stars = [];
   let blinkingStar = null; // Reference to the star to blink
   let isStarVisible = true; // Flag to track star visibility
-  const [isSkyVisible, setIsSkyVisible] = useState(false);
+  const { isSkyVisible, setIsSkyVisible } = useSkyVisible();
 
   const changeSkyPosition = () => {
     // Change the camera position after 3 seconds
@@ -108,7 +108,7 @@ const StarrySky = () => {
     }, 500)
     const handleMouseMove = (event) => {
       const { clientX, clientY } = event;
-      const excludedElements = ['INPUT', 'TEXTAREA', 'BUTTON']; // Add other elements as needed
+      const excludedElements = ['INPUT', 'TEXTAREA', 'BUTTON','IMG']; // Add other elements as needed
       const isExcluded = excludedElements.some(tag => event.target.tagName === tag);
       const isOutsideStarrySky = !containerRef.current.contains(event.target);
       const resumeElement1 = document.querySelector('.resume-element-1'); 

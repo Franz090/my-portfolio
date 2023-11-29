@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import ContactInfo from '../../../components/Contact/ContactInfo'
-
+import useSkyVisible  from '../../../store/useSkyVisibleStore';
 const Contact = () => {
   const [showContact, setShowContact] = useState(false);
+  const { setIsSkyVisible } = useSkyVisible();
+
+  // Function to handle interaction with the contact form
+  const handleContactInteraction = () => {
+    // Assuming a certain interaction toggles visibility, you can set it accordingly
+    setIsSkyVisible(false); // Set visibility based on the interaction
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,7 +31,7 @@ const Contact = () => {
 
   return (
     <>
-      <div id="contact" className={`md:px-10 sm:px-10 xl:px-32 fade-in ${showContact ? 'show' : 'hide'}`}> 
+      <div id="contact" className={`md:px-10 sm:px-10 xl:px-32 fade-in ${showContact ? 'show' : 'hide'}`} onClick={handleContactInteraction}> 
        
         <h6 className="text-4xl md:text-4xl lg:text-4xl font-semibold font-montserrat text-center text-custom-gray tracking-tight pb-1 ">Contact Me</h6>
 
