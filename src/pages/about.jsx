@@ -1,9 +1,34 @@
-import aboutme from '../assets/images/about.png';
-import useLinkStore from '../store/useLinkStore'
-import React, { useEffect, useRef,useState } from 'react';
+import gifImage from '../assets/videos/about.gif';
+import useLinkStore from '../store/useLinkStore';
+import React, { useRef, useEffect, useState } from 'react';
+
 const AboutPage = () => {
   const { redirecting, setRedirecting } = useLinkStore();
   const buttonRef = useRef(null);
+  const [imagePosition, setImagePosition] = useState('top-7'); // Initial position
+
+  const handleResize = () => {
+    const screenWidth = window.innerWidth;
+    if (screenWidth < 1024) {
+      // For smaller screens, adjust image position
+      setImagePosition('top-0');
+    } else {
+      setImagePosition('top-7');
+    }
+  };
+
+  useEffect(() => {
+    // Call handleResize on initial load
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const handleCVClick = (e) => {
     e.preventDefault();
@@ -16,10 +41,9 @@ const AboutPage = () => {
       setRedirecting(false);
     }, 2000); // 2 seconds delay
   };
-
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:flex lg:mt-1  lg:pb-10 pb-2 lg:pt-6 md:pt-3 pt-4 md:px-9  xl:px-36 lg:px-20 space-x-3">
-      <div className="col-span-1 lg:flex lg:items-start lg:justify-start lg:w-8/12 flex-col">
+      <div className="col-span-1 lg:flex lg:items-start lg:justify-start xl:w-7/12 flex-col">
         <h1 className="text-[27px] mb-2 tracking-wide capitalize font-semibold ">About Me</h1>
         <h2 className="text-2xl  font-light tracking-wide mb-4">I'm a Front End Developer and UI Designer</h2>
         <p className="text-custom-gray text-[16px] font-light mb-3 tracking-tightest antialiased text-justify">
@@ -41,9 +65,10 @@ const AboutPage = () => {
 </button>
 
       </div>
-      <div className="col-span-1 lg:flex relative top-7 pb-7 lg:items-center lg:justify-center lg:w-4/7">
-        <div className="hidden lg:block"> {/* Display only on large screens (lg) */}
-          <img src={aboutme} alt="Example" className="w-80 h-100" />
+      <div className={`col-span-1 lg:flex relative ${imagePosition} pb-7 lg:items-center lg:justify-center xl:w-5/12`}>
+        <div className=" hidden lg:block"> {/* Display only on large screens (lg) */}
+          {/* add gif here  */}
+          <img src={gifImage} alt="Your GIF" className='rounded-lg max-w-sm ' />
         </div>
       </div>
     </section>
