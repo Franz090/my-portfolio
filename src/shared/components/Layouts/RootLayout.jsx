@@ -8,7 +8,7 @@ import StarrySky from '../Partials/StarrySky';
 const RootLayout = () => {
   return (
     <div className="root-main" style={{ position: 'relative', overflowX: 'hidden' }}>
-      <StarrySky /> {/* Render the StarrySky component first */}
+      <StarrySky />
       <div style={{ position: 'relative', zIndex: 1 }}>
         <Header />
         <Outlet />
