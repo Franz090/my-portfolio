@@ -8,52 +8,48 @@ const StarrySky = ({ className }) => {
   useEffect(() => {
     let scene, camera, renderer, stars;
 
-    // Initialize Three.js scene
     function init() {
       scene = new THREE.Scene();
 
-      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-      camera.position.z = 100;
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
+      camera.position.z = 1000; // Move the camera further for a wider view of stars
 
       renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current, alpha: true });
-
       renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setClearAlpha(0);
+      renderer.setClearColor(0x000000, 0); // Set background to transparent
 
-      // Create stars
-      const starGeometry = new THREE.SphereGeometry(0.1, 10, 10);
-      const starMaterial = new THREE.MeshBasicMaterial({ color: 0xfffafa });
+      const starGeometry = new THREE.SphereGeometry(1, 32, 32); // Larger stars
+      const starMaterial = new THREE.MeshBasicMaterial({ color: 0xfffafa }); // White stars
 
       stars = [];
-      for (let i = 0; i < 1000; i++) {
+      for (let i = 0; i < 1500; i++) { // Increased number of stars
         const star = new THREE.Mesh(starGeometry, starMaterial);
-        star.position.x = Math.random() * 1000 - 500;
-        star.position.y = Math.random() * 1000 - 500;
-        star.position.z = Math.random() * 1000 - 500;
+        star.position.x = (Math.random() - 0.5) * 2000; // Spread stars in a wider range
+        star.position.y = (Math.random() - 0.5) * 2000;
+        star.position.z = (Math.random() - 0.5) * 2000;
         scene.add(star);
         stars.push(star);
       }
     }
 
-    // Animate the stars
     function animateStars() {
       animationId = requestAnimationFrame(animateStars);
 
-      // Rotate and update stars
-      stars.forEach((star) => {
+      stars.forEach((star, index) => {
         star.rotation.x += 0.001;
         star.rotation.y += 0.001;
-        star.position.z += 0.5;
 
-        if (star.position.z > 200) {
-          star.position.z = -200;
+        // Add parallax effect for depth
+        star.position.z += index / 1000;
+
+        if (star.position.z > 1000) {
+          star.position.z = -1000; // Reset stars' position when they move out of view
         }
       });
 
       renderer.render(scene, camera);
     }
 
-    // Handle window resize
     function handleResize() {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -69,16 +65,15 @@ const StarrySky = ({ className }) => {
     }
 
     return () => {
-      cancelAnimationFrame(animationId); // Cancel animation frame when unmounting
+      cancelAnimationFrame(animationId);
       window.removeEventListener('resize', handleResize);
       if (renderer) {
-        renderer.dispose(); // Dispose of renderer resources
+        renderer.dispose();
       }
     };
   }, []);
 
-  return <canvas ref={canvasRef} className={className}  />;
-
+  return <canvas ref={canvasRef} className={className} />;
 };
 
 export default StarrySky;
