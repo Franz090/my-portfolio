@@ -204,23 +204,25 @@ const Header = () => {
     await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate some asynchronous task
   };
   useEffect(() => {
-    setShowProgressBar(true); // Show progress bar when starting loading
-
     const calculateProgress = async () => {
       const totalTasks = 5; // Set the total number of tasks
       let completedTasks = 0;
-
+  
       for (let i = 0; i < totalTasks; i++) {
         await performTask(); // Simulate performing tasks (use your actual tasks here)
         completedTasks++;
-
+  
         const calculatedProgress = completedTasks / totalTasks;
         setProgress(calculatedProgress); // Update progress state
       }
-
-      setShowProgressBar(false); // Hide progress bar when tasks are completed
+  
+      // Finish the progress bar after 1 second (1000 milliseconds)
+      setTimeout(() => {
+        setShowProgressBar(false); // Hide progress bar when tasks are completed
+      }, 1000);
     };
-
+  
+    setShowProgressBar(true); // Show progress bar when starting loading
     calculateProgress();
   }, []);
   useEffect(() => {

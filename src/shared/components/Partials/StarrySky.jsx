@@ -26,7 +26,7 @@ const StarrySky = ({ className, visible }) => {
       const starMaterial = new THREE.MeshBasicMaterial({ color: 0xfffafa });
 
       stars = [];
-      for (let i = 0; i < 1200; i++) {
+      for (let i = 0; i < 1000; i++) {
         const star = new THREE.Mesh(starGeometry, starMaterial);
         star.position.x = (Math.random() - 0.5) * 2000;
         star.position.y = (Math.random() - 0.5) * 2000;
