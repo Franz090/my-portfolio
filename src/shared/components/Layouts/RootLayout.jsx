@@ -6,17 +6,15 @@ import { Outlet } from 'react-router-dom';
 import StarrySky from '../Partials/StarrySky';
 
 const RootLayout = () => {
-  return (
-    <div className="root-main" style={{ position: 'relative', overflowX: 'hidden' }}>
-      <StarrySky />
-      <div style={{ position: 'relative', zIndex: 1 }}>
+ return (
+    <div className="root-main">
+      <StarrySky className="fixed top-0 left-0 z-[-1]" />
         <Header />
         <Outlet />
         <Contact />
         <Footer />
-      </div>
     </div>
-  );
+ );
 };
 
 export default RootLayout;
