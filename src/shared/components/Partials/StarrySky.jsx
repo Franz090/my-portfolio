@@ -1,10 +1,13 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
+import  useStarrySkyStore  from '../../../store/useStarrySkyStore'; 
+
+let activeStarrySky = null;
 
 const StarrySky = ({ className, visible }) => {
   const canvasRef = useRef(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  let animationId = null;
+  const { isLoaded, setIsLoaded } = useStarrySkyStore(); 
+  const animationId = useRef(null);
 
   useEffect(() => {
     let scene, camera, renderer, stars;
@@ -23,7 +26,7 @@ const StarrySky = ({ className, visible }) => {
       const starMaterial = new THREE.MeshBasicMaterial({ color: 0xfffafa });
 
       stars = [];
-      for (let i = 0; i < 1500; i++) {
+      for (let i = 0; i < 1200; i++) {
         const star = new THREE.Mesh(starGeometry, starMaterial);
         star.position.x = (Math.random() - 0.5) * 2000;
         star.position.y = (Math.random() - 0.5) * 2000;
@@ -36,7 +39,7 @@ const StarrySky = ({ className, visible }) => {
     }
 
     function animateStars() {
-      animationId = requestAnimationFrame(animateStars);
+      animationId.current = requestAnimationFrame(animateStars);
 
       stars.forEach((star, index) => {
         star.rotation.x += 0.001;
@@ -57,26 +60,29 @@ const StarrySky = ({ className, visible }) => {
       renderer.setSize(window.innerWidth, window.innerHeight);
     }
 
-    window.addEventListener('resize', handleResize);
-
-    if (canvasRef.current) {
-      init();
-      animateStars();
-      window.addEventListener('resize', handleResize);
+    if (activeStarrySky && activeStarrySky !== canvasRef.current) {
+      cancelAnimationFrame(animationId.current);
+      activeStarrySky = null;
     }
 
+    activeStarrySky = canvasRef.current;
+
+    init();
+    animateStars();
+    window.addEventListener('resize', handleResize);
+
     return () => {
-      cancelAnimationFrame(animationId);
+      cancelAnimationFrame(animationId.current);
       window.removeEventListener('resize', handleResize);
       if (renderer) {
         renderer.dispose();
       }
     };
-  }, []);
+  }, [visible, setIsLoaded]);
 
   const canvasStyle = {
     transition: 'opacity 2s',
-    opacity: isLoaded && visible ? 1 : 0, // Show canvas only when loaded and visible
+    opacity: isLoaded && visible ? 1 : 0,
     pointerEvents: isLoaded && visible ? 'auto' : 'none',
   };
 
