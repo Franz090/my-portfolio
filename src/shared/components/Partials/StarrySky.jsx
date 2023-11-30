@@ -13,14 +13,14 @@ const StarrySky = ({ className, visible }) => {
       scene = new THREE.Scene();
 
       camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
-      camera.position.z = 1000; // Move the camera further for a wider view of stars
+      camera.position.z = 1000;
 
       renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current, alpha: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setClearColor(0x000000, 0); // Set background to transparent
+      renderer.setClearColor(0x000000, 0);
 
-      const starGeometry = new THREE.SphereGeometry(1, 32, 32); // Larger stars
-      const starMaterial = new THREE.MeshBasicMaterial({ color: 0xfffafa }); // White stars
+      const starGeometry = new THREE.SphereGeometry(1, 32, 32);
+      const starMaterial = new THREE.MeshBasicMaterial({ color: 0xfffafa });
 
       stars = [];
       for (let i = 0; i < 1500; i++) {
@@ -32,7 +32,7 @@ const StarrySky = ({ className, visible }) => {
         stars.push(star);
       }
 
-      setIsLoaded(true); // Set loaded state to trigger the transition
+      setIsLoaded(true);
     }
 
     function animateStars() {
@@ -44,7 +44,7 @@ const StarrySky = ({ className, visible }) => {
         star.position.z += index / 1000;
 
         if (star.position.z > 1000) {
-          star.position.z = -1000; // Reset stars' position when they move out of view
+          star.position.z = -1000;
         }
       });
 
@@ -75,16 +75,16 @@ const StarrySky = ({ className, visible }) => {
   }, []);
 
   const canvasStyle = {
-    transition: 'opacity 2s', // CSS transition for opacity
-    opacity: visible ? 1 : 0, // Set opacity based on visibility
-    pointerEvents: visible ? 'auto' : 'none', // Allow pointer events only when visible
+    transition: 'opacity 2s',
+    opacity: isLoaded && visible ? 1 : 0, // Show canvas only when loaded and visible
+    pointerEvents: isLoaded && visible ? 'auto' : 'none',
   };
 
   return (
     <canvas
       ref={canvasRef}
       className={className}
-      style={canvasStyle} // Apply the style with transition and opacity
+      style={canvasStyle}
     />
   );
 };
