@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import * as THREE from 'three';
 
-const StarrySky = ({ className }) => {
+const StarrySky = ({ className, visible }) => {
   const canvasRef = useRef(null);
+  const [isLoaded, setIsLoaded] = useState(false);
   let animationId = null;
 
   useEffect(() => {
@@ -22,14 +23,16 @@ const StarrySky = ({ className }) => {
       const starMaterial = new THREE.MeshBasicMaterial({ color: 0xfffafa }); // White stars
 
       stars = [];
-      for (let i = 0; i < 1500; i++) { // Increased number of stars
+      for (let i = 0; i < 1500; i++) {
         const star = new THREE.Mesh(starGeometry, starMaterial);
-        star.position.x = (Math.random() - 0.5) * 2000; // Spread stars in a wider range
+        star.position.x = (Math.random() - 0.5) * 2000;
         star.position.y = (Math.random() - 0.5) * 2000;
         star.position.z = (Math.random() - 0.5) * 2000;
         scene.add(star);
         stars.push(star);
       }
+
+      setIsLoaded(true); // Set loaded state to trigger the transition
     }
 
     function animateStars() {
@@ -38,8 +41,6 @@ const StarrySky = ({ className }) => {
       stars.forEach((star, index) => {
         star.rotation.x += 0.001;
         star.rotation.y += 0.001;
-
-        // Add parallax effect for depth
         star.position.z += index / 1000;
 
         if (star.position.z > 1000) {
@@ -73,7 +74,19 @@ const StarrySky = ({ className }) => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className={className} />;
+  const canvasStyle = {
+    transition: 'opacity 2s', // CSS transition for opacity
+    opacity: visible ? 1 : 0, // Set opacity based on visibility
+    pointerEvents: visible ? 'auto' : 'none', // Allow pointer events only when visible
+  };
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className={className}
+      style={canvasStyle} // Apply the style with transition and opacity
+    />
+  );
 };
 
 export default StarrySky;
