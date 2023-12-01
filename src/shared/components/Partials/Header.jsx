@@ -261,10 +261,8 @@ const Header = () => {
             <div className="flex items-center justify-between space-x-2 ">
               <span className="text-4xl lg:text-4xl  cursor-pointer ">
                 <Link to="/" onClick={() => handleLinkClick('/')}>
-                  <div className='logo-name'>
-                    <span className=' tracking-wider leading-[0rem] lg:text-[38px] md:text-[35px] text-[35px]  font-extrabold  first-letter'>F</span>
-
-                    <span className='uppercase text-5xl  leading-[0rem] third'>rancis</span>
+                  <div className='logo-name tracking-wider'>
+                    <span className='uppercase text-5xl  leading-[0rem] third'>francis</span>
                   </div>
                 </Link>
               </span>
