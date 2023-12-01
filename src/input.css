@@ -134,7 +134,7 @@
 }
 .third{
   color: var(--font-color);
-  font-family: "Bauhaus 93 V2";
+  font-family: 'Bauhaus-93', sans-serif;
 
   font-size: 40px;
   text-decoration: none;
@@ -146,7 +146,7 @@
 .multi-color {
   font-size: 40px;
   letter-spacing: -1px;
-  font-family: "Bauhaus 93 V2";
+  font-family: 'Bauhaus-93', sans-serif;
 
   display: inline-block;
   padding: 0 3px;
@@ -783,7 +783,7 @@ input[type="checkbox"]:checked::before {
     
     .third{
       color: var(--font-color);
-      font-family: "Bauhaus 93 V2";
+      font-family: 'Bauhaus-93', sans-serif;
 
       font-size: 40px!important;
       text-decoration: none;
