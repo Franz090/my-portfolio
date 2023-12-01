@@ -198,18 +198,30 @@ const Header = () => {
   };
   const handleLogoClick = (event) => {
     event.preventDefault();
-    
-    // Show the progress bar when clicking the logo
-    setShowProgressBar(true);
-
-    const timeout = setTimeout(() => {
-      // Navigate to the home page or another default link after 2 seconds
-      navigate('/'); // Replace '/' with the default link if needed
-      setShowProgressBar(false);
-    }, 2000); // 2-second delay before navigation
-
-    setDelayedNavigation(timeout);
+  
+    // Get the current pathname
+    const currentPath = window.location.pathname;
+  
+    if (currentPath === '/') {
+      // If already on the home page, scroll to the top without delay or progress bar
+      scrollTo(0, 500, true); // true means scroll to top
+    } else {
+      // Show the progress bar when clicking the logo and navigating to home or another link
+      setShowProgressBar(true);
+  
+      const timeout = setTimeout(() => {
+        // Scroll to the top of the page after a delay
+        scrollTo(0, 500, true); // true means scroll to top
+  
+        // Navigate to the home page or another link after the delay
+        navigate('/');
+        setShowProgressBar(false); // Hide progress bar after navigation
+      }, 2000); // 2-second delay before navigation
+  
+      setDelayedNavigation(timeout);
+    }
   };
+  
   
   
   const performTask = async () => {
