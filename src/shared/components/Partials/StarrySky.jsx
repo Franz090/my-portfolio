@@ -1,13 +1,15 @@
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import  useStarrySkyStore  from '../../../store/useStarrySkyStore'; 
-
+import useHeaderStore from '../../../store/useHeaderStore'
 let activeStarrySky = null;
 
 const StarrySky = ({ className, visible }) => {
   const canvasRef = useRef(null);
   const { isLoaded, setIsLoaded } = useStarrySkyStore(); 
   const animationId = useRef(null);
+  const isProgressBarActive = useHeaderStore((state) => state.showProgressBar);
+
 
   useEffect(() => {
     let scene, camera, renderer, stars;
@@ -39,6 +41,10 @@ const StarrySky = ({ className, visible }) => {
     }
 
     function animateStars() {
+      if (isProgressBarActive) {
+        // Pause animation when the progress bar is active
+        return;
+      }
       animationId.current = requestAnimationFrame(animateStars);
 
       stars.forEach((star, index) => {
@@ -78,7 +84,7 @@ const StarrySky = ({ className, visible }) => {
         renderer.dispose();
       }
     };
-  }, [visible, setIsLoaded]);
+  }, [visible, setIsLoaded, isProgressBarActive]);
 
   const canvasStyle = {
     transition: 'opacity 2s',
