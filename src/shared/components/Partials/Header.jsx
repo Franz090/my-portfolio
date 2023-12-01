@@ -84,35 +84,42 @@ const Header = () => {
             scrollTo(contactElement.getBoundingClientRect().top + window.scrollY);
           }
         };
-        const scrollTo = (targetY, duration = 500, shouldScrollTop = true) => {
-  const start = window.scrollY;
-  const startTime = performance.now();
-
-  const easeInOutQuad = (t, b, c, d) => {
-    t /= d / 2;
-    if (t < 1) return (c / 2) * t * t + b;
-    t--;
-    return (-c / 2) * (t * (t - 2) - 1) + b;
-  };
-
-  const scroll = (timestamp) => {
-    const elapsed = timestamp - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const ease = easeInOutQuad(elapsed, start, targetY - start, duration);
-    window.scrollTo(0, ease);
-
-    if (progress < 1) {
-      requestAnimationFrame(scroll);
-    }
-  };
-
-  requestAnimationFrame(scroll);
-
-  if (shouldScrollTop) {
-    // Scroll to the top only if shouldScrollTop is true
-    window.scrollTo(0, 0);
-  }
-};
+        const scrollTo = (targetY, duration = 500, shouldScrollTop = true, shouldUpdateURL = true) => {
+          const start = window.scrollY;
+          const startTime = performance.now();
+        
+          const easeInOutQuad = (t, b, c, d) => {
+            t /= d / 2;
+            if (t < 1) return (c / 2) * t * t + b;
+            t--;
+            return (-c / 2) * (t * (t - 2) - 1) + b;
+          };
+        
+          const scroll = (timestamp) => {
+            const elapsed = timestamp - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const ease = easeInOutQuad(elapsed, start, targetY - start, duration);
+            window.scrollTo(0, ease);
+        
+            if (progress < 1) {
+              requestAnimationFrame(scroll);
+            }
+          };
+        
+          requestAnimationFrame(scroll);
+        
+          if (shouldScrollTop) {
+            // Scroll to the top only if shouldScrollTop is true
+            window.scrollTo(0, 0);
+          }
+        
+          // Update URL hash if scrolling to the top and shouldUpdateURL is true
+          if (shouldScrollTop && shouldUpdateURL) {
+            window.history.pushState({}, '', window.location.pathname); // Remove the hash
+          }
+        };
+        
+ 
 
       
         useEffect(() => {
@@ -161,10 +168,15 @@ const Header = () => {
 
   const handleLinkClick = (to, event) => {
     const loadingAnimationActive = document.querySelector('.loading-container');
-  
-    if (to === '#contact') {
+    const isScrollingToContact = to === '#contact';
+
+    if (isScrollingToContact) {
       scrollToContact();
-      window.history.pushState({}, '', '#contact');
+      if (!menuOpen) {
+        window.history.pushState({}, '', '#contact');
+      } else {
+        window.history.pushState({}, '', window.location.pathname); // Remove the hash
+      }
       closeMenu();
       clearDelayedNavigation();
     } else {
@@ -188,7 +200,7 @@ const Header = () => {
   
         const timeout = setTimeout(() => {
           // Update shouldScrollTop based on the condition
-          scrollTo(0, 500, window.location.pathname !== to);
+          scrollTo(0, 500, window.location.pathname !== to, false);
           navigate(to);
           setShowProgressBar(false);
         }, 2000);
