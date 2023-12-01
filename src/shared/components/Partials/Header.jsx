@@ -196,7 +196,20 @@ const Header = () => {
       }
     }
   };
-  
+  const handleLogoClick = (event) => {
+    event.preventDefault();
+    
+    // Show the progress bar when clicking the logo
+    setShowProgressBar(true);
+
+    const timeout = setTimeout(() => {
+      // Navigate to the home page or another default link after 2 seconds
+      navigate('/'); // Replace '/' with the default link if needed
+      setShowProgressBar(false);
+    }, 2000); // 2-second delay before navigation
+
+    setDelayedNavigation(timeout);
+  };
   
   
   const performTask = async () => {
@@ -260,7 +273,7 @@ const Header = () => {
           <div className="flex justify-between items-center">
             <div className="flex items-center justify-between space-x-2 ">
               <span className="text-4xl lg:text-4xl  cursor-pointer ">
-                <Link to="/" onClick={() => handleLinkClick('/')}>
+              <Link to="/" onClick={handleLogoClick}>
                   <div className='logo-name tracking-wider'>
                     <span className='uppercase text-5xl  leading-[0rem] third'>francis</span>
                   </div>
