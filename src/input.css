@@ -101,19 +101,6 @@
   opacity: 0;
 }
 
-.frontend-text {
-  opacity: 0;
-  transform: translateX(-100%);
-  transition: opacity 2s, transform 1s;
-  
- 
-
-}
-
-.slide-in-animation {
-  opacity: 1;
-  transform: translateX(0);
-}
 
 /* Add this CSS in your stylesheets */
 @keyframes shine {
@@ -653,20 +640,6 @@ input[type="checkbox"]:checked::before {
     .hamburger-menu .bar {
       display: block;
     }
-    .frontend-text {
-      opacity: 0;
-      transform: translateX(-100%);
-      transition: opacity 1s, transform 1s;
-     
-    
-    }
-    .slide-in-animation {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    
-   
-    
     .hamburger-menu .bar {
       width: 30px;
       height: 3px;
