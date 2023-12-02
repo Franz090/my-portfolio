@@ -41,7 +41,7 @@ function HomePage() {
     from: { opacity: 0, transform: 'translateX(100%)' },
     to: { opacity: 1, transform: 'translateX(0)' },
     config: { duration: 800 },
-    delay: 1500, // Adjust the delay as needed
+    delay: 1000, // Adjust the delay as needed
   });
 
   const jumpProps = useSpring({
