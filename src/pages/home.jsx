@@ -3,27 +3,28 @@ import ErrorBoundary from '../shared/components/Partials/ErrorBoundary';
 import { Suspense } from 'react';
 import LazyImage from '../components/Home/LazyImage';
 import { useSpring, animated } from '@react-spring/web';
+import useAnimationStore from '../store/useAnimationStore';
+
 
 function HomePage() {
   const [index, setIndex] = useState(0);
   const [completedAnimations, setCompletedAnimations] = useState(0);
-  const [startAnimation, setStartAnimation] = useState(false);
+  const { startAnimation, setStartAnimation } = useAnimationStore();
+
   const developerText = 'DEVELOPER';
 
   useEffect(() => {
     const hasReloaded = localStorage.getItem('hasReloaded');
     if (!hasReloaded) {
-      // If the page has just reloaded, hide the text
       setStartAnimation(false);
       localStorage.setItem('hasReloaded', 'true');
     } else {
-      // After the reload, display the text
       setStartAnimation(true);
     }
 
     const animationTimer = setTimeout(() => {
       setStartAnimation(true);
-    }, 1000); // Wait for 1 second before starting the animation
+    }, 1000);
 
     return () => {
       clearTimeout(animationTimer);
