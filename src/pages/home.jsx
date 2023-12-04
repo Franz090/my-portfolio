@@ -48,7 +48,7 @@ function HomePage() {
     from: { opacity: 0, transform: 'translateX(100%)' },
     to: { opacity: 1, transform: 'translateX(0)' },
     config: { duration: 800 },
-    delay: 1000, // Adjust the delay as needed
+    delay: 600, // Adjust the delay as needed
   });
 
   const jumpProps = useSpring({
@@ -56,7 +56,7 @@ function HomePage() {
     to: { y: 30 },
     reset: true,
     reverse: true,
-    config: { duration: 300 },
+    config: { duration: 100 },
     delay: index === 0 ? 2000 : 0,
     onRest: () => {
       if (startAnimation && completedAnimations < developerText.length - 1) {
