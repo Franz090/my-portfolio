@@ -9,7 +9,10 @@ import useAnimationStore from '../store/useAnimationStore';
 function HomePage() {
   const [index, setIndex] = useState(0);
   const [completedAnimations, setCompletedAnimations] = useState(0);
-  const { startAnimation, setStartAnimation, stopAnimation, setIsJumping } = useAnimationStore();
+  const { startAnimation, setStartAnimation, stopAnimation, setIsJumping,setHomeLinkClicked ,homeLinkClicked} = useAnimationStore();
+ 
+
+
 
 
 
@@ -68,9 +71,19 @@ function HomePage() {
 
   const shouldJump = (i) => {
     const jumpingIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-    return jumpingIndices.includes(i) && useAnimationStore.getState().isJumping; // Read isJumping state from Zustand
+    return (
+      jumpingIndices.includes(i) &&
+      !homeLinkClicked &&
+      useAnimationStore.getState().isJumping // Read isJumping state from Zustand
+    );
   };
-
+  useEffect(() => {
+    if (stopAnimation || useAnimationStore.getState().homeLinkClicked) {
+      setIsJumping(false); // Reset Zustand state for jumping animation
+    }
+  }, [index, startAnimation, stopAnimation]);
+  
+ 
 
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:mt-11 md:mt-12">

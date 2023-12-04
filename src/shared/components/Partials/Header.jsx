@@ -60,7 +60,7 @@ const HeaderLink = ({ to, text, isActive, onClick, screenWidth, isContact }) => 
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { setStopAnimation } = useAnimationStore(); 
+  const { setStopAnimation, setIsJumping,setHomeLinkClicked } = useAnimationStore(); 
  
 
   const {
@@ -189,9 +189,13 @@ const Header = () => {
         closeMenu();
         clearDelayedNavigation();
         if (to === '/') {
-          setStopAnimation(true); // Set stopAnimation to true when navigating to the homepage
+          setStopAnimation(true);
+          setIsJumping(true);
+          setHomeLinkClicked(true);
         } else {
-          setStopAnimation(false); // Set stopAnimation to false for other links
+          setStopAnimation(false);
+          setIsJumping(false);
+          setHomeLinkClicked(false);
         }
         if (window.location.hash === '#contact') {
           window.history.pushState({}, '', window.location.pathname); // Remove the hash
@@ -232,6 +236,8 @@ const handleLogoClick = (event) => {
 
       // Trigger Zustand state change to stop the animation
       setStopAnimation(true); // This line will stop the animation
+      setIsJumping(true);
+      setHomeLinkClicked(true);
       navigate('/');
       setShowProgressBar(false); // Hide progress bar after navigation
     }, 2000); // 2-second delay before navigation
