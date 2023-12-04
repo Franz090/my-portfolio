@@ -189,7 +189,7 @@ const Header = () => {
         closeMenu();
         clearDelayedNavigation();
         if (to === '/') {
-          setStopAnimation(true);
+          setStopAnimation(true); // Set stopAnimation to true when navigating to the homepage
         } else {
           setStopAnimation(false); // Set stopAnimation to false for other links
         }
@@ -212,33 +212,34 @@ const Header = () => {
       }
     }
   };
-  const handleLogoClick = (event) => {
-    event.preventDefault();
-  
-    // Get the current pathname
-    const currentPath = window.location.pathname;
-  
-    if (currentPath === '/') {
-      // If already on the home page, scroll to the top without delay or progress bar
+  // Inside your Header component where you handle logo click
+const handleLogoClick = (event) => {
+  event.preventDefault();
+
+  // Get the current pathname
+  const currentPath = window.location.pathname;
+
+  if (currentPath === '/') {
+    // If already on the home page, scroll to the top without delay or progress bar
+    scrollTo(0, 500, true); // true means scroll to top
+  } else {
+    // Show the progress bar when clicking the logo and navigating to home or another link
+    setShowProgressBar(true);
+
+    const timeout = setTimeout(() => {
+      // Scroll to the top of the page after a delay
       scrollTo(0, 500, true); // true means scroll to top
-    } else {
-      // Show the progress bar when clicking the logo and navigating to home or another link
-      setShowProgressBar(true);
-  
-      const timeout = setTimeout(() => {
-        // Scroll to the top of the page after a delay
-        scrollTo(0, 500, true); // true means scroll to top
-  
-        // Navigate to the home page or another link after the delay
-        navigate('/');
-        setShowProgressBar(false); // Hide progress bar after navigation
-      }, 2000); // 2-second delay before navigation
-  
-      setDelayedNavigation(timeout);
-    }
-  };
-  
-  
+
+      // Trigger Zustand state change to stop the animation
+      setStopAnimation(true); // This line will stop the animation
+      navigate('/');
+      setShowProgressBar(false); // Hide progress bar after navigation
+    }, 2000); // 2-second delay before navigation
+
+    setDelayedNavigation(timeout);
+  }
+};
+
   
   const performTask = async () => {
     // Simulate performing a task (replace this with your actual task logic)

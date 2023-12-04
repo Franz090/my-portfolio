@@ -93,13 +93,13 @@ function HomePage() {
             style={{
               display: 'inline-block',
               opacity: stopAnimation ? 1 : startAnimation ? slideShowProps.opacity : slideHideProps.opacity,
-              transform: stopAnimation
-                ? 'none'
-                : startAnimation
-                ? slideShowProps.transform
-                : slideHideProps.transform.to((x) =>
-                    shouldJump(i) && letter !== 'D' ? `translateX(${x}px)` : 'translateX(0)'
-                  ),
+    transform: stopAnimation
+      ? 'none'
+      : startAnimation
+      ? slideShowProps.transform
+      : slideHideProps.transform.to((x) =>
+          shouldJump(i) && letter !== 'D' ? `translateX(${x}px)` : 'translateX(0)'
+        ),
             }}
           >
           <animated.span
