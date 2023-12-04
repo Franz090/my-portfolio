@@ -9,7 +9,9 @@ import useAnimationStore from '../store/useAnimationStore';
 function HomePage() {
   const [index, setIndex] = useState(0);
   const [completedAnimations, setCompletedAnimations] = useState(0);
-  const { startAnimation, setStartAnimation } = useAnimationStore();
+  const { startAnimation, setStartAnimation, stopAnimation, setStopAnimation } = useAnimationStore();
+
+
 
   const developerText = 'DEVELOPER';
 
@@ -81,19 +83,21 @@ function HomePage() {
             FRONTEND
           </h1>
           <h2 className="font-montserrat font-thin lg:text-5xl md:text-4xl sm:text-1xl lg:text-left text-2xl lg:tracking-[.32em] xl:tracking-[.45em] md:tracking-[.45em] tracking-[.45em]">
-      {developerText.split('').map((letter, i) => (
-        <animated.span
-          key={i}
-          style={{
-            display: 'inline-block',
-            opacity: startAnimation ? slideShowProps.opacity : slideHideProps.opacity,
-            transform: startAnimation
-              ? slideShowProps.transform
-              : slideHideProps.transform.to((x) =>
-                  shouldJump(i) && letter !== 'D' ? `translateX(${x}px)` : 'translateX(0)'
-                ),
-          }}
-        >
+        {developerText.split('').map((letter, i) => (
+          <animated.span
+            key={i}
+            style={{
+              display: 'inline-block',
+              opacity: stopAnimation ? 1 : startAnimation ? slideShowProps.opacity : slideHideProps.opacity,
+              transform: stopAnimation
+                ? 'none'
+                : startAnimation
+                ? slideShowProps.transform
+                : slideHideProps.transform.to((x) =>
+                    shouldJump(i) && letter !== 'D' ? `translateX(${x}px)` : 'translateX(0)'
+                  ),
+            }}
+          >
           <animated.span
             style={{
               display: 'inline-block',

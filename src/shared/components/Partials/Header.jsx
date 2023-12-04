@@ -4,7 +4,7 @@ import DarkModeToggle from './DarkModeToggle';
 import Hamburger from './Hamburger';
 import useHeaderStore from '../../../store/useHeaderStore';
 import useHeaderhook from '../../../hooks/useHeaderhook';
-
+import useAnimationStore from '../../../store/useAnimationStore';
 const scrollTo = (targetY, duration = 500) => {
   const start = window.scrollY;
   const startTime = performance.now();
@@ -60,6 +60,7 @@ const HeaderLink = ({ to, text, isActive, onClick, screenWidth, isContact }) => 
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { setStopAnimation } = useAnimationStore(); 
  
 
   const {
@@ -187,8 +188,11 @@ const Header = () => {
         setActiveLink(to);
         closeMenu();
         clearDelayedNavigation();
-  
-        // Remove the hash from the URL if navigating away from the contact section
+        if (to === '/') {
+          setStopAnimation(true); // Set stopAnimation to true when navigating to the homepage
+        } else {
+          setStopAnimation(false); // Set stopAnimation to false for other links
+        }
         if (window.location.hash === '#contact') {
           window.history.pushState({}, '', window.location.pathname); // Remove the hash
         }
