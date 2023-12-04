@@ -189,7 +189,7 @@ const Header = () => {
         closeMenu();
         clearDelayedNavigation();
         if (to === '/') {
-          setStopAnimation(true); // Set stopAnimation to true when navigating to the homepage
+          setStopAnimation(true);
         } else {
           setStopAnimation(false); // Set stopAnimation to false for other links
         }

@@ -1,5 +1,5 @@
-// animationStore.js
-import create from 'zustand';
+
+import {create} from 'zustand';
 
 const useAnimationStore = create((set) => ({
   startAnimation: false,
