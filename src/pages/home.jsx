@@ -9,7 +9,8 @@ import useAnimationStore from '../store/useAnimationStore';
 function HomePage() {
   const [index, setIndex] = useState(0);
   const [completedAnimations, setCompletedAnimations] = useState(0);
-  const { startAnimation, setStartAnimation, stopAnimation, setStopAnimation } = useAnimationStore();
+  const { startAnimation, setStartAnimation, stopAnimation, setIsJumping } = useAnimationStore();
+
 
 
 
@@ -53,18 +54,21 @@ function HomePage() {
     reset: true,
     reverse: true,
     config: { duration: 300 },
-    delay: index === 0 ? 2000 : 0, // Adjust the delay as needed
+    delay: index === 0 ? 2000 : 0,
     onRest: () => {
       if (startAnimation && completedAnimations < developerText.length - 1) {
         setIndex((i) => (i + 1) % developerText.length);
         setCompletedAnimations((count) => count + 1);
+        setIsJumping(true); // Trigger jump animation using Zustand
+      } else {
+        setIsJumping(false); // Reset jump animation using Zustand
       }
     },
   });
 
   const shouldJump = (i) => {
     const jumpingIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-    return jumpingIndices.includes(i);
+    return jumpingIndices.includes(i) && useAnimationStore.getState().isJumping; // Read isJumping state from Zustand
   };
 
 

@@ -1,11 +1,13 @@
 // animationStore.js
-import { create } from 'zustand';
+import create from 'zustand';
 
 const useAnimationStore = create((set) => ({
   startAnimation: false,
-  stopAnimation: false, // Add stopAnimation state
+  stopAnimation: false,
+  isJumping: false, // Add isJumping state
   setStartAnimation: (value) => set({ startAnimation: value }),
-  setStopAnimation: (value) => set({ stopAnimation: value }), // Add setter for stopAnimation
+  setStopAnimation: (value) => set({ stopAnimation: value }),
+  setIsJumping: (value) => set({ isJumping: value }), // Setter for isJumping state
 }));
 
 export default useAnimationStore;
