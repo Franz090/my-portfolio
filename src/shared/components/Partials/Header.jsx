@@ -60,7 +60,7 @@ const HeaderLink = ({ to, text, isActive, onClick, screenWidth, isContact }) => 
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { setStopAnimation, setIsJumping,setHomeLinkClicked } = useAnimationStore(); 
+  const { setStopAnimation, setIsJumping,setHomeLinkClicked, setShowImage } = useAnimationStore(); 
  
 
   const {

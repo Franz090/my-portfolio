@@ -1,23 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import ErrorBoundary from '../shared/components/Partials/ErrorBoundary';
-import { Suspense } from 'react';
-import LazyImage from '../components/Home/LazyImage';
 import { useSpring, animated } from '@react-spring/web';
 import useAnimationStore from '../store/useAnimationStore';
+import myimg from '../assets/images/my-profile.png';
 
 
 function HomePage() {
   const [index, setIndex] = useState(0);
   const [completedAnimations, setCompletedAnimations] = useState(0);
-  const { startAnimation, setStartAnimation, stopAnimation, setIsJumping,setHomeLinkClicked ,homeLinkClicked} = useAnimationStore();
+  const { startAnimation, setStartAnimation, stopAnimation, setIsJumping,homeLinkClicked, showImage, setShowImage} = useAnimationStore();
  
-
-
-
-
-
-
   const developerText = 'DEVELOPER';
+
+  const imageSpring = useSpring({
+    opacity: showImage ? 1 : 0,
+    transform: showImage ? 'translateY(0)' : 'translateY(-100%)', // Change translateY value
+    config: { duration: 800 },
+  });
+
+  useEffect(() => {
+    // Set a delay to show the image after a certain time
+    const showImageTimeout = setTimeout(() => {
+      setShowImage(true);
+    }, 500);
+
+    return () => clearTimeout(showImageTimeout);
+  }, []);
 
   useEffect(() => {
     const hasReloaded = localStorage.getItem('hasReloaded');
@@ -86,13 +93,14 @@ function HomePage() {
  
 
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:mt-11 md:mt-12">
+    <section className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:mt-6 md:mt-12">
       <div className="col-span-1 flex flex-col justify-center items-center">
-        <ErrorBoundary>
-          <Suspense fallback={<div>Loading...</div>}>
-            <LazyImage />
-          </Suspense>
-        </ErrorBoundary>
+      <animated.img
+          src={myimg}
+          alt="Description of the image"
+          className="my-profile  lg:right-[-67px] xl:w-4/7 lg:w-[128rem] relative"
+          style={imageSpring}
+        />
       </div>
       <div className="col-span-1 flex flex-col justify-center items-center relative xl:right-[54px] lg:top-[85px]">
         <div className="text-center sm:text-center lg:pb-44 md:pb-3 lg:mt-12 md:mb-9 sm:mb-6">
