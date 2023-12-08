@@ -168,6 +168,7 @@ const Header = () => {
   };
 
   const handleLinkClick = (to, event) => {
+    const excludedPages = ['/about', '/resume', '/skills', '/project'];
     const loadingAnimationActive = document.querySelector('.loading-container');
     const isScrollingToContact = to === '#contact';
 
@@ -196,6 +197,13 @@ const Header = () => {
           setStopAnimation(false);
           setIsJumping(false);
           setHomeLinkClicked(false);
+        }
+        if (excludedPages.includes(to)) {
+          // If clicking any of the excluded pages, prevent 'DEVELOPER' text animation
+          useAnimationStore.getState().setIsJumping(false);
+          useAnimationStore.getState().setStopAnimation(true);
+          useAnimationStore.getState().setHomeLinkClicked(true);
+
         }
         if (window.location.hash === '#contact') {
           window.history.pushState({}, '', window.location.pathname); // Remove the hash
