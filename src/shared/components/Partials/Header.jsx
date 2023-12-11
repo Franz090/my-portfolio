@@ -193,16 +193,22 @@ const Header = () => {
           setStopAnimation(true);
           setIsJumping(true);
           setHomeLinkClicked(true);
+          setShowImage(true);
         } else {
+          useAnimationStore.getState().setCurrentPage(to);
+          
           setStopAnimation(false);
           setIsJumping(false);
           setHomeLinkClicked(false);
+          setShowImage(false);
         }
         if (excludedPages.includes(to)) {
           // If clicking any of the excluded pages, prevent 'DEVELOPER' text animation
           useAnimationStore.getState().setIsJumping(false);
           useAnimationStore.getState().setStopAnimation(true);
           useAnimationStore.getState().setHomeLinkClicked(true);
+          useAnimationStore.getState().setShowImage(true);
+        
 
         }
         if (window.location.hash === '#contact') {
@@ -246,6 +252,7 @@ const handleLogoClick = (event) => {
       setStopAnimation(true); // This line will stop the animation
       setIsJumping(true);
       setHomeLinkClicked(true);
+      
       navigate('/');
       setShowProgressBar(false); // Hide progress bar after navigation
     }, 2000); // 2-second delay before navigation
