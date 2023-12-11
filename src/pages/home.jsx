@@ -7,6 +7,8 @@ import myimg from '../assets/images/my-profile.png';
 function HomePage() {
   const [index, setIndex] = useState(0);
   const [completedAnimations, setCompletedAnimations] = useState(0);
+  const [frontendAnimation, setFrontendAnimation] = useState(false);
+
   const { startAnimation, setStartAnimation, stopAnimation, setIsJumping,homeLinkClicked, showImage, setShowImage,setCurrentPage} = useAnimationStore();
  
   const developerText = 'DEVELOPER';
@@ -92,8 +94,28 @@ function HomePage() {
       setIsJumping(false); // Reset Zustand state for jumping animation
     }
   }, [index, startAnimation, stopAnimation]);
-  
- 
+
+  useEffect(() => {
+    setFrontendAnimation(true); // Start the animation after the component mounts
+
+    // Stop the animation after 3 seconds
+    const stopAnimationTimeout = setTimeout(() => {
+      setFrontendAnimation(true);
+    }, 3000);
+
+    return () => {
+      clearTimeout(stopAnimationTimeout);
+    };
+  }, []);
+
+  const frontendSpring = useSpring({
+    from: { opacity: 0, transform: 'translateY(-50px)' },
+    to: {
+      opacity: frontendAnimation ? 1 : 0, // Set opacity based on animation state
+      transform: frontendAnimation ? 'translateY(0)' : 'translateY(50px)', // Move text up or down based on animation state
+    },
+    config: { duration: 800 },
+  });
 
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:mt-6 md:mt-12">
@@ -109,9 +131,12 @@ function HomePage() {
       </div>
       <div className="col-span-1 flex flex-col justify-center items-center relative xl:right-[54px] lg:top-[85px]">
         <div className="text-center sm:text-center lg:pb-44 md:pb-3 lg:mt-12 md:mb-9 sm:mb-6">
-          <h1 className='font-montserrat font-semibold xl:text-7xl md:text-4xl text-4xl lg:text-left md:text-[3.8rem] lg:text-7xl md:pb-4 sm:pb-2 lg:pb-5 xl:tracking-[.2em] tracking-[.2em] lg:tracking-[.1em] '>
-            FRONTEND
-          </h1>
+        <animated.h1
+        className='font-montserrat font-semibold xl:text-7xl md:text-4xl text-4xl lg:text-left md:text-[3.8rem] lg:text-7xl md:pb-4 sm:pb-2 lg:pb-5 xl:tracking-[.2em] tracking-[.2em] lg:tracking-[.1em]'
+        style={frontendSpring}
+      >
+        FRONTEND
+      </animated.h1>
           <h2 className="font-montserrat font-thin lg:text-5xl md:text-4xl sm:text-1xl lg:text-left text-2xl lg:tracking-[.32em] xl:tracking-[.45em] md:tracking-[.45em] tracking-[.45em]">
         {developerText.split('').map((letter, i) => (
           <animated.span
