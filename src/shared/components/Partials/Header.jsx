@@ -75,7 +75,9 @@ const Header = () => {
     progress, // Add Zustand state for progress
     setDelayedNavigation, // Add Zustand setter for delayedNavigation
     setShowProgressBar, // Add Zustand setter for showProgressBar
-    setProgress, // Add Zustand setter for progress
+    setProgress, 
+    loadingAnimationActive,
+    setLoadingAnimationActive,
   } = useHeaderStore();
         // Use the custom hook to handle location changes
         useHeaderhook(setActiveLink, setScreenWidth);
@@ -171,61 +173,61 @@ const Header = () => {
     const excludedPages = ['/about', '/resume', '/skills', '/project'];
     const loadingAnimationActive = document.querySelector('.loading-container');
     const isScrollingToContact = to === '#contact';
-
+  
     if (isScrollingToContact) {
       scrollToContact();
+      setActiveLink('#contact');
       if (!menuOpen) {
         window.history.pushState({}, '', '#contact');
       } else {
-        window.history.pushState({}, '', window.location.pathname); // Remove the hash
+        window.history.pushState({}, '', window.location.pathname);
+        setActiveLink('#contact');
       }
       closeMenu();
       clearDelayedNavigation();
     } else {
       if (activeLink === to) {
-        // If the clicked link is already active, scroll to the top
-        scrollTo(0, 500, true); // true means scroll to top
+        // If the clicked link is already active, scroll to the top immediately without delay or progress bar
+        scrollTo(0, 0, true); // true means scroll to top immediately
+        setShowProgressBar(false);
       } else {
         setActiveLink(to);
         closeMenu();
         clearDelayedNavigation();
         if (to === '/') {
           setStopAnimation(true);
+          setLoadingAnimationActive(true);
           setIsJumping(true);
           setHomeLinkClicked(true);
           setShowImage(true);
         } else {
           useAnimationStore.getState().setCurrentPage(to);
-          
+          setLoadingAnimationActive(false); 
           setStopAnimation(false);
           setIsJumping(false);
           setHomeLinkClicked(false);
           setShowImage(false);
         }
         if (excludedPages.includes(to)) {
-          // If clicking any of the excluded pages, prevent 'DEVELOPER' text animation
           useAnimationStore.getState().setIsJumping(false);
           useAnimationStore.getState().setStopAnimation(true);
           useAnimationStore.getState().setHomeLinkClicked(true);
           useAnimationStore.getState().setShowImage(true);
-        
-
         }
         if (window.location.hash === '#contact') {
-          window.history.pushState({}, '', window.location.pathname); // Remove the hash
+          window.history.pushState({}, '', window.location.pathname);
         }
+  if (!loadingAnimationActive && activeLink !== to && activeLink !== '#contact') {
+  setShowProgressBar(true);
+}
   
-        // Show the progress bar when navigating away from the current link
-        if (!loadingAnimationActive && activeLink !== to) {
-          setShowProgressBar(true);
-        }
-  
+        const shouldScrollTopImmediately = window.location.pathname === to && !loadingAnimationActive;
+        const delayTime = shouldScrollTopImmediately ? 0 : 2000; // Set delay time based on conditions
         const timeout = setTimeout(() => {
-          // Update shouldScrollTop based on the condition
           scrollTo(0, 500, window.location.pathname !== to, false);
           navigate(to);
           setShowProgressBar(false);
-        }, 2000);
+        }, delayTime);
         setDelayedNavigation(timeout);
       }
     }
