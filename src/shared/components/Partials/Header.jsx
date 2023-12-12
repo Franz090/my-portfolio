@@ -133,6 +133,7 @@ const Header = () => {
             // Set 'Contact' as active
             setActiveLink('#contact');
             scrollToContact();
+            window.history.pushState({}, '', '#contact');
           } else {
             // If the URL doesn't contain '#contact', scroll to the top
             scrollTo(0);
