@@ -145,6 +145,19 @@ const Header = () => {
           const path = location.pathname;
           setActiveLink(path); // Set the active link based on the path
         }, [location.pathname]);
+        useEffect(() => {
+          const timer = setInterval(() => {
+            setProgress((prevProgress) => {
+              const updatedProgress = prevProgress + 0.01;
+              if (updatedProgress >= 1) {
+                clearInterval(timer);
+                setShowProgressBar(false);
+              }
+              return updatedProgress;
+            });
+          }, 50);
+          return () => clearInterval(timer);
+       }, []);
         
 
   const toggleMenu = () => {
@@ -168,11 +181,14 @@ const Header = () => {
       setDelayedNavigation(null);
     }
   };
+  
 
   const handleLinkClick = (to, event) => {
     const excludedPages = ['/about', '/resume', '/skills', '/project'];
     const loadingAnimationActive = document.querySelector('.loading-container');
     const isScrollingToContact = to === '#contact';
+
+ 
   
     if (isScrollingToContact) {
       scrollToContact();
@@ -190,10 +206,12 @@ const Header = () => {
         // If the clicked link is already active, scroll to the top immediately without delay or progress bar
         scrollTo(0, 0, true); // true means scroll to top immediately
         setShowProgressBar(false);
-      } else {
+        
+      }else {
         setActiveLink(to);
         closeMenu();
         clearDelayedNavigation();
+        
         if (to === '/') {
           setStopAnimation(true);
           setLoadingAnimationActive(true);
@@ -221,6 +239,9 @@ const Header = () => {
   setShowProgressBar(true);
 }
   
+if (location.pathname !== to) {
+  setShowProgressBar(true);
+}
         const shouldScrollTopImmediately = window.location.pathname === to && !loadingAnimationActive;
         const delayTime = shouldScrollTopImmediately ? 0 : 2000; // Set delay time based on conditions
         const timeout = setTimeout(() => {
