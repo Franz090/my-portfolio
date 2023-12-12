@@ -61,6 +61,7 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { setStopAnimation, setIsJumping,setHomeLinkClicked, setShowImage } = useAnimationStore(); 
+  
  
 
   const {
@@ -121,6 +122,7 @@ const Header = () => {
             window.history.pushState({}, '', window.location.pathname); // Remove the hash
           }
         };
+        
         
  
 
@@ -253,37 +255,38 @@ if (location.pathname !== to) {
       }
     }
   };
-  // Inside your Header component where you handle logo click
-const handleLogoClick = (event) => {
-  event.preventDefault();
-
-  // Get the current pathname
-  const currentPath = window.location.pathname;
-
-  if (currentPath === '/') {
-    // If already on the home page, scroll to the top without delay or progress bar
-    scrollTo(0, 500, true); // true means scroll to top
-  } else {
-    // Show the progress bar when clicking the logo and navigating to home or another link
-    setShowProgressBar(true);
-
-    const timeout = setTimeout(() => {
-      // Scroll to the top of the page after a delay
-      scrollTo(0, 500, true); // true means scroll to top
-
-      // Trigger Zustand state change to stop the animation
-      setStopAnimation(true); // This line will stop the animation
-      setIsJumping(true);
-      setHomeLinkClicked(true);
-      
-      navigate('/');
-      setShowProgressBar(false); // Hide progress bar after navigation
-    }, 2000); // 2-second delay before navigation
-
-    setDelayedNavigation(timeout);
-  }
-};
-
+  const handleLogoClick = (event) => {
+    event.preventDefault();
+    const currentPath = window.location.pathname;
+  
+    // Check if the current path is already the home page
+    if (currentPath === '/') {
+      // If already on the home page, set the active link to '/' immediately
+      setActiveLink('/');
+      scrollTo(0, 500, true); // Scroll to top without delay or progress bar
+    } else {
+      // If not on the home page, navigate to the home page and set active link after a delay
+      setActiveLink('/'); // Set the active link to '/' immediately
+      setShowProgressBar(true); // Show progress bar when navigating to home
+  
+      const timeout = setTimeout(() => {
+        scrollTo(0, 500, true); // Scroll to top after a delay
+        navigate('/'); // Navigate to the home page
+  
+        // Perform other actions specific to navigating to the home page
+        setStopAnimation(true);
+        setIsJumping(true);
+        setHomeLinkClicked(true);
+        setShowImage(true);
+  
+        setShowProgressBar(false); // Hide progress bar after navigation
+      }, 2000); // 2-second delay before navigation
+  
+      setDelayedNavigation(timeout);
+    }
+  };
+  
+  
   
   const performTask = async () => {
     // Simulate performing a task (replace this with your actual task logic)
