@@ -1,40 +1,66 @@
 import React, { useState, useEffect } from 'react';
-import ContactInfo from '../../../components/Contact/ContactInfo'
+import { useSpring, animated } from '@react-spring/web';
+import ContactInfo from '../../../components/Contact/ContactInfo';
+import useContactAnimationStore from '../../../store/useContactAnimationStore';
 
 const Contact = () => {
-  const [showContact, setShowContact] = useState(false);
+  const { showText, animateText, setShowText, setAnimateText } = useContactAnimationStore();
 
-
-
-
+  // Track scroll position
   useEffect(() => {
     const handleScroll = () => {
-      const contactSection = document.getElementById('contact');
-      const contactPosition = contactSection.getBoundingClientRect().top;
+      const contactText = document.getElementById('contact');
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const contactPosition = contactText.offsetTop + contactText.offsetHeight / 2;
 
-      const triggerPoint = window.innerHeight * 0.7;
-
-      if (contactPosition < triggerPoint) {
-        setShowContact(true);
+      if (scrollPosition > contactPosition && animateText) {
+        setShowText(true);
+        setAnimateText(false); // Disable further animations
       }
-     
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [animateText, setShowText, setAnimateText]);
+
+  const textAnimation = useSpring({
+    opacity: showText ? 1 : 0,
+    transform: showText ? 'translateY(0)' : 'translateY(-20px)',
+    config: {
+      duration: 800 // Duration in milliseconds (0.5 seconds)
+    }
+  });
+
+  const contactInfoAnimation = useSpring({
+    opacity: showText ? 1 : 0,
+    transform: showText ? 'translateX(0)' : 'translateX(-20%)',
+    config: {
+      duration: 800 // Duration in milliseconds (0.5 seconds)
+    }
+  });
+
+  const contactMeAnimation = useSpring({
+    opacity: showText ? 1 : 0,
+    transform: showText ? 'translateY(0)' : 'translateY(-20px)',
+    config: {
+      duration: 800 // Duration in milliseconds (0.5 seconds)
+    }
+  });
+
 
   return (
     <>
-      <div id="contact" className={`md:px-10 sm:px-10 xl:px-32 fade-in ${showContact ? 'show' : 'hide'}`} > 
-       
-        <h6 className="text-4xl md:text-4xl lg:text-4xl font-semibold font-montserrat text-center text-custom-gray tracking-tight pb-1 ">Contact Me</h6>
+      <div id="contact" className='md:px-10 sm:px-10 xl:px-32' > 
+      <h6 className="text-4xl md:text-4xl lg:text-4xl font-semibold font-montserrat text-center text-custom-gray tracking-tight pb-1">
+          <animated.span style={contactMeAnimation}>Contact Me</animated.span>
+        </h6>
 
  
         <div className="grid lg:grid-cols-3 grid-cols-1  gap-4 lg:pt-11 pt-7 ">
          
-          <div className='col-span-1 '>
+        <animated.div style={contactInfoAnimation} className='col-span-1'>
           <h2 className='capitalize font-montserrat  text-custom-gray tracking-tight leading-10 font-semibold text-justify  pb-5 lg:w-3/4 lg:text-[24px] md:text-2xl sm:text-2xl text-2xl lg:pt-0 pt-4'>Contact Information</h2>
             <div className='flex pb-3'>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-6 text-custom-gray ">
@@ -60,10 +86,10 @@ const Contact = () => {
             <span className="text-custom-gray  tracking-widest lg:text-[17px] text-[18px] font-roboto font-semibold ml-5 leading-tightest">Address</span>
              <span className="ml-5  text-custom-gray tracking-tight lg:text-[16px] font-light antialiased	">Zamora St. Santo Angel Sur, Santa Cruz Laguna</span>
              </div>
-            </div>
-            
-          
-          </div>
+         </div> 
+            </animated.div>
+         
+         
           <div className="lg:col-span-2 col-span-1">  
          
           <ContactInfo />
