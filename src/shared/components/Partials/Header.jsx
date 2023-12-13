@@ -155,9 +155,16 @@ const Header = () => {
         }, []); // Run this effect only once on initial mount
 
         useEffect(() => {
-          // Update active link based on the location pathname
-          const path = location.pathname;
-          setActiveLink(path); // Set the active link based on the path
+          const isReloadedOnContact = window.location.hash === '#contact';
+
+          if (isReloadedOnContact) {
+            // If the page is reloaded on the contact page, set 'Contact' as active link
+            setActiveLink('#contact');
+          } else {
+            // If not on the contact page, set the active link based on the pathname
+            const path = location.pathname;
+            setActiveLink(path);
+          } 
         }, [location.pathname]);
         useEffect(() => {
           const timer = setInterval(() => {
