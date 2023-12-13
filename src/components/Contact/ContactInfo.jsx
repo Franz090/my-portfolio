@@ -230,7 +230,7 @@ export default function ContactInfo() {
       <button
       id="submit-button"
     type="submit"
-    className={` leading-tight mb-3 pt-3 pb-3 font-light  hover:bg-zinc-500 rounded w-full bg-zinc-600 shadow-lg hover:shadow-gray-700/50 ${
+    className={`subpixel-antialiased leading-tight mb-3 pt-3 pb-3 font-light  tracking-tight text-[17px] hover:bg-zinc-500 rounded w-full bg-zinc-600 shadow-lg hover:shadow-gray-700/50 ${
       loading ? 'loading-button' : ''
     }`}
     disabled={loading}
