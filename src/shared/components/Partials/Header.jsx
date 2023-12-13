@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-
-import { useSpring, animated } from '@react-spring/web';
+import { useSpring, animated,useTrail } from '@react-spring/web';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import DarkModeToggle from './DarkModeToggle';
 import Hamburger from './Hamburger';
@@ -56,7 +55,11 @@ const HeaderLink = ({ to, text, isActive, onClick, screenWidth, isContact }) => 
     screenWidth <= 1024 ? 'mobile-link' : 'desktop-link'
   }`;
 
-  return <li className={linkClassName}>{linkText}</li>;
+  return (
+    <div className={linkClassName}>
+      {linkText}
+    </div>
+  );
 };
 
 const Header = () => {
@@ -134,6 +137,7 @@ const Header = () => {
         useEffect(() => {
         setShowLogo(true);
         }, []);
+
         useEffect(() => {
           // Check if the URL contains '#contact' on page load
           if (window.location.hash === '#contact') {
@@ -337,14 +341,22 @@ if (location.pathname !== to) {
 
   
 
-  const linksData = [
-    { to: '/', text: 'HOME' },
-    { to: '/about', text: 'ABOUT' },
-    { to: '/resume', text: 'RESUME' },
-    { to: '/skills', text: 'SKILLS' },
-    { to: '/project', text: 'PROJECT' },
-    { to: '#contact', text: 'CONTACT', isContact: true },
-  ];
+const linksData = [
+  { to: '/', text: 'HOME' },
+  { to: '/about', text: 'ABOUT' },
+  { to: '/resume', text: 'RESUME' },
+  { to: '/skills', text: 'SKILLS' },
+  { to: '/project', text: 'PROJECT' },
+  { to: '#contact', text: 'CONTACT', isContact: true },
+];
+
+  const linksTrail = useTrail(linksData.length, {
+    opacity: 1,
+    transform: 'translateY(0)',
+    from: { opacity: 0, transform: 'translateY(-20px)' },
+    delay: 500, // Adjust delay as needed
+  });
+
   const headerClass = menuOpen ? 'header-open' : '';
 
   return (
@@ -376,17 +388,23 @@ if (location.pathname !== to) {
 
             {menuOpen || window.innerWidth > 1024 ? (
               <ul className="lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 nav-links">
-                {linksData.map((link, index) => (
-                  <HeaderLink
-                  key={index}
-                  to={link.to}
-                  text={link.text}
-                  isActive={activeLink === link.to}
-                  onClick={(event) => handleLinkClick(link.to, event)} // Pass the event argument here
-                  screenWidth={screenWidth}
-                  isContact={link.isContact}
-                />
-                ))}
+                {linksTrail.map((style, index) => {
+    const linkClassName = `lg:mx-1 my-4 lg:my-0 font-montserrat font-semibold ${
+      screenWidth <= 1024 ? 'mobile-link' : 'desktop-link'
+    }`;
+    return (
+      <animated.li key={index} style={style} className={linkClassName}>
+      <HeaderLink
+        to={linksData[index].to}
+        text={linksData[index].text}
+        isActive={activeLink === linksData[index].to}
+        onClick={(event) => handleLinkClick(linksData[index].to, event)}
+        screenWidth={screenWidth}
+        isContact={linksData[index].isContact}
+      />
+    </animated.li>
+  );
+})}
                 {screenWidth >= 1024 && (
                   <div className='ml-5 dark-mode-toggle visible '>
                     <DarkModeToggle id={2} />
@@ -395,17 +413,23 @@ if (location.pathname !== to) {
               </ul>
             ) : (
               <ul className="lg:flex lg:items-center z-[-1] lg:z-auto lg:static absolute w-full right-0 lg:w-auto lg:py-0 py-4  lg:pr-0 pr-7 nav-links">
-                {linksData.map((link, index) => (
-                  <HeaderLink
-                  key={index}
-                  to={link.to}
-                  text={link.text}
-                  isActive={activeLink === link.to}
-                  onClick={(event) => handleLinkClick(link.to, event)} // Pass the event argument here
-                  screenWidth={screenWidth}
-                  isContact={link.isContact}
-                />
-                ))}
+               {linksTrail.map((style, index) => {
+    const linkClassName = `lg:mx-1 my-4 lg:my-0 font-montserrat font-semibold ${
+      screenWidth <= 1024 ? 'mobile-link' : 'desktop-link'
+    }`;
+    return (
+      <animated.li key={index} style={style} className={linkClassName}>
+      <HeaderLink
+        to={linksData[index].to}
+        text={linksData[index].text}
+        isActive={activeLink === linksData[index].to}
+        onClick={(event) => handleLinkClick(linksData[index].to, event)}
+        screenWidth={screenWidth}
+        isContact={linksData[index].isContact}
+      />
+    </animated.li>
+  );
+})}
                 <div className='ml-2'>
                   <DarkModeToggle id={3} />
                 </div>
