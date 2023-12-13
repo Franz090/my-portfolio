@@ -40,7 +40,7 @@ const Contact = () => {
     opacity: showText ? 1 : 0,
     transform: showText ? 'translateY(0)' : 'translateY(-20px)',
     config: {
-      duration: 800 // Duration in milliseconds (0.5 seconds)
+      duration: 800, tension: 200 // Duration in milliseconds (0.5 seconds)
     }
   });
 
