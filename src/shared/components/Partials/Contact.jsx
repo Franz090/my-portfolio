@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import ContactInfo from '../../../components/Contact/ContactInfo';
 import useContactAnimationStore from '../../../store/useContactAnimationStore';
 
 const Contact = () => {
   const { showText, animateText, setShowText, setAnimateText } = useContactAnimationStore();
+  
 
   // Track scroll position
   useEffect(() => {
@@ -25,19 +26,13 @@ const Contact = () => {
     };
   }, [animateText, setShowText, setAnimateText]);
 
-  const textAnimation = useSpring({
-    opacity: showText ? 1 : 0,
-    transform: showText ? 'translateY(0)' : 'translateY(-20px)',
-    config: {
-      duration: 800 // Duration in milliseconds (0.5 seconds)
-    }
-  });
+ 
 
   const contactInfoAnimation = useSpring({
     opacity: showText ? 1 : 0,
     transform: showText ? 'translateX(0)' : 'translateX(-20%)',
     config: {
-      duration: 800 // Duration in milliseconds (0.5 seconds)
+      duration: 800, tension: 200 // Duration in milliseconds (0.5 seconds)
     }
   });
 
@@ -45,7 +40,16 @@ const Contact = () => {
     opacity: showText ? 1 : 0,
     transform: showText ? 'translateY(0)' : 'translateY(-20px)',
     config: {
-      duration: 800 // Duration in milliseconds (0.5 seconds)
+      duration: 800, tension: 200,friction: 120 // Duration in milliseconds (0.5 seconds)
+    }
+  });
+
+  const contactFormAnimation = useSpring({
+    opacity: showText ? 1 : 0,
+   
+    transform: showText ? 'translateY(0)' : 'translateY(20%)', // Slide from bottom (100% of its height)
+    config: {
+      duration: 800, tension: 200
     }
   });
 
@@ -92,7 +96,9 @@ const Contact = () => {
          
           <div className="lg:col-span-2 col-span-1">  
          
+          <animated.div style={contactFormAnimation}>
           <ContactInfo />
+        </animated.div>
           </div>
         </div>
       </div>
