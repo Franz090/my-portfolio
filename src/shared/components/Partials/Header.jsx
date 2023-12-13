@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+
+import { useSpring, animated } from '@react-spring/web';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import DarkModeToggle from './DarkModeToggle';
 import Hamburger from './Hamburger';
@@ -61,6 +63,8 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { setStopAnimation, setIsJumping,setHomeLinkClicked, setShowImage } = useAnimationStore(); 
+  const [showLogo, setShowLogo] = useState(false);
+
   
  
 
@@ -122,11 +126,14 @@ const Header = () => {
             window.history.pushState({}, '', window.location.pathname); // Remove the hash
           }
         };
+        const logoAnimation = useSpring({
+        opacity: showLogo ? 1 : 0,
+        transform: showLogo ? 'translateY(0)' : 'translateY(-100px)',
+        });
         
-        
- 
-
-      
+        useEffect(() => {
+        setShowLogo(true);
+        }, []);
         useEffect(() => {
           // Check if the URL contains '#contact' on page load
           if (window.location.hash === '#contact') {
@@ -349,13 +356,15 @@ if (location.pathname !== to) {
         <div className="md:container mx-auto xl:px-24 md:px-1 sm:px-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center justify-between space-x-2 ">
-              <span className="text-4xl lg:text-4xl  cursor-pointer ">
+              <animated.span
+              style={logoAnimation}
+              className="text-4xl lg:text-4xl  cursor-pointer ">
               <Link to="/" onClick={handleLogoClick}>
-                  <div className='logo-name tracking-wider'>
-                    <span className='uppercase text-5xl  leading-[0rem] third'>francis</span>
-                  </div>
-                </Link>
-              </span>
+              <div className='logo-name tracking-wider'>
+              <span className='uppercase text-5xl  leading-[0rem] third'>francis</span>
+              </div>
+              </Link>
+              </animated.span>
               {screenWidth <= 1024 && (
                 <div className='fix-dark '>
                   <DarkModeToggle id={1} />
