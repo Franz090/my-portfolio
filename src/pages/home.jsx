@@ -8,6 +8,7 @@ function HomePage() {
   const [index, setIndex] = useState(0);
   const [completedAnimations, setCompletedAnimations] = useState(0);
   const [frontendAnimation, setFrontendAnimation] = useState(false);
+  const [shineLight, setShineLight] = useState(false); 
 
   const { startAnimation, setStartAnimation, stopAnimation, setIsJumping,homeLinkClicked, showImage, setShowImage,setCurrentPage} = useAnimationStore();
  
@@ -108,14 +109,33 @@ function HomePage() {
     };
   }, []);
 
+  useEffect(() => {
+    setFrontendAnimation(true); // Start the animation after the component mounts
+
+    // Add shining light effect by toggling the state at intervals
+    const shiningInterval = setInterval(() => {
+      setShineLight((prev) => !prev);
+    }, 1000); // Change the interval duration as needed
+
+    return () => {
+      clearInterval(shiningInterval);
+    };
+  }, []);
+
   const frontendSpring = useSpring({
-    from: { opacity: 0, transform: 'translateY(-50px)' },
+    from: {
+      opacity: 0,
+      transform: 'translateY(-50px)',
+      filter: 'drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5))',
+    },
     to: {
-      opacity: frontendAnimation ? 1 : 0, // Set opacity based on animation state
-      transform: frontendAnimation ? 'translateY(0)' : 'translateY(50px)', // Move text up or down based on animation state
+      opacity: frontendAnimation ? 1 : 0,
+      transform: frontendAnimation ? 'translateY(0)' : 'translateY(50px)',
+      filter: shineLight ? 'drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.8))' : 'drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5))',
     },
     config: { duration: 800 },
   });
+
 
   const isHomeLinkClickedAgain = homeLinkClicked && window.location.pathname === '/';
 
