@@ -55,17 +55,19 @@ const useDarkModeHook = (id) => {
     const initializeToggleState = () => {
       const isFirstLoad = localStorage.getItem('isFirstLoad') !== 'false';
       if (isFirstLoad) {
-        toggleElement.style.transitionDuration = '0s';
-
-        // Set the background color of the toggle based on isDarkMode
-        toggleElement.style.backgroundColor = isDarkMode ? 'var(--bg-color)' : 'var(--font-color)';
-
-        toggleElement.checked = isDarkMode;
+        const toggleElement = document.querySelector(`#toggle${id}`);
+    
+        if (toggleElement) {
+          toggleElement.style.transitionDuration = '0s';
+          toggleElement.style.backgroundColor = isDarkMode ? 'var(--bg-color)' : 'var(--font-color)';
+          toggleElement.checked = isDarkMode;
+        }
+    
         localStorage.setItem('isFirstLoad', 'false');
       }
       localStorage.setItem('darkMode', isDarkMode);
     };
-
+    
     setThemeColors();
     const navColor = isDarkMode ? '#181818' : '#fffafa';
   if (navElement) {
