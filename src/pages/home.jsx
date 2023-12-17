@@ -8,6 +8,10 @@ function HomePage() {
   const [index, setIndex] = useState(0);
   const [completedAnimations, setCompletedAnimations] = useState(0);
   const [frontendAnimation, setFrontendAnimation] = useState(false);
+  const [showShineEffect, setShowShineEffect] = useState(true);
+  const [shineVisibility, setShineVisibility] = useState(true);
+
+
  
 
   const { startAnimation, setStartAnimation, stopAnimation, setIsJumping,homeLinkClicked, showImage, setShowImage,setCurrentPage} = useAnimationStore();
@@ -27,7 +31,7 @@ function HomePage() {
     // Set a delay to show the image after a certain time
     const showImageTimeout = setTimeout(() => {
       setShowImage(true);
-    }, 500);
+    }, 5000);
 
     return () => clearTimeout(showImageTimeout);
   }, []);
@@ -114,6 +118,47 @@ function HomePage() {
     config: { duration: 800 },
   });
 
+const shineLightProps = useSpring({
+  from: {
+    textShadow: '0 0 10px rgba(255, 255, 255, 0.8)', // Initial text shadow
+  },
+  to: async (next) => {
+    while (true) {
+      await next({
+        textShadow: '0 0 40px rgba(255, 255, 255, 0.8)', // Increase shadow to create shine effect
+        config: { duration: 500 },
+      });
+      await next({
+        textShadow: '0 0 10px rgba(255, 255, 255, 0.8)', // Revert back to the initial shadow
+        config: { duration: 500 },
+      });
+    }
+  },
+});
+useEffect(() => {
+  const shineEffectTimeout = setTimeout(() => {
+    setShineVisibility(false); // Set intermediate state to gradually stop the shine effect
+  }, 2600);
+
+  return () => {
+    clearTimeout(shineEffectTimeout);
+  };
+}, []);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    if (shineVisibility) {
+      setShowShineEffect((prev) => !prev); // Toggle setShowShineEffect to gradually stop visibility
+    } else {
+      clearInterval(interval);
+    }
+  }, 500); // Adjust the interval duration as needed
+
+  return () => {
+    clearInterval(interval);
+  };
+}, [shineVisibility]);
+
   const isHomeLinkClickedAgain = homeLinkClicked && window.location.pathname === '/';
 
   return (
@@ -134,7 +179,13 @@ function HomePage() {
             className='font-montserrat font-semibold xl:text-7xl md:text-4xl text-4xl lg:text-left md:text-[3.8rem] lg:text-7xl md:pb-4 sm:pb-2 lg:pb-5 xl:tracking-[.2em] tracking-[.2em] lg:tracking-[.1em]'
             style={isHomeLinkClickedAgain ? {} : frontendSpring} // Apply animation only if not home link clicked again
           >
-            FRONTEND
+            <animated.span
+              style={{
+                ...(showShineEffect ? shineLightProps : {}), // Apply shine effect if showShineEffect is true
+              }}
+            >
+              FRONTEND
+            </animated.span>
           </animated.h1>
           <h2 className="font-montserrat font-thin lg:text-5xl md:text-4xl sm:text-1xl lg:text-left text-2xl lg:tracking-[.32em] xl:tracking-[.45em] md:tracking-[.45em] tracking-[.45em]">
         {developerText.split('').map((letter, i) => (
