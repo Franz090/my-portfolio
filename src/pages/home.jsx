@@ -170,6 +170,12 @@ useEffect(() => {
   };
 }, [shineVisibility]);
 
+const paragraphSpring = useSpring({
+  from: { opacity: 0, transform: 'translateY(40px)' },
+  to: { opacity: 1, transform: 'translateY(0)' },
+  config: { duration: 800 },
+});
+
   const isHomeLinkClickedAgain = homeLinkClicked && window.location.pathname === '/';
 
   return (
@@ -228,7 +234,12 @@ useEffect(() => {
       ))}
     </h2>
           
-          <p className='xl:w-4/6 lg:w-3/4  font-light tracking-[.2em]  uppercase text-custom-gray lg:text-left md:text-center text-sm lg:text-[.85em] md:text-[.87em] md:mr-4 relative lg:left-1 md:left-4 md:pt-3 pb-6 md:pb-0 lg:text-1xl lg:leading-6 lg:pt-6 pt-3 subpixel-antialiased'> As a web-focused front-end developer, I'm eager to join your team and grow my skills in simplifying complex problems and creating great web designs.</p>
+    <animated.p
+            className='xl:w-4/6 lg:w-3/4 font-light tracking-[.2em] uppercase text-custom-gray lg:text-left md:text-center text-sm lg:text-[.85em] md:text-[.87em] md:mr-4 relative lg:left-1 md:left-4 md:pt-3 pb-6 md:pb-0 lg:text-1xl lg:leading-6 lg:pt-6 pt-3 subpixel-antialiased'
+            style={paragraphSpring}
+          >
+            As a web-focused front-end developer, I'm eager to join your team and grow my skills in simplifying complex problems and creating great web designs.
+          </animated.p>
         </div>
       </div>
     </section>
