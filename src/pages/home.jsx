@@ -12,11 +12,7 @@ function HomePage() {
   const [shineVisibility, setShineVisibility] = useState(true);
  
 
-
-
- 
-
-  const { startAnimation, setStartAnimation, stopAnimation, setIsJumping,homeLinkClicked, showImage, setShowImage,setCurrentPage,isHomePageClickedAgain, setIsHomePageClickedAgain} = useAnimationStore();
+  const { startAnimation, setStartAnimation, stopAnimation, setIsJumping,homeLinkClicked, showImage, setShowImage,setCurrentPage,isHomePageClickedAgain, setIsHomePageClickedAgain,animateParagraph, setAnimateParagraph} = useAnimationStore();
  
   const developerText = 'DEVELOPER';
 
@@ -140,9 +136,11 @@ const shineLightProps = useSpring({
 useEffect(() => {
   if (useAnimationStore.getState().homeLinkClicked && window.location.pathname === '/') {
     setIsHomePageClickedAgain(true);
+    setAnimateParagraph(false);
     setShowShineEffect(false); // Stop the shine effect when homepage link is clicked again
   } else {
     setIsHomePageClickedAgain(false);
+    setAnimateParagraph(true); 
     setShowShineEffect(true); // Ensure shine effect is active otherwise
   }
 }, [useAnimationStore.getState().homeLinkClicked]);
@@ -174,7 +172,9 @@ const paragraphSpring = useSpring({
   from: { opacity: 0, transform: 'translateY(40px)' },
   to: { opacity: 1, transform: 'translateY(0)' },
   config: { duration: 800 },
+  immediate: !animateParagraph, // Apply condition to stop animation if animateParagraph is false
 });
+
 
   const isHomeLinkClickedAgain = homeLinkClicked && window.location.pathname === '/';
 
