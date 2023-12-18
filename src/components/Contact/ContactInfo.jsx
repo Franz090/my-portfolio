@@ -243,7 +243,7 @@ export default function ContactInfo() {
 
       </div>
     ) : (
-      <div className="font-light  text-center subpixel-antialiased">
+      <div className="text-white font-light  text-center subpixel-antialiased">
       Submit
       </div>
     )}

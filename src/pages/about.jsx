@@ -58,7 +58,7 @@ const AboutPage = () => {
         {/* Add the "View CV" button with oblong border radius */}
         <button
   ref={buttonRef}
-  className="bg-zinc-600 hover:bg-zinc-500 hover:gray-blue-600 font-light py-2 px-5 rounded-full oblong-button subpixel-antialiased text-[17px] pt-2 pb-2 transition duration-300 ease-in-out transform hover:scale-95  " 
+  className="bg-zinc-600 hover:bg-zinc-500 hover:gray-blue-600 font-light py-2 px-5 rounded-full oblong-button subpixel-antialiased text-[17px] pt-2 pb-2 transition duration-300 ease-in-out transform hover:scale-95  text-white" 
   onClick={handleCVClick}
 >
   {redirecting ? 'Redirecting...' : 'View CV'}
