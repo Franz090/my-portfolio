@@ -22,7 +22,7 @@ function HomePage() {
 
   const imageSpring = useSpring({
     opacity: showImage ? 1 : 0,
-    transform: showImage ? 'translateY(0)' : 'translateY(-100%)', // Change translateY value
+    transform: showImage ? 'translateY(0)' : 'translateY(-40%)', // Change translateY value
     config: { duration: 800 },
   });
   useEffect(() => {
