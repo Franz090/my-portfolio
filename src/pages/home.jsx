@@ -10,11 +10,13 @@ function HomePage() {
   const [frontendAnimation, setFrontendAnimation] = useState(false);
   const [showShineEffect, setShowShineEffect] = useState(true);
   const [shineVisibility, setShineVisibility] = useState(true);
+ 
+
 
 
  
 
-  const { startAnimation, setStartAnimation, stopAnimation, setIsJumping,homeLinkClicked, showImage, setShowImage,setCurrentPage} = useAnimationStore();
+  const { startAnimation, setStartAnimation, stopAnimation, setIsJumping,homeLinkClicked, showImage, setShowImage,setCurrentPage,isHomePageClickedAgain, setIsHomePageClickedAgain} = useAnimationStore();
  
   const developerText = 'DEVELOPER';
 
@@ -136,6 +138,15 @@ const shineLightProps = useSpring({
   },
 });
 useEffect(() => {
+  if (useAnimationStore.getState().homeLinkClicked && window.location.pathname === '/') {
+    setIsHomePageClickedAgain(true);
+    setShowShineEffect(false); // Stop the shine effect when homepage link is clicked again
+  } else {
+    setIsHomePageClickedAgain(false);
+    setShowShineEffect(true); // Ensure shine effect is active otherwise
+  }
+}, [useAnimationStore.getState().homeLinkClicked]);
+useEffect(() => {
   const shineEffectTimeout = setTimeout(() => {
     setShineVisibility(false); // Set intermediate state to gradually stop the shine effect
   }, 2600);
@@ -179,9 +190,9 @@ useEffect(() => {
             className='font-montserrat font-semibold xl:text-7xl md:text-4xl text-4xl lg:text-left md:text-[3.8rem] lg:text-7xl md:pb-4 sm:pb-2 lg:pb-5 xl:tracking-[.2em] tracking-[.2em] lg:tracking-[.1em]'
             style={isHomeLinkClickedAgain ? {} : frontendSpring} // Apply animation only if not home link clicked again
           >
-            <animated.span
+             <animated.span
               style={{
-                ...(showShineEffect ? shineLightProps : {}), // Apply shine effect if showShineEffect is true
+                ...(showShineEffect && !isHomePageClickedAgain ? shineLightProps : {}),
               }}
             >
               FRONTEND
