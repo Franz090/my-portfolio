@@ -72,7 +72,7 @@
   background-color: #487d9c; 
   z-index: 9999;
   transform-origin: left;
-  animation: progressAnimation 2s linear forwards;
+  animation: progressAnimation 1s linear forwards;
 }
 
 @keyframes progressAnimation {

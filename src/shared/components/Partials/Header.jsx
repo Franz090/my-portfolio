@@ -67,6 +67,8 @@ const Header = () => {
   const navigate = useNavigate();
   const { setStopAnimation, setIsJumping,setHomeLinkClicked, setShowImage } = useAnimationStore(); 
   const [showLogo, setShowLogo] = useState(false);
+  const [isPageReloaded, setIsPageReloaded] = useState(false);
+
 
   
  
@@ -265,7 +267,7 @@ if (location.pathname !== to) {
   setShowProgressBar(true);
 }
         const shouldScrollTopImmediately = window.location.pathname === to && !loadingAnimationActive;
-        const delayTime = shouldScrollTopImmediately ? 0 : 2000; // Set delay time based on conditions
+        const delayTime = shouldScrollTopImmediately ? 0 : 1000; // Set delay time based on conditions
         const timeout = setTimeout(() => {
           scrollTo(0, 500, window.location.pathname !== to, false);
           navigate(to);
@@ -300,7 +302,7 @@ if (location.pathname !== to) {
         setShowImage(true);
   
         setShowProgressBar(false); // Hide progress bar after navigation
-      }, 2000); // 2-second delay before navigation
+      }, 1000); // 2-second delay before navigation
   
       setDelayedNavigation(timeout);
     }
@@ -341,6 +343,8 @@ if (location.pathname !== to) {
     // Set sessionStorage to indicate the page has been loaded
     sessionStorage.setItem('isPageReloaded', 'true');
   } else {
+    setShowLogo(true); // Assuming 'showLogo' controls the animation
+    setIsPageReloaded(true);
     setShowProgressBar(false); // Hide the progress bar on reload
   }
 
@@ -376,8 +380,10 @@ const linksData = [
         <div className="md:container mx-auto xl:px-24 md:px-1 sm:px-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center justify-between space-x-2 ">
-              <animated.span
-              style={logoAnimation}
+            <animated.span
+            style={
+              isPageReloaded !== ['/about', '/resume', '/skills', '/project', '#contact'].includes(window.location.pathname)
+              ? logoAnimation : { opacity: 1, transform: 'translateY(0)' }}
               className="text-4xl lg:text-4xl  cursor-pointer ">
               <Link to="/" onClick={handleLogoClick}>
               <div className='logo-name tracking-wider'>
