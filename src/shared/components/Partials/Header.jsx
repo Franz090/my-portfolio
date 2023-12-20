@@ -131,7 +131,8 @@ const Header = () => {
         };
         const logoAnimation = useSpring({
         opacity: showLogo ? 1 : 0,
-        transform: showLogo ? 'translateY(0)' : 'translateY(-100px)',
+        transform: showLogo ? 'translateY(0)' : 'translateY(-120px)',
+        
         });
         
         useEffect(() => {
