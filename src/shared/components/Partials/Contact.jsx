@@ -32,7 +32,7 @@ const Contact = () => {
     opacity: showText ? 1 : 0,
     transform: showText ? 'translateX(0)' : 'translateX(-20%)',
     config: {
-      duration: 800 // Duration in milliseconds (0.5 seconds)
+      duration: 500 // Duration in milliseconds (0.5 seconds)
     }
   });
 
@@ -40,7 +40,7 @@ const Contact = () => {
     opacity: showText ? 1 : 0,
     transform: showText ? 'translateY(0)' : 'translateY(-20px)',
     config: {
-      duration: 800// Duration in milliseconds (0.5 seconds)
+      duration: 500// Duration in milliseconds (0.5 seconds)
     }
   });
 
@@ -49,7 +49,7 @@ const Contact = () => {
    
     transform: showText ? 'translateY(0)' : 'translateY(20%)', // Slide from bottom (100% of its height)
     config: {
-      duration: 800
+      duration: 500
     }
   });
 

@@ -19,7 +19,7 @@ function HomePage() {
   const imageSpring = useSpring({
     opacity: showImage ? 1 : 0,
     transform: showImage ? 'translateY(0)' : 'translateY(-40%)', // Change translateY value
-    config: { duration: 800 },
+    config: { duration: 500 },
   });
   useEffect(() => {
     setCurrentPage('/');
@@ -55,14 +55,14 @@ function HomePage() {
   const slideHideProps = useSpring({
     from: { opacity: 1, transform: 'translateX(0)' },
     to: { opacity: 0, transform: 'translateX(-100%)' },
-    config: { duration: 800 },
+    config: { duration: 500 },
     delay: 500, // Adjust the delay as needed
   });
 
   const slideShowProps = useSpring({
     from: { opacity: 0, transform: 'translateX(100%)' },
     to: { opacity: 1, transform: 'translateX(0)' },
-    config: { duration: 800 },
+    config: { duration: 500 },
     delay: 600, // Adjust the delay as needed
   });
 
@@ -113,7 +113,7 @@ function HomePage() {
       transform: frontendAnimation ? 'translateY(0)' : 'translateY(50px)',
      
     },
-    config: { duration: 800 },
+    config: { duration: 500 },
   });
 
 const shineLightProps = useSpring({

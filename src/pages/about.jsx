@@ -46,17 +46,17 @@ const AboutPage = () => {
   const slideAnimation = useSpring({
     from: { transform: 'translateX(20%)' },
     to: { transform: 'translateX(0)' },
-    config: { duration: 800 }, // Adjust duration as needed
+    config: { duration: 500 }, // Adjust duration as needed
   });
   const textAnimation = useSpring({
     from: { opacity: 0, transform: 'translateY(-30px)' },
     to: { opacity: 1, transform: 'translateY(0)' },
-    config: { duration: 800 }, // Adjust duration as needed
+    config: { duration: 500 }, // Adjust duration as needed
   });
   const slideFromBottom = useSpring({
     from: { opacity: 0, transform: 'translateY(40px)' },
     to: { opacity: 1, transform: 'translateY(0)' },
-    config: { duration: 800 },
+    config: { duration: 500 },
   });
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:flex lg:mt-1  lg:pb-10 pb-2 lg:pt-6 md:pt-3 pt-4 md:px-9  xl:px-36 lg:px-20 space-x-3">

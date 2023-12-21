@@ -8,6 +8,7 @@ const useAnimationStore = create((set) => ({
   showImage: false,
   isHomePageClickedAgain: false,
   animateParagraph: true,
+  shouldStopAnimation: false,
   currentPage: '/',
   setStartAnimation: (value) => set({ startAnimation: value }),
   setStopAnimation: (value) => set({ stopAnimation: value }),
@@ -15,6 +16,7 @@ const useAnimationStore = create((set) => ({
   setHomeLinkClicked: (value) => set({ homeLinkClicked: value }),
   setShowImage: (value) => set({ showImage: value }), 
   setAnimateParagraph: (value) => set({ animateParagraph:  value }), 
+  setShouldStopAnimation: (value) => set({ shouldStopAnimation:  value }),  
   setIsHomePageClickedAgain: (value) => set({ isHomePageClickedAgain: value }),
   setCurrentPage: (value) => {
     set({ currentPage: value });

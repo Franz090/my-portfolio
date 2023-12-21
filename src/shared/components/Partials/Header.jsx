@@ -65,7 +65,7 @@ const HeaderLink = ({ to, text, isActive, onClick, screenWidth, isContact }) => 
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { setStopAnimation, setIsJumping,setHomeLinkClicked, setShowImage } = useAnimationStore(); 
+  const { setStopAnimation, setIsJumping,setHomeLinkClicked, setShowImage,shouldStopAnimation, setShouldStopAnimation } = useAnimationStore(); 
   const [showLogo, setShowLogo] = useState(false);
   const [isPageReloaded, setIsPageReloaded] = useState(false);
 
@@ -361,13 +361,26 @@ const linksData = [
   { to: '/project', text: 'PROJECT' },
   { to: '#contact', text: 'CONTACT', isContact: true },
 ];
+const excludedPages = ['/','/about', '/resume', '/skills', '/project', '#contact'];
 
-  const linksTrail = useTrail(linksData.length, {
-    opacity: 1,
-    transform: 'translateY(0)',
-    from: { opacity: 0, transform: 'translateY(-20px)' },
-    delay: 500, // Adjust delay as needed
-  });
+useEffect(() => {
+  if (excludedPages.includes(location.pathname)) {
+    setShouldStopAnimation(true);
+  } else {
+    setShouldStopAnimation(false);
+  }
+}, [location.pathname]);
+
+const linksTrail = useTrail(linksData.length, {
+  opacity: shouldStopAnimation ? 1 : 0,
+  transform: shouldStopAnimation ? 'translateY(0)' : 'translateY(-20px)',
+  from: {
+    opacity: shouldStopAnimation ? 0 : 1,
+    transform: location.pathname === '/' ? 'translateY(-20px)' : 'translateY(0)',
+  },
+  delay: shouldStopAnimation ? 0 : 0,
+});
+
 
   const headerClass = menuOpen ? 'header-open' : '';
 

@@ -30,7 +30,7 @@ const Footer = () => {
     opacity: hasAnimated || isVisible ? 1 : 0,
     transform: hasAnimated || isVisible ? 'translateY(0)' : 'translateY(20%)',
     config: {
-      duration: 800 // Duration of 800 milliseconds
+      duration: 500 // Duration of 800 milliseconds
     },
 
     onRest: () => {
