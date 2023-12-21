@@ -2,6 +2,7 @@ import gifImage from '../assets/videos/about.gif';
 import useLinkStore from '../store/useLinkStore';
 import React, { useRef, useEffect, useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
+import TypewriterText from '../components/About/TypewriterText';
 
 const AboutPage = () => {
   const { redirecting, setRedirecting } = useLinkStore();
@@ -64,7 +65,9 @@ const AboutPage = () => {
       <animated.h1 style={textAnimation} className="text-[27px] mb-2 tracking-wide capitalize font-semibold">
           About Me
         </animated.h1>
-        <h2 className="text-2xl  font-light tracking-wide mb-4">I'm a Front End Developer and UI Designer</h2>
+        <h2 className="text-2xl font-light tracking-wide mb-4">
+  I'm a <TypewriterText texts={['Front End Developer ', 'UI/UX Designer ', 'Freelancer ']} />
+</h2>
         <animated.p style={slideFromBottom} className="text-custom-gray text-[16px] font-light mb-3 tracking-tightest antialiased text-justify">
         My name is Francis, and my path in the realm of web development and design has been quite an extraordinary one. Throughout my journey, I've had the privilege of expanding my skills beyond just front-end development and UI design. I've always had a deep-seated passion for creating captivating and immersive digital experiences, and it has been a humbling and fulfilling experience to be able to pursue this passion in my career.
         </animated.p>
