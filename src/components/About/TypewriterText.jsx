@@ -23,7 +23,7 @@ const TypewriterText = ({ texts }) => {
         setTimeout(() => {
           setIndex((prevIndex) => (prevIndex + 1) % texts.length);
           setDisplayText('');
-        }, 1000); // Delay before showing the next text
+        }, 2000); // Delay before showing the next text
       }
     }, 100); // Adjust speed here (milliseconds per letter)
 
@@ -51,7 +51,7 @@ const TypewriterText = ({ texts }) => {
 
   return (
     <>
-      <span>{displayText}</span>
+      <span >{displayText}</span>
       <animated.span style={blinkAnimation}>|</animated.span>
     </>
   );
