@@ -1,10 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
+import { useSpring, animated } from '@react-spring/web';
 
 export default function ContactInfo() {
   const form = useRef();
   const [loading, setLoading] = useState(false);
   const [disableInput, setDisableInput] = useState(false);
+  const [hovered, setHovered] = useState(false);
   const [errors, setErrors] = useState({
     first_name: false,
     last_name: false,
@@ -124,6 +126,10 @@ export default function ContactInfo() {
       }));
     }
   };
+  const buttonSpring = useSpring({
+    transform: hovered ? 'translateY(-5px)' : 'translateY(0px)',
+    config: { tension: 300, friction: 10 },
+  });
   return (
     <form className="lg:w-full pb-6 relative" ref={form} onSubmit={sendEmail}>
 
@@ -227,27 +233,26 @@ export default function ContactInfo() {
         </div>
       </div>
       <div className="flex justify-center w-full ">
-      <button
-      id="submit-button"
-    type="submit"
-    className={`subpixel-antialiased leading-tight mb-3 pt-3 pb-3 font-light  tracking-tight text-[17px] hover:bg-zinc-500 rounded w-full bg-zinc-600 shadow-lg hover:shadow-gray-700/50 ${
-      loading ? 'loading-button' : ''
-    }`}
-    disabled={loading}
-  >
-    {loading ? (
-      <div className="loading-container ">
-        
-        <div className="mr-2">Sending Message</div>
-        <div className="loader"></div>
-
-      </div>
-    ) : (
-      <div className="text-white font-light  text-center subpixel-antialiased">
-      Submit
-      </div>
-    )}
-  </button>
+      <animated.button
+          id="submit-button"
+          type="submit"
+          className={`subpixel-antialiased leading-tight mb-3 pt-3 pb-3 font-light tracking-tight text-[17px] rounded w-full bg-zinc-600 shadow-lg hover:shadow-gray-700/50 ${
+            loading ? 'loading-button' : ''
+          }`}
+          disabled={loading}
+          onMouseEnter={() => setHovered(true)} // Set hovered state to true on mouse enter
+          onMouseLeave={() => setHovered(false)} // Set hovered state to false on mouse leave
+          style={buttonSpring} // Apply the animated style
+        >
+          {loading ? (
+            <div className="loading-container">
+              <div className="mr-2">Sending Message</div>
+              <div className="loader"></div>
+            </div>
+          ) : (
+            <div className="text-white font-light text-center subpixel-antialiased">Submit</div>
+          )}
+        </animated.button>
   
       </div>
       <div className="absolute bottom-[-28px] left-1/2 transform -translate-x-1/2 w-full text-center">

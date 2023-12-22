@@ -8,6 +8,7 @@ const AboutPage = () => {
   const { redirecting, setRedirecting } = useLinkStore();
   const buttonRef = useRef(null);
   const [imagePosition, setImagePosition] = useState('top-7'); // Initial position
+  
 
   const handleResize = () => {
     const screenWidth = window.innerWidth;
