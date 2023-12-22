@@ -223,6 +223,7 @@ const Header = () => {
         window.history.pushState({}, '', window.location.pathname);
         setActiveLink('#contact');
       }
+      window.location.hash = '#contact';
       closeMenu();
       clearDelayedNavigation();
     } else {
@@ -230,6 +231,8 @@ const Header = () => {
         // If the clicked link is already active, scroll to the top immediately without delay or progress bar
         scrollTo(0, 0, true); // true means scroll to top immediately
         setShowProgressBar(false);
+        closeMenu(); // Close the menu
+        return;
         
       }else {
         setActiveLink(to);
@@ -286,6 +289,7 @@ if (location.pathname !== to) {
       // If already on the home page, set the active link to '/' immediately
       setActiveLink('/');
       scrollTo(0, 500, true); // Scroll to top without delay or progress bar
+      
     } else {
       // If not on the home page, navigate to the home page and set active link after a delay
       setActiveLink('/'); // Set the active link to '/' immediately

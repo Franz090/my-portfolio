@@ -556,6 +556,12 @@ input[type="checkbox"]:checked::before {
 
   }
   @media (max-width: 280px)  and (min-height:653px) {
+    .progress-wrapper {
+     
+      width: 70%;
+  
+    }
+   
     .logo-name span{
       font-size: 31px!important;
       
