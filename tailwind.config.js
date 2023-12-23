@@ -10,8 +10,9 @@ module.exports = {
     },
     extend: {
       colors: {
-        'custom-gray': '#6c757d',
+        'custom-gray': '#6d757d',
         'custom-gray-light': '#f1f1f1',
+        'custom-gray-custom': '#343a40',
       },
       corePlugins: {
         preflight: false,

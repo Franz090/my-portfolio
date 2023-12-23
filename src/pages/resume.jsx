@@ -60,23 +60,23 @@ const ResumePage = () => {
 
   return (
     <div className="md:px-10 sm:px-10 xl:px-36 pb-8 pt-7 ">
-      <h1 className="text-[27px] mb-5 tracking-wide capitalize font-semibold ">
+      <h1 className="lg:text-[27px] md:text-[27px] sm:text-[27px] text-2xl mb-5 tracking-wide capitalize font-semibold ">
         Working Experience
       </h1>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-5 resume-element-1">
-        <div className="col-span-1 md:col-span-1  p-4 resume resume-border ">
+        <div className="col-span-1 md:col-span-1  p-4 resume resume-border  ">
        
 
           {/* Add border class and padding class */}
-          <div className="px-5">
+          <div className="px-5 ">
       
          
           <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-5"></div>
            
 
-          <h2 className='text-lg mt-5 mb-2 text-blue-custom font-bold tracking-wide antialiased'>
-              Front-End Developer
+          <h2 className='text-md mb-[-17px] mt-[-20px] text-blue-custom font-bold tracking-wide antialiased'>
+              Front-End Web Developer
             </h2>
        
             <div className="m-0 justify-between">
@@ -92,20 +92,20 @@ const ResumePage = () => {
               </div>
               <div className="m-1 text-custom-gray mt-4">
              
-          <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-5"></div>
+          <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-1"></div>
            
-                <p>February 2023 - May 2023 | Front End Developer</p>     
+                <p className="text-md">February 2023 - May 2023 | Front End Developer</p>     
              
-          <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-5"></div>
+          <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-1"></div>
               
-                <p>Santa Cruz, Laguna</p>
+                <p className="text-md">Santa Cruz, Laguna</p>
               
            
               </div>
              
           <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-5"></div>
              
-              <hr className="my-2 border-t-1 border-custom-gray" />
+              <hr className="my-1 mt-[-10px] mb-[-10px] border-t-1 border-gray-800" />
             
               
               <div className="text-custom-gray">
@@ -120,15 +120,15 @@ const ResumePage = () => {
                   non-accounts payable records.
                 </p>
               
-          <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-5"></div>
+          <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-2"></div>
            
-                <b className="text-md">Responsibilities</b>
+                <b className="text-md ">Responsibilities</b>
           
                
           <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-5"></div>
             
                 
-                <ul className="list-disc pl-5 ml-4">
+                <ul className="list-disc pl-5 ml-4 mt-[-13px] text-md">
                   {responsibilities.map((item, index) => (
                     <li key={index}> {item} </li>
                   ))}
@@ -162,18 +162,18 @@ const ResumePage = () => {
           </>
          
                   {showText && (
-                  <h1 className="absolute top-16 lg:top-12 md:top-7 text-2xl mb-2 text-gray-custom font-bold tracking-wide antialiased" >
+                  <h1 className="absolute top-16 lg:top-12 md:top-7 text-2xl mb-2 text-gray-custom font-semibold text-custom-gray tracking-wide antialiased" >
                    Internship Highlights</h1>
                    )}
                    <Carousel data={data.slides} />
                    {showText && (
-                   <p className="absolute bottom-14 lg:bottom-12 md:bottom-7 text-sm mb-2 text-gray-custom  text-center font-bold tracking-wide antialiased ">Explore the highlights of my impactful project and contributions during my internship experience. </p>
+                   <p className="absolute bottom-14 lg:bottom-12 md:bottom-7 text-sm mb-2 text-gray-custom  text-center font-bold tracking-wide antialiased text-custom-gray ">Explore the highlights of my impactful project and contributions during my internship experience. </p>
                    )}
           </div> 
         </div>
       </div>
 
-      <h1 className='text-[27px] mb-5 tracking-wide capitalize font-semibold'>
+      <h1 className='lg:text-[27px] md:text-[27px] sm:text-[27px] text-2xl mb-5 tracking-wide capitalize font-semibold'>
         Educational Background
       </h1>
       <div  className='grid grid-cols-1 lg:grid-cols-2 gap-4 resume-element-2'>
@@ -184,7 +184,7 @@ const ResumePage = () => {
          
           <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-5"></div>
            
-            <h2 className="text-lg mt-5 mb-2  font-bold tracking-wide antialiased">
+            <h2 className="text-md  mb-[-10px] mt-[-20px] font-bold tracking-wide antialiased">
               Bachelor's/College Degree in Information Technology
             </h2>
             
@@ -213,8 +213,8 @@ const ResumePage = () => {
             
           <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-5"></div>
              
-            <h2 className="text-lg mt-5 mb-2  font-bold tracking-wide antialiased">
-              TVL - Information and Communication Technology
+            <h2 className="text-md mb-[-10px] mt-[-20px]  font-bold tracking-wide antialiased">
+            Technical-Vocational Livelihood - Information and Communication Technology Technology
             </h2>
           
             <div className="m-0 justify-between">
@@ -222,15 +222,15 @@ const ResumePage = () => {
                
           <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-1"></div>
            
-                <p>AMA Santa Cruz Campus</p>
+                <p className="text-md">AMA Santa Cruz Campus</p>
             
           <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-1"></div>
             
-                <p>Santa Cruz, Laguna</p>
+                <p className="text-md">Santa Cruz, Laguna</p>
            
           <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-1"></div>
             
-                <p>2017 - 2019</p>
+                <p className="text-md">2017 - 2019</p>
             
               </div>
             </div>

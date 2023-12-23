@@ -138,11 +138,11 @@ export default function ContactInfo() {
       
       <div className="flex flex-wrap -mx-3 mb-6 mt-[-30px] lg:mt-[-0px] ">
         <div className="w-full md:w-1/2 px-3 lg:pt-1 pt-5">
-          <label className="text-custom-gray lg:text-[17px] block capitalize mb-2 leading-tight tracking-widest font-roboto " htmlFor="grid-first-name">
+          <label className="text-custom-gray lg:text-[17px] md:text-[17px]  sm:text-[17px] text-1xl block capitalize mb-2 leading-tight tracking-widest font-roboto " htmlFor="grid-first-name">
             First Name
           </label>  
           <input
-          className={`leading-tight pt-3 pb-3 w-full bg-${loading ? 'zinc-300' : 'primary-450'} text-custom-gray border ${
+          className={`leading-tight lg:pt-3 lg:pb-3 md:pt-3 md:pb-3 sm:pt-3 sm:pb-3 pb-2 pt-2   w-full bg-${loading ? 'zinc-300' : 'primary-450'} text-custom-gray border ${
           (formSubmitted && !errors.first_name) ? 'border-green-400 focus:border-green-400' :
            (formSubmitted && errors.first_name) ? 'border-red-400 focus:border-red-500' :
            'border-gray-400'} rounded focus:bg-primary-450 focus:shadow-sm focus:border-gray-300 focus:shadow-gray-200/50 focus:ring-0`}
@@ -161,11 +161,11 @@ export default function ContactInfo() {
         </div>
 
         <div className="w-full md:w-1/2 px-3 lg:pt-1 pt-5">
-          <label className="text-custom-gray lg:text-[17px] block capitalize mb-2 leading-tight tracking-widest font-roboto" htmlFor="grid-last-name">
+          <label className="text-custom-gray lg:text-[17px] md:text-[17px]  sm:text-[17px] text-1xl block capitalize mb-2 leading-tight tracking-widest font-roboto" htmlFor="grid-last-name">
             Last Name
           </label>
           <input
-            className={`leading-tight pt-3 pb-3 w-full bg-${loading ? 'zinc-300' : 'primary-450'} text-custom-gray border ${
+            className={`leading-tight lg:pt-3 lg:pb-3 md:pt-3 md:pb-3 sm:pt-3 sm:pb-3 pb-2 pt-2  w-full bg-${loading ? 'zinc-300' : 'primary-450'} text-custom-gray border ${
               (formSubmitted && !errors.last_name) ? 'border-green-400 focus:border-green-400' :
               (formSubmitted && errors.last_name) ? 'border-red-400 focus:border-red-500' :
               'border-gray-400'} rounded focus:bg-primary-450 focus:shadow-sm focus:border-gray-300 focus:shadow-gray-200/50 focus:ring-0`}
@@ -185,11 +185,11 @@ export default function ContactInfo() {
         </div>
 
         <div className="w-full px-3 pt-5">
-          <label className="text-custom-gray lg:text-[17px] block capitalize mb-2 leading-tight tracking-widest font-roboto" htmlFor="grid-email">
+          <label className="text-custom-gray lg:text-[17px] md:text-[17px]  sm:text-[17px] text-1xl block capitalize mb-2 leading-tight tracking-widest font-roboto" htmlFor="grid-email">
             Email Address
           </label>
           <input
-          className={`leading-tight pt-3 pb-3 w-full bg-${loading ? 'zinc-300' : 'primary-450'} text-custom-gray border ${
+          className={`leading-tight lg:pt-3 lg:pb-3 md:pt-3 md:pb-3 sm:pt-3 sm:pb-3 pb-2 pt-2  w-full bg-${loading ? 'zinc-300' : 'primary-450'} text-custom-gray border ${
          (formSubmitted && !errors.user_email) ? 'border-green-400 focus:border-green-400' :
          (formSubmitted && errors.user_email) ? 'border-red-400 focus:border-red-500' :
     'border-gray-400'} rounded focus:bg-primary-450 focus:shadow-sm focus:border-gray-300 focus:shadow-gray-200/50 focus:ring-0`}
@@ -208,7 +208,7 @@ export default function ContactInfo() {
         </div>
 
         <div className="w-full px-3 pt-5">
-          <label className="text-custom-gray lg:text-[17px] block capitalize mb-2 leading-tight tracking-widest font-roboto" htmlFor="grid-message">
+          <label className="text-custom-gray lg:text-[17px] md:text-[17px]  sm:text-[17px] text-1xl block capitalize mb-2 leading-tight tracking-widest font-roboto" htmlFor="grid-message">
             Message
           </label>
           <textarea
@@ -236,7 +236,7 @@ export default function ContactInfo() {
       <animated.button
           id="submit-button"
           type="submit"
-          className={`subpixel-antialiased leading-tight mb-3 pt-3 pb-3 font-light tracking-tight text-[17px] rounded w-full bg-zinc-600 shadow-lg hover:shadow-gray-700/50 ${
+          className={`antialiased leading-tight mb-3 pt-3 pb-3 font-light tracking-tight text-[17px] rounded w-full bg-custom-gray-custom hover:bg-zinc-800 ${
             loading ? 'loading-button' : ''
           }`}
           disabled={loading}
@@ -246,11 +246,11 @@ export default function ContactInfo() {
         >
           {loading ? (
             <div className="loading-container">
-              <div className="mr-2">Sending Message</div>
+              <div className="text-white text-md tracking-wider font-normal text-center antialiased ">Sending Message</div>
               <div className="loader"></div>
             </div>
           ) : (
-            <div className="text-white font-light text-center subpixel-antialiased">Submit</div>
+            <div className="text-white text-md tracking-wider font-normal text-center antialiased">Submit</div>
           )}
         </animated.button>
   

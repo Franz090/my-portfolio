@@ -193,7 +193,7 @@ const paragraphSpring = useSpring({
       <div className="col-span-1 flex flex-col justify-center items-center relative xl:right-[54px] lg:top-[85px]">
         <div className="text-center sm:text-center lg:pb-44 md:pb-3 lg:mt-12 md:mb-9 sm:mb-6">
         <animated.h1
-            className='font-montserrat font-semibold xl:text-7xl md:text-4xl text-4xl lg:text-left md:text-[3.8rem] lg:text-7xl md:pb-4 sm:pb-2 lg:pb-5 xl:tracking-[.2em] tracking-[.2em] lg:tracking-[.1em]'
+            className='font-medium lg:text-left lg:text-[76px] md:text-7xl  sm:text-7xl text-[40px] md:pb-3 sm:pb-3 lg:pb-3 pb-1 xl:tracking-[.2em] tracking-[.2em] lg:tracking-[.1em]'
             style={isHomeLinkClickedAgain ? {} : frontendSpring} // Apply animation only if not home link clicked again
           >
              <animated.span
@@ -204,7 +204,7 @@ const paragraphSpring = useSpring({
               FRONTEND
             </animated.span>
           </animated.h1>
-          <h2 className="font-montserrat font-thin lg:text-5xl md:text-4xl sm:text-1xl lg:text-left text-2xl lg:tracking-[.32em] xl:tracking-[.45em] md:tracking-[.45em] tracking-[.45em]">
+          <h2 className=" font-normal lg:text-5xl md:text-5xl sm:text-5xl text-2xl lg:text-left  lg:tracking-[.32em] xl:tracking-[.45em] md:tracking-[.45em] tracking-[.45em]">
         {developerText.split('').map((letter, i) => (
           <animated.span
             key={i}
@@ -235,7 +235,7 @@ const paragraphSpring = useSpring({
     </h2>
           
     <animated.p
-            className='xl:w-4/6 lg:w-3/4 font-light tracking-[.2em] uppercase text-custom-gray lg:text-left md:text-center text-sm lg:text-[.85em] md:text-[.87em] md:mr-4 relative lg:left-1 md:left-4 md:pt-3 pb-6 md:pb-0 lg:text-1xl lg:leading-6 lg:pt-6 pt-3 subpixel-antialiased'
+            className='xl:w-4/6 lg:w-3/4 font-normal uppercase text-custom-gray lg:text-left md:text-center  lg:text-[.99em] md:text-[.99em] sm:text-[.99em] text-sm  md:mr-4 relative lg:left-1 md:left-4 md:pt-3 pb-6 md:pb-0 lg:text-1xl lg:leading-6 lg:pt-6 pt-3 antialiased tracking-tight'
             style={paragraphSpring}
           >
             As a web-focused front-end developer, I'm eager to join your team and grow my skills in simplifying complex problems and creating great web designs.
