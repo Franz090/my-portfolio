@@ -193,7 +193,7 @@ const paragraphSpring = useSpring({
       <div className="col-span-1 flex flex-col justify-center items-center relative xl:right-[54px] lg:top-[85px]">
         <div className="text-center sm:text-center lg:pb-44 md:pb-3 lg:mt-12 md:mb-9 sm:mb-6">
         <animated.h1
-            className='font-medium lg:text-left lg:text-[76px] md:text-7xl  sm:text-7xl text-[40px] md:pb-3 sm:pb-3 lg:pb-3 pb-1 xl:tracking-[.2em] tracking-[.2em] lg:tracking-[.1em]'
+            className='font-bold lg:text-left lg:text-[78px] md:text-7xl  sm:text-7xl text-[40px] md:pb-3 sm:pb-3 lg:pb-3 pb-1 xl:tracking-[.2em] tracking-[.2em] lg:tracking-[.1em]'
             style={isHomeLinkClickedAgain ? {} : frontendSpring} // Apply animation only if not home link clicked again
           >
              <animated.span
