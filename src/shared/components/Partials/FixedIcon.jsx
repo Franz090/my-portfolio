@@ -119,7 +119,7 @@ const FixedIcon = () => {
           color: isDarkMode ? '#181818' : '#fffafa',
           
         }}
-        className="transform -translate-y-1/2 h-14  flex justify-center items-center  rounded-tr-full rounded-br-full  mb-2"
+        className="transform -translate-y-1/2 h-14  flex justify-center items-center  rounded-tr-full rounded-br-full  mb-2 cursor-pointer"
       >
         <animated.div style={{ ...slideGridSpring1 }}>
           <div className="grid grid-cols-3 gap-4">
@@ -143,7 +143,7 @@ const FixedIcon = () => {
           color: isDarkMode ? '#181818' : '#fffafa',
           
         }}
-        className="transform -translate-y-1/2 h-14   flex justify-center items-center  rounded-tr-full rounded-br-full  mb-2 "
+        className="transform -translate-y-1/2 h-14   flex justify-center items-center  rounded-tr-full rounded-br-full  mb-2 cursor-pointer"
       >
          <animated.div style={{ ...slideGridSpring2 }}>
         <div className="grid grid-cols-3 gap-4">
@@ -167,7 +167,7 @@ const FixedIcon = () => {
           color: isDarkMode ? '#181818' : '#fffafa',
           
         }}
-        className="transform -translate-y-1/2 h-14   flex justify-center items-center  rounded-tr-full rounded-br-full  mb-2 "
+        className="transform -translate-y-1/2 h-14   flex justify-center items-center  rounded-tr-full rounded-br-full  mb-2 cursor-pointer"
       >
          <animated.div style={{ ...slideGridSpring3 }}>
         <div className="grid grid-cols-3 gap-4">
