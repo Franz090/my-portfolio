@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../Partials/Header';
 import Footer from '../Partials/Footer';
-import FixedIcon from '../Partials/FixedIcon';
+import SlideFixIcon from '../Partials/SlideFixIcon';
 import Contact from '../Partials/Contact';
 import { Outlet } from 'react-router-dom';
 import StarrySky from '../Partials/StarrySky';
@@ -40,7 +40,7 @@ const RootLayout = () => {
             <Outlet className="z-1" />
             {!isMobile && (
                 <div className="fixed bottom-8 right-8 z-50"> 
-                    <FixedIcon />
+                    <SlideFixIcon />
                 </div>
             )}
             <Contact className="z-10" />
