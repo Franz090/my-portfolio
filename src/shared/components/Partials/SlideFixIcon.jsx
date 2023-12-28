@@ -13,9 +13,9 @@ const SlideFixIcon = () => {
   const { isDarkMode } = useDarkModeStore();
 
   const getSpringProps = (hovered) => useSpring({
-    width: hovered ? 178 : 53,
+    width: hovered ? 185 : 53,
     config: {
-      duration: 500,
+      duration: hovered ? 500 : 300,
       easing: hovered ? (t) => (-Math.cos(t * Math.PI) / 2) + 0.5 : undefined,
     },
   });
@@ -63,7 +63,7 @@ const SlideFixIcon = () => {
             icon={icon}
             style={{
               color: iconColor,
-              transition: 'transform 0.7s', // Added transition for the transform property
+              transition: 'transform 0.5s', // Added transition for the transform property
               transform: hovered ? 'rotate(360deg)' : 'rotate(0)', // Rotate effect on hover
               backgroundColor: isDarkMode ? '#181818' : '#fffafa',
             }}

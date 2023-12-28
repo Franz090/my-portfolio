@@ -59,13 +59,13 @@ const ResumePage = () => {
   ];
 
   return (
-    <div className="md:px-10 sm:px-10 xl:px-36 pb-8 pt-7 ">
+    <div className="md:px-10 sm:px-10 xl:px-36  pb-12 pt-7 ">
       <h1 className="lg:text-[27px] md:text-[27px] sm:text-[27px] text-2xl mb-5 tracking-wide capitalize font-semibold ">
         Working Experience
       </h1>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-5 resume-element-1">
-        <div className="col-span-1 md:col-span-1  p-4 resume resume-border  ">
+        <div className="col-span-1 md:col-span-1  p-4 resume resume-border mb-7  ">
        
 
           {/* Add border class and padding class */}
@@ -139,7 +139,7 @@ const ResumePage = () => {
           </div>
             </div> 
         </div>
-        <div className="col-span-1 md:col-span-1   p-4 resume resume-border">
+        <div className="col-span-1 md:col-span-1   p-4 resume resume-border mb-7">
           {/* Add border class and padding class */}
            
          
@@ -178,7 +178,7 @@ const ResumePage = () => {
       </h1>
       <div  className='grid grid-cols-1 lg:grid-cols-2 gap-4 resume-element-2'>
 
-        <div className="col-span-1 md:col-span-1 p-4 resume resume-border">
+        <div className="col-span-1 md:col-span-1 p-4 resume resume-border mb-7">
        
           <div className="px-5">
          
@@ -207,7 +207,7 @@ const ResumePage = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-1 md:col-span-1  p-4 resume resume-border">
+        <div className="col-span-1 md:col-span-1  p-4 resume resume-border mb-7">
           {/* Add border class and padding class */}
           <div className="px-5">
             
