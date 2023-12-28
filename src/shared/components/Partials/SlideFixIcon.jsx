@@ -54,7 +54,7 @@ const SlideFixIcon = () => {
             style={{ 
               color: iconColor,   
               transition: 'background-color 0.5s',
-              backgroundColor: isDarkMode ? '#181818' : '#fffafa', }} className="ml-1  p-2 rounded-full  h-[21px] w-[21px]" />
+              backgroundColor: isDarkMode ? '#181818' : '#fffafa', }} className="ml-1  p-2 rounded-full h-[19px] w-[19px] " />
             
           </div>
         </animated.div>
