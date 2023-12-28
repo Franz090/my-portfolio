@@ -13,11 +13,12 @@ const SlideFixIcon = () => {
   const { isDarkMode } = useDarkModeStore();
 
   const getSpringProps = (hovered) => useSpring({
-    width: hovered ? 178 : 55,
-    config: { duration: 300 , tension: 120},
+    width: hovered ? 177 : 53,
+    config: { duration: 300 },
   });
 
   const textColor = isDarkMode ? '#181818' : '#fffafa';
+  const iconColor = isDarkMode ? '#fffafa' : '#181818';
 
   const renderAnimatedDiv = (text, icon, hovered, setHovered, url) => {
     const slideProps = getSpringProps(hovered);
@@ -27,21 +28,35 @@ const SlideFixIcon = () => {
       // or use window.location.href = url; if you want to navigate in the same tab
     };
 
+    
+
     return (
       <a href={url} target="_blank" rel="noopener noreferrer" onClick={handleBorderClick}>
         <animated.div
-          className="bg-white rounded-tr-full rounded-br-full p-4 border-l-4 border-none mb-2 overflow-hidden flex justify-end items-center"
+          className="rounded-tr-full rounded-br-full p-2 border-l-4 border-none mb-1 overflow-hidden flex justify-end items-center"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           style={{
             ...slideProps,
             overflow: 'hidden',
             backgroundColor: isDarkMode ? '#fffafa' : '#181818',
-            cursor: 'pointer', // Change cursor to indicate clickability
+            cursor: 'pointer',
+            transition: 'background-color 0.5s',
           }}
         >
-          <span className="mr-10" style={{ color: textColor }}>{text}</span>
-          <FontAwesomeIcon icon={icon} style={{ color: textColor }} className="mr-2"/>
+          <div className="flex items-center"><span className="mr-8" 
+          style={{ 
+            color: textColor ,
+            transition: 'background-color 0.5s',      
+            }}>{text}</span>
+          
+            <FontAwesomeIcon icon={icon} 
+            style={{ 
+              color: iconColor,   
+              transition: 'background-color 0.5s',
+              backgroundColor: isDarkMode ? '#181818' : '#fffafa', }} className="ml-1  p-2 rounded-full  h-[21px] w-[21px]" />
+            
+          </div>
         </animated.div>
       </a>
     );
