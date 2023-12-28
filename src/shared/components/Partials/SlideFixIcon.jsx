@@ -14,7 +14,7 @@ const SlideFixIcon = () => {
 
   const getSpringProps = (hovered) => useSpring({
     width: hovered ? 177 : 53,
-    config: { duration: 300 },
+    config: { duration: 500 },
   });
 
   const textColor = isDarkMode ? '#181818' : '#fffafa';
@@ -32,33 +32,42 @@ const SlideFixIcon = () => {
 
     return (
       <a href={url} target="_blank" rel="noopener noreferrer" onClick={handleBorderClick}>
-        <animated.div
-          className="rounded-tr-full rounded-br-full p-3 border-l-4 border-none mb-1 overflow-hidden flex justify-end items-center"
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-          style={{
-            ...slideProps,
-            overflow: 'hidden',
-            backgroundColor: isDarkMode ? '#fffafa' : '#181818',
-            cursor: 'pointer',
-            transition: 'background-color 0.5s',
-          }}
-        >
-          <div className="flex items-center"><span className="mr-8" 
-          style={{ 
-            color: textColor ,
-            transition: 'background-color 0.5s',      
-            }}>{text}</span>
-          
-            <FontAwesomeIcon icon={icon} 
-            style={{ 
-              color: iconColor,   
+      <animated.div
+        className="rounded-tr-full rounded-br-full p-3 border-l-4 border-none mb-1 overflow-hidden flex justify-end items-center"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{
+          ...slideProps,
+          overflow: 'hidden',
+          backgroundColor: isDarkMode ? '#fffafa' : '#181818',
+          cursor: 'pointer',
+          transition: 'background-color 0.5s',
+        }}
+      >
+        <div className="flex items-center">
+          <span
+            className="mr-8"
+            style={{
+              color: textColor,
               transition: 'background-color 0.5s',
-              backgroundColor: isDarkMode ? '#181818' : '#fffafa', }} className="ml-1  p-2 rounded-full h-[20px] w-[20px] " />
-            
-          </div>
-        </animated.div>
-      </a>
+            }}
+          >
+            {text}
+          </span>
+
+          <FontAwesomeIcon
+            icon={icon}
+            style={{
+              color: iconColor,
+              transition: 'transform 0.8s', // Added transition for the transform property
+              transform: hovered ? 'rotate(360deg)' : 'rotate(0)', // Rotate effect on hover
+              backgroundColor: isDarkMode ? '#181818' : '#fffafa',
+            }}
+            className="ml-1 p-2 rounded-full h-[20px] w-[20px]"
+          />
+        </div>
+      </animated.div>
+    </a>
     );
   };
 
