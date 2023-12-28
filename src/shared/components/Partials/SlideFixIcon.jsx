@@ -33,7 +33,7 @@ const SlideFixIcon = () => {
     return (
       <a href={url} target="_blank" rel="noopener noreferrer" onClick={handleBorderClick}>
         <animated.div
-          className="rounded-tr-full rounded-br-full p-2 border-l-4 border-none mb-1 overflow-hidden flex justify-end items-center"
+          className="rounded-tr-full rounded-br-full p-3 border-l-4 border-none mb-1 overflow-hidden flex justify-end items-center"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           style={{
@@ -54,7 +54,7 @@ const SlideFixIcon = () => {
             style={{ 
               color: iconColor,   
               transition: 'background-color 0.5s',
-              backgroundColor: isDarkMode ? '#181818' : '#fffafa', }} className="ml-1  p-2 rounded-full h-[19px] w-[19px] " />
+              backgroundColor: isDarkMode ? '#181818' : '#fffafa', }} className="ml-1  p-2 rounded-full h-[20px] w-[20px] " />
             
           </div>
         </animated.div>
