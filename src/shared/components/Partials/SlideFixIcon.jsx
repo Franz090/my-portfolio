@@ -53,7 +53,7 @@ const SlideFixIcon = () => {
             className="mr-8"
             style={{
               color: textColor,
-              transition: 'background-color 0.5s',
+              transition: 'background-color 0.3s',
             }}
           >
             {text}
@@ -63,7 +63,7 @@ const SlideFixIcon = () => {
             icon={icon}
             style={{
               color: iconColor,
-              transition: 'transform 0.5s', // Added transition for the transform property
+              transition: 'transform 0.5s, background-color 0.3s', 
               transform: hovered ? 'rotate(360deg)' : 'rotate(0)', // Rotate effect on hover
               backgroundColor: isDarkMode ? '#181818' : '#fffafa',
             }}

@@ -1,5 +1,6 @@
 import { Carousel } from "../components/Resume/carousel";
 import React, { useState, useEffect } from 'react';
+import { useSpring, animated } from '@react-spring/web';
 
 import pic1 from "../assets/images/carousel/1.png";
 import pic2 from "../assets/images/carousel/2.png";
@@ -13,7 +14,28 @@ import pic8 from "../assets/images/carousel/8.png";
 const ResumePage = () => {
   const [isCarouselHovered, setIsCarouselHovered] = useState(false);
   const [showText, setShowText] = useState(false);
-  
+  const [showEducation, setShowEducation] = useState(false);
+
+  useEffect(() => {
+    // Logic to handle showing educational background on scroll down
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const educationSection = document.getElementById('education');
+      if (educationSection && scrollPosition > educationSection.offsetTop) {
+        setShowEducation(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // React Spring animation setup
+  const educationAnimation = useSpring({
+    opacity: showEducation ? 1 : 0,
+    transform: showEducation ? 'translateY(0)' : 'translateY(30px)',
+    config: { duration: 800 },
+  });
 
   useEffect(() => {
     const storedShowText = localStorage.getItem('showText');
@@ -143,7 +165,7 @@ const ResumePage = () => {
           {/* Add border class and padding class */}
            
          
-    
+          <div className="px-5">
         
            
                 <div 
@@ -171,17 +193,18 @@ const ResumePage = () => {
                    )}
           </div> 
         </div>
+        </div>
       </div>
-
+   <animated.div style={educationAnimation}>
       <h1 className='lg:text-[27px] md:text-[27px] sm:text-[27px] text-2xl mb-5 tracking-wide capitalize font-semibold'>
         Educational Background
       </h1>
       <div  className='grid grid-cols-1 lg:grid-cols-2 gap-4 resume-element-2'>
 
-        <div className="col-span-1 md:col-span-1 p-4 resume resume-border mb-7">
+        <div id="education" className="col-span-1 md:col-span-1 p-4 resume resume-border mb-7">
        
           <div className="px-5">
-         
+       
           <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-5"></div>
            
             <h2 className="text-md  mb-[-10px] mt-[-20px] font-bold tracking-wide antialiased">
@@ -205,6 +228,7 @@ const ResumePage = () => {
             
               </div>
             </div>
+           
           </div>
         </div>
         <div className="col-span-1 md:col-span-1  p-4 resume resume-border mb-7">
@@ -234,9 +258,13 @@ const ResumePage = () => {
             
               </div>
             </div>
+            
           </div>
+          
         </div>
+        
       </div>
+      </animated.div>
     </div>
   );
 };

@@ -184,6 +184,9 @@
 .text-blue-custom {
   color: #487d9c;
 }
+.bg-blue-custom {
+  background-color: #487d9c;
+}
 .loading-button {
   position: relative;
   padding-top: 32px;
