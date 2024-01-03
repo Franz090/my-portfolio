@@ -15,6 +15,13 @@ const ResumePage = () => {
   const [isCarouselHovered, setIsCarouselHovered] = useState(false);
   const [showText, setShowText] = useState(false);
   const [showEducation, setShowEducation] = useState(false);
+  const [showExperience, setShowExperience] = useState(false);
+
+  const workingExperienceAnimation = useSpring({
+    opacity: showExperience ? 1 : 0,
+    transform: showExperience ? 'translateY(0)' : 'translateY(30px)',
+    config: { duration: 800 },
+  });
 
   useEffect(() => {
     // Logic to handle showing educational background on scroll down
@@ -48,19 +55,24 @@ const ResumePage = () => {
 
   const handleMouseEnter = () => {
     setIsCarouselHovered(true);
-  
     setShowText(false);
   };
 
   const handleMouseLeave = () => {
     setIsCarouselHovered(false);
-   
     setShowText(true);
     localStorage.setItem('showText', 'true');
   };
 
  
- 
+  const stayVisibleWorkExperience = () => {
+    setShowExperience(true);
+  };
+
+  // Run the function to keep the work experience content visible
+  useEffect(() => {
+    stayVisibleWorkExperience();
+  }, []);
  
   
   const data = {
@@ -82,6 +94,7 @@ const ResumePage = () => {
 
   return (
     <div className="md:px-10 sm:px-10 xl:px-36  pb-12 pt-7 ">
+    <animated.div style={workingExperienceAnimation}>
       <h1 className="lg:text-[27px] md:text-[27px] sm:text-[27px] text-2xl mb-5 tracking-wide capitalize font-semibold ">
         Working Experience
       </h1>
@@ -194,7 +207,9 @@ const ResumePage = () => {
           </div> 
         </div>
         </div>
+        
       </div>
+      </animated.div>
    <animated.div style={educationAnimation}>
       <h1 className='lg:text-[27px] md:text-[27px] sm:text-[27px] text-2xl mb-5 tracking-wide capitalize font-semibold'>
         Educational Background
