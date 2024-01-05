@@ -58,11 +58,11 @@ const Skills = () => {
         Technical Skills
       </h1>
       <p className="mb-7">These are the technologies I've worked with</p>
-      <div className="grid grid-cols-5 gap-4 justify-items-center px-4">
+      <div className="grid grid-cols-5  gap-4 justify-items-center px-4">
   {/* Map through the skillsList array */}
   {skillsList.map((skill, index) => (
-    <div key={index} className="text-center lg:w-44 mb-1" >
-      <div className="border-none  rounded-lg lg:p-10 flex flex-col justify-center items-center h-full" 
+    <div key={index} className="text-center mb-1" >
+      <div className="border-none  rounded-lg p-10 flex flex-col justify-center items-center lg:w-40 md:min-h-0 " 
       style={{ backgroundColor,
                transition: ' background-color 0.5s',
                boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px'
@@ -71,11 +71,11 @@ const Skills = () => {
         <img
           src={skill.src}
           alt={skill.alt}
-          className="h-16 w-16 object-contain max-w-full lg:mb-3 lg:mt-[-10px] "
+          className="aspect-w-1 aspect-h-1 lg:h-12 lg:w-12 md:h-11 md:w-11 max-w-full mb-3 mt-[-10px]"
         />
         {/* Apply whitespace-nowrap to keep text on one line */}
-        <span className='lg:flex justify-center items-center text-center h-8 w-8 '>
-          <p className=" whitespace-nowrap text-center antialiased tracking-wide font-normal ">{skill.title}</p>
+        <span className='flex justify-center items-center text-center h-8 w-8 '>
+          <p className=" whitespace-nowrap text-center antialiased tracking-wide font-normal md:text-md ">{skill.title}</p>
         </span>
       </div>
     </div>
