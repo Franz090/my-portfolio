@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HTML from '../assets/images/skills/HTML.png';
 import CSS from '../assets/images/skills/CSS.png';
 import JAVASCRIPT from '../assets/images/skills/JAVASCRIPT.png';
@@ -24,21 +24,55 @@ import useDarkModeStore from '../store/useDarkModeStore';
 
 const Skills = () => {
   const { isDarkMode } = useDarkModeStore();
+  const [hoveredSkill, setHoveredSkill] = useState(null);
   const backgroundColor = isDarkMode ? '#181818' : '#fffafa';
+  const barColor = isDarkMode ? '#fffafa' : '#181818';
+  const percentColor = isDarkMode ? '#181818' : '#fffafa';
 
+  const skillLevels = {
+    HTML: 100,
+    CSS: 100,
+    JAVASCRIPT: 100,
+    REACTJS: 90,
+    MYSQL: 80,
+    AJAX: 84,
+    JQUERY: 82,
+    JSON: 65,
+    NODEJS: 80,
+    PHP: 85,
+    ADOBEXD: 95,
+    FIGMA: 80,
+    PHOTOSHOP: 65,
+    GIT: 95,
+    VITE: 95,
+    REDUX: 85,
+    TAILWIND: 98,
+    BOOTSTRAP: 100,
+    SASS:  95,
+    THREEJS: 83,
+    
+  };
+
+  const handleSkillHover = (title) => {
+    setHoveredSkill(title);
+  };
+
+  const handleSkillLeave = () => {
+    setHoveredSkill(null);
+  };
  
   const skillsList = [
     { src: HTML, alt: 'HTML Logo', title: 'HTML' },
     { src: CSS, alt: 'CSS Logo', title: 'CSS' },
     { src: JAVASCRIPT, alt: 'JAVASCRIPT Logo', title: 'JAVASCRIPT' },
-    { src: REACTJS, alt: 'REACTJS Logo', title: 'REACT JS' },
+    { src: REACTJS, alt: 'REACTJS Logo', title: 'REACTJS' },
     { src: MYSQL, alt: 'MYSQL Logo', title: 'MYSQL' },
     { src: AJAX, alt: 'AJAX Logo', title: 'AJAX' },
     { src: JQUERY, alt: 'JQERY Logo', title: 'JQUERY' },
     { src: JSON, alt: 'JSON Logo', title: 'JSON' },
-    { src: NODEJS, alt: 'NODEJS Logo', title: 'NODE JS' },
+    { src: NODEJS, alt: 'NODEJS Logo', title: 'NODEJS' },
     { src: PHP, alt: 'PHP Logo', title: 'PHP' },
-    { src: ADOBEXD, alt: 'ADOBEXD Logo', title: 'ADOBE XD' },
+    { src: ADOBEXD, alt: 'ADOBEXD Logo', title: 'ADOBEXD' },
     { src: FIGMA, alt: 'FIGMA Logo', title: 'FIGMA' },
     { src: PHOTOSHOP, alt: 'PHOTOSHOP Logo', title: 'PHOTOSHOP' },
     { src: GIT, alt: 'GIT Logo', title: 'GIT' },
@@ -47,7 +81,7 @@ const Skills = () => {
     { src: TAILWIND, alt: 'TAILWIND Logo', title: 'TAILWIND' },
     { src: BOOTSTRAP, alt: 'BOOTSTRAP Logo', title: 'BOOTSTRAP' },
     { src: SASS, alt: 'SASS Logo', title: 'SASS' },
-    { src: THREEJS, alt: 'THREEJS Logo', title: 'THREE JS' },
+    { src: THREEJS, alt: 'THREEJS Logo', title: 'THREEJS' },
     
   ];
 
@@ -57,29 +91,42 @@ const Skills = () => {
         Technical Skills
       </h1>
       <p className="mb-7">These are the technologies I've worked with</p>
-      <div className="grid grid-flow-row lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4  justify-items-center w-100">
+      <div className="grid grid-flow-row lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4 justify-items-center w-100">
         {skillsList.map((skill, index) => (
           <div
-          key={index}
-          className="flex flex-col items-center justify-end transition-all duration-500 transform lg:hover:scale-110 md:hover:scale-110 sm:hover:scale-110 hover:scale-105"
-        >
-          <div
-            className={`border-none rounded-lg flex flex-col justify-center items-center lg:w-[140px] lg:h-[140px] md:w-[130px] md:h-[130px] sm:w-[130px] sm:h-[130px] w-28 h-28 shadow-md`}
-            style={{
-              backgroundColor,
-              borderWidth: '2px', // Initial border width
-            }}
+            key={index}
+            className="flex flex-col items-center justify-end transition-all duration-500 transform lg:hover:scale-110 md:hover:scale-110 sm:hover:scale-110 hover:scale-105"
+            onMouseEnter={() => handleSkillHover(skill.title)}
+            onMouseLeave={handleSkillLeave}
           >
-            <img
-              src={skill.src}
-              alt={skill.alt}
-              className="object-contain lg:h-16 lg:w-16 md:h-16 md:w-16 sm:h-14 sm:w-14 h-12 w-12"
-            />
-            <span className="whitespace-nowrap text-center antialiased tracking-wide font-normal text-sm ">
-              {skill.title}
-            </span>
+            <div
+              className={`border-none rounded-lg flex flex-col justify-center items-center lg:w-[140px] lg:h-[140px] md:w-[130px] md:h-[130px] sm:w-[130px] sm:h-[130px] w-28 h-28 shadow-md`}
+              style={{
+                backgroundColor,
+                borderWidth: hoveredSkill === skill.title ? '2px' : '0px',
+              }}
+            >
+              <img
+                src={skill.src}
+                alt={skill.alt}
+                className="object-contain lg:h-16 lg:w-16 md:h-16 md:w-16 sm:h-14 sm:w-14 h-12 w-12"
+              />
+              <span className="whitespace-nowrap text-center antialiased tracking-wide font-normal text-sm">
+                {skill.title}
+              </span>
+              {hoveredSkill === skill.title && ( // Show percentage bar on hover
+               <div className="w-full px-2  mt-2 rounded-lg">
+               <div
+                 className="bg-blue-custom tracking-tightest  leading-none px-1 rounded-lg text-right text-[11px] h-3 font-normal"
+                 style={{ width: `${skillLevels[skill.title]}%`, backgroundColor: barColor,color: percentColor}}
+                         
+               >
+                 {`${skillLevels[skill.title]}%`}
+               </div>
+             </div>
+              )}
+            </div>
           </div>
-        </div>
         ))}
       </div>
     </div>
