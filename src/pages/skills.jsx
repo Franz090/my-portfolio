@@ -57,11 +57,11 @@ const Skills = () => {
         Technical Skills
       </h1>
       <p className="mb-7">These are the technologies I've worked with</p>
-      <div className="grid grid-flow-row lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4 justify-items-center">
+      <div className="grid grid-flow-row lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-6 justify-items-center w-100">
         {skillsList.map((skill, index) => (
           <div key={index} className="flex flex-col items-center justify-end">
             <div
-              className={`border-none rounded-lg flex flex-col justify-center items-center p-10 lg:w-[150px] lg:h-[150px] md:w-[130px] md:h-[130px] sm:w-[130px] sm:h-[130px] w-28 h-28 transition-all duration-500 shadow-md`}
+              className={`border-none rounded-lg flex flex-col justify-center items-center   lg:w-[140px] lg:h-[140px] md:w-[130px] md:h-[130px] sm:w-[130px] sm:h-[130px] w-28 h-28 transition-all duration-500 shadow-md`}
               style={{
                 backgroundColor,
               }}
@@ -69,12 +69,10 @@ const Skills = () => {
               <img
                 src={skill.src}
                 alt={skill.alt}
-                className="object-contain w-full h-full"
+                className="object-contain h-16 w-16 "
               />
-              <span className="flex justify-center items-center text-center mt-auto">
-                <p className="whitespace-nowrap text-center antialiased tracking-wide font-normal text-sm">
+              <span className="whitespace-nowrap text-center antialiased tracking-wide font-normal text-sm ">
                   {skill.title}
-                </p>
               </span>
             </div>
           </div>
