@@ -24,6 +24,7 @@ import useDarkModeStore from '../store/useDarkModeStore';
 
 const Skills = () => {
   const { isDarkMode } = useDarkModeStore();
+  const [currentSkillLevel, setCurrentSkillLevel] = useState(0);
   const [hoveredSkill, setHoveredSkill] = useState(null);
   const backgroundColor = isDarkMode ? '#181818' : '#fffafa';
   const barColor = isDarkMode ? '#fffafa' : '#181818';
@@ -54,11 +55,27 @@ const Skills = () => {
   };
 
   const handleSkillHover = (title) => {
-    setHoveredSkill(title);
+  setHoveredSkill(title);
+  const targetSkillLevel = skillLevels[title] || 0;
+  let counter = 0;
+  const increment = 1;
+
+  
+  const step = () => {
+    counter += increment;
+    setCurrentSkillLevel(counter);
+    if (counter < targetSkillLevel) {
+      requestAnimationFrame(step);
+    }
   };
+
+  requestAnimationFrame(step);
+};
+
 
   const handleSkillLeave = () => {
     setHoveredSkill(null);
+    setCurrentSkillLevel(0);
   };
  
   const skillsList = [
@@ -115,15 +132,19 @@ const Skills = () => {
                 {skill.title}
               </span>
               {hoveredSkill === skill.title && ( // Show percentage bar on hover
-               <div className="w-full px-2  mt-2 rounded-lg">
-               <div
-                 className="bg-blue-custom tracking-tightest  leading-none px-1 rounded-lg text-right text-[11px] h-3 font-normal"
-                 style={{ width: `${skillLevels[skill.title]}%`, backgroundColor: barColor,color: percentColor}}
-                         
-               >
-                 {`${skillLevels[skill.title]}%`}
-               </div>
-             </div>
+                <div className="w-full px-2  mt-2 rounded-lg">
+                  <div
+                    className="bg-blue-custom tracking-tightest  leading-none px-1 rounded-lg text-right text-[11px] h-3 font-light subpixel-antialiased"
+                    style={{
+                      width: `${currentSkillLevel}%`,
+                      backgroundColor: barColor,
+                      color: percentColor,
+                     
+                    }}
+                  >
+                    {`${currentSkillLevel}%`}
+                  </div>
+                </div>
               )}
             </div>
           </div>
