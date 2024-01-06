@@ -52,36 +52,36 @@ const Skills = () => {
   ];
 
   return (
-    <div className="md:px-10 sm:px-10 xl:px-36 pb-12 pt-7 ">
+    <div className="md:px-10 sm:px-10 xl:px-36 pb-12 pt-7">
       <h1 className="lg:text-[27px] md:text-[27px] sm:text-[27px] text-2xl mb-5 tracking-wide capitalize font-semibold">
         Technical Skills
       </h1>
       <p className="mb-7">These are the technologies I've worked with</p>
-      <div className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2  gap-4 justify-items-center px-4 ">
-  {/* Map through the skillsList array */}
-  {skillsList.map((skill, index) => (
-    <div key={index} className="text-center mb-1" >
-      <div className="border-none rounded-lg p-12 flex flex-col  justify-center items-center  lg:w-40 md:w-34 sm:w-36 w-48 " 
-      style={{ backgroundColor,
-               transition: ' background-color 0.5s',
-               boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px'
-                }}>
-        {/* Render images dynamically */}
-        <img
-          src={skill.src}
-          alt={skill.alt}
-          className="aspect-w-1 aspect-h-1 lg:h-12 lg:w-12 md:h-11 md:w-11 sm:w-10 sm:h-10 w-10 h-10 max-w-full mb-3 mt-[-10px] "
-        />
-        {/* Apply whitespace-nowrap to keep text on one line */}
-        <span className='flex justify-center items-center text-center '>
-          <p className=" whitespace-nowrap text-center antialiased tracking-wide font-normal lg:text-md md:text-md  sm:text-sm text-sm">{skill.title}</p>
-        </span>
+      <div className="grid grid-flow-row lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4 justify-items-center">
+        {skillsList.map((skill, index) => (
+          <div key={index} className="flex flex-col items-center justify-end">
+            <div
+              className={`border-none rounded-lg flex flex-col justify-center items-center p-10 lg:w-[150px] lg:h-[150px] md:w-[130px] md:h-[130px] sm:w-[130px] sm:h-[130px] w-28 h-28 transition-all duration-500 shadow-md`}
+              style={{
+                backgroundColor,
+              }}
+            >
+              <img
+                src={skill.src}
+                alt={skill.alt}
+                className="object-contain w-full h-full"
+              />
+              <span className="flex justify-center items-center text-center mt-auto">
+                <p className="whitespace-nowrap text-center antialiased tracking-wide font-normal text-sm">
+                  {skill.title}
+                </p>
+              </span>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
-  ))}
-</div>
-    </div>
-  );  
+  );
 };
 
 export default Skills;
