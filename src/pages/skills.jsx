@@ -57,25 +57,29 @@ const Skills = () => {
         Technical Skills
       </h1>
       <p className="mb-7">These are the technologies I've worked with</p>
-      <div className="grid grid-flow-row lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-6 justify-items-center w-100">
+      <div className="grid grid-flow-row lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4  justify-items-center w-100">
         {skillsList.map((skill, index) => (
-          <div key={index} className="flex flex-col items-center justify-end">
-            <div
-              className={`border-none rounded-lg flex flex-col justify-center items-center   lg:w-[140px] lg:h-[140px] md:w-[130px] md:h-[130px] sm:w-[130px] sm:h-[130px] w-28 h-28 transition-all duration-500 shadow-md`}
-              style={{
-                backgroundColor,
-              }}
-            >
-              <img
-                src={skill.src}
-                alt={skill.alt}
-                className="object-contain h-16 w-16 "
-              />
-              <span className="whitespace-nowrap text-center antialiased tracking-wide font-normal text-sm ">
-                  {skill.title}
-              </span>
-            </div>
+          <div
+          key={index}
+          className="flex flex-col items-center justify-end transition-all duration-500 transform hover:scale-110"
+        >
+          <div
+            className={`border-none rounded-lg flex flex-col justify-center items-center lg:w-[140px] lg:h-[140px] md:w-[130px] md:h-[130px] sm:w-[130px] sm:h-[130px] w-28 h-28 shadow-md`}
+            style={{
+              backgroundColor,
+              borderWidth: '2px', // Initial border width
+            }}
+          >
+            <img
+              src={skill.src}
+              alt={skill.alt}
+              className="object-contain lg:h-16 lg:w-16 md:h-16 md:w-16 sm:h-14 sm:w-14 h-12 w-12"
+            />
+            <span className="whitespace-nowrap text-center antialiased tracking-wide font-normal text-sm ">
+              {skill.title}
+            </span>
           </div>
+        </div>
         ))}
       </div>
     </div>
