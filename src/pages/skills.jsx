@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSpring, animated } from '@react-spring/web';
 import HTML from '../assets/images/skills/HTML.png';
 import CSS from '../assets/images/skills/CSS.png';
 import JAVASCRIPT from '../assets/images/skills/JAVASCRIPT.png';
@@ -24,11 +25,30 @@ import useDarkModeStore from '../store/useDarkModeStore';
 
 const Skills = () => {
   const { isDarkMode } = useDarkModeStore();
+  const [showSkills, setShowSkills] = useState(false);
+
   const [currentSkillLevel, setCurrentSkillLevel] = useState(0);
   const [hoveredSkill, setHoveredSkill] = useState(null);
   const backgroundColor = isDarkMode ? '#181818' : '#fffafa';
   const barColor = isDarkMode ? '#fffafa' : '#181818';
   const percentColor = isDarkMode ? '#181818' : '#fffafa';
+
+  const skillsAnimation = useSpring({
+    opacity: showSkills ? 1 : 0,
+    transform: showSkills ? 'translateY(0)' : 'translateY(30px)',
+    config: { duration: 800 },
+  });
+
+  // Function to trigger the animation
+  const animateSkills = () => {
+    setShowSkills(true);
+  };
+
+  // Trigger the animation when the component mounts
+  React.useEffect(() => {
+    animateSkills();
+  }, []);
+
 
   const skillLevels = {
     HTML: 100,
@@ -103,24 +123,25 @@ const Skills = () => {
   ];
 
   return (
-    <div className="md:px-10 sm:px-10 xl:px-36 pb-12 pt-7">
+    <animated.div  style={skillsAnimation} className="md:px-10 sm:px-10 xl:px-36 pb-12 pt-7">
       <h1 className="lg:text-[27px] md:text-[27px] sm:text-[27px] text-2xl mb-5 tracking-wide capitalize font-semibold">
-        Technical Skills
+        Skills
       </h1>
-      <p className="mb-7">These are the technologies I've worked with</p>
+      <p className="mb-7 px-3 text-left antialiased">These are the technologies I've worked with</p>
       <div className="grid grid-flow-row lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4 justify-items-center w-100">
         {skillsList.map((skill, index) => (
           <div
             key={index}
-            className="flex flex-col items-center justify-end transition-all duration-500 transform lg:hover:scale-110 md:hover:scale-110 sm:hover:scale-110 hover:scale-105"
+            className="flex flex-col items-center justify-end transition-all duration-500 transform  lg:hover:scale-105 md:hover:scale-105 sm:hover:scale-105 hover:scale-100"
             onMouseEnter={() => handleSkillHover(skill.title)}
             onMouseLeave={handleSkillLeave}
           >
             <div
-              className={`border-none rounded-lg flex flex-col justify-center items-center lg:w-[140px] lg:h-[140px] md:w-[130px] md:h-[130px] sm:w-[130px] sm:h-[130px] w-28 h-28 shadow-md`}
+              className={`border-none rounded-lg flex flex-col justify-center items-center lg:w-40 lg:h-40 md:w-36 md:h-36 sm:w-34 sm:h-34 w-40 h-40 shadow-md skills-responsive `}
               style={{
                 backgroundColor,
                 borderWidth: hoveredSkill === skill.title ? '2px' : '0px',
+                transition: 'background-color 0.5s'
               }}
             >
               <img
@@ -150,7 +171,7 @@ const Skills = () => {
           </div>
         ))}
       </div>
-    </div>
+    </animated.div>
   );
 };
 

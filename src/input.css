@@ -558,11 +558,21 @@ input[type="checkbox"]:checked::before {
     }
 
   }
+  @media (max-width: 360px)  and (min-height:740px) {
+    .skills-responsive{
+      max-width: 147px;
+      max-height: 145px;
+  }
+}
   @media (max-width: 280px)  and (min-height:653px) {
     .progress-wrapper {
      
       width: 70%;
   
+    }
+    .skills-responsive{
+      max-width: 105px;
+      max-height: 103px;
     }
    
     .logo-name span{
