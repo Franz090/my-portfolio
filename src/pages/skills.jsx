@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import HTML from '../assets/images/skills/HTML.png';
 import CSS from '../assets/images/skills/CSS.png';
@@ -24,15 +24,17 @@ import useDarkModeStore from '../store/useDarkModeStore';
 
 
 const Skills = () => {
-  const { isDarkMode } = useDarkModeStore();
-  const [showSkills, setShowSkills] = useState(false);
-
+  const [hoveredSkill, setHoveredSkill] = useState('');
   const [currentSkillLevel, setCurrentSkillLevel] = useState(0);
-  const [hoveredSkill, setHoveredSkill] = useState(null);
+  const [showSkills, setShowSkills] = useState(false);
+  const { isDarkMode } = useDarkModeStore();
+  const intervalRef = React.useRef(null);
+
   const backgroundColor = isDarkMode ? '#181818' : '#fffafa';
   const barColor = isDarkMode ? '#fffafa' : '#181818';
   const percentColor = isDarkMode ? '#181818' : '#fffafa';
-
+ 
+ 
   const skillsAnimation = useSpring({
     opacity: showSkills ? 1 : 0,
     transform: showSkills ? 'translateY(0)' : 'translateY(30px)',
@@ -49,76 +51,60 @@ const Skills = () => {
     animateSkills();
   }, []);
 
+  const handleSkillHover = (skillTitle) => {
+  const skill = skillsList.find((skill) => skill.title === skillTitle);
+  setHoveredSkill(skill.title);
 
-  const skillLevels = {
-    HTML: 100,
-    CSS: 100,
-    JAVASCRIPT: 100,
-    REACTJS: 90,
-    MYSQL: 80,
-    AJAX: 84,
-    JQUERY: 82,
-    JSON: 65,
-    NODEJS: 80,
-    PHP: 85,
-    ADOBEXD: 95,
-    FIGMA: 80,
-    PHOTOSHOP: 65,
-    GIT: 95,
-    VITE: 95,
-    REDUX: 85,
-    TAILWIND: 98,
-    BOOTSTRAP: 100,
-    SASS:  95,
-    THREEJS: 83,
-    
-  };
+  // Clear any previous intervals
+  clearInterval(intervalRef.current);
 
-  const handleSkillHover = (title) => {
-  setHoveredSkill(title);
-  const targetSkillLevel = skillLevels[title] || 0;
-  let counter = 0;
-  const increment = 1;
+  // Calculate the increment value for smooth animation
+  const increment = skill.level / 100; // Adjust increment based on your preference
+  let currentPercentage = 0;
 
-  
-  const step = () => {
-    counter += increment;
-    setCurrentSkillLevel(counter);
-    if (counter < targetSkillLevel) {
-      requestAnimationFrame(step);
+  // Incrementally update the currentSkillLevel state
+  const interval = setInterval(() => {
+    if (currentPercentage >= skill.level) {
+      clearInterval(interval);
+    } else {
+      currentPercentage += increment;
+      setCurrentSkillLevel(Math.floor(currentPercentage));
     }
-  };
-
-  requestAnimationFrame(step);
+  }, 10); // Adjust the interval duration for smoother animation
+  
+  // Save the interval reference to clear it later
+  intervalRef.current = interval;
 };
 
+  
 
-  const handleSkillLeave = () => {
-    setHoveredSkill(null);
+ const handleSkillLeave = () => {
+    setHoveredSkill('');
     setCurrentSkillLevel(0);
-  };
+ };
  
+     
   const skillsList = [
-    { src: HTML, alt: 'HTML Logo', title: 'HTML' },
-    { src: CSS, alt: 'CSS Logo', title: 'CSS' },
-    { src: JAVASCRIPT, alt: 'JAVASCRIPT Logo', title: 'JAVASCRIPT' },
-    { src: REACTJS, alt: 'REACTJS Logo', title: 'REACTJS' },
-    { src: MYSQL, alt: 'MYSQL Logo', title: 'MYSQL' },
-    { src: AJAX, alt: 'AJAX Logo', title: 'AJAX' },
-    { src: JQUERY, alt: 'JQERY Logo', title: 'JQUERY' },
-    { src: JSON, alt: 'JSON Logo', title: 'JSON' },
-    { src: NODEJS, alt: 'NODEJS Logo', title: 'NODEJS' },
-    { src: PHP, alt: 'PHP Logo', title: 'PHP' },
-    { src: ADOBEXD, alt: 'ADOBEXD Logo', title: 'ADOBEXD' },
-    { src: FIGMA, alt: 'FIGMA Logo', title: 'FIGMA' },
-    { src: PHOTOSHOP, alt: 'PHOTOSHOP Logo', title: 'PHOTOSHOP' },
-    { src: GIT, alt: 'GIT Logo', title: 'GIT' },
-    { src: VITE, alt: 'VITE Logo', title: 'VITE' },
-    { src: REDUX, alt: 'REDUX Logo', title: 'REDUX' },
-    { src: TAILWIND, alt: 'TAILWIND Logo', title: 'TAILWIND' },
-    { src: BOOTSTRAP, alt: 'BOOTSTRAP Logo', title: 'BOOTSTRAP' },
-    { src: SASS, alt: 'SASS Logo', title: 'SASS' },
-    { src: THREEJS, alt: 'THREEJS Logo', title: 'THREEJS' },
+    { src: HTML, alt: 'HTML Logo', title: 'HTML', level: 100},
+    { src: CSS, alt: 'CSS Logo', title: 'CSS', level: 100 },
+    { src: JAVASCRIPT, alt: 'JAVASCRIPT Logo', title: 'JAVASCRIPT', level: 100 },
+    { src: REACTJS, alt: 'REACTJS Logo', title: 'REACTJS', level: 95 },
+    { src: MYSQL, alt: 'MYSQL Logo', title: 'MYSQL', level: 85 },
+    { src: AJAX, alt: 'AJAX Logo', title: 'AJAX', level: 84 },
+    { src: JQUERY, alt: 'JQERY Logo', title: 'JQUERY', level: 82 },
+    { src: JSON, alt: 'JSON Logo', title: 'JSON', level: 65 },
+    { src: NODEJS, alt: 'NODEJS Logo', title: 'NODEJS', level: 78 },
+    { src: PHP, alt: 'PHP Logo', title: 'PHP', level: 82 },
+    { src: ADOBEXD, alt: 'ADOBEXD Logo', title: 'ADOBEXD', level: 100 },
+    { src: FIGMA, alt: 'FIGMA Logo', title: 'FIGMA', level: 84  },
+    { src: PHOTOSHOP, alt: 'PHOTOSHOP Logo', title: 'PHOTOSHOP', level: 97  },
+    { src: GIT, alt: 'GIT Logo', title: 'GIT', level: 95 },
+    { src: VITE, alt: 'VITE Logo', title: 'VITE', level: 96 },
+    { src: REDUX, alt: 'REDUX Logo', title: 'REDUX', level: 86 },
+    { src: TAILWIND, alt: 'TAILWIND Logo', title: 'TAILWIND', level: 99 },
+    { src: BOOTSTRAP, alt: 'BOOTSTRAP Logo', title: 'BOOTSTRAP', level: 100 },
+    { src: SASS, alt: 'SASS Logo', title: 'SASS', level: 90 },
+    { src: THREEJS, alt: 'THREEJS Logo', title: 'THREEJS', level: 83 },
     
   ];
 
