@@ -1,8 +1,11 @@
+// ProjectCard.js
 import React, { useState } from 'react';
+import { useModalContext } from '../../shared/components/Partials/ModalContext';
 
 const ProjectCard = ({ project, backgroundColor, textColor, transitionDuration }) => {
   const { cover, title, tools, githubLink } = project;
   const [redirecting, setRedirecting] = useState(false);
+  const { modalOpen, setModalOpen, selectedProject, setSelectedProject } = useModalContext();
 
   const handleRedirect = () => {
     setRedirecting(true);
@@ -10,10 +13,19 @@ const ProjectCard = ({ project, backgroundColor, textColor, transitionDuration }
       window.open(githubLink, '_blank');
       setTimeout(() => {
         setRedirecting(false);
-      }, 100); // Changing back the text immediately after opening the new tab
+      }, 100);
     }, 2000);
   };
 
+  const openModal = () => {
+    setSelectedProject(project);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedProject(null);
+    setModalOpen(false);
+  };
 
   return (
     <div className="max-w-sm border-t rounded-lg shadow relative" style={{ backgroundColor, transition: `background-color ${transitionDuration}` }}>
@@ -27,15 +39,26 @@ const ProjectCard = ({ project, backgroundColor, textColor, transitionDuration }
           ))}
         </ul>
       </div>
-      {/* Centered text within the black and red div elements */}
       <div className="absolute bottom-0 left-0 w-full flex">
-        <div className="flex-1 border-t-1 font-normal antialiased border-gray-300 bg-blue-custom h-12 rounded-bl-md w-full flex items-center justify-center text-white">
+        <div onClick={openModal} className="flex-1 border-t-1 font-normal antialiased border-gray-300 bg-blue-custom h-12 rounded-bl-md w-full flex items-center justify-center text-white cursor-pointer">
           View
         </div>
         <div onClick={handleRedirect} className="flex-1 border-t-1 font-normal antialiased border-gray-300 bg-slate-200 h-12 rounded-br-md w-full flex items-center justify-center text-black cursor-pointer">
           {redirecting ? 'Redirecting...' : 'Source Code'}
         </div>
       </div>
+      {modalOpen && selectedProject && selectedProject === project && (
+        <>
+          <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 bg-black opacity-50"></div>
+          <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
+            <div className="bg-white p-8 rounded-lg shadow-md">
+              <h2 className="text-xl font-semibold mb-4">{title}</h2>
+              {/* Display more details about the selected project here */}
+              <button onClick={closeModal} className="px-4 py-2 bg-blue-custom text-white rounded-md">Close</button>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

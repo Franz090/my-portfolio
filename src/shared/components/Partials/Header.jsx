@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useModalContext } from '../Partials/ModalContext';
 import { useSpring, animated,useTrail } from '@react-spring/web';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import DarkModeToggle from './DarkModeToggle';
@@ -68,6 +69,15 @@ const Header = () => {
   const { setStopAnimation, setIsJumping,setHomeLinkClicked, setShowImage,shouldStopAnimation, setShouldStopAnimation } = useAnimationStore(); 
   const [showLogo, setShowLogo] = useState(false);
   const [isPageReloaded, setIsPageReloaded] = useState(false);
+  const { modalOpen, setModalOpen } = useModalContext();
+
+
+
+  useEffect(() => {
+    // Close the modal when the header is mounted
+    setModalOpen(false);
+  }, [setModalOpen]);
+
 
 
   
@@ -389,13 +399,14 @@ const linksTrail = useTrail(linksData.length, {
 
 
   const headerClass = menuOpen ? 'header-open' : '';
+  
 
   return (
     <div className={`Header pb-28 ${headerClass}`}>
       {showProgressBar && (
         <div className="progress-bar" style={{ width: `${progress * 100}%` }} />
       )}
-      <nav className=" pt-7 pb-7 p-5 fixed top-0 left-0 right-0 z-10 lg:flex lg:items-center md:justify-between">
+      <nav className={`pt-7 pb-7 p-5 fixed top-0 left-0 right-0 z-10 lg:flex lg:items-center md:justify-between ${modalOpen ? 'pointer-events-none' : ''}`}>
         <div className="md:container mx-auto xl:px-24 md:px-1 sm:px-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center justify-between space-x-2 ">

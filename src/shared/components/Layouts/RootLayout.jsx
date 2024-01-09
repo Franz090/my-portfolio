@@ -5,6 +5,7 @@ import SlideFixIcon from '../Partials/SlideFixIcon';
 import Contact from '../Partials/Contact';
 import { Outlet } from 'react-router-dom';
 import StarrySky from '../Partials/StarrySky';
+import { ModalProvider } from '../Partials/ModalContext';
 
 const RootLayout = () => {
     const [showStarrySky, setShowStarrySky] = useState(false);
@@ -35,6 +36,7 @@ const RootLayout = () => {
     }, []);
 
     return (
+        <ModalProvider>
         <div className="root-main">
             <Header className="z-10" />
             <Outlet className="z-1" />
@@ -47,6 +49,7 @@ const RootLayout = () => {
             <Footer className="z-10" />
             <StarrySky className="fixed top-0 left-0 z-[-1]" visible={showStarrySky} />
         </div>
+        </ModalProvider>
     );
 };
 
