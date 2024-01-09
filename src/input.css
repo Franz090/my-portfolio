@@ -135,6 +135,9 @@
 .text-white{
   color: #fffafa;
 }
+.text-black{
+  color: #181818;
+}
 .third{
   color: var(--font-color);
   font-family: 'Bauhaus-93', sans-serif;
