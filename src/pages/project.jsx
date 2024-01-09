@@ -8,16 +8,19 @@ const projectsData = [
     cover: mehrCover,
     title: 'Maternity Health Monitoring Record System',
     tools: ['HTML', 'CSS', 'JAVASCRIPT/JQUERY','AJAX', 'PHP', 'BOOTSTRAP 5'],
+    githubLink: 'https://github.com/Franz090/mehrsystem'
   },
   {
     cover: munisipyoCover,
     title: 'Municipal Treasury Office Record Management System',
     tools: ['HTML', 'CSS', 'JAVASCRIPT', 'PHP', 'BOOTSTRAP 5'],
+    githubLink: 'https://github.com/Franz090/Municipal'
   },
   {
     cover: waterstationCover,
     title: 'Water Refilling Station Reservation System',
     tools: ['HTML', 'CSS', 'JAVASCRIPT', 'PHP'],
+    githubLink: 'https://github.com/Franz090/water-refilling-station'
   },
 ];
 

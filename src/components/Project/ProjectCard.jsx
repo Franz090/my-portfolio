@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const ProjectCard = ({ project, backgroundColor, textColor, transitionDuration }) => {
-  const { cover, title, tools } = project;
+  const { cover, title, tools, githubLink } = project;
+  const [redirecting, setRedirecting] = useState(false);
+
+  const handleRedirect = () => {
+    setRedirecting(true);
+    setTimeout(() => {
+      window.open(githubLink, '_blank');
+      setTimeout(() => {
+        setRedirecting(false);
+      }, 100); // Changing back the text immediately after opening the new tab
+    }, 2000);
+  };
+
 
   return (
     <div className="max-w-sm border-t rounded-lg shadow relative" style={{ backgroundColor, transition: `background-color ${transitionDuration}` }}>
@@ -20,8 +32,8 @@ const ProjectCard = ({ project, backgroundColor, textColor, transitionDuration }
         <div className="flex-1 border-t-1 font-normal antialiased border-gray-300 bg-blue-custom h-12 rounded-bl-md w-full flex items-center justify-center text-white">
           View
         </div>
-        <div className="flex-1 border-t-1 font-normal antialiased border-gray-300 bg-slate-200 h-12 rounded-br-md w-full flex items-center justify-center text-black ">
-          Source Code
+        <div onClick={handleRedirect} className="flex-1 border-t-1 font-normal antialiased border-gray-300 bg-slate-200 h-12 rounded-br-md w-full flex items-center justify-center text-black cursor-pointer">
+          {redirecting ? 'Redirecting...' : 'Source Code'}
         </div>
       </div>
     </div>
