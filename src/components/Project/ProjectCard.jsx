@@ -53,7 +53,16 @@ const ProjectCard = ({ project, backgroundColor, textColor, transitionDuration }
           <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
             <div className="bg-white p-8 rounded-lg shadow-md">
               <h2 className="text-xl font-semibold mb-4">{title}</h2>
-              {/* Display more details about the selected project here */}
+              <div className="flex flex-wrap">
+                {selectedProject.images.map((image, index) => (
+                   <img
+                   key={index}
+                   className="w-32 h-32 object-cover mr-2 mb-2 rounded-md"
+                   src={image}
+                  alt={`Image ${index + 1}`}
+                />
+                ))}
+              </div>
               <button onClick={closeModal} className="px-4 py-2 bg-blue-custom text-white rounded-md">Close</button>
             </div>
           </div>

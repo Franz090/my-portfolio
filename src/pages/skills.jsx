@@ -92,7 +92,7 @@ const Skills = () => {
     { src: MYSQL, alt: 'MYSQL Logo', title: 'MYSQL', level: 85 },
     { src: AJAX, alt: 'AJAX Logo', title: 'AJAX', level: 84 },
     { src: JQUERY, alt: 'JQERY Logo', title: 'JQUERY', level: 82 },
-    { src: JSON, alt: 'JSON Logo', title: 'JSON', level: 65 },
+    { src: JSON, alt: 'JSON Logo', title: 'JSON/API', level: 65 },
     { src: NODEJS, alt: 'NODEJS Logo', title: 'NODEJS', level: 78 },
     { src: PHP, alt: 'PHP Logo', title: 'PHP', level: 82 },
     { src: ADOBEXD, alt: 'ADOBEXD Logo', title: 'ADOBEXD', level: 100 },
