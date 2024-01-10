@@ -40,10 +40,10 @@ const ProjectCard = ({ project, backgroundColor, textColor, transitionDuration }
         </ul>
       </div>
       <div className="absolute bottom-0 left-0 w-full flex">
-        <div onClick={openModal} className="flex-1 border-t-1 font-normal antialiased border-gray-300 bg-blue-custom h-12 rounded-bl-md w-full flex items-center justify-center text-white cursor-pointer">
+        <div onClick={openModal} className="flex-1 border-t-1  border-gray-400 font-normal antialiased leading-relaxed bg-blue-custom h-12 rounded-bl-md w-full flex items-center justify-center text-white cursor-pointer hover:bg-cyan-800/100">
           View
         </div>
-        <div onClick={handleRedirect} className="flex-1 border-t-1 font-normal antialiased border-gray-300 bg-slate-200 h-12 rounded-br-md w-full flex items-center justify-center text-black cursor-pointer">
+        <div onClick={handleRedirect} className="flex-1 border-t-1 font-normal antialiased border-gray-300 hover:bg-slate-300 bg-slate-200 h-12 rounded-br-md w-full flex items-center justify-center text-black cursor-pointer">
           {redirecting ? 'Redirecting...' : 'Source Code'}
         </div>
       </div>
