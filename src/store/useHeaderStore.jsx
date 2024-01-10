@@ -4,6 +4,7 @@ const useHeaderStore = create((set) => ({
   activeLink: '',
   menuOpen: false,
   screenWidth: window.innerWidth,
+  windowWidth: window.innerWidth,
   delayedNavigation: null, // Add delayedNavigation to store
   showProgressBar: false, // Add showProgressBar to store
   loadingAnimationActive: false,
@@ -11,6 +12,7 @@ const useHeaderStore = create((set) => ({
   setActiveLink: (link) => set({ activeLink: link }),
   setMenuOpen: (isOpen) => set({ menuOpen: isOpen }),
   setScreenWidth: (width) => set({ screenWidth: width }),
+  setWindowWidth: (width) => set({ windowWidth: width }),
   setDelayedNavigation: (delayedNav) => set({ delayedNavigation: delayedNav }), // New setter for delayedNavigation
   setShowProgressBar: (showProgress) => set({ showProgressBar: showProgress }), // New setter for showProgressBar
   setLoadingAnimationActive: (isActive) => set({ loadingAnimationActive: isActive }), // Setter for loadingAnimationActive

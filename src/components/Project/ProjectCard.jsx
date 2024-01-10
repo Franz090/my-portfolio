@@ -28,7 +28,7 @@ const ProjectCard = ({ project, backgroundColor, textColor, transitionDuration }
   };
 
   return (
-    <div className="max-w-sm border-t rounded-lg shadow relative" style={{ backgroundColor, transition: `background-color ${transitionDuration}` }}>
+    <div className=" border-t rounded-lg shadow relative max-w-xs" style={{ backgroundColor, transition: `background-color ${transitionDuration}` }}>
       <img className="rounded-t-md w-full h-44 object-cover mb-1" src={cover} alt={title} />
       <div className="p-4">
         <h1 className="text-blue-custom md:text-lg font-normal subpixel-antialiased mb-3">{title}</h1>

@@ -70,6 +70,7 @@ const Header = () => {
   const [showLogo, setShowLogo] = useState(false);
   const [isPageReloaded, setIsPageReloaded] = useState(false);
   const { modalOpen, setModalOpen } = useModalContext();
+  
 
 
 
@@ -98,6 +99,8 @@ const Header = () => {
     setProgress, 
     loadingAnimationActive,
     setLoadingAnimationActive,
+    windowWidth, 
+    setWindowWidth
   } = useHeaderStore();
         // Use the custom hook to handle location changes
         useHeaderhook(setActiveLink, setScreenWidth);
@@ -396,9 +399,20 @@ const linksTrail = useTrail(linksData.length, {
   },
   delay: shouldStopAnimation ? 0 : 0,
 });
+useEffect(() => {
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth); // Update windowWidth in the store on resize
+  };
 
+  window.addEventListener('resize', handleResize);
+
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
+}, [setWindowWidth]);
 
   const headerClass = menuOpen ? 'header-open' : '';
+  const modalOpenClass = modalOpen && windowWidth >= 1024 ? 'pointer-events-none' : '';
   
 
   return (
@@ -406,7 +420,7 @@ const linksTrail = useTrail(linksData.length, {
       {showProgressBar && (
         <div className="progress-bar" style={{ width: `${progress * 100}%` }} />
       )}
-      <nav className={`pt-7 pb-7 p-5 fixed top-0 left-0 right-0 z-10 lg:flex lg:items-center md:justify-between ${modalOpen ? 'pointer-events-none' : ''}`}>
+        <nav className={`pt-7 pb-7 p-5 fixed top-0 left-0 right-0 z-10 lg:flex lg:items-center md:justify-between ${modalOpenClass}`}>
         <div className="md:container mx-auto xl:px-24 md:px-1 sm:px-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center justify-between space-x-2 ">
