@@ -1,5 +1,7 @@
 import useDarkModeStore from '../store/useDarkModeStore';
 import ProjectCard from '../components/Project/ProjectCard'; 
+import React, { useEffect } from 'react';
+import { useModalContext } from '../shared/components/Partials/ModalContext';
 import mehrCover from '../assets/images/project/cover/mehr.png';
 import munisipyoCover from '../assets/images/project/cover/munisipyo.png';
 import waterstationCover from '../assets/images/project/cover/waterstation.png';
@@ -91,6 +93,21 @@ const MyProject = () => {
   const { isDarkMode } = useDarkModeStore();
   const backgroundColor = isDarkMode ? '#fffafa' : '#181818';
   const textColor = isDarkMode ? '#181818' : '#fffafa';
+  const { modalOpen } = useModalContext();
+
+  useEffect(() => {
+    // Prevent scrolling when the modal is open
+    if (modalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Revert to allow scrolling when the modal is closed
+      document.body.style.overflow = 'visible';
+    }
+    // Clean up the effect
+    return () => {
+      document.body.style.overflow = 'visible';
+    };
+  }, [modalOpen]);
 
   return (
     <div className="md:px-10 sm:px-10 xl:px-36 pb-12 pt-7">

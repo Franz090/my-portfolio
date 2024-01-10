@@ -49,7 +49,7 @@ const ProjectCard = ({ project, backgroundColor, textColor, transitionDuration }
       </div>
       {modalOpen && selectedProject && selectedProject === project && (
         <>
-          <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 bg-black opacity-50"></div>
+          <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 bg-black opacity-80"></div>
           <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
             <div className="bg-white p-8 rounded-lg shadow-md">
               <h2 className="text-xl font-semibold mb-4">{title}</h2>
