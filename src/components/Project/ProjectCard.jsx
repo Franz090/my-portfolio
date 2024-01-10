@@ -46,20 +46,23 @@ const ProjectCard = ({ project, backgroundColor, textColor, backgroundModal,tran
           {redirecting ? 'Redirecting...' : 'Source Code'}
         </div>
       </div>
-      {modalOpen && selectedProject && selectedProject === project && (
+      
+
+{modalOpen && selectedProject && selectedProject === project && (
   <>
     <div className="fixed inset-0 z-50 bg-black opacity-60"></div>
     <div className="fixed inset-0 z-50 overflow-y-auto flex items-start justify-center">
-      <div style={{background:  backgroundModal }} className="mt-5 mb-5 p-3 rounded-lg shadow-md max-w-screen-lg relative">
+      <div style={{ background: backgroundModal }} className="mt-5 mb-5 p-3 rounded-lg shadow-md max-w-screen-lg w-full relative">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl text-blue-custom p-3 font-normal subpixel-antialiased">{title}</h2>
-        <button onClick={closeModal} className="mr-3 button-close transition-all" style={{ zIndex: '9999', padding: '10px 10px' }}>
+          <button onClick={closeModal} className="mr-3 button-close transition-all" style={{ zIndex: '9999', padding: '10px 10px' }}>
           </button>
         </div>
         <div className="flex flex-col justify-center items-center">
-          {selectedProject.images.map((image, index) => (
+          {selectedProject.images && selectedProject.images.map((image, index) => (
             <img
               key={index}
+              onLoad={() => {}} // Add onLoad handler to maintain size when images load
               className="w-full p-3 h-auto object-cover mb-2 rounded-md"
               src={image}
               alt={`Image ${index + 1}`}
@@ -67,9 +70,8 @@ const ProjectCard = ({ project, backgroundColor, textColor, backgroundModal,tran
           ))}
         </div>
         <div className="flex justify-between relative float-right">
-        <button onClick={closeModal} className="px-4 py-2 bg-blue-custom bg-darkblue text-white font-normal antialiased rounded-md mt-4 shadow-md focus:outline-none  ">Close</button>
-          </div>
-
+          <button onClick={closeModal} className="px-6 py-2 bg-blue-custom bg-darkblue text-white text-[16px] font-normal subpixel-antialiased tracking-widest rounded-full mt-4 mb-3 shadow-md focus:outline-none  ">Close</button>
+        </div>
       </div>
     </div>
   </>

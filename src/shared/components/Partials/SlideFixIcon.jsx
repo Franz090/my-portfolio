@@ -14,6 +14,11 @@ const SlideFixIcon = () => {
   const { isDarkMode } = useDarkModeStore();
   const { modalOpen } = useModalContext();
 
+  const zIndexStyle = {
+    zIndex: modalOpen ? -1 : 1, // Set a higher z-index when modal is closed, lower when it's open
+  };
+
+
   const getSpringProps = (hovered) => useSpring({
     width: hovered ? 185 : 53,
     config: {
@@ -103,7 +108,7 @@ const SlideFixIcon = () => {
   const githubUrl = 'https://github.com/Franz090';
 
   return (
-    <div className="lg:fixed lg:top-2/4 lg:left-0 flex flex-col">
+    <div className="lg:fixed lg:top-2/4 lg:left-0 flex flex-col" style={zIndexStyle}>
       {renderAnimatedDiv('FACEBOOK', faFacebookF, facebookHovered, setFacebookHovered, facebookUrl)}
       {renderAnimatedDiv('LINKEDIN', faLinkedinIn, linkedinHovered, setLinkedinHovered, linkedinUrl)}
       {renderAnimatedDiv('GITHUB', faGithub, githubHovered, setGithubHovered, githubUrl)}
