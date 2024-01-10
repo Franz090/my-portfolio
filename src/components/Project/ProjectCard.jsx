@@ -51,7 +51,7 @@ const ProjectCard = ({ project, backgroundColor, textColor, backgroundModal,tran
 {modalOpen && selectedProject && selectedProject === project && (
   <>
     <div className="fixed inset-0 z-50 bg-black opacity-60"></div>
-    <div className="fixed inset-0 z-50 overflow-y-auto flex items-start justify-center">
+    <div className={`fixed inset-0 z-50 overflow-y-auto flex items-start justify-center ${modalOpen ? 'modal' : ''}`}>
       <div style={{ background: backgroundModal }} className="mt-5 mb-5 p-3 rounded-lg shadow-md max-w-screen-lg w-full relative">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl text-blue-custom p-3 font-normal subpixel-antialiased">{title}</h2>

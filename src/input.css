@@ -55,6 +55,11 @@
 .button-close::after {
   transform: rotate(-45deg);
 }
+.modal {
+  
+  z-index: 1000; /* Set a high z-index value */
+}
+
 .button-close:hover::before,
 .button-close:hover::after {
   background-color: #b3b9bd; /* Change color on hover */
