@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
 import useDarkModeStore from '../../../store/useDarkModeStore';
 import useFixedIconStore from '../../../store/useFixedIconStore';
+import { useModalContext } from '../Partials/ModalContext';
 
 const SlideFixIcon = () => {
   const { 
@@ -11,6 +12,7 @@ const SlideFixIcon = () => {
     setFacebookHovered, setLinkedinHovered, setGithubHovered 
   } = useFixedIconStore(); 
   const { isDarkMode } = useDarkModeStore();
+  const { modalOpen } = useModalContext();
 
   const getSpringProps = (hovered) => useSpring({
     width: hovered ? 185 : 53,
@@ -27,24 +29,45 @@ const SlideFixIcon = () => {
   const renderAnimatedDiv = (text, icon, hovered, setHovered, url) => {
     const slideProps = getSpringProps(hovered);
 
-    const handleBorderClick = () => {
-      window.open(url, '_blank');
-      // or use window.location.href = url; if you want to navigate in the same tab
+    const handleBorderClick = (event) => {
+      if (!modalOpen) {
+        window.open(url, '_blank');
+      } else {
+        event.preventDefault(); // Prevent the default behavior (opening the link)
+      }
+    };
+  
+    const handleMouseEnter = () => {
+      if (!modalOpen) {
+        setHovered(true);
+      }
+    };
+  
+    const handleMouseLeave = () => {
+      if (!modalOpen) {
+        setHovered(false);
+      }
     };
 
     
 
     return (
-      <a href={url} target="_blank" rel="noopener noreferrer" onClick={handleBorderClick}>
+      <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={handleBorderClick}
+      style={{ pointerEvents: modalOpen ? 'none' : 'auto' }} // Disable pointer events when modal is open
+    >
       <animated.div
         className="rounded-tr-full rounded-br-full p-3 border-l-4 border-none mb-1 overflow-hidden flex justify-end items-center"
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         style={{
           ...slideProps,
           overflow: 'hidden',
           backgroundColor: isDarkMode ? '#fffafa' : '#181818',
-          cursor: 'pointer',
+          cursor: modalOpen ? 'not-allowed' : 'pointer',
           transition: 'background-color 0.5s',
         }}
       >
