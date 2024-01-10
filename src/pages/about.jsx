@@ -89,7 +89,7 @@ const AboutPage = () => {
     </animated.button>
     <animated.button
       style={slideFromBottom}
-      className="bg-blue-custom hover:bg-cyan-800 py-2 px-5 rounded-full oblong-button tracking-wider text-md font-normal antialiased text-[17px] lg:pt-2 lg:pb-2 md:pt-2 md:pb-2 sm:pt-2 sm:pb-2 pt-1 pb-2 transition duration-300 ease-in-out transform hover:scale-95  text-white"
+      className="bg-blue-custom bg-darkblue  py-2 px-5 rounded-full oblong-button tracking-wider text-md font-normal antialiased text-[17px] lg:pt-2 lg:pb-2 md:pt-2 md:pb-2 sm:pt-2 sm:pb-2 pt-1 pb-2 transition duration-300 ease-in-out transform hover:scale-95  text-white"
       onClick={handleHireMeClick}
     >
       Hire Me

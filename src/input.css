@@ -26,6 +26,43 @@
   height: 8px; /* Adjust the height of the progress bar */
   border-radius: 10px; 
 }
+.button-close {
+  position: relative;
+  width: 30px; /* Adjust width as needed */
+  height: 30px; /* Adjust height as needed */
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.button-close::before,
+.button-close::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  
+  width: 100%;
+  height: 2px; /* Adjust line thickness as needed */
+  background-color: #6d757d; /* Adjust color as needed */
+}
+
+.button-close::before {
+  transform: rotate(45deg);
+  
+}
+
+.button-close::after {
+  transform: rotate(-45deg);
+}
+.button-close:hover::before,
+.button-close:hover::after {
+  background-color: #b3b9bd; /* Change color on hover */
+}
+.bg-darkblue:hover{
+  background-color: #3c667e;
+
+}
 
 .loading-progress::-webkit-progress-bar {
   background-color: #ccc; 

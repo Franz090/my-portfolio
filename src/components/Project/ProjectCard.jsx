@@ -1,7 +1,6 @@
 // ProjectCard.js
 import React, { useState } from 'react';
 import { useModalContext } from '../../shared/components/Partials/ModalContext';
-
 const ProjectCard = ({ project, backgroundColor, textColor, backgroundModal,transitionDuration }) => {
   const { cover, title, tools, githubLink } = project;
   const [redirecting, setRedirecting] = useState(false);
@@ -40,7 +39,7 @@ const ProjectCard = ({ project, backgroundColor, textColor, backgroundModal,tran
         </ul>
       </div>
       <div className="absolute bottom-0 left-0 w-full flex">
-        <div onClick={openModal} className="flex-1 border-t-1  border-gray-400 font-normal antialiased leading-relaxed bg-blue-custom h-12 rounded-bl-md w-full flex items-center justify-center text-white cursor-pointer hover:bg-cyan-800/100">
+        <div onClick={openModal} className="flex-1 border-t-1  border-gray-400 font-normal antialiased leading-relaxed bg-blue-custom h-12 rounded-bl-md w-full flex items-center justify-center text-white cursor-pointer bg-darkblue">
           View
         </div>
         <div onClick={handleRedirect} className="flex-1 border-t-1 font-normal antialiased border-gray-300 hover:bg-slate-300 bg-slate-200 h-12 rounded-br-md w-full flex items-center justify-center text-black cursor-pointer">
@@ -51,8 +50,12 @@ const ProjectCard = ({ project, backgroundColor, textColor, backgroundModal,tran
   <>
     <div className="fixed inset-0 z-50 bg-black opacity-60"></div>
     <div className="fixed inset-0 z-50 overflow-y-auto flex items-start justify-center">
-      <div style={{background:  backgroundModal }} className=" mt-5 mb-5 p-3 rounded-lg shadow-md max-w-screen-lg">
-        <h2 className="text-2xl text-blue-custom p-3 mb-4 font-normal antialiased">{title}</h2>
+      <div style={{background:  backgroundModal }} className="mt-5 mb-5 p-3 rounded-lg shadow-md max-w-screen-lg relative">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-2xl text-blue-custom p-3 font-normal subpixel-antialiased">{title}</h2>
+        <button onClick={closeModal} className="mr-3 button-close transition-all" style={{ zIndex: '9999', padding: '10px 10px' }}>
+          </button>
+        </div>
         <div className="flex flex-col justify-center items-center">
           {selectedProject.images.map((image, index) => (
             <img
@@ -63,11 +66,15 @@ const ProjectCard = ({ project, backgroundColor, textColor, backgroundModal,tran
             />
           ))}
         </div>
-        <button onClick={closeModal} className="px-4 py-2 bg-blue-custom text-white rounded-md mt-4">Close</button>
+        <div className="flex justify-between relative float-right">
+        <button onClick={closeModal} className="px-4 py-2 bg-blue-custom bg-darkblue text-white font-normal antialiased rounded-md mt-4 shadow-md focus:outline-none  ">Close</button>
+          </div>
+
       </div>
     </div>
   </>
 )}
+
 
 
     </div>
