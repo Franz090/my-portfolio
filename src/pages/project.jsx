@@ -93,6 +93,7 @@ const MyProject = () => {
   const { isDarkMode } = useDarkModeStore();
   const backgroundColor = isDarkMode ? '#fffafa' : '#181818';
   const textColor = isDarkMode ? '#181818' : '#fffafa';
+  const backgroundModal = isDarkMode ? '#fffafa' : '#181818';
   const { modalOpen } = useModalContext();
 
   useEffect(() => {
@@ -123,6 +124,7 @@ const MyProject = () => {
             project={project}
             backgroundColor={backgroundColor}
             textColor={textColor}
+            backgroundModal={backgroundModal}
             transitionDuration={'0.5s'}
           />
         

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useModalContext } from '../../shared/components/Partials/ModalContext';
 
-const ProjectCard = ({ project, backgroundColor, textColor, transitionDuration }) => {
+const ProjectCard = ({ project, backgroundColor, textColor, backgroundModal,transitionDuration }) => {
   const { cover, title, tools, githubLink } = project;
   const [redirecting, setRedirecting] = useState(false);
   const { modalOpen, setModalOpen, selectedProject, setSelectedProject } = useModalContext();
@@ -48,26 +48,28 @@ const ProjectCard = ({ project, backgroundColor, textColor, transitionDuration }
         </div>
       </div>
       {modalOpen && selectedProject && selectedProject === project && (
-        <>
-          <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 bg-black opacity-80"></div>
-          <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold mb-4">{title}</h2>
-              <div className="flex flex-wrap">
-                {selectedProject.images.map((image, index) => (
-                   <img
-                   key={index}
-                   className="w-32 h-32 object-cover mr-2 mb-2 rounded-md"
-                   src={image}
-                  alt={`Image ${index + 1}`}
-                />
-                ))}
-              </div>
-              <button onClick={closeModal} className="px-4 py-2 bg-blue-custom text-white rounded-md">Close</button>
-            </div>
-          </div>
-        </>
-      )}
+  <>
+    <div className="fixed inset-0 z-50 bg-black opacity-60"></div>
+    <div className="fixed inset-0 z-50 overflow-y-auto flex items-start justify-center">
+      <div style={{background:  backgroundModal }} className=" mt-5 mb-5 p-3 rounded-lg shadow-md max-w-screen-lg">
+        <h2 className="text-2xl text-blue-custom p-3 mb-4 font-normal antialiased">{title}</h2>
+        <div className="flex flex-col justify-center items-center">
+          {selectedProject.images.map((image, index) => (
+            <img
+              key={index}
+              className="w-full p-3 h-auto object-cover mb-2 rounded-md"
+              src={image}
+              alt={`Image ${index + 1}`}
+            />
+          ))}
+        </div>
+        <button onClick={closeModal} className="px-4 py-2 bg-blue-custom text-white rounded-md mt-4">Close</button>
+      </div>
+    </div>
+  </>
+)}
+
+
     </div>
   );
 };
