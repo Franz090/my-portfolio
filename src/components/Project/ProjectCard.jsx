@@ -59,10 +59,10 @@ const ProjectCard = ({ project, backgroundColor, textColor, backgroundModal,tran
           </button>
         </div>
        
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-start">
                 {selectedProject.images && selectedProject.images.map((image, index) => (
                   <div key={index} className="mb-2">
-                    <p style={{ color: textColor}} className="text-xl">{nameText[index]}</p>
+                    <p style={{ color: textColor}} className="text-2xl font-medium antialiased mx-2">{nameText[index]}</p>
                     <img
                       onLoad={() => {}} // Add onLoad handler to maintain size when images load
                       className="w-full p-3 h-auto object-cover rounded-md"
