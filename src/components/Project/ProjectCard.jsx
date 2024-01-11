@@ -70,7 +70,7 @@ const ProjectCard = ({ project, backgroundColor, textColor, backgroundModal,tran
           ))}
         </div>
         <div className="flex justify-between relative float-right">
-          <button onClick={closeModal} className="px-6 py-2 bg-blue-custom bg-darkblue text-white text-[16px] font-normal subpixel-antialiased tracking-widest rounded-full mt-4 mb-3 shadow-md focus:outline-none  ">Close</button>
+          <button onClick={closeModal} className="px-6 py-2 bg-blue-custom bg-darkblue text-white text-[16px] font-normal antialiased tracking-widest rounded-full mt-4 mr-3 mb-3 shadow-md focus:outline-none  ">Close</button>
         </div>
       </div>
     </div>
