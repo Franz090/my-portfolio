@@ -22,9 +22,6 @@ import munisipyo3 from '../assets/images/project/munisipyo/3.png'
 import munisipyo4 from '../assets/images/project/munisipyo/4.png'
 import munisipyo5 from '../assets/images/project/munisipyo/5.png'
 import munisipyo6 from '../assets/images/project/munisipyo/6.png'
-import munisipyo7 from '../assets/images/project/munisipyo/7.png'
-import munisipyo8 from '../assets/images/project/munisipyo/8.png'
-import munisipyo9 from '../assets/images/project/munisipyo/9.png'
 import waterstation1 from '../assets/images/project/water-station/1.png'
 import waterstation2 from '../assets/images/project/water-station/2.png'
 import waterstation3 from '../assets/images/project/water-station/3.png'
@@ -41,6 +38,7 @@ const projectsData = [
     cover: mehrCover,
     title: 'Maternity Health Monitoring Record System',
     tools: ['HTML', 'CSS', 'JAVASCRIPT/JQUERY','AJAX', 'PHP', 'BOOTSTRAP 5'],
+    nameText:  ['Home Page', 'Login Page', 'Dashboard','Change Password', 'View Midwife', 'View Barangay','Consultations','View Patients','Patient Profile','Calendar','Appointment Logs'],
     githubLink: 'https://github.com/Franz090/mehrsystem',
     images: [
       mehr1,
@@ -60,6 +58,7 @@ const projectsData = [
     cover: munisipyoCover,
     title: 'Municipal Treasury Office Record Management System',
     tools: ['HTML', 'CSS', 'JAVASCRIPT', 'PHP', 'BOOTSTRAP 5'],
+    nameText:  ['Login Page', 'Summary Report','Department' , 'Add Department', 'View Department','Print Total Department'],
     githubLink: 'https://github.com/Franz090/Municipal',
     images: [
       munisipyo1,
@@ -68,15 +67,13 @@ const projectsData = [
       munisipyo4,
       munisipyo5,
       munisipyo6,
-      munisipyo7,
-      munisipyo8,
-      munisipyo9
     ]
   },
   {
     cover: waterstationCover,
     title: 'Water Refilling Station Reservation System',
     tools: ['HTML', 'CSS', 'JAVASCRIPT', 'PHP'],
+    nameText:  ['Login Page', 'List of Deliveries', 'List of Reservations','List of Transactions' , 'List of Products','New Product'],
     githubLink: 'https://github.com/Franz090/water-refilling-station',
     images: [
       waterstation1,
@@ -94,6 +91,7 @@ const MyProject = () => {
   const backgroundColor = isDarkMode ? '#fffafa' : '#181818';
   const textColor = isDarkMode ? '#181818' : '#fffafa';
   const backgroundModal = isDarkMode ? '#fffafa' : '#181818';
+  const imageText = isDarkMode ? '#fffafa' : '#181818';
   const { modalOpen } = useModalContext();
 
   useEffect(() => {
@@ -124,6 +122,7 @@ const MyProject = () => {
             project={project}
             backgroundColor={backgroundColor}
             textColor={textColor}
+            imageText={imageText}
             backgroundModal={backgroundModal}
             transitionDuration={'0.5s'}
           />

@@ -1,8 +1,8 @@
 // ProjectCard.js
 import React, { useState } from 'react';
 import { useModalContext } from '../../shared/components/Partials/ModalContext';
-const ProjectCard = ({ project, backgroundColor, textColor, backgroundModal,transitionDuration }) => {
-  const { cover, title, tools, githubLink } = project;
+const ProjectCard = ({ project, backgroundColor, textColor, backgroundModal,transitionDuration, imageText }) => {
+  const { cover, title, tools, githubLink,nameText } = project;
   const [redirecting, setRedirecting] = useState(false);
   const { modalOpen, setModalOpen, selectedProject, setSelectedProject } = useModalContext();
 
@@ -58,17 +58,20 @@ const ProjectCard = ({ project, backgroundColor, textColor, backgroundModal,tran
           <button onClick={closeModal} className="mr-3 button-close transition-all" style={{ zIndex: '9999', padding: '10px 10px' }}>
           </button>
         </div>
+       
         <div className="flex flex-col justify-center items-center">
-          {selectedProject.images && selectedProject.images.map((image, index) => (
-            <img
-              key={index}
-              onLoad={() => {}} // Add onLoad handler to maintain size when images load
-              className="w-full p-3 h-auto object-cover mb-2 rounded-md"
-              src={image}
-              alt={`Image ${index + 1}`}
-            />
-          ))}
-        </div>
+                {selectedProject.images && selectedProject.images.map((image, index) => (
+                  <div key={index} className="mb-2">
+                    <p style={{ color: textColor}} className="text-xl">{nameText[index]}</p>
+                    <img
+                      onLoad={() => {}} // Add onLoad handler to maintain size when images load
+                      className="w-full p-3 h-auto object-cover rounded-md"
+                      src={image}
+                      alt={`Image ${index + 1}`}
+                    />
+                  </div>
+                ))}
+              </div>
         <div className="flex justify-between relative float-right">
           <button onClick={closeModal} className="px-6 py-2 bg-blue-custom bg-darkblue text-white text-[16px] font-normal antialiased tracking-widest rounded-full mt-4 mr-3 mb-3 shadow-md focus:outline-none  ">Close</button>
         </div>
