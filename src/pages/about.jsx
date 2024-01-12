@@ -42,7 +42,7 @@ const AboutPage = () => {
     setRedirecting(true);
     setTimeout(() => {
       window.open(
-        "https://drive.google.com/file/d/1KIPHhD4NUwrarBw2Vdm20zKHV149VczI/view?usp=sharing",
+        "https://drive.google.com/file/d/13GNbe3RXjvnedEPJPuVJ3kuNyoMCpfHS/view?usp=sharing",
         "_blank"
       );
       setRedirecting(false);
