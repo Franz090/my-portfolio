@@ -1,10 +1,15 @@
-// ProjectCard.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useModalContext } from '../../shared/components/Partials/ModalContext';
 const ProjectCard = ({ project, backgroundColor, textColor, backgroundModal,transitionDuration, imageText }) => {
   const { cover, title, tools, githubLink,nameText } = project;
   const [redirecting, setRedirecting] = useState(false);
   const { modalOpen, setModalOpen, selectedProject, setSelectedProject } = useModalContext();
+  const [lazyLoading, setLazyLoading] = useState(false);
+
+  useEffect(() => {
+    // Set lazy loading to true when the modal is open
+    setLazyLoading(modalOpen);
+  }, [modalOpen]);
 
   const handleRedirect = () => {
     setRedirecting(true);
@@ -52,28 +57,29 @@ const ProjectCard = ({ project, backgroundColor, textColor, backgroundModal,tran
   <>
     <div className="fixed inset-0 z-50 bg-black opacity-60"></div>
     <div className={`fixed inset-0 z-50 overflow-y-auto flex items-start justify-center ${modalOpen ? 'modal' : ''}`}>
-      <div style={{ background: backgroundModal }} className="mt-5 mb-5 p-3 rounded-lg shadow-md max-w-screen-lg w-full relative">
+      <div style={{ background: backgroundModal }} className="mt-5 mb-5 p-3 rounded-lg shadow-md max-w-screen-xl md:mr-14 md:ml-14 m-[1rem]  w-full relative">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl text-blue-custom p-3 font-normal subpixel-antialiased">{title}</h2>
+          <h2 className="text-2xl text-blue-custom p-2 font-medium subpixel-antialiased">{title}</h2>
           <button onClick={closeModal} className="mr-3 button-close transition-all" style={{ zIndex: '9999', padding: '10px 10px' }}>
           </button>
         </div>
        
         <div className="flex flex-col justify-center items-start">
-                {selectedProject.images && selectedProject.images.map((image, index) => (
-                  <div key={index} className="mb-2">
-                    <p style={{ color: textColor}} className="text-2xl font-medium antialiased mx-2">{nameText[index]}</p>
-                    <img
-                      onLoad={() => {}} // Add onLoad handler to maintain size when images load
-                      className="w-full p-3 h-auto object-cover rounded-md"
-                      src={image}
-                      alt={`Image ${index + 1}`}
-                    />
-                  </div>
+        {selectedProject.images && selectedProject.images.map((image, index) => (
+          <div key={index} className="mb-2">
+            <p style={{ color: textColor }} className="text-2xl font-medium antialiased mx-2">{nameText[index]}</p>
+            <img
+              loading={lazyLoading ? 'lazy' : 'auto'} // Conditionally set loading attribute
+              onLoad={() => {}} // Add onLoad handler to maintain size when images load
+              className="w-full p-3 h-auto object-cover rounded-md"
+              src={image}
+              alt={`Image ${index + 1}`}
+            />
+          </div>
                 ))}
               </div>
         <div className="flex justify-between relative float-right">
-          <button onClick={closeModal} className="px-6 py-2 bg-blue-custom bg-darkblue text-white text-[16px] font-normal antialiased tracking-widest rounded-full mt-4 mr-3 mb-3 shadow-md focus:outline-none  ">Close</button>
+          <button onClick={closeModal} className="px-6 py-2 bg-blue-custom bg-darkblue text-white text-[16px] font-normal antialiased tracking-wider rounded-full mt-4 mr-3 mb-3 shadow-md focus:outline-none  ">Close</button>
         </div>
       </div>
     </div>
