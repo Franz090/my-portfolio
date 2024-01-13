@@ -6,13 +6,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css && npm run copy-assets",
+    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css && ls ./src && cp index.html ./dist/index.html && cp -R ./src/assets ./dist/",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "vite preview",
-    "build:html": "cp ./src/index.html ./dist/index.html",
-    "copy-assets": "cp -R ./src/assets ./dist/"
-},
+    "start": "vite preview"
+  },  
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
