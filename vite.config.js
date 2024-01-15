@@ -8,6 +8,9 @@ export default defineConfig({
   server:{
     port: Number(process.env.PORT)
   },
+  build: {
+    chunkSizeWarningLimit: 1600
+},
   define:{
     'process.env.PORT': `${process.env.PORT}`,
     'process.env.TEST': `"${process.env.TEST}"`,
