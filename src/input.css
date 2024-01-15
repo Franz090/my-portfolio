@@ -610,6 +610,13 @@ input[type="checkbox"]:checked::before {
   }
 }
   @media (max-width: 280px)  and (min-height:653px) {
+    .galaxy-front{
+      font-size: 30px;
+    }
+    .galaxy-dev{
+      font-size: 20px;
+
+    }
     .progress-wrapper {
      
       width: 70%;

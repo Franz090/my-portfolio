@@ -32,8 +32,10 @@ const ProjectCard = ({ project, backgroundColor, textColor, backgroundModal,tran
   };
 
   return (
-    <div className=" border-t rounded-lg shadow relative md:max-w-xs min-w-full " style={{ backgroundColor, transition: `background-color ${transitionDuration}` }}>
-     <img className="rounded-t-md w-full h-44 object-cover mb-1" src={cover} alt={title} style={{ height: 'auto' }} />
+    <div className="border-t rounded-lg shadow relative md:max-w-xs min-w-full" style={{ backgroundColor, transition: `background-color ${transitionDuration}` }}>
+    <div style={{ height: '200px', overflow: 'hidden' }}>
+      <img className="w-full h-full object-cover mb-1" src={cover} alt={title} style={{ height: 'auto' }}  loading="lazy" />
+    </div>
       <div className="p-4">
         <h1 className="text-blue-custom md:text-lg font-normal subpixel-antialiased mb-3">{title}</h1>
         <p className="text-md mb-1 antialiased" style={{ color: textColor, transition: `background-color ${transitionDuration}` }}>Tools & Technologies</p>

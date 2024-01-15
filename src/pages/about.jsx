@@ -42,7 +42,7 @@ const AboutPage = () => {
     setRedirecting(true);
     setTimeout(() => {
       window.open(
-        "https://drive.google.com/file/d/1hjw8T93g4mC2VrkwDnRLRuf43VISR0u_/view?usp=sharing",
+        "https://drive.google.com/file/d/1dim_IYkWAQ93bqj5JgUVy1u4K8cxpVMn/view?usp=sharing",
         "_blank"
       );
       setRedirecting(false);
@@ -82,14 +82,14 @@ const AboutPage = () => {
     <animated.button
       style={slideFromBottom}
       ref={buttonRef}
-      className="bg-custom-gray-custom hover:bg-zinc-800 py-2 px-5 rounded-full oblong-button tracking-wider text-md font-normal antialiased text-[17px] lg:pt-2 lg:pb-2 md:pt-2 md:pb-2 sm:pt-2 sm:pb-2 pt-1 pb-2 transition duration-300 ease-in-out transform hover:scale-95  text-white"
+      className="bg-custom-gray-custom hover:bg-zinc-800 py-2 px-5 rounded-full oblong-button tracking-wider text-md font-normal antialiased text-[17px] lg:pt-2 lg:pb-2 md:pt-2 md:pb-2 sm:pt-2 sm:pb-2 pt-1 pb-1 transition duration-300 ease-in-out transform hover:scale-95  text-white"
       onClick={handleCVClick}
     >
       {redirecting ? 'Redirecting...' : 'View CV'}
     </animated.button>
     <animated.button
       style={slideFromBottom}
-      className="bg-blue-custom bg-darkblue  py-2 px-5 rounded-full oblong-button tracking-wider text-md font-normal antialiased text-[17px] lg:pt-2 lg:pb-2 md:pt-2 md:pb-2 sm:pt-2 sm:pb-2 pt-1 pb-2 transition duration-300 ease-in-out transform hover:scale-95  text-white"
+      className="bg-blue-custom bg-darkblue  py-2 px-5 rounded-full oblong-button tracking-wider text-md font-normal antialiased text-[17px] lg:pt-2 lg:pb-2 md:pt-2 md:pb-2 sm:pt-2 sm:pb-2 pt-1 pb-1 transition duration-300 ease-in-out transform hover:scale-95  text-white"
       onClick={handleHireMeClick}
     >
       Hire Me

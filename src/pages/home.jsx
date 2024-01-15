@@ -185,7 +185,7 @@ const paragraphSpring = useSpring({
       <animated.img
           src={myimg}
           alt="Description of the image"
-          className="my-profile  lg:right-[-67px] xl:w-4/7 lg:w-[128rem] relative"
+          className="md:w-100 md:h-auto my-profile lg:right-[-67px] xl:w-4/7 lg:w-[128rem] relative"
           style={imageSpring}
         />
         )}
@@ -193,7 +193,7 @@ const paragraphSpring = useSpring({
       <div className="col-span-1 flex flex-col justify-center items-center relative xl:right-[54px] lg:top-[85px]">
         <div className="text-center sm:text-center lg:pb-44 md:pb-3 lg:mt-12 md:mb-9 sm:mb-6">
         <animated.h1
-            className='font-semibold lg:text-left lg:text-[78px] md:text-7xl  sm:text-7xl text-[40px] md:pb-3 sm:pb-3 lg:pb-3 pb-1 xl:tracking-[.2em] tracking-[.2em] lg:tracking-[.1em]'
+            className='font-semibold lg:text-left lg:text-[78px] md:text-7xl  sm:text-7xl text-[50px] galaxy-front md:pb-3 sm:pb-3 lg:pb-3 pb-1 xl:tracking-[.2em] tracking-[.2em] lg:tracking-[.1em]'
             style={isHomeLinkClickedAgain ? {} : frontendSpring} // Apply animation only if not home link clicked again
           >
              <animated.span
@@ -204,7 +204,7 @@ const paragraphSpring = useSpring({
               FRONTEND
             </animated.span>
           </animated.h1>
-          <h2 className=" font-normal lg:text-5xl md:text-5xl sm:text-5xl text-2xl lg:text-left  lg:tracking-[.32em] xl:tracking-[.45em] md:tracking-[.45em] tracking-[.45em]">
+          <h2 className=" font-normal lg:text-5xl md:text-5xl sm:text-5xl text-3xl lg:text-left  lg:tracking-[.32em] md:tracking-[.45em] tracking-[.48em] galaxy-dev">
         {developerText.split('').map((letter, i) => (
           <animated.span
             key={i}
