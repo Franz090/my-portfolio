@@ -40,13 +40,22 @@ const AboutPage = () => {
   const handleCVClick = (e) => {
     e.preventDefault();
     setRedirecting(true);
-    setTimeout(() => {
-      window.open(
-        "https://drive.google.com/file/d/16WylHtOEnoWljA3UBL9eT1oI6j-b9zxW/view?usp=sharing",
-        "_blank"
-      );
-      setRedirecting(false);
-    }, 2000); // 2 seconds delay
+  
+    // Open the link only when the user clicks the button
+    const newWindow = window.open(
+      "https://drive.google.com/file/d/16WylHtOEnoWljA3UBL9eT1oI6j-b9zxW/view?usp=sharing",
+      "_blank"
+    );
+  
+    if (newWindow) {
+      // Focus the new window if it was successfully opened
+      newWindow.focus();
+    } else {
+      // Handle the case where the new window was blocked
+      console.error("Pop-up blocked. Please allow pop-ups to view the CV.");
+    }
+  
+    setRedirecting(false);
   };
 
   const slideAnimation = useSpring({
