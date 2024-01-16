@@ -19,10 +19,6 @@ const AboutPage = () => {
       setImagePosition('top-7');
     }
   };
-  const handleHireMeClick = (e) => {
-    e.preventDefault();
-    window.location.href = 'mailto:francisoblepias7@gmail.com'; 
-  };
 
   useEffect(() => {
     // Call handleResize on initial load
@@ -40,22 +36,28 @@ const AboutPage = () => {
   const handleCVClick = (e) => {
     e.preventDefault();
     setRedirecting(true);
-  
+
     // Open the link only when the user clicks the button
     const newWindow = window.open(
-      "https://drive.google.com/file/d/16WylHtOEnoWljA3UBL9eT1oI6j-b9zxW/view?usp=sharing",
-      "_blank"
+      'https://drive.google.com/file/d/16WylHtOEnoWljA3UBL9eT1oI6j-b9zxW/view?usp=sharing',
+      '_blank'
     );
-  
+
     if (newWindow) {
       // Focus the new window if it was successfully opened
       newWindow.focus();
     } else {
       // Handle the case where the new window was blocked
-      console.error("Pop-up blocked. Please allow pop-ups to view the CV.");
+      console.error('Pop-up blocked. Please allow pop-ups to view the CV.');
     }
-  
+
     setRedirecting(false);
+  };
+
+  const handleDownloadCVClick = () => {
+    // Trigger the download of the PDF file
+    window.location.href =
+      'https://drive.google.com/uc?export=download&id=16WylHtOEnoWljA3UBL9eT1oI6j-b9zxW';
   };
 
   const slideAnimation = useSpring({
@@ -99,9 +101,9 @@ const AboutPage = () => {
     <animated.button
       style={slideFromBottom}
       className="bg-blue-custom bg-darkblue  py-2 px-5 rounded-full oblong-button tracking-wider text-md font-normal antialiased text-[17px] lg:pt-2 lg:pb-2 md:pt-2 md:pb-2 sm:pt-2 sm:pb-2 pt-1 pb-1 transition duration-300 ease-in-out transform hover:scale-95  text-white"
-      onClick={handleHireMeClick}
+      onClick={handleDownloadCVClick}
     >
-      Hire Me
+      Download CV
     </animated.button>
   </div>
 

@@ -13,14 +13,29 @@ const ProjectCard = ({ project, backgroundColor, textColor, backgroundModal,tran
 
   const handleRedirect = () => {
     setRedirecting(true);
-    setTimeout(() => {
-      window.open(githubLink, '_blank');
-      setTimeout(() => {
+    const newTab = window.open(githubLink, '_blank');
+  
+    const checkPopupInterval = setInterval(() => {
+      if (newTab && newTab.closed) {
+        // If the new tab is closed, set the loading state to false
         setRedirecting(false);
-      }, 100);
-    }, 2000);
+        clearInterval(checkPopupInterval);
+      }
+    }, 1000);
+  
+    // Delay the registration of the focus event listener
+    setTimeout(() => {
+      window.addEventListener('focus', () => {
+        // When the main window gains focus, set the loading state to false
+        setRedirecting(false);
+        clearInterval(checkPopupInterval);
+      });
+    }, 500); // Adjust the delay time as needed
   };
-
+  
+  
+  
+  
   const openModal = () => {
     setSelectedProject(project);
     setModalOpen(true);
