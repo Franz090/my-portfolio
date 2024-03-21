@@ -6,6 +6,7 @@ import Contact from '../Partials/Contact';
 import { Outlet } from 'react-router-dom';
 import StarrySky from '../Partials/StarrySky';
 import { ModalProvider } from '../Partials/ModalContext';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const RootLayout = () => {
     const [showStarrySky, setShowStarrySky] = useState(false);
@@ -37,6 +38,7 @@ const RootLayout = () => {
 
     return (
         <ModalProvider>
+         <SpeedInsights/>
         <div className="root-main">
             <Header className="z-10" />
             <Outlet className="z-1" />

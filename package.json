@@ -12,7 +12,7 @@
     "start": "vite preview",
     "build:html": "cp ./src/index.html ./dist/index.html",
     "copy-assets": "cp -R ./src/assets ./dist/"
-  },  
+  },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
@@ -27,6 +27,7 @@
     "@tailwindcss/forms": "^0.5.6",
     "@tailwindcss/typography": "^0.5.10",
     "@types/three": "^0.158.2",
+    "@vercel/speed-insights": "^1.0.10",
     "autoprefixer": "^10.4.15",
     "dotenv": "^16.3.1",
     "flowbite": "^2.0.0",
