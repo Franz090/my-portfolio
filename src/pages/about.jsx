@@ -39,7 +39,7 @@ const AboutPage = () => {
 
     // Open the link only when the user clicks the button
     const newWindow = window.open(
-      'https://drive.google.com/file/d/16WylHtOEnoWljA3UBL9eT1oI6j-b9zxW/view?usp=sharing',
+      'https://drive.google.com/file/d/1JNHVH_ve2ZbGsk0NJu5HAUzkuiml0nmV/view?usp=sharing',
       '_blank'
     );
 
@@ -57,7 +57,7 @@ const AboutPage = () => {
   const handleDownloadCVClick = () => {
     // Trigger the download of the PDF file
     window.location.href =
-      'https://drive.google.com/uc?export=download&id=16WylHtOEnoWljA3UBL9eT1oI6j-b9zxW';
+      'https://drive.usercontent.google.com/u/0/uc?id=1JNHVH_ve2ZbGsk0NJu5HAUzkuiml0nmV&export=download';
   };
 
   const slideAnimation = useSpring({
