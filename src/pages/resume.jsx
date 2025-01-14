@@ -1,19 +1,8 @@
-import { Carousel } from "../components/Resume/carousel";
 import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 
-import pic1 from "../assets/images/carousel/1.png";
-import pic2 from "../assets/images/carousel/2.png";
-import pic3 from "../assets/images/carousel/3.png";
-import pic4 from "../assets/images/carousel/4.png";
-import pic5 from "../assets/images/carousel/5.png";
-import pic6 from "../assets/images/carousel/6.png";
-import pic7 from "../assets/images/carousel/7.png";
-import pic8 from "../assets/images/carousel/8.png";
 
 const ResumePage = () => {
-  const [isCarouselHovered, setIsCarouselHovered] = useState(false);
-  const [showText, setShowText] = useState(false);
   const [showEducation, setShowEducation] = useState(false);
   const [showExperience, setShowExperience] = useState(false);
 
@@ -44,25 +33,8 @@ const ResumePage = () => {
     config: { duration: 800 },
   });
 
-  useEffect(() => {
-    const storedShowText = localStorage.getItem('showText');
-  
-    if (storedShowText === 'true') {
-      setShowText(true);
-    }
-  }, []);
-  
 
-  const handleMouseEnter = () => {
-    setIsCarouselHovered(true);
-    setShowText(false);
-  };
 
-  const handleMouseLeave = () => {
-    setIsCarouselHovered(false);
-    setShowText(true);
-    localStorage.setItem('showText', 'true');
-  };
 
  
   const stayVisibleWorkExperience = () => {
@@ -75,21 +47,18 @@ const ResumePage = () => {
   }, []);
  
   
-  const data = {
-    slides: [
-      { src: pic1, alt: "Image 1 for carousel" },
-      { src: pic2, alt: "Image 2 for carousel" },
-      { src: pic3, alt: "Image 3 for carousel" },
-      { src: pic4, alt: "Image 4 for carousel" },
-      { src: pic5, alt: "Image 5 for carousel" },
-      { src: pic6, alt: "Image 6 for carousel" },
-      { src: pic7, alt: "Image 7 for carousel" },
-      { src: pic8, alt: "Image 8 for carousel" },
-    ],
-  };
-  const responsibilities = [
-    "Creating the user interface (UI) design for adding, viewing, and printing data through Excel on the official website. I also handle hosting and deployment using local network hosting.",
-    "We utilized the system to encode and view data for both accounts payable and non-accounts payable.",
+  
+  const responsibilities1 = [
+   " Created the user interface (UI) design for adding, viewing, and printing data via Excel on the official website. I also handled hosting and deployment using local network hosting.",
+  "Utilized the system to encode and view data for both accounts payable and non-accounts payable.",
+  "Collaborated with the backend developer to streamline the process and ensure seamless integration with the front-end functionality.",
+   "Designed wireframes using Figma, which were then reviewed and approved by the supervisor. Once the functionality and features were confirmed, we proceeded with the implementation of the system."
+  ];
+  const responsibilities2 = [
+    "Created detailed user stories to outline project requirements, ensuring a clear understanding of the business process and website flow. Additionally, developed wireframes to represent the user interface design.",
+    "As an Anaplan Model Builder, I developed backend models, configuring the necessary functions, and then collaborated with the front-end team to publish and design the model in the UX interface.",
+    "Utilized unit testing to ensure the system built was functioning correctly, identifying and correcting any errors or issues in the data calculations.",
+    "Participated in User Acceptance Testing (UAT), ensuring the system met user requirements and expectations. I assisted in evaluating the build's performance and collaborated with the team on revisions when necessary."
   ];
 
   return (
@@ -120,8 +89,7 @@ const ResumePage = () => {
           <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-5"></div>
              
                 <p className="text-md antialiased font-normal">
-                  Municipality of Santa Cruz Laguna at the Office of Municipal
-                  Treasury - Internship
+                  Municipality of Santa Cruz Laguna  - Internship
                 </p>
                
               </div>
@@ -164,7 +132,7 @@ const ResumePage = () => {
             
                 
                 <ul className="list-disc pl-5 ml-4 mt-[-13px] text-md">
-                  {responsibilities.map((item, index) => (
+                  {responsibilities1.map((item, index) => (
                     <li key={index}> {item} </li>
                   ))}
                 </ul>
@@ -174,38 +142,76 @@ const ResumePage = () => {
           </div>
             </div> 
         </div>
-        <div className="col-span-1 md:col-span-1   p-4 resume resume-border mb-7">
+        <div className="col-span-1 md:col-span-1  p-4 resume resume-border mb-7  ">
           {/* Add border class and padding class */}
-           
+          <div className="px-5 ">
+      
          
-          <div className="px-5">
+      <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-5"></div>
+       
+
+      <h2 className='text-md mb-[-17px] mt-[-20px] text-blue-custom font-bold tracking-wide antialiased'>
+            Junior Software Developer
+        </h2>
+   
+        <div className="m-0 justify-between">
+          <div className="m- row-auto leading-7 ">
         
-           
-                <div 
-                className="relative overflow-hidden flex justify-center items-center w-100 h-100 md:w-600 md:h-400 lg:w-4/7"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                style={{
-                  opacity: isCarouselHovered ? '1' : '0.5',
-                  transition: 'opacity 0.5s ease', // Add transition property
-                  position: 'relative', // Set position to relative
-                }}>
-                  
-          <>
-          <div className="absolute top-0 left-0 w-full h-1/4"></div>
-          <div className="absolute bottom-0 left-0 w-full h-1/4"></div>
-          </>
+      <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-5"></div>
          
-                  {showText && (
-                  <h1 className="absolute top-16 lg:top-12 md:top-7 text-2xl mb-2 text-gray-custom font-semibold text-custom-gray tracking-wide antialiased" >
-                   Internship Highlights</h1>
-                   )}
-                   <Carousel data={data.slides} />
-                   {showText && (
-                   <p className="absolute bottom-14 lg:bottom-12 md:bottom-7 text-sm mb-2 text-gray-custom  text-center font-bold tracking-wide antialiased text-custom-gray ">Explore the highlights of my impactful project and contributions during my internship experience. </p>
-                   )}
+            <p className="text-md antialiased font-normal">
+              Malaya Tech Consulting Inc. - Full Time 
+              
+            </p>
+            
+          </div>
+          <div className="m-1 text-custom-gray mt-4">
+         
+      <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-1"></div>
+       
+            <p className="text-md">June 2024 - December 2024 | Junior Developer</p>     
+         
+      <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-1"></div>
+          
+            <p className="text-md">Taguig, Philippines</p>
+          
+       
+          </div>
+         
+      <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-5"></div>
+         
+          <hr className="my-1 mt-[-10px] mb-[-10px] border-t-1 border-gray-800" />
+        
+          
+          <div className="text-custom-gray">
+        
+      <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-5"></div>
+         
+            <p className="text-md antialiased ">
+            Malaya Tech Consulting's mission is to improve your processes through user-centric systems and build great solutions to solve your business problems. The products are designed for small to medium-sized companies to optimize their performance.
+            </p>
+          
+      <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-2"></div>
+       
+            <b className="text-md ">Responsibilities</b>
+      
+           
+      <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-5"></div>
+        
+            
+            <ul className="list-disc pl-5 ml-4 mt-[-13px] text-md">
+              {responsibilities2.map((item, index) => (
+                <li key={index}> {item} </li>
+              ))}
+            </ul>
+           
+             
           </div> 
-        </div>
+      </div>
+         </div>
+         
+         
+        
         </div>
         
       </div>

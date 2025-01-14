@@ -20,6 +20,11 @@ import TAILWIND from '../assets/images/skills/TAILWIND.png';
 import BOOTSTRAP from '../assets/images/skills/BOOTSTRAP.png';
 import SASS from '../assets/images/skills/SASS.png';
 import THREEJS from '../assets/images/skills/THREEJS.png';
+import WORDPRESS from '../assets/images/skills/WORDPRESS.png';
+import EXCEL from '../assets/images/skills/EXCEL.png';
+import UNITTESTING from '../assets/images/skills/UNITTESTING.png';
+import USERSTORY from '../assets/images/skills/USERSTORY.png';
+import PYTHON from '../assets/images/skills/PYTHON.png';
 import useDarkModeStore from '../store/useDarkModeStore';
 
 
@@ -89,6 +94,7 @@ const Skills = () => {
     { src: CSS, alt: 'CSS Logo', title: 'CSS', level: 100 },
     { src: JAVASCRIPT, alt: 'JAVASCRIPT Logo', title: 'JAVASCRIPT', level: 100 },
     { src: REACTJS, alt: 'REACTJS Logo', title: 'REACTJS', level: 95 },
+    { src: PYTHON, alt: 'PYTHON Logo', title: 'PYTHON', level: 85 },
     { src: MYSQL, alt: 'MYSQL Logo', title: 'MYSQL', level: 85 },
     { src: AJAX, alt: 'AJAX Logo', title: 'AJAX', level: 84 },
     { src: JQUERY, alt: 'JQERY Logo', title: 'JQUERY', level: 82 },
@@ -105,7 +111,10 @@ const Skills = () => {
     { src: BOOTSTRAP, alt: 'BOOTSTRAP Logo', title: 'BOOTSTRAP', level: 100 },
     { src: SASS, alt: 'SASS Logo', title: 'SASS', level: 90 },
     { src: THREEJS, alt: 'THREEJS Logo', title: 'THREEJS', level: 83 },
-    
+    { src: WORDPRESS, alt: 'WORDPRESS Logo', title: 'WORDPRESS', level: 85 },
+    { src: EXCEL, alt: 'EXCEL Logo', title: 'EXCEL', level: 83 },
+    { src: UNITTESTING, alt: 'UNITTESTING Logo', title: 'UNIT TESTING', level: 90 },
+    { src: USERSTORY, alt: 'USERSTORY Logo', title: 'USER STORY', level: 80 },
   ];
 
   return (
