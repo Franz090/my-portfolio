@@ -6,7 +6,8 @@ import Contact from '../Partials/Contact';
 import { Outlet } from 'react-router-dom';
 import StarrySky from '../Partials/StarrySky';
 import { ModalProvider } from '../Partials/ModalContext';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 
 const RootLayout = () => {
     const [showStarrySky, setShowStarrySky] = useState(false);
