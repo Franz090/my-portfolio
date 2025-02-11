@@ -25,6 +25,11 @@ import EXCEL from '../assets/images/skills/EXCEL.png';
 import UNITTESTING from '../assets/images/skills/UNITTESTING.png';
 import USERSTORY from '../assets/images/skills/USERSTORY.png';
 import PYTHON from '../assets/images/skills/PYTHON.png';
+import MONGODB from '../assets/images/skills/MONGODB.png';
+import EXPRESSJS from '../assets/images/skills/EXPRESSJS.png';
+import SEO from '../assets/images/skills/SEO.png';
+import POSTMAN from '../assets/images/skills/POSTMAN.png';
+import AGILE from '../assets/images/skills/AGILE.png';
 import useDarkModeStore from '../store/useDarkModeStore';
 
 
@@ -115,6 +120,11 @@ const Skills = () => {
     { src: EXCEL, alt: 'EXCEL Logo', title: 'EXCEL', level: 83 },
     { src: UNITTESTING, alt: 'UNITTESTING Logo', title: 'UNIT TESTING', level: 90 },
     { src: USERSTORY, alt: 'USERSTORY Logo', title: 'USER STORY', level: 80 },
+    { src: MONGODB, alt: 'MONGODB Logo', title: 'MONGODB', level: 80 },
+    { src: POSTMAN, alt: 'POSTMAN Logo', title: 'POSTMAN', level: 75 },
+    { src: EXPRESSJS, alt: 'EXPRESSJS Logo', title: 'EXPRESSJS', level: 80 },
+    { src: SEO, alt: 'SEO Logo', title: 'SEO', level: 90 },
+    { src: AGILE, alt: 'AGILE Logo', title: 'AGILE METHODOLOGY', level: 90 },
   ];
 
   return (
