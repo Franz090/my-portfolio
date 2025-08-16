@@ -39,7 +39,7 @@ const AboutPage = () => {
 
     // Open the link only when the user clicks the button
     const newWindow = window.open(
-      'https://drive.google.com/file/d/1IVd3RPYkmVw7v-nJQk28bC3pZ_tl_ui6/view',
+      'https://drive.google.com/file/d/1nN3KRk45sdH95LxPK4euDc--FSfQpWP7/view',
       '_blank'
     );
 
@@ -77,13 +77,13 @@ const AboutPage = () => {
           About Me
         </animated.h1>
         <animated.h2 style={slideFromBottom}  className="lg:text-2xl md:text-2xl  sm:text-2xl text-2xl font-light tracking-wide mb-4">
-  I'm a <TypewriterText texts={['Front End Developer ', 'UI/UX Designer ', 'Freelancer ']} />
+  I'm a <TypewriterText texts={['Software QA Engineer ', 'Front End Developer','UI/UX Designer ', 'Freelancer ']} />
 </animated.h2>
         <animated.p style={slideFromBottom} className="text-custom-gray lg:text-[16px] md:text-[16px] sm:text-[16px] text-[15px] font-light mb-3 tracking-tightest antialiased text-justify">
-        My name is Francis, and my path in the realm of web development and design has been quite an extraordinary one. Throughout my journey, I've had the privilege of expanding my skills beyond just front-end development and UI design. I've always had a deep-seated passion for creating captivating and immersive digital experiences, and it has been a humbling and fulfilling experience to be able to pursue this passion in my career.
+       As a Front-End Developer, I contributed to building responsive and user-friendly web applications using HTML, CSS, JavaScript, and ReactJS. I was responsible for converting Adobe XD designs into fully functional and mobile-responsive websites, ensuring clean and efficient code that improves user experience and accessibility.
         </animated.p>
         <animated.p style={slideFromBottom} className="text-custom-gray lg:text-[16px] md:text-[16px] sm:text-[16px] text-[15px] font-light tracking-tightest mb-3 antialiased text-justify">
-          I enjoy taking complex problems and turning them into simple and beautiful interface designs. I also love the logic and structure of coding, and I always strive for elegance in efficient code, whether it's in HTML, CSS, or ReactJS. Additionally, I can convert Adobe XD designs to HTML and create responsive designs. I'm passionate about continuous improvement and am enthusiastic about learning from senior developers to enhance my skills and knowledge.
+         As a Software QA Tester, I created and executed detailed test cases, validated system features, and performed API testing using Postman. I worked closely with developers to identify and report issues, ensuring that applications were delivered with high quality and reliability. I also followed Agile practices, actively participating in team collaboration to support timely and accurate releases.
         </animated.p>
         <animated.p style={slideFromBottom} className="text-custom-gray lg:text-[16px] md:text-[16px] sm:text-[16px] text-[15px] font-light tracking-tight mb-3 subpixel-antialiased text-justify">
           Here is my CV. It contains detailed information about my education, skills, work experience, and projects.

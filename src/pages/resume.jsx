@@ -54,11 +54,17 @@ const ResumePage = () => {
   "Collaborated with the backend developer to streamline the process and ensure seamless integration with the front-end functionality.",
    "Designed wireframes using Figma, which were then reviewed and approved by the supervisor. Once the functionality and features were confirmed, we proceeded with the implementation of the system."
   ];
-  const responsibilities2 = [
-    "Created detailed user stories to outline project requirements, ensuring a clear understanding of the business process and website flow. Additionally, developed wireframes to represent the user interface design.",
-    "As an Anaplan Model Builder, I developed backend models, configuring the necessary functions, and then collaborated with the front-end team to publish and design the model in the UX interface.",
-    "Utilized unit testing to ensure the system built was functioning correctly, identifying and correcting any errors or issues in the data calculations.",
-    "Participated in User Acceptance Testing (UAT), ensuring the system met user requirements and expectations. I assisted in evaluating the build's performance and collaborated with the team on revisions when necessary."
+const responsibilities2 = [
+    "Created user stories and acceptance criteria based on project objectives and user requirements",
+    "Conducted smoke, regression, and exploratory testing to ensure product stability and quality",
+    "Utilized SQL for data validation, test data preparation, and backend verification",
+    "Applied Agile practices such as daily stand-up meetings, sprint planning, and retrospectives",
+    "Performed testing across multiple environments: unit, developer, staging, and production",
+    "Designed and maintained comprehensive test cases for functional and edge-case scenarios",
+    "Used Trello for task management, documentation, and workflow tracking",
+    "Reported bugs with clear reproduction steps, severity classification, and collaborated with developers for timely resolution",
+    "Conducted API testing with Postman and managed version control using GitHub",
+    "Developed backend features with Laravel (PHP), ensuring clean code and optimized database usage",
   ];
 
   return (
@@ -151,7 +157,7 @@ const ResumePage = () => {
        
 
       <h2 className='text-md mb-[-17px] mt-[-20px] text-blue-custom font-bold tracking-wide antialiased'>
-            Junior Software Developer
+            Software QA Engineer
         </h2>
    
         <div className="m-0 justify-between">
@@ -160,7 +166,7 @@ const ResumePage = () => {
       <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-5"></div>
          
             <p className="text-md antialiased font-normal">
-              Malaya Tech Consulting Inc. - Full Time 
+             Hertz Philippines - Fulltime
               
             </p>
             
@@ -169,11 +175,11 @@ const ResumePage = () => {
          
       <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-1"></div>
        
-            <p className="text-md">June 2024 - December 2024 | Junior Developer</p>     
+            <p className="text-md">March 2024 - September 2024 | Software QA Engineer</p>     
          
       <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-1"></div>
           
-            <p className="text-md">Taguig, Philippines</p>
+            <p className="text-md">Makati, Philippines</p>
           
        
           </div>
@@ -188,7 +194,7 @@ const ResumePage = () => {
       <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-5"></div>
          
             <p className="text-md antialiased ">
-            Malaya Tech Consulting's mission is to improve your processes through user-centric systems and build great solutions to solve your business problems. The products are designed for small to medium-sized companies to optimize their performance.
+            Hertz Global Holdings, Inc. ranks among the world’s top providers of car rental and mobility solutions. Through its subsidiaries, such as The Hertz Corporation, and its network of licensees, the company operates the Hertz, Dollar, Thrifty, and Firefly brands, with over 11,000 rental locations across 160 countries worldwide.
             </p>
           
       <div className=" bg-custom-gray rounded-full dark:bg-gray-600 mb-2"></div>
