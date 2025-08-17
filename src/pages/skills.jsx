@@ -30,6 +30,7 @@ import EXPRESSJS from '../assets/images/skills/EXPRESSJS.png';
 import SEO from '../assets/images/skills/SEO.png';
 import POSTMAN from '../assets/images/skills/POSTMAN.png';
 import AGILE from '../assets/images/skills/AGILE.png';
+import LARAVEL from '../assets/images/skills/laravel.png';
 import useDarkModeStore from '../store/useDarkModeStore';
 
 
@@ -123,6 +124,7 @@ const Skills = () => {
     { src: MONGODB, alt: 'MONGODB Logo', title: 'MONGODB', level: 80 },
     { src: POSTMAN, alt: 'POSTMAN Logo', title: 'POSTMAN', level: 75 },
     { src: EXPRESSJS, alt: 'EXPRESSJS Logo', title: 'EXPRESSJS', level: 80 },
+    { src: AGILE, alt: 'LARAVEL Logo', title: 'LARAVEL', level: 70 },
     { src: SEO, alt: 'SEO Logo', title: 'SEO', level: 90 },
     { src: AGILE, alt: 'AGILE Logo', title: 'AGILE METHODOLOGY', level: 90 },
   ];
